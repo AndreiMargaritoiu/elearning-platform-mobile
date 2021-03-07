@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:elearning_platform_mobile/src/init/init.dart';
 import 'package:elearning_platform_mobile/src/models/index.dart';
 import 'package:elearning_platform_mobile/src/presentation/routes.dart';
@@ -31,40 +33,35 @@ class _ElearningPlatformState extends State<ElearningPlatform> {
   Widget build(BuildContext context) {
     return FutureBuilder<Store<AppState>>(
         future: _future,
-        builder: (BuildContext context,
-            AsyncSnapshot<Store<AppState>> snapshot) {
+        builder:
+            (BuildContext context, AsyncSnapshot<Store<AppState>> snapshot) {
           if (snapshot.hasData) {
             final Store<AppState> store = snapshot.data;
 
             return StoreProvider<AppState>(
-              store: store,
-              child: MaterialApp(
-                title: 'Elearning platform',
-                theme: ThemeData(
-                  primarySwatch: Colors.blue,
-                ),
-                routes: AppRoutes.routes,
-              )
-            );
+                store: store,
+                child: MaterialApp(
+                  title: 'Elearning platform',
+                  theme: ThemeData(
+                    primarySwatch: Colors.blue,
+                  ),
+                  routes: AppRoutes.routes,
+                ));
           } else {
-
             if (snapshot.hasError) {
               throw snapshot.error;
             }
 
             return MaterialApp(
-              title: 'Elearning platform',
-              theme: ThemeData(
-                primarySwatch: Colors.blue,
-              ),
-              home: const Scaffold(
-                body: Center(
+                title: 'Elearning platform',
+                theme: ThemeData(
+                  primarySwatch: Colors.blue,
+                ),
+                home: const Scaffold(
+                    body: Center(
                   child: CircularProgressIndicator(),
-                )
-              )
-            );
+                )));
           }
-        }
-    );
+        });
   }
 }
