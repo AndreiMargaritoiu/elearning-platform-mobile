@@ -2,7 +2,7 @@ import 'package:elearning_platform_mobile/src/actions/auth/index.dart';
 import 'package:elearning_platform_mobile/src/models/auth/index.dart';
 import 'package:redux/redux.dart';
 
-Reducer<AuthState> reducer = combineReducers(<Reducer<AuthState>>[
+Reducer<AuthState> authReducer = combineReducers(<Reducer<AuthState>>[
   TypedReducer<AuthState, LoginSuccessful>(_loginSuccessful),
   TypedReducer<AuthState, SignUpSuccessful>(_signUpSuccessful),
   TypedReducer<AuthState, UpdateRegistrationInfo>(_updateRegistrationInfo),
