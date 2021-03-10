@@ -1,4 +1,5 @@
 export 'auth/index.dart';
+export 'videos/index.dart';
 
 abstract class AppAction {
   const AppAction();
