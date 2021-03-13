@@ -24,7 +24,7 @@ class VideosEpics {
         .flatMap((AddVideo$ action) => Stream<AddVideo$>.value(action)
             .asyncMap((AddVideo$ action) => _api.createVideo(
                 store.state.videos.info, store.state.auth.user.uid))
-            .map((Video Video) => AddVideo.successful(Video))
+            .map((Video video) => AddVideo.successful(video))
             .onErrorReturnWith((dynamic error) => AddVideo.error(error)));
   }
 }

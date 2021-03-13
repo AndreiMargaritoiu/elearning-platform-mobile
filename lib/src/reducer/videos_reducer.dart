@@ -4,6 +4,7 @@ import 'package:redux/redux.dart';
 
 Reducer<VideosState> videosReducer = combineReducers(<Reducer<VideosState>>[
   TypedReducer<VideosState, UpdateVideoInfo>(_updateVideoInfo),
+  TypedReducer<VideosState, AddVideoSuccessful>(_addVideoSuccessful),
 ]);
 
 VideosState _updateVideoInfo(VideosState state, UpdateVideoInfo action) {
@@ -16,5 +17,11 @@ VideosState _updateVideoInfo(VideosState state, UpdateVideoInfo action) {
       b.info.description = action.description;
     }
       b.info = VideoInfo().toBuilder();
+  });
+}
+
+VideosState _addVideoSuccessful(VideosState state, AddVideoSuccessful action) {
+  return state.rebuild((VideosStateBuilder b) {
+    b.info = VideoInfo().toBuilder();
   });
 }

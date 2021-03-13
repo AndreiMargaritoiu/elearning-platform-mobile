@@ -43,7 +43,8 @@ class _DashboardPageState extends State<DashboardPage> {
             if (i == 2) {
               final PickedFile file =
                   await ImagePicker().getVideo(source: ImageSource.gallery);
-              if (file != null) {
+              print(file.path);
+              if (file.path != null) {
                 StoreProvider.of<AppState>(context)
                     .dispatch(UpdateVideoInfo(addVideo: file.path));
                 Navigator.pushNamed(context, AppRoutes.addVideo);
