@@ -1,11 +1,13 @@
+
+
 part of auth_actions;
 
 @freezed
-abstract class SignUp with _$SignUp implements AppAction {
-  const factory SignUp(ActionResponse response) = SignUp$;
+abstract class Signup with _$Signup implements AppAction {
+  const factory Signup(ActionResponse response) = Signup$;
 
-  const factory SignUp.successful(AppUser user) = SignUpSuccessful;
+  const factory Signup.successful(AppUser user) = SignupSuccessful;
 
   @Implements(ErrorAction)
-  const factory SignUp.error(Object error) = SignUpError;
+  const factory Signup.error(Object error) = SignupError;
 }

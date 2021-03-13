@@ -1,4 +1,6 @@
-part of videos_actions;
+
+
+part of videos_action;
 
 @freezed
 abstract class AddVideo with _$AddVideo implements AppAction {
@@ -9,3 +11,4 @@ abstract class AddVideo with _$AddVideo implements AppAction {
   @Implements(ErrorAction)
   const factory AddVideo.error(Object error) = AddVideoError;
 }
+ 

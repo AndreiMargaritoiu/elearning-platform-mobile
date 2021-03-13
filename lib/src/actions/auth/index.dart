@@ -1,12 +1,17 @@
 library auth_actions;
 
-import 'package:elearning_platform_mobile/src/actions/index.dart';
-import 'package:elearning_platform_mobile/src/models/auth/index.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:elearning_platform_mobile/src/actions/index.dart';
+import 'package:elearning_platform_mobile/src/models/index.dart';
 
+part 'get_user.dart';
 part 'index.freezed.dart';
+part 'initialize_app.dart';
 part 'login.dart';
-part 'sign_up.dart';
+part 'reset_password.dart';
+part 'search_users.dart';
 part 'set.dart';
 part 'sign_out.dart';
-part 'reset_password.dart';
+part 'sign_up.dart';
+part 'sign_up_with_google.dart';
+part 'update_following.dart';

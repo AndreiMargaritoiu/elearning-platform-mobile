@@ -1,14 +1,10 @@
-// File created by
-// Lung Razvan <long1eu>
-// on 04/01/2021
-
+import 'package:flutter/gestures.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_redux/flutter_redux.dart';
 import 'package:elearning_platform_mobile/src/actions/index.dart';
 import 'package:elearning_platform_mobile/src/models/index.dart';
 import 'package:elearning_platform_mobile/src/presentation/mixin/dialog_mixin.dart';
 import 'package:elearning_platform_mobile/src/presentation/routes.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_redux/flutter_redux.dart';
 
 class ResetPasswordPage extends StatefulWidget {
   const ResetPasswordPage({Key key}) : super(key: key);
@@ -17,13 +13,14 @@ class ResetPasswordPage extends StatefulWidget {
   _ResetPasswordPageState createState() => _ResetPasswordPageState();
 }
 
-class _ResetPasswordPageState extends State<ResetPasswordPage>
-    with DialogMixin {
+class _ResetPasswordPageState extends State<ResetPasswordPage> with DialogMixin {
   final TextEditingController _email = TextEditingController();
 
   void _response(AppAction action) {
     if (action is LoginError) {
       showErrorDialog(context, 'Login error', action.error);
+    } else if (action is SignUpWithGoogleError) {
+      showErrorDialog(context, 'Google error', action.error);
     }
   }
 
@@ -61,8 +58,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage>
                       child: const Text('Login'),
                       onPressed: () {
                         if (Form.of(context).validate()) {
-                          StoreProvider.of<AppState>(context)
-                              .dispatch(ResetPassword(_email.text));
+                          StoreProvider.of<AppState>(context).dispatch(ResetPassword(_email.text));
                         }
                       },
                     ),
@@ -78,7 +74,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage>
                             ),
                             recognizer: TapGestureRecognizer()
                               ..onTap = () {
-                                Navigator.pushNamed(context, AppRoutes.signUp);
+                                Navigator.pushNamed(context, AppRoutes.signup);
                               },
                           ),
                         ],

@@ -13,8 +13,12 @@ abstract class AppUser implements Built<AppUser, AppUserBuilder> {
 
   String get username;
 
+  BuiltList<String> get following;
+
+  BuiltList<String> get searchIndex;
+
   @nullable
-  String get profilePictureUrl;
+  String get photoUrl;
 
   Map<String, dynamic> get json => serializers.serializeWith(serializer, this) as Map<String, dynamic>;
 

@@ -23,6 +23,10 @@ class _$VideosStateSerializer implements StructuredSerializer<VideosState> {
       'info',
       serializers.serialize(object.info,
           specifiedType: const FullType(VideoInfo)),
+      'videos',
+      serializers.serialize(object.videos,
+          specifiedType:
+              const FullType(BuiltList, const [const FullType(Video)])),
     ];
 
     return result;
@@ -42,6 +46,12 @@ class _$VideosStateSerializer implements StructuredSerializer<VideosState> {
         case 'info':
           result.info.replace(serializers.deserialize(value,
               specifiedType: const FullType(VideoInfo)) as VideoInfo);
+          break;
+        case 'videos':
+          result.videos.replace(serializers.deserialize(value,
+                  specifiedType:
+                      const FullType(BuiltList, const [const FullType(Video)]))
+              as BuiltList<Object>);
           break;
       }
     }
@@ -165,13 +175,18 @@ class _$VideoSerializer implements StructuredSerializer<Video> {
 class _$VideosState extends VideosState {
   @override
   final VideoInfo info;
+  @override
+  final BuiltList<Video> videos;
 
   factory _$VideosState([void Function(VideosStateBuilder) updates]) =>
       (new VideosStateBuilder()..update(updates)).build();
 
-  _$VideosState._({this.info}) : super._() {
+  _$VideosState._({this.info, this.videos}) : super._() {
     if (info == null) {
       throw new BuiltValueNullFieldError('VideosState', 'info');
+    }
+    if (videos == null) {
+      throw new BuiltValueNullFieldError('VideosState', 'videos');
     }
   }
 
@@ -185,17 +200,19 @@ class _$VideosState extends VideosState {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is VideosState && info == other.info;
+    return other is VideosState && info == other.info && videos == other.videos;
   }
 
   @override
   int get hashCode {
-    return $jf($jc(0, info.hashCode));
+    return $jf($jc($jc(0, info.hashCode), videos.hashCode));
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('VideosState')..add('info', info))
+    return (newBuiltValueToStringHelper('VideosState')
+          ..add('info', info)
+          ..add('videos', videos))
         .toString();
   }
 }
@@ -207,11 +224,16 @@ class VideosStateBuilder implements Builder<VideosState, VideosStateBuilder> {
   VideoInfoBuilder get info => _$this._info ??= new VideoInfoBuilder();
   set info(VideoInfoBuilder info) => _$this._info = info;
 
+  ListBuilder<Video> _videos;
+  ListBuilder<Video> get videos => _$this._videos ??= new ListBuilder<Video>();
+  set videos(ListBuilder<Video> videos) => _$this._videos = videos;
+
   VideosStateBuilder();
 
   VideosStateBuilder get _$this {
     if (_$v != null) {
       _info = _$v.info?.toBuilder();
+      _videos = _$v.videos?.toBuilder();
       _$v = null;
     }
     return this;
@@ -234,12 +256,15 @@ class VideosStateBuilder implements Builder<VideosState, VideosStateBuilder> {
   _$VideosState build() {
     _$VideosState _$result;
     try {
-      _$result = _$v ?? new _$VideosState._(info: info.build());
+      _$result = _$v ??
+          new _$VideosState._(info: info.build(), videos: videos.build());
     } catch (_) {
       String _$failedField;
       try {
         _$failedField = 'info';
         info.build();
+        _$failedField = 'videos';
+        videos.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             'VideosState', _$failedField, e.toString());

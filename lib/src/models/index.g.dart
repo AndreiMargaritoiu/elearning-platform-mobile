@@ -21,6 +21,9 @@ class _$AppStateSerializer implements StructuredSerializer<AppState> {
       'auth',
       serializers.serialize(object.auth,
           specifiedType: const FullType(AuthState)),
+      'posts',
+      serializers.serialize(object.posts,
+          specifiedType: const FullType(PostsState)),
       'videos',
       serializers.serialize(object.videos,
           specifiedType: const FullType(VideosState)),
@@ -44,6 +47,10 @@ class _$AppStateSerializer implements StructuredSerializer<AppState> {
           result.auth.replace(serializers.deserialize(value,
               specifiedType: const FullType(AuthState)) as AuthState);
           break;
+        case 'posts':
+          result.posts.replace(serializers.deserialize(value,
+              specifiedType: const FullType(PostsState)) as PostsState);
+          break;
         case 'videos':
           result.videos.replace(serializers.deserialize(value,
               specifiedType: const FullType(VideosState)) as VideosState);
@@ -59,14 +66,19 @@ class _$AppState extends AppState {
   @override
   final AuthState auth;
   @override
+  final PostsState posts;
+  @override
   final VideosState videos;
 
   factory _$AppState([void Function(AppStateBuilder) updates]) =>
       (new AppStateBuilder()..update(updates)).build();
 
-  _$AppState._({this.auth, this.videos}) : super._() {
+  _$AppState._({this.auth, this.posts, this.videos}) : super._() {
     if (auth == null) {
       throw new BuiltValueNullFieldError('AppState', 'auth');
+    }
+    if (posts == null) {
+      throw new BuiltValueNullFieldError('AppState', 'posts');
     }
     if (videos == null) {
       throw new BuiltValueNullFieldError('AppState', 'videos');
@@ -83,18 +95,23 @@ class _$AppState extends AppState {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is AppState && auth == other.auth && videos == other.videos;
+    return other is AppState &&
+        auth == other.auth &&
+        posts == other.posts &&
+        videos == other.videos;
   }
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, auth.hashCode), videos.hashCode));
+    return $jf(
+        $jc($jc($jc(0, auth.hashCode), posts.hashCode), videos.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('AppState')
           ..add('auth', auth)
+          ..add('posts', posts)
           ..add('videos', videos))
         .toString();
   }
@@ -107,6 +124,10 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
   AuthStateBuilder get auth => _$this._auth ??= new AuthStateBuilder();
   set auth(AuthStateBuilder auth) => _$this._auth = auth;
 
+  PostsStateBuilder _posts;
+  PostsStateBuilder get posts => _$this._posts ??= new PostsStateBuilder();
+  set posts(PostsStateBuilder posts) => _$this._posts = posts;
+
   VideosStateBuilder _videos;
   VideosStateBuilder get videos => _$this._videos ??= new VideosStateBuilder();
   set videos(VideosStateBuilder videos) => _$this._videos = videos;
@@ -116,6 +137,7 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
   AppStateBuilder get _$this {
     if (_$v != null) {
       _auth = _$v.auth?.toBuilder();
+      _posts = _$v.posts?.toBuilder();
       _videos = _$v.videos?.toBuilder();
       _$v = null;
     }
@@ -139,13 +161,16 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
   _$AppState build() {
     _$AppState _$result;
     try {
-      _$result =
-          _$v ?? new _$AppState._(auth: auth.build(), videos: videos.build());
+      _$result = _$v ??
+          new _$AppState._(
+              auth: auth.build(), posts: posts.build(), videos: videos.build());
     } catch (_) {
       String _$failedField;
       try {
         _$failedField = 'auth';
         auth.build();
+        _$failedField = 'posts';
+        posts.build();
         _$failedField = 'videos';
         videos.build();
       } catch (e) {

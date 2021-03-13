@@ -1,22 +1,18 @@
-// File created by
-// Lung Razvan <long1eu>
-// on 04/01/2021
-
+ import 'package:flutter/gestures.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_redux/flutter_redux.dart';
 import 'package:elearning_platform_mobile/src/actions/index.dart';
 import 'package:elearning_platform_mobile/src/models/index.dart';
 import 'package:elearning_platform_mobile/src/presentation/mixin/dialog_mixin.dart';
 import 'package:elearning_platform_mobile/src/presentation/routes.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_redux/flutter_redux.dart';
 
-class SignUpPage extends StatelessWidget with DialogMixin {
-  const SignUpPage({Key key}) : super(key: key);
+class PasswordPage extends StatelessWidget with DialogMixin {
+  const PasswordPage({Key key}) : super(key: key);
 
   void _response(BuildContext context, AppAction action) {
-    if (action is SignUpSuccessful) {
+    if (action is SignupSuccessful) {
       Navigator.pushNamedAndRemoveUntil(context, AppRoutes.home, (_) => false);
-    } else if (action is SignUpError) {
+    } else if (action is SignupError) {
       showErrorDialog(context, 'Signup error', action.error);
     }
   }
@@ -25,7 +21,7 @@ class SignUpPage extends StatelessWidget with DialogMixin {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Signup'),
+        title: const Text('Password'),
       ),
       body: SafeArea(
         child: Padding(
@@ -35,38 +31,6 @@ class SignUpPage extends StatelessWidget with DialogMixin {
               builder: (BuildContext context) {
                 return Column(
                   children: <Widget>[
-                    TextFormField(
-                      decoration: const InputDecoration(
-                        hintText: 'email',
-                      ),
-                      keyboardType: TextInputType.emailAddress,
-                      onChanged: (String value) {
-                        StoreProvider.of<AppState>(context)
-                            .dispatch(UpdateRegistrationInfo(email: value));
-                      },
-                      validator: (String value) {
-                        if (!value.contains('@') || !value.contains('.')) {
-                          return 'Please enter a valid email address';
-                        }
-                        return null;
-                      },
-                    ),
-                    TextFormField(
-                      decoration: const InputDecoration(
-                        hintText: 'username',
-                      ),
-                      keyboardType: TextInputType.name,
-                      onChanged: (String value) {
-                        StoreProvider.of<AppState>(context).dispatch(
-                            UpdateRegistrationInfo(username: value));
-                      },
-                      validator: (String value) {
-                        if (value.length < 3) {
-                          return 'Please choose a bigger username';
-                        }
-                        return null;
-                      },
-                    ),
                     TextFormField(
                       decoration: const InputDecoration(
                         hintText: 'password',
@@ -80,6 +44,7 @@ class SignUpPage extends StatelessWidget with DialogMixin {
                         if (value.length < 6) {
                           return 'Please choose a better password';
                         }
+
                         return null;
                       },
                     ),
@@ -88,7 +53,7 @@ class SignUpPage extends StatelessWidget with DialogMixin {
                       child: const Text('SignUp!'),
                       onPressed: () {
                         if (Form.of(context).validate()) {
-                          StoreProvider.of<AppState>(context).dispatch(SignUp((AppAction action) {
+                          StoreProvider.of<AppState>(context).dispatch(Signup((AppAction action) {
                             _response(context, action);
                           }));
                         }
@@ -106,8 +71,7 @@ class SignUpPage extends StatelessWidget with DialogMixin {
                             ),
                             recognizer: TapGestureRecognizer()
                               ..onTap = () {
-                                Navigator.popUntil(context,
-                                    ModalRoute.withName(AppRoutes.home));
+                                Navigator.popUntil(context, ModalRoute.withName(AppRoutes.home));
                               },
                           ),
                         ],

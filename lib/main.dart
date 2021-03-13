@@ -1,10 +1,9 @@
-import 'dart:async';
 
-import 'package:elearning_platform_mobile/src/init/init.dart';
-import 'package:elearning_platform_mobile/src/models/index.dart';
-import 'package:elearning_platform_mobile/src/presentation/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:elearning_platform_mobile/src/models/index.dart';
+import 'package:elearning_platform_mobile/src/presentation/mixin/init_mixin.dart';
+import 'package:elearning_platform_mobile/src/presentation/routes.dart';
 import 'package:redux/redux.dart';
 
 void main() {
@@ -15,53 +14,42 @@ class ElearningPlatform extends StatefulWidget {
   const ElearningPlatform({Key key}) : super(key: key);
 
   @override
-  _ElearningPlatformState createState() => _ElearningPlatformState();
+  _ElearningPlatform createState() => _ElearningPlatform();
 }
 
-class _ElearningPlatformState extends State<ElearningPlatform> {
-
-  Future<Store<AppState>> _future;
-
-  @override
-  void initState() {
-    super.initState();
-
-    _future = init();
-  }
-
+class _ElearningPlatform extends State<ElearningPlatform> with InitMixin<ElearningPlatform> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<Store<AppState>>(
-        future: _future,
-        builder:
-            (BuildContext context, AsyncSnapshot<Store<AppState>> snapshot) {
-          if (snapshot.hasData) {
-            final Store<AppState> store = snapshot.data;
+      future: future,
+      builder: (BuildContext context, AsyncSnapshot<Store<AppState>> snapshot) {
+        if (snapshot.hasData) {
+          final Store<AppState> store = snapshot.data;
 
-            return StoreProvider<AppState>(
-                store: store,
-                child: MaterialApp(
-                  title: 'Elearning platform',
-                  theme: ThemeData(
-                    primarySwatch: Colors.blue,
-                  ),
-                  routes: AppRoutes.routes,
-                ));
-          } else {
-            if (snapshot.hasError) {
-              throw snapshot.error;
-            }
-
-            return MaterialApp(
-                title: 'Elearning platform',
-                theme: ThemeData(
-                  primarySwatch: Colors.blue,
-                ),
-                home: const Scaffold(
-                    body: Center(
-                  child: CircularProgressIndicator(),
-                )));
+          return StoreProvider<AppState>(
+            store: store,
+            child: MaterialApp(
+              title: 'Elearning Platform',
+              theme: ThemeData.dark(),
+              routes: AppRoutes.routes,
+            ),
+          );
+        } else {
+          if (snapshot.hasError) {
+            throw snapshot.error;
           }
-        });
+
+          return MaterialApp(
+            title: 'Elearning Platform',
+            theme: ThemeData.dark(),
+            home: const Scaffold(
+              body: Center(
+                child: CircularProgressIndicator(),
+              ),
+            ),
+          );
+        }
+      },
+    );
   }
 }

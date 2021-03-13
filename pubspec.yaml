@@ -22,9 +22,10 @@ dependencies:
 
   # flutter
   flutter_redux: ^0.7.0
-  image_picker: ^0.6.7+21
+  image_picker: 0.6.2
   location: ^3.2.1
   video_player: ^0.11.1+2
+  file_picker: any
 
   # dart
   redux: ^4.0.0+3

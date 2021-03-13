@@ -1,4 +1,6 @@
-part of videos_actions;
+
+
+part of videos_action;
 
 @freezed
 abstract class UpdateVideoInfo with _$UpdateVideoInfo implements AppAction {

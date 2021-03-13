@@ -1,8 +1,7 @@
-part of videos_containers;
+part of videos_conatiners;
 
 class VideoInfoContainer extends StatelessWidget {
-  const VideoInfoContainer({Key key, @required this.builder})
-      : super(key: key);
+  const VideoInfoContainer({Key key, @required this.builder}) : super(key: key);
 
   final ViewModelBuilder<VideoInfo> builder;
 

@@ -15,6 +15,8 @@ abstract class VideosState implements Built<VideosState, VideosStateBuilder> {
 
   VideoInfo get info;
 
+  BuiltList<Video> get videos;
+
   Map<String, dynamic> get json =>
       serializers.serializeWith(serializer, this) as Map<String, dynamic>;
 
