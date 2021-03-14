@@ -840,6 +840,422 @@ abstract class ListenForVideosError implements ListenForVideos, ErrorAction {
 }
 
 /// @nodoc
+class _$GetMyVideosTearOff {
+  const _$GetMyVideosTearOff();
+
+// ignore: unused_element
+  GetMyVideos$ call() {
+    return const GetMyVideos$();
+  }
+
+// ignore: unused_element
+  GetMyVideosSuccessful successful(List<Video> videos) {
+    return GetMyVideosSuccessful(
+      videos,
+    );
+  }
+
+// ignore: unused_element
+  GetMyVideosError error(Object error) {
+    return GetMyVideosError(
+      error,
+    );
+  }
+}
+
+/// @nodoc
+// ignore: unused_element
+const $GetMyVideos = _$GetMyVideosTearOff();
+
+/// @nodoc
+mixin _$GetMyVideos {
+  @optionalTypeArgs
+  Result when<Result extends Object>(
+    Result $default(), {
+    @required Result successful(List<Video> videos),
+    @required Result error(Object error),
+  });
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>(
+    Result $default(), {
+    Result successful(List<Video> videos),
+    Result error(Object error),
+    @required Result orElse(),
+  });
+  @optionalTypeArgs
+  Result map<Result extends Object>(
+    Result $default(GetMyVideos$ value), {
+    @required Result successful(GetMyVideosSuccessful value),
+    @required Result error(GetMyVideosError value),
+  });
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>(
+    Result $default(GetMyVideos$ value), {
+    Result successful(GetMyVideosSuccessful value),
+    Result error(GetMyVideosError value),
+    @required Result orElse(),
+  });
+}
+
+/// @nodoc
+abstract class $GetMyVideosCopyWith<$Res> {
+  factory $GetMyVideosCopyWith(
+          GetMyVideos value, $Res Function(GetMyVideos) then) =
+      _$GetMyVideosCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$GetMyVideosCopyWithImpl<$Res> implements $GetMyVideosCopyWith<$Res> {
+  _$GetMyVideosCopyWithImpl(this._value, this._then);
+
+  final GetMyVideos _value;
+  // ignore: unused_field
+  final $Res Function(GetMyVideos) _then;
+}
+
+/// @nodoc
+abstract class $GetMyVideos$CopyWith<$Res> {
+  factory $GetMyVideos$CopyWith(
+          GetMyVideos$ value, $Res Function(GetMyVideos$) then) =
+      _$GetMyVideos$CopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$GetMyVideos$CopyWithImpl<$Res> extends _$GetMyVideosCopyWithImpl<$Res>
+    implements $GetMyVideos$CopyWith<$Res> {
+  _$GetMyVideos$CopyWithImpl(
+      GetMyVideos$ _value, $Res Function(GetMyVideos$) _then)
+      : super(_value, (v) => _then(v as GetMyVideos$));
+
+  @override
+  GetMyVideos$ get _value => super._value as GetMyVideos$;
+}
+
+/// @nodoc
+class _$GetMyVideos$ implements GetMyVideos$ {
+  const _$GetMyVideos$();
+
+  @override
+  String toString() {
+    return 'GetMyVideos()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is GetMyVideos$);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>(
+    Result $default(), {
+    @required Result successful(List<Video> videos),
+    @required Result error(Object error),
+  }) {
+    assert($default != null);
+    assert(successful != null);
+    assert(error != null);
+    return $default();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>(
+    Result $default(), {
+    Result successful(List<Video> videos),
+    Result error(Object error),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if ($default != null) {
+      return $default();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>(
+    Result $default(GetMyVideos$ value), {
+    @required Result successful(GetMyVideosSuccessful value),
+    @required Result error(GetMyVideosError value),
+  }) {
+    assert($default != null);
+    assert(successful != null);
+    assert(error != null);
+    return $default(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>(
+    Result $default(GetMyVideos$ value), {
+    Result successful(GetMyVideosSuccessful value),
+    Result error(GetMyVideosError value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if ($default != null) {
+      return $default(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetMyVideos$ implements GetMyVideos {
+  const factory GetMyVideos$() = _$GetMyVideos$;
+}
+
+/// @nodoc
+abstract class $GetMyVideosSuccessfulCopyWith<$Res> {
+  factory $GetMyVideosSuccessfulCopyWith(GetMyVideosSuccessful value,
+          $Res Function(GetMyVideosSuccessful) then) =
+      _$GetMyVideosSuccessfulCopyWithImpl<$Res>;
+  $Res call({List<Video> videos});
+}
+
+/// @nodoc
+class _$GetMyVideosSuccessfulCopyWithImpl<$Res>
+    extends _$GetMyVideosCopyWithImpl<$Res>
+    implements $GetMyVideosSuccessfulCopyWith<$Res> {
+  _$GetMyVideosSuccessfulCopyWithImpl(
+      GetMyVideosSuccessful _value, $Res Function(GetMyVideosSuccessful) _then)
+      : super(_value, (v) => _then(v as GetMyVideosSuccessful));
+
+  @override
+  GetMyVideosSuccessful get _value => super._value as GetMyVideosSuccessful;
+
+  @override
+  $Res call({
+    Object videos = freezed,
+  }) {
+    return _then(GetMyVideosSuccessful(
+      videos == freezed ? _value.videos : videos as List<Video>,
+    ));
+  }
+}
+
+/// @nodoc
+class _$GetMyVideosSuccessful implements GetMyVideosSuccessful {
+  const _$GetMyVideosSuccessful(this.videos) : assert(videos != null);
+
+  @override
+  final List<Video> videos;
+
+  @override
+  String toString() {
+    return 'GetMyVideos.successful(videos: $videos)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is GetMyVideosSuccessful &&
+            (identical(other.videos, videos) ||
+                const DeepCollectionEquality().equals(other.videos, videos)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(videos);
+
+  @override
+  $GetMyVideosSuccessfulCopyWith<GetMyVideosSuccessful> get copyWith =>
+      _$GetMyVideosSuccessfulCopyWithImpl<GetMyVideosSuccessful>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>(
+    Result $default(), {
+    @required Result successful(List<Video> videos),
+    @required Result error(Object error),
+  }) {
+    assert($default != null);
+    assert(successful != null);
+    assert(error != null);
+    return successful(videos);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>(
+    Result $default(), {
+    Result successful(List<Video> videos),
+    Result error(Object error),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (successful != null) {
+      return successful(videos);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>(
+    Result $default(GetMyVideos$ value), {
+    @required Result successful(GetMyVideosSuccessful value),
+    @required Result error(GetMyVideosError value),
+  }) {
+    assert($default != null);
+    assert(successful != null);
+    assert(error != null);
+    return successful(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>(
+    Result $default(GetMyVideos$ value), {
+    Result successful(GetMyVideosSuccessful value),
+    Result error(GetMyVideosError value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (successful != null) {
+      return successful(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetMyVideosSuccessful implements GetMyVideos {
+  const factory GetMyVideosSuccessful(List<Video> videos) =
+      _$GetMyVideosSuccessful;
+
+  List<Video> get videos;
+  $GetMyVideosSuccessfulCopyWith<GetMyVideosSuccessful> get copyWith;
+}
+
+/// @nodoc
+abstract class $GetMyVideosErrorCopyWith<$Res> {
+  factory $GetMyVideosErrorCopyWith(
+          GetMyVideosError value, $Res Function(GetMyVideosError) then) =
+      _$GetMyVideosErrorCopyWithImpl<$Res>;
+  $Res call({Object error});
+}
+
+/// @nodoc
+class _$GetMyVideosErrorCopyWithImpl<$Res>
+    extends _$GetMyVideosCopyWithImpl<$Res>
+    implements $GetMyVideosErrorCopyWith<$Res> {
+  _$GetMyVideosErrorCopyWithImpl(
+      GetMyVideosError _value, $Res Function(GetMyVideosError) _then)
+      : super(_value, (v) => _then(v as GetMyVideosError));
+
+  @override
+  GetMyVideosError get _value => super._value as GetMyVideosError;
+
+  @override
+  $Res call({
+    Object error = freezed,
+  }) {
+    return _then(GetMyVideosError(
+      error == freezed ? _value.error : error,
+    ));
+  }
+}
+
+@Implements(ErrorAction)
+
+/// @nodoc
+class _$GetMyVideosError implements GetMyVideosError {
+  const _$GetMyVideosError(this.error) : assert(error != null);
+
+  @override
+  final Object error;
+
+  @override
+  String toString() {
+    return 'GetMyVideos.error(error: $error)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is GetMyVideosError &&
+            (identical(other.error, error) ||
+                const DeepCollectionEquality().equals(other.error, error)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
+
+  @override
+  $GetMyVideosErrorCopyWith<GetMyVideosError> get copyWith =>
+      _$GetMyVideosErrorCopyWithImpl<GetMyVideosError>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>(
+    Result $default(), {
+    @required Result successful(List<Video> videos),
+    @required Result error(Object error),
+  }) {
+    assert($default != null);
+    assert(successful != null);
+    assert(error != null);
+    return error(this.error);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>(
+    Result $default(), {
+    Result successful(List<Video> videos),
+    Result error(Object error),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (error != null) {
+      return error(this.error);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>(
+    Result $default(GetMyVideos$ value), {
+    @required Result successful(GetMyVideosSuccessful value),
+    @required Result error(GetMyVideosError value),
+  }) {
+    assert($default != null);
+    assert(successful != null);
+    assert(error != null);
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>(
+    Result $default(GetMyVideos$ value), {
+    Result successful(GetMyVideosSuccessful value),
+    Result error(GetMyVideosError value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetMyVideosError implements GetMyVideos, ErrorAction {
+  const factory GetMyVideosError(Object error) = _$GetMyVideosError;
+
+  Object get error;
+  $GetMyVideosErrorCopyWith<GetMyVideosError> get copyWith;
+}
+
+/// @nodoc
 class _$UpdateVideoInfoTearOff {
   const _$UpdateVideoInfoTearOff();
 

@@ -16,6 +16,7 @@ class VideosEpics {
     return combineEpics<AppState>(<Epic<AppState>>[
       TypedEpic<AppState, AddVideo$>(_addVideo),
       TypedEpic<AppState, ListenForVideos$>(_listenForVideo),
+      TypedEpic<AppState, GetMyVideos$>(_getMyVideos),
     ]);
   }
 
@@ -27,6 +28,25 @@ class VideosEpics {
                 store.state.videos.info, store.state.auth.user.uid))
             .map((Video video) => AddVideo.successful(video))
             .onErrorReturnWith((dynamic error) => AddVideo.error(error)));
+  }
+
+  Stream<AppAction> _getMyVideos(
+      Stream<GetMyVideos$> actions, EpicStore<AppState> store) {
+    return actions //
+        .flatMap((GetMyVideos$ action) => Stream<GetMyVideos$>.value(action)
+            .asyncMap((GetMyVideos$ action) => _api.getMyVideos(
+                  store.state.auth.user.uid,
+                ))
+            .expand((List<Video> videos) => <AppAction>[
+                  GetMyVideos.successful(videos),
+                  ...videos
+                      .map((Video video) => video.uid)
+                      .toSet()
+                      .where(
+                          (String uid) => store.state.auth.users[uid] == null)
+                      .map((String uid) => GetUser(uid)),
+                ])
+            .onErrorReturnWith((dynamic error) => ListenForPosts.error(error)));
   }
 
   Stream<AppAction> _listenForVideo(

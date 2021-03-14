@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:elearning_platform_mobile/src/data/http_client_wrapper.dart';
 import 'package:elearning_platform_mobile/src/data/videos_api.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -12,6 +13,7 @@ import 'package:elearning_platform_mobile/src/models/index.dart';
 import 'package:elearning_platform_mobile/src/reducer/reducer.dart';
 import 'package:redux/redux.dart';
 import 'package:redux_epics/redux_epics.dart';
+import 'package:http/http.dart';
 
 Future<Store<AppState>> init() async {
   await Firebase.initializeApp();
@@ -28,7 +30,10 @@ Future<Store<AppState>> init() async {
 
   final PostsApi postsApi = PostsApi(firestore: firestore, storage: storage);
 
-  final VideosApi videosApi = VideosApi(firestore: firestore, storage: storage);
+  final Client client = Client();
+  final HttpClientWrapper clientWrapper = HttpClientWrapper(client: client);
+  final VideosApi videosApi = VideosApi(
+      firestore: firestore, storage: storage, clientWrapper: clientWrapper);
 
   final AppEpics epic = AppEpics(
     authApi: authApi,

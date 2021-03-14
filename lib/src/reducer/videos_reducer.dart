@@ -6,6 +6,7 @@ import 'package:redux/redux.dart';
 Reducer<VideosState> videosReducer = combineReducers(<Reducer<VideosState>>[
   TypedReducer<VideosState, UpdateVideoInfo>(_updateVideoInfo),
   TypedReducer<VideosState, AddVideoSuccessful>(_addVideoSuccessful),
+  TypedReducer<VideosState, GetMyVideosSuccessful>(_getMyVideosSuccessful),
   TypedReducer<VideosState, ListenForVideosSuccessful>(
       _listenForVideosSuccessful),
 ]);
@@ -32,6 +33,13 @@ VideosState _addVideoSuccessful(VideosState state, AddVideoSuccessful action) {
 
 VideosState _listenForVideosSuccessful(
     VideosState state, ListenForVideosSuccessful action) {
+  return state.rebuild((VideosStateBuilder b) {
+    b.videos = ListBuilder<Video>(action.videos);
+  });
+}
+
+VideosState _getMyVideosSuccessful(
+    VideosState state, GetMyVideosSuccessful action) {
   return state.rebuild((VideosStateBuilder b) {
     b.videos = ListBuilder<Video>(action.videos);
   });
