@@ -10,6 +10,9 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(AppState.serializer)
       ..add(AppUser.serializer)
       ..add(AuthState.serializer)
+      ..add(Playlist.serializer)
+      ..add(PlaylistInfo.serializer)
+      ..add(PlaylistsState.serializer)
       ..add(Post.serializer)
       ..add(PostInfo.serializer)
       ..add(PostsState.serializer)
@@ -18,8 +21,17 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(VideoInfo.serializer)
       ..add(VideosState.serializer)
       ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(Playlist)]),
+          () => new ListBuilder<Playlist>())
+      ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(Post)]),
           () => new ListBuilder<Post>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
           () => new ListBuilder<String>())

@@ -1,4 +1,5 @@
 export 'auth/index.dart';
+export 'playlists/index.dart';
 export 'posts/index.dart';
 export 'videos/index.dart';
 

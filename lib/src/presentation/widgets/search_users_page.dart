@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:elearning_platform_mobile/src/actions/auth/index.dart';
@@ -25,7 +23,8 @@ class SearchUsersPage extends StatelessWidget {
                     hintText: 'search',
                   ),
                   onChanged: (String value) {
-                    StoreProvider.of<AppState>(context).dispatch(SearchUsers(value));
+                    StoreProvider.of<AppState>(context)
+                        .dispatch(SearchUsers(value));
                   },
                 ),
               ),
@@ -33,13 +32,16 @@ class SearchUsersPage extends StatelessWidget {
                 itemCount: users.length,
                 itemBuilder: (BuildContext context, int index) {
                   final AppUser user = users[index];
-                  final bool isFollowed = currentUser.following.contains(user.uid);
+                  final bool isFollowed =
+                      currentUser.following.contains(user.uid);
 
                   return ListTile(
                     onTap: () {
                       Navigator.pop(context, user);
                     },
-                    leading: user.photoUrl != null ? Image.network(user.photoUrl) : null,
+                    leading: user.photoUrl != null
+                        ? Image.network(user.photoUrl)
+                        : null,
                     title: Text('@${user.username}'),
                     subtitle: Text(user.email),
                     trailing: showFollow
@@ -53,7 +55,8 @@ class SearchUsersPage extends StatelessWidget {
                                 action = UpdateFollowing(add: user.uid);
                               }
 
-                              StoreProvider.of<AppState>(context).dispatch(action);
+                              StoreProvider.of<AppState>(context)
+                                  .dispatch(action);
                             },
                           )
                         : null,

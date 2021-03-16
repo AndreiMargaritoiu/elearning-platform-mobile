@@ -3,7 +3,8 @@ part of videos_models;
 abstract class Video implements Built<Video, VideoBuilder> {
   factory Video([void Function(VideoBuilder b) updates]) = _$Video;
 
-  factory Video.fromJson(dynamic json) => serializers.deserializeWith(serializer, json);
+  factory Video.fromJson(dynamic json) =>
+      serializers.deserializeWith(serializer, json);
 
   Video._();
 
@@ -16,7 +17,8 @@ abstract class Video implements Built<Video, VideoBuilder> {
   @nullable
   String get description;
 
-  Map<String, dynamic> get json => serializers.serializeWith(serializer, this) as Map<String, dynamic>;
+  Map<String, dynamic> get json =>
+      serializers.serializeWith(serializer, this) as Map<String, dynamic>;
 
   static Serializer<Video> get serializer => _$videoSerializer;
 }

@@ -28,7 +28,8 @@ class SignupPage extends StatelessWidget {
                       ),
                       keyboardType: TextInputType.emailAddress,
                       onChanged: (String value) {
-                        StoreProvider.of<AppState>(context).dispatch(UpdateRegistrationInfo(email: value));
+                        StoreProvider.of<AppState>(context)
+                            .dispatch(UpdateRegistrationInfo(email: value));
                       },
                       validator: (String value) {
                         if (!value.contains('@') || !value.contains('.')) {
@@ -59,7 +60,8 @@ class SignupPage extends StatelessWidget {
                             ),
                             recognizer: TapGestureRecognizer()
                               ..onTap = () {
-                                Navigator.popUntil(context, ModalRoute.withName(AppRoutes.home));
+                                Navigator.popUntil(context,
+                                    ModalRoute.withName(AppRoutes.home));
                               },
                           ),
                         ],

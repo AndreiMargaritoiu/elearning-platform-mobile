@@ -16,8 +16,10 @@ PostsState _updatePostInfo(PostsState state, UpdatePostInfo action) {
     } else if (action.removeImage != null) {
       b.info.paths.remove(action.removeImage);
     } else if (action.description != null) {
-      final List<String> tags =
-          RegExp('\#([a-zA-Z0-9]+)').allMatches(action.description).map((RegExpMatch match) => match.group(1)).toList();
+      final List<String> tags = RegExp('\#([a-zA-Z0-9]+)')
+          .allMatches(action.description)
+          .map((RegExpMatch match) => match.group(1))
+          .toList();
 
       b.info
         ..description = action.description
@@ -36,13 +38,15 @@ PostsState _updatePostInfo(PostsState state, UpdatePostInfo action) {
   });
 }
 
-PostsState _listenForPostsSuccessful(PostsState state, ListenForPostsSuccessful action) {
+PostsState _listenForPostsSuccessful(
+    PostsState state, ListenForPostsSuccessful action) {
   return state.rebuild((PostsStateBuilder b) {
     b.posts = ListBuilder<Post>(action.posts);
   });
 }
 
-PostsState _createPostSuccessful(PostsState state, CreatePostSuccessful action) {
+PostsState _createPostSuccessful(
+    PostsState state, CreatePostSuccessful action) {
   return state.rebuild((PostsStateBuilder b) {
     b.info = PostInfo().toBuilder();
   });

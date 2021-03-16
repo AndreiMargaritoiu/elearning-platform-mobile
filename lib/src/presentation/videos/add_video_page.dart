@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:elearning_platform_mobile/src/actions/index.dart';
 import 'package:elearning_platform_mobile/src/containers/index.dart';
 import 'package:elearning_platform_mobile/src/models/index.dart';
@@ -7,7 +6,6 @@ import 'package:elearning_platform_mobile/src/models/videos/index.dart';
 import 'package:elearning_platform_mobile/src/presentation/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:image_picker/image_picker.dart';
 
 class AddVideoPage extends StatelessWidget {
   const AddVideoPage({Key key}) : super(key: key);

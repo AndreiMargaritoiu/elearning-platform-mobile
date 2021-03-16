@@ -1,7 +1,7 @@
 import 'package:built_collection/built_collection.dart';
+import 'package:redux/redux.dart';
 import 'package:elearning_platform_mobile/src/actions/index.dart';
 import 'package:elearning_platform_mobile/src/models/videos/index.dart';
-import 'package:redux/redux.dart';
 
 Reducer<VideosState> videosReducer = combineReducers(<Reducer<VideosState>>[
   TypedReducer<VideosState, UpdateVideoInfo>(_updateVideoInfo),

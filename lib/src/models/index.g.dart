@@ -27,6 +27,9 @@ class _$AppStateSerializer implements StructuredSerializer<AppState> {
       'videos',
       serializers.serialize(object.videos,
           specifiedType: const FullType(VideosState)),
+      'playlists',
+      serializers.serialize(object.playlists,
+          specifiedType: const FullType(PlaylistsState)),
     ];
 
     return result;
@@ -55,6 +58,10 @@ class _$AppStateSerializer implements StructuredSerializer<AppState> {
           result.videos.replace(serializers.deserialize(value,
               specifiedType: const FullType(VideosState)) as VideosState);
           break;
+        case 'playlists':
+          result.playlists.replace(serializers.deserialize(value,
+              specifiedType: const FullType(PlaylistsState)) as PlaylistsState);
+          break;
       }
     }
 
@@ -69,11 +76,14 @@ class _$AppState extends AppState {
   final PostsState posts;
   @override
   final VideosState videos;
+  @override
+  final PlaylistsState playlists;
 
   factory _$AppState([void Function(AppStateBuilder) updates]) =>
       (new AppStateBuilder()..update(updates)).build();
 
-  _$AppState._({this.auth, this.posts, this.videos}) : super._() {
+  _$AppState._({this.auth, this.posts, this.videos, this.playlists})
+      : super._() {
     if (auth == null) {
       throw new BuiltValueNullFieldError('AppState', 'auth');
     }
@@ -82,6 +92,9 @@ class _$AppState extends AppState {
     }
     if (videos == null) {
       throw new BuiltValueNullFieldError('AppState', 'videos');
+    }
+    if (playlists == null) {
+      throw new BuiltValueNullFieldError('AppState', 'playlists');
     }
   }
 
@@ -98,13 +111,15 @@ class _$AppState extends AppState {
     return other is AppState &&
         auth == other.auth &&
         posts == other.posts &&
-        videos == other.videos;
+        videos == other.videos &&
+        playlists == other.playlists;
   }
 
   @override
   int get hashCode {
-    return $jf(
-        $jc($jc($jc(0, auth.hashCode), posts.hashCode), videos.hashCode));
+    return $jf($jc(
+        $jc($jc($jc(0, auth.hashCode), posts.hashCode), videos.hashCode),
+        playlists.hashCode));
   }
 
   @override
@@ -112,7 +127,8 @@ class _$AppState extends AppState {
     return (newBuiltValueToStringHelper('AppState')
           ..add('auth', auth)
           ..add('posts', posts)
-          ..add('videos', videos))
+          ..add('videos', videos)
+          ..add('playlists', playlists))
         .toString();
   }
 }
@@ -132,6 +148,12 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
   VideosStateBuilder get videos => _$this._videos ??= new VideosStateBuilder();
   set videos(VideosStateBuilder videos) => _$this._videos = videos;
 
+  PlaylistsStateBuilder _playlists;
+  PlaylistsStateBuilder get playlists =>
+      _$this._playlists ??= new PlaylistsStateBuilder();
+  set playlists(PlaylistsStateBuilder playlists) =>
+      _$this._playlists = playlists;
+
   AppStateBuilder();
 
   AppStateBuilder get _$this {
@@ -139,6 +161,7 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
       _auth = _$v.auth?.toBuilder();
       _posts = _$v.posts?.toBuilder();
       _videos = _$v.videos?.toBuilder();
+      _playlists = _$v.playlists?.toBuilder();
       _$v = null;
     }
     return this;
@@ -163,7 +186,10 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
     try {
       _$result = _$v ??
           new _$AppState._(
-              auth: auth.build(), posts: posts.build(), videos: videos.build());
+              auth: auth.build(),
+              posts: posts.build(),
+              videos: videos.build(),
+              playlists: playlists.build());
     } catch (_) {
       String _$failedField;
       try {
@@ -173,6 +199,8 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
         posts.build();
         _$failedField = 'videos';
         videos.build();
+        _$failedField = 'playlists';
+        playlists.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             'AppState', _$failedField, e.toString());

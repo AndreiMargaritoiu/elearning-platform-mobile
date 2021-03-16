@@ -32,7 +32,8 @@ class UsernamePage extends StatelessWidget {
                           initialValue: info.email.split('@').first,
                           keyboardType: TextInputType.name,
                           onChanged: (String value) {
-                            StoreProvider.of<AppState>(context).dispatch(UpdateRegistrationInfo(username: value));
+                            StoreProvider.of<AppState>(context).dispatch(
+                                UpdateRegistrationInfo(username: value));
                           },
                           validator: (String value) {
                             if (value.length < 3) {
@@ -65,7 +66,8 @@ class UsernamePage extends StatelessWidget {
                             ),
                             recognizer: TapGestureRecognizer()
                               ..onTap = () {
-                                Navigator.popUntil(context, ModalRoute.withName(AppRoutes.home));
+                                Navigator.popUntil(context,
+                                    ModalRoute.withName(AppRoutes.home));
                               },
                           ),
                         ],

@@ -1,10 +1,7 @@
-
-
 import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:elearning_platform_mobile/src/actions/posts/index.dart';
 import 'package:elearning_platform_mobile/src/containers/index.dart';
 import 'package:elearning_platform_mobile/src/models/index.dart';
@@ -67,7 +64,8 @@ class CreatePost extends StatelessWidget {
                   trailing: IconButton(
                     icon: const Icon(Icons.delete),
                     onPressed: () {
-                      StoreProvider.of<AppState>(context).dispatch(UpdatePostInfo(removeImage: path));
+                      StoreProvider.of<AppState>(context)
+                          .dispatch(UpdatePostInfo(removeImage: path));
                     },
                   ),
                 ),

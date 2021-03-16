@@ -1,6 +1,7 @@
- import 'package:flutter/gestures.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+
 import 'package:elearning_platform_mobile/src/actions/index.dart';
 import 'package:elearning_platform_mobile/src/models/index.dart';
 import 'package:elearning_platform_mobile/src/presentation/mixin/dialog_mixin.dart';
@@ -38,7 +39,8 @@ class PasswordPage extends StatelessWidget with DialogMixin {
                       obscureText: true,
                       keyboardType: TextInputType.visiblePassword,
                       onChanged: (String value) {
-                        StoreProvider.of<AppState>(context).dispatch(UpdateRegistrationInfo(password: value));
+                        StoreProvider.of<AppState>(context)
+                            .dispatch(UpdateRegistrationInfo(password: value));
                       },
                       validator: (String value) {
                         if (value.length < 6) {
@@ -53,7 +55,8 @@ class PasswordPage extends StatelessWidget with DialogMixin {
                       child: const Text('SignUp!'),
                       onPressed: () {
                         if (Form.of(context).validate()) {
-                          StoreProvider.of<AppState>(context).dispatch(Signup((AppAction action) {
+                          StoreProvider.of<AppState>(context)
+                              .dispatch(Signup((AppAction action) {
                             _response(context, action);
                           }));
                         }
@@ -71,7 +74,8 @@ class PasswordPage extends StatelessWidget with DialogMixin {
                             ),
                             recognizer: TapGestureRecognizer()
                               ..onTap = () {
-                                Navigator.popUntil(context, ModalRoute.withName(AppRoutes.home));
+                                Navigator.popUntil(context,
+                                    ModalRoute.withName(AppRoutes.home));
                               },
                           ),
                         ],

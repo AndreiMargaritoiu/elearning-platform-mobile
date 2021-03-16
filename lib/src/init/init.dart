@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:elearning_platform_mobile/src/data/http_client_wrapper.dart';
+import 'package:elearning_platform_mobile/src/data/playlists_api.dart';
 import 'package:elearning_platform_mobile/src/data/videos_api.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -32,13 +33,18 @@ Future<Store<AppState>> init() async {
 
   final Client client = Client();
   final HttpClientWrapper clientWrapper = HttpClientWrapper(client: client);
+
   final VideosApi videosApi = VideosApi(
       firestore: firestore, storage: storage, clientWrapper: clientWrapper);
+
+  final PlaylistsApi playlistsApi = PlaylistsApi(
+      firestore: firestore, clientWrapper: clientWrapper);
 
   final AppEpics epic = AppEpics(
     authApi: authApi,
     postsApi: postsApi,
     videosApi: videosApi,
+    playlistsApi: playlistsApi,
   );
 
   return Store<AppState>(

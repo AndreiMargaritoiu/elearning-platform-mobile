@@ -6,11 +6,13 @@ abstract class AppState implements Built<AppState, AppStateBuilder> {
       b
         ..auth = AuthState.initialState().toBuilder()
         ..posts = PostsState.initialState().toBuilder()
-        ..videos = VideosState.initialState().toBuilder();
+        ..videos = VideosState.initialState().toBuilder()
+        ..playlists = PlaylistsState.initialState().toBuilder();
     });
   }
 
-  factory AppState.fromJson(dynamic json) => serializers.deserializeWith(serializer, json);
+  factory AppState.fromJson(dynamic json) =>
+      serializers.deserializeWith(serializer, json);
 
   AppState._();
 
@@ -20,7 +22,10 @@ abstract class AppState implements Built<AppState, AppStateBuilder> {
 
   VideosState get videos;
 
-  Map<String, dynamic> get json => serializers.serializeWith(serializer, this) as Map<String, dynamic>;
+  PlaylistsState get playlists;
+
+  Map<String, dynamic> get json =>
+      serializers.serializeWith(serializer, this) as Map<String, dynamic>;
 
   static Serializer<AppState> get serializer => _$appStateSerializer;
 }
