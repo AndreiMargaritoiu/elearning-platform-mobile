@@ -1,8 +1,10 @@
 import 'package:elearning_platform_mobile/src/data/auth_api.dart';
+import 'package:elearning_platform_mobile/src/data/mentoring_api.dart';
 import 'package:elearning_platform_mobile/src/data/playlists_api.dart';
 import 'package:elearning_platform_mobile/src/data/posts_api.dart';
 import 'package:elearning_platform_mobile/src/data/videos_api.dart';
 import 'package:elearning_platform_mobile/src/epics/auth_epics.dart';
+import 'package:elearning_platform_mobile/src/epics/mentoring_epics.dart';
 import 'package:elearning_platform_mobile/src/epics/playlists_epics.dart';
 import 'package:elearning_platform_mobile/src/epics/posts_epics.dart';
 import 'package:elearning_platform_mobile/src/epics/videos_epics.dart';
@@ -15,20 +17,24 @@ class AppEpics {
       {@required AuthApi authApi,
       @required PostsApi postsApi,
       @required VideosApi videosApi,
+      @required MentoringApi mentoringApi,
       @required PlaylistsApi playlistsApi})
       : assert(authApi != null),
         assert(postsApi != null),
         assert(videosApi != null),
         assert(playlistsApi != null),
+        assert(mentoringApi != null),
         _authApi = authApi,
         _postsApi = postsApi,
         _videosApi = videosApi,
+        _mentoringApi = mentoringApi,
         _playlistApi = playlistsApi;
 
   final AuthApi _authApi;
   final PostsApi _postsApi;
   final VideosApi _videosApi;
   final PlaylistsApi _playlistApi;
+  final MentoringApi _mentoringApi;
 
   Epic<AppState> get epics {
     return combineEpics<AppState>(<Epic<AppState>>[
@@ -36,6 +42,7 @@ class AppEpics {
       PostsEpics(api: _postsApi).epics,
       VideosEpics(api: _videosApi).epics,
       PlaylistsEpics(api: _playlistApi).epics,
+      MentoringEpics(api: _mentoringApi).epics,
     ]);
   }
 }

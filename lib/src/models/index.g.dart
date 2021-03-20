@@ -30,6 +30,9 @@ class _$AppStateSerializer implements StructuredSerializer<AppState> {
       'playlists',
       serializers.serialize(object.playlists,
           specifiedType: const FullType(PlaylistsState)),
+      'mentorships',
+      serializers.serialize(object.mentorships,
+          specifiedType: const FullType(MentorshipsState)),
     ];
 
     return result;
@@ -62,6 +65,11 @@ class _$AppStateSerializer implements StructuredSerializer<AppState> {
           result.playlists.replace(serializers.deserialize(value,
               specifiedType: const FullType(PlaylistsState)) as PlaylistsState);
           break;
+        case 'mentorships':
+          result.mentorships.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(MentorshipsState))
+              as MentorshipsState);
+          break;
       }
     }
 
@@ -78,11 +86,14 @@ class _$AppState extends AppState {
   final VideosState videos;
   @override
   final PlaylistsState playlists;
+  @override
+  final MentorshipsState mentorships;
 
   factory _$AppState([void Function(AppStateBuilder) updates]) =>
       (new AppStateBuilder()..update(updates)).build();
 
-  _$AppState._({this.auth, this.posts, this.videos, this.playlists})
+  _$AppState._(
+      {this.auth, this.posts, this.videos, this.playlists, this.mentorships})
       : super._() {
     if (auth == null) {
       throw new BuiltValueNullFieldError('AppState', 'auth');
@@ -95,6 +106,9 @@ class _$AppState extends AppState {
     }
     if (playlists == null) {
       throw new BuiltValueNullFieldError('AppState', 'playlists');
+    }
+    if (mentorships == null) {
+      throw new BuiltValueNullFieldError('AppState', 'mentorships');
     }
   }
 
@@ -112,14 +126,16 @@ class _$AppState extends AppState {
         auth == other.auth &&
         posts == other.posts &&
         videos == other.videos &&
-        playlists == other.playlists;
+        playlists == other.playlists &&
+        mentorships == other.mentorships;
   }
 
   @override
   int get hashCode {
     return $jf($jc(
-        $jc($jc($jc(0, auth.hashCode), posts.hashCode), videos.hashCode),
-        playlists.hashCode));
+        $jc($jc($jc($jc(0, auth.hashCode), posts.hashCode), videos.hashCode),
+            playlists.hashCode),
+        mentorships.hashCode));
   }
 
   @override
@@ -128,7 +144,8 @@ class _$AppState extends AppState {
           ..add('auth', auth)
           ..add('posts', posts)
           ..add('videos', videos)
-          ..add('playlists', playlists))
+          ..add('playlists', playlists)
+          ..add('mentorships', mentorships))
         .toString();
   }
 }
@@ -154,6 +171,12 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
   set playlists(PlaylistsStateBuilder playlists) =>
       _$this._playlists = playlists;
 
+  MentorshipsStateBuilder _mentorships;
+  MentorshipsStateBuilder get mentorships =>
+      _$this._mentorships ??= new MentorshipsStateBuilder();
+  set mentorships(MentorshipsStateBuilder mentorships) =>
+      _$this._mentorships = mentorships;
+
   AppStateBuilder();
 
   AppStateBuilder get _$this {
@@ -162,6 +185,7 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
       _posts = _$v.posts?.toBuilder();
       _videos = _$v.videos?.toBuilder();
       _playlists = _$v.playlists?.toBuilder();
+      _mentorships = _$v.mentorships?.toBuilder();
       _$v = null;
     }
     return this;
@@ -189,7 +213,8 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
               auth: auth.build(),
               posts: posts.build(),
               videos: videos.build(),
-              playlists: playlists.build());
+              playlists: playlists.build(),
+              mentorships: mentorships.build());
     } catch (_) {
       String _$failedField;
       try {
@@ -201,6 +226,8 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
         videos.build();
         _$failedField = 'playlists';
         playlists.build();
+        _$failedField = 'mentorships';
+        mentorships.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             'AppState', _$failedField, e.toString());
