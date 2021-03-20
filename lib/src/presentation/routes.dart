@@ -1,4 +1,7 @@
 import 'package:elearning_platform_mobile/src/presentation/playlists/create_playlsit_page.dart';
+import 'package:elearning_platform_mobile/src/presentation/profile/edit_playlist_page.dart';
+import 'package:elearning_platform_mobile/src/presentation/profile/edit_video_page.dart';
+import 'package:elearning_platform_mobile/src/presentation/profile/profile_page.dart';
 import 'package:elearning_platform_mobile/src/presentation/videos/add_video_page.dart';
 import 'package:elearning_platform_mobile/src/presentation/videos/select_videos_page.dart';
 import 'package:elearning_platform_mobile/src/presentation/videos/video_details_page.dart';
@@ -28,6 +31,9 @@ class AppRoutes {
   static const String videoPlayer = '/videoPlayer';
   static const String selectVideosPage = '/selectVideosPage';
   static const String createPlaylistPage = '/createPlaylistPage';
+  static const String profilePage = '/profilePage';
+  static const String editVideoPage = '/editVideoPage';
+  static const String editPlaylistPage = '/editPlaylistPage';
 
   static Map<String, WidgetBuilder> routes = <String, WidgetBuilder>{
     home: (BuildContext context) {
@@ -68,6 +74,17 @@ class AppRoutes {
     },
     createPlaylistPage: (BuildContext context) {
       return const CreatePlaylistPage();
+    },
+    profilePage: (BuildContext context) {
+      return const ProfilePage();
+    },
+    editVideoPage: (BuildContext context) {
+      return EditVideoPage(
+          currentVideo: ModalRoute.of(context).settings.arguments);
+    },
+    editPlaylistPage: (BuildContext context) {
+      return EditPlaylistPage(
+          currentPlaylist: ModalRoute.of(context).settings.arguments);
     },
   };
 }

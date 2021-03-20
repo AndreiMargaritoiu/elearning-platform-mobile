@@ -35,7 +35,8 @@ class VideosApi {
         ..id = ref.id
         ..uid = uid
         ..video = video
-        ..description = info.description;
+        ..description = info.description
+        ..createdAt = DateTime.now().toUtc().millisecondsSinceEpoch;
     });
 
     await ref.set(videoN.json);
@@ -54,8 +55,47 @@ class VideosApi {
     return video;
   }
 
+  Future<Video> getVideoById({@required String id}) async {
+    final Response response = await _clientWrapper.get('videos/$id');
+
+    final Map<String, dynamic> data = jsonDecode(response.body);
+    return Video.fromJson(data);
+
+//    final QuerySnapshot snapshot = await _firestore
+//        .collection('videos') //
+//        .where('uid', isEqualTo: uid)
+//        .get();
+//
+//    final List<Video> result = snapshot.docs //
+//        .map((QueryDocumentSnapshot doc) => Video.fromJson(doc.data()))
+//        .toList();
+//
+//    return result;
+  }
+
+  Future<Video> updateVideo(VideoInfo info, String id) async {
+    final DocumentReference ref = _firestore.collection('videos').doc(id);
+
+    if (info.description != null) {
+      await ref.update(<String, dynamic>{
+        'description':  info.description,
+      });
+    }
+
+    return await getVideoById(id: id);
+  }
+
+  Future<void> deleteVideo(String id) async {
+    final DocumentReference ref = _firestore.collection('videos').doc(id);
+
+    await ref.delete();
+  }
+
   Future<List<Video>> getMyVideos(String uid) async {
-    final Response response = await _clientWrapper.get('videos/my/$uid');
+    final dynamic queryParams = {
+      'uid': uid,
+    };
+    final Response response = await _clientWrapper.get('videos', queryParams);
 
     final List<dynamic> data = jsonDecode(response.body);
     return data.map((dynamic json) => Video.fromJson(json)).toList();

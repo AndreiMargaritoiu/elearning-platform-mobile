@@ -9,9 +9,9 @@ class HttpClientWrapper {
   // localhost testing
   static const String URL = '192.168.56.1:8080';
 
-  Future<Response> get(String route) async {
+  Future<Response> get(String route, [dynamic queryParams]) async {
     return await client.get(
-      Uri.http(URL, '/api/' + route),
+      Uri.http(URL, '/api/' + route, queryParams),
       headers: <String, String>{'Content-Type': 'application/json'},
     );
   }

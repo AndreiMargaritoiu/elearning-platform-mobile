@@ -5,7 +5,6 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:elearning_platform_mobile/src/actions/index.dart';
 import 'package:elearning_platform_mobile/src/containers/index.dart';
 import 'package:elearning_platform_mobile/src/models/index.dart';
-import 'package:keyboard_visibility/keyboard_visibility.dart';
 
 class DiscoverPage extends StatefulWidget {
   const DiscoverPage({Key key}) : super(key: key);

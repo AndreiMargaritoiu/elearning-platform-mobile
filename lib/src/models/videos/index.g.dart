@@ -135,6 +135,12 @@ class _$VideoSerializer implements StructuredSerializer<Video> {
         ..add(serializers.serialize(object.description,
             specifiedType: const FullType(String)));
     }
+    if (object.createdAt != null) {
+      result
+        ..add('createdAt')
+        ..add(serializers.serialize(object.createdAt,
+            specifiedType: const FullType(int)));
+    }
     return result;
   }
 
@@ -164,6 +170,10 @@ class _$VideoSerializer implements StructuredSerializer<Video> {
         case 'description':
           result.description = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
+          break;
+        case 'createdAt':
+          result.createdAt = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int;
           break;
       }
     }
@@ -369,11 +379,14 @@ class _$Video extends Video {
   final String video;
   @override
   final String description;
+  @override
+  final int createdAt;
 
   factory _$Video([void Function(VideoBuilder) updates]) =>
       (new VideoBuilder()..update(updates)).build();
 
-  _$Video._({this.id, this.uid, this.video, this.description}) : super._() {
+  _$Video._({this.id, this.uid, this.video, this.description, this.createdAt})
+      : super._() {
     if (id == null) {
       throw new BuiltValueNullFieldError('Video', 'id');
     }
@@ -399,13 +412,16 @@ class _$Video extends Video {
         id == other.id &&
         uid == other.uid &&
         video == other.video &&
-        description == other.description;
+        description == other.description &&
+        createdAt == other.createdAt;
   }
 
   @override
   int get hashCode {
-    return $jf($jc($jc($jc($jc(0, id.hashCode), uid.hashCode), video.hashCode),
-        description.hashCode));
+    return $jf($jc(
+        $jc($jc($jc($jc(0, id.hashCode), uid.hashCode), video.hashCode),
+            description.hashCode),
+        createdAt.hashCode));
   }
 
   @override
@@ -414,7 +430,8 @@ class _$Video extends Video {
           ..add('id', id)
           ..add('uid', uid)
           ..add('video', video)
-          ..add('description', description))
+          ..add('description', description)
+          ..add('createdAt', createdAt))
         .toString();
   }
 }
@@ -438,6 +455,10 @@ class VideoBuilder implements Builder<Video, VideoBuilder> {
   String get description => _$this._description;
   set description(String description) => _$this._description = description;
 
+  int _createdAt;
+  int get createdAt => _$this._createdAt;
+  set createdAt(int createdAt) => _$this._createdAt = createdAt;
+
   VideoBuilder();
 
   VideoBuilder get _$this {
@@ -446,6 +467,7 @@ class VideoBuilder implements Builder<Video, VideoBuilder> {
       _uid = _$v.uid;
       _video = _$v.video;
       _description = _$v.description;
+      _createdAt = _$v.createdAt;
       _$v = null;
     }
     return this;
@@ -467,7 +489,12 @@ class VideoBuilder implements Builder<Video, VideoBuilder> {
   @override
   _$Video build() {
     final _$result = _$v ??
-        new _$Video._(id: id, uid: uid, video: video, description: description);
+        new _$Video._(
+            id: id,
+            uid: uid,
+            video: video,
+            description: description,
+            createdAt: createdAt);
     replace(_$result);
     return _$result;
   }

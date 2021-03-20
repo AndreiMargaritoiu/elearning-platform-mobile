@@ -8,4 +8,7 @@ part 'add_video.dart';
 part 'index.freezed.dart';
 part 'listen_for_videos.dart';
 part 'get_my_videos.dart';
+part 'get_video_by_id.dart';
+part 'update_video.dart';
+part 'delete_video.dart';
 part 'set.dart';

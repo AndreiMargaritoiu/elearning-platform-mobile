@@ -1,5 +1,3 @@
-
-
 part of videos_action;
 
 @freezed

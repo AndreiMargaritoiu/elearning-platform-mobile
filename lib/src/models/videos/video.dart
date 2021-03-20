@@ -17,6 +17,9 @@ abstract class Video implements Built<Video, VideoBuilder> {
   @nullable
   String get description;
 
+  @nullable
+  int get createdAt;
+
   Map<String, dynamic> get json =>
       serializers.serializeWith(serializer, this) as Map<String, dynamic>;
 

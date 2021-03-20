@@ -106,7 +106,13 @@ class _ProfilePageState extends State<ProfilePage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             MaterialButton(
-                                child: Text(playlist.title), onPressed: () {})
+                              child: Text(playlist.title),
+                              onPressed: () {
+                                Navigator.pushNamed(
+                                    context, AppRoutes.editPlaylistPage,
+                                    arguments: playlist);
+                              },
+                            )
                           ],
                         );
                       },
@@ -130,8 +136,8 @@ class _ProfilePageState extends State<ProfilePage> {
                               child: Text(video.description),
                               onPressed: () {
                                 Navigator.pushNamed(
-                                    context, AppRoutes.videoPlayer,
-                                    arguments: video.video);
+                                    context, AppRoutes.editVideoPage,
+                                    arguments: video);
                               },
                             )
                           ],

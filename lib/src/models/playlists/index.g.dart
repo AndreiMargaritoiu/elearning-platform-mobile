@@ -49,6 +49,12 @@ class _$PlaylistSerializer implements StructuredSerializer<Playlist> {
         ..add(serializers.serialize(object.category,
             specifiedType: const FullType(String)));
     }
+    if (object.createdAt != null) {
+      result
+        ..add('createdAt')
+        ..add(serializers.serialize(object.createdAt,
+            specifiedType: const FullType(int)));
+    }
     return result;
   }
 
@@ -88,6 +94,10 @@ class _$PlaylistSerializer implements StructuredSerializer<Playlist> {
         case 'category':
           result.category = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
+          break;
+        case 'createdAt':
+          result.createdAt = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int;
           break;
       }
     }
@@ -235,6 +245,8 @@ class _$Playlist extends Playlist {
   final String description;
   @override
   final String category;
+  @override
+  final int createdAt;
 
   factory _$Playlist([void Function(PlaylistBuilder) updates]) =>
       (new PlaylistBuilder()..update(updates)).build();
@@ -245,7 +257,8 @@ class _$Playlist extends Playlist {
       this.videoRefs,
       this.title,
       this.description,
-      this.category})
+      this.category,
+      this.createdAt})
       : super._() {
     if (id == null) {
       throw new BuiltValueNullFieldError('Playlist', 'id');
@@ -274,17 +287,22 @@ class _$Playlist extends Playlist {
         videoRefs == other.videoRefs &&
         title == other.title &&
         description == other.description &&
-        category == other.category;
+        category == other.category &&
+        createdAt == other.createdAt;
   }
 
   @override
   int get hashCode {
     return $jf($jc(
         $jc(
-            $jc($jc($jc($jc(0, id.hashCode), uid.hashCode), videoRefs.hashCode),
-                title.hashCode),
-            description.hashCode),
-        category.hashCode));
+            $jc(
+                $jc(
+                    $jc($jc($jc(0, id.hashCode), uid.hashCode),
+                        videoRefs.hashCode),
+                    title.hashCode),
+                description.hashCode),
+            category.hashCode),
+        createdAt.hashCode));
   }
 
   @override
@@ -295,7 +313,8 @@ class _$Playlist extends Playlist {
           ..add('videoRefs', videoRefs)
           ..add('title', title)
           ..add('description', description)
-          ..add('category', category))
+          ..add('category', category)
+          ..add('createdAt', createdAt))
         .toString();
   }
 }
@@ -328,6 +347,10 @@ class PlaylistBuilder implements Builder<Playlist, PlaylistBuilder> {
   String get category => _$this._category;
   set category(String category) => _$this._category = category;
 
+  int _createdAt;
+  int get createdAt => _$this._createdAt;
+  set createdAt(int createdAt) => _$this._createdAt = createdAt;
+
   PlaylistBuilder();
 
   PlaylistBuilder get _$this {
@@ -338,6 +361,7 @@ class PlaylistBuilder implements Builder<Playlist, PlaylistBuilder> {
       _title = _$v.title;
       _description = _$v.description;
       _category = _$v.category;
+      _createdAt = _$v.createdAt;
       _$v = null;
     }
     return this;
@@ -367,7 +391,8 @@ class PlaylistBuilder implements Builder<Playlist, PlaylistBuilder> {
               videoRefs: videoRefs.build(),
               title: title,
               description: description,
-              category: category);
+              category: category,
+              createdAt: createdAt);
     } catch (_) {
       String _$failedField;
       try {

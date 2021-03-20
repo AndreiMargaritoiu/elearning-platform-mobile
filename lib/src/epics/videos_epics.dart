@@ -17,6 +17,9 @@ class VideosEpics {
       TypedEpic<AppState, AddVideo$>(_addVideo),
       TypedEpic<AppState, ListenForVideos$>(_listenForVideo),
       TypedEpic<AppState, GetMyVideos$>(_getMyVideos),
+      TypedEpic<AppState, GetVideoById$>(_getVideoById),
+      TypedEpic<AppState, UpdateVideo$>(_updateVideo),
+      TypedEpic<AppState, DeleteVideo$>(_deleteVideo),
     ]);
   }
 
@@ -28,6 +31,37 @@ class VideosEpics {
                 store.state.videos.info, store.state.auth.user.uid))
             .map((Video video) => AddVideo.successful(video))
             .onErrorReturnWith((dynamic error) => AddVideo.error(error)));
+  }
+
+  Stream<AppAction> _getVideoById(
+      Stream<GetVideoById$> actions, EpicStore<AppState> store) {
+    return actions //
+        .flatMap((GetVideoById$ action) => Stream<GetVideoById$>.value(action)
+            .asyncMap(
+                (GetVideoById$ action) => _api.getVideoById(id: action.id))
+            .expand((Video video) => <AppAction>[
+                  GetVideoById.successful(video),
+                ])
+            .onErrorReturnWith((dynamic error) => ListenForPosts.error(error)));
+  }
+
+  Stream<AppAction> _updateVideo(
+      Stream<UpdateVideo$> actions, EpicStore<AppState> store) {
+    return actions //
+        .flatMap((UpdateVideo$ action) => Stream<UpdateVideo$>.value(action)
+        .asyncMap((UpdateVideo$ action) => _api.updateVideo(
+        store.state.videos.info, action.id))
+        .map((Video video) => UpdateVideo.successful(video))
+        .onErrorReturnWith((dynamic error) => UpdateVideo.error(error)));
+  }
+
+  Stream<AppAction> _deleteVideo(
+      Stream<DeleteVideo$> actions, EpicStore<AppState> store) {
+    return actions //
+        .flatMap((DeleteVideo$ action) => Stream<DeleteVideo$>.value(action)
+        .asyncMap((DeleteVideo$ action) => _api.deleteVideo(action.id))
+        .mapTo(const DeleteVideo.successful())
+        .onErrorReturnWith((dynamic error) => DeleteVideo.error(error)));
   }
 
   Stream<AppAction> _getMyVideos(
