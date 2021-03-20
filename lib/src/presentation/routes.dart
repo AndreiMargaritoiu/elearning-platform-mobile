@@ -1,3 +1,5 @@
+import 'package:elearning_platform_mobile/src/presentation/mentoring/add_mentorship_page.dart';
+import 'package:elearning_platform_mobile/src/presentation/mentoring/mentoring_page.dart';
 import 'package:elearning_platform_mobile/src/presentation/playlists/create_playlsit_page.dart';
 import 'package:elearning_platform_mobile/src/presentation/profile/edit_playlist_page.dart';
 import 'package:elearning_platform_mobile/src/presentation/profile/edit_video_page.dart';
@@ -34,6 +36,8 @@ class AppRoutes {
   static const String profilePage = '/profilePage';
   static const String editVideoPage = '/editVideoPage';
   static const String editPlaylistPage = '/editPlaylistPage';
+  static const String mentoringPage = '/mentoringPage';
+  static const String addMentorshipPage = '/addMentorshipPage';
 
   static Map<String, WidgetBuilder> routes = <String, WidgetBuilder>{
     home: (BuildContext context) {
@@ -85,6 +89,12 @@ class AppRoutes {
     editPlaylistPage: (BuildContext context) {
       return EditPlaylistPage(
           currentPlaylist: ModalRoute.of(context).settings.arguments);
+    },
+    mentoringPage: (BuildContext context) {
+      return const MentoringPage();
+    },
+    addMentorshipPage: (BuildContext context) {
+      return const AddMentorshipPage();
     },
   };
 }
