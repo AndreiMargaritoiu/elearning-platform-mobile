@@ -8,7 +8,6 @@ import 'package:elearning_platform_mobile/src/presentation/profile/edit_video_pa
 import 'package:elearning_platform_mobile/src/presentation/profile/profile_page.dart';
 import 'package:elearning_platform_mobile/src/presentation/videos/add_video_page.dart';
 import 'package:elearning_platform_mobile/src/presentation/videos/select_videos_page.dart';
-import 'package:elearning_platform_mobile/src/presentation/videos/video_details_page.dart';
 import 'package:elearning_platform_mobile/src/presentation/widgets/video_player_page.dart';
 import 'package:elearning_platform_mobile/src/presentation/home.dart';
 import 'package:elearning_platform_mobile/src/presentation/login/reset_password_page.dart';
@@ -28,8 +27,7 @@ class AppRoutes {
   static const String resetPassword = '/resetPassword';
   static const String createPost = '/createPost';
   static const String postDetails = '/postDetails';
-  static const String addVideo = '/addVideo';
-  static const String videoDetails = '/videoDetails';
+  static const String addVideoPage = '/addVideoPage';
   static const String searchUsers = '/searchUsers';
   static const String videoPlayer = '/videoPlayer';
   static const String selectVideosPage = '/selectVideosPage';
@@ -62,11 +60,8 @@ class AppRoutes {
     postDetails: (BuildContext context) {
       return const PostDetails();
     },
-    addVideo: (BuildContext context) {
+    addVideoPage: (BuildContext context) {
       return const AddVideoPage();
-    },
-    videoDetails: (BuildContext context) {
-      return const VideoDetailsPage();
     },
     searchUsers: (BuildContext context) {
       return const SearchUsersPage();

@@ -38,7 +38,7 @@ class VideosEpics {
     return actions //
         .flatMap((GetVideoById$ action) => Stream<GetVideoById$>.value(action)
             .asyncMap(
-                (GetVideoById$ action) => _api.getVideoById(id: action.id))
+                (GetVideoById$ action) => _api.getVideoById(action.id))
             .expand((Video video) => <AppAction>[
                   GetVideoById.successful(video),
                 ])

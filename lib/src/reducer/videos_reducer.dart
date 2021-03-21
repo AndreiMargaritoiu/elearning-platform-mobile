@@ -14,9 +14,15 @@ Reducer<VideosState> videosReducer = combineReducers(<Reducer<VideosState>>[
 VideosState _updateVideoInfo(VideosState state, UpdateVideoInfo action) {
   return state.rebuild((VideosStateBuilder b) {
     if (action.addVideo != null) {
-      b.info.path = action.addVideo;
+      b.info.videoPath = action.addVideo;
     } else if (action.removeVideo != null) {
-      b.info.path = '';
+      b.info.videoPath = null;
+    } else if (action.addThumbnail != null) {
+      b.info.thumbnailPath = action.addThumbnail;
+    } else if (action.removeThumbnail != null) {
+      b.info.thumbnailPath = null;
+    } else if (action.title != null) {
+      b.info.title = action.title;
     } else if (action.description != null) {
       b.info.description = action.description;
     } else {

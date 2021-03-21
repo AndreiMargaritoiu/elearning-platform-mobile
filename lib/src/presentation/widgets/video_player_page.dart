@@ -22,7 +22,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
 
   @override
   void initState() {
-    _controller = VideoPlayerController.network(widget.currentVideo.video);
+    _controller = VideoPlayerController.network(widget.currentVideo.videoUrl);
     _initializeVideoPlayerFuture = _controller.initialize();
     _controller.setLooping(true);
 

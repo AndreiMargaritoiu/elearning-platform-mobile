@@ -27,7 +27,7 @@ PlaylistsState _updatePlaylistInfo(
       b.info.title = action.title;
     } else if (action.category != null) {
       b.info.category = action.category;
-    }else {
+    } else {
       b.info = PlaylistInfo().toBuilder();
     }
   });

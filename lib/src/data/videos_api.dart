@@ -28,46 +28,39 @@ class VideosApi {
 
   Future<Video> addVideo(VideoInfo info, String uid) async {
     final DocumentReference ref = _firestore.collection('videos').doc();
+    final String videoUrl = await _uploadFile(ref.id, info.videoPath, 'videos');
+    final String thumbnailUrl = info.thumbnailPath.isNotEmpty ?
+          await _uploadFile(ref.id, info.thumbnailPath, 'videoThumbnails') : '';
 
-    final String video = await _uploadVideo(ref.id, info.path);
-    final Video videoN = Video((VideoBuilder b) {
+    final Video newVideo = Video((VideoBuilder b) {
       b
         ..id = ref.id
         ..uid = uid
-        ..video = video
+        ..videoUrl = videoUrl
+        ..thumbnailUrl = thumbnailUrl
         ..description = info.description
+        ..title = info.title
         ..createdAt = DateTime.now().toUtc().millisecondsSinceEpoch;
     });
 
-    await ref.set(videoN.json);
-    return videoN;
+    await ref.set(newVideo.json);
+    return newVideo;
   }
 
-  Future<String> _uploadVideo(String id, String path) async {
+  Future<String> _uploadFile(String id, String path, String location) async {
     final DocumentReference ref = _firestore.collection('NOT_USED').doc();
-    final Reference storageRef = _storage.ref('videos/$id/${ref.id}');
+    final Reference storageRef = _storage.ref('$location/$id/${ref.id}');
     await storageRef.putFile(File(path));
     final String url = await storageRef.getDownloadURL();
 
     return url;
   }
 
-  Future<Video> getVideoById({@required String id}) async {
+  Future<Video> getVideoById(String id) async {
     final Response response = await _clientWrapper.get('videos/$id');
 
     final Map<String, dynamic> data = jsonDecode(response.body);
     return Video.fromJson(data);
-
-//    final QuerySnapshot snapshot = await _firestore
-//        .collection('videos') //
-//        .where('uid', isEqualTo: uid)
-//        .get();
-//
-//    final List<Video> result = snapshot.docs //
-//        .map((QueryDocumentSnapshot doc) => Video.fromJson(doc.data()))
-//        .toList();
-//
-//    return result;
   }
 
   Future<Video> updateVideo(VideoInfo info, String id) async {
@@ -75,11 +68,17 @@ class VideosApi {
 
     if (info.description != null) {
       await ref.update(<String, dynamic>{
-        'description':  info.description,
+        'description': info.description,
       });
     }
 
-    return await getVideoById(id: id);
+    if (info.title != null) {
+      await ref.update(<String, dynamic>{
+        'title': info.title,
+      });
+    }
+
+    return await getVideoById(id);
   }
 
   Future<void> deleteVideo(String id) async {

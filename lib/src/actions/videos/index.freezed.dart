@@ -1260,9 +1260,9 @@ class _$GetVideoByIdTearOff {
   const _$GetVideoByIdTearOff();
 
 // ignore: unused_element
-  GetVideoById$ call({@required String id}) {
+  GetVideoById$ call(String id) {
     return GetVideoById$(
-      id: id,
+      id,
     );
   }
 
@@ -1354,14 +1354,14 @@ class _$GetVideoById$CopyWithImpl<$Res> extends _$GetVideoByIdCopyWithImpl<$Res>
     Object id = freezed,
   }) {
     return _then(GetVideoById$(
-      id: id == freezed ? _value.id : id as String,
+      id == freezed ? _value.id : id as String,
     ));
   }
 }
 
 /// @nodoc
 class _$GetVideoById$ implements GetVideoById$ {
-  const _$GetVideoById$({@required this.id}) : assert(id != null);
+  const _$GetVideoById$(this.id) : assert(id != null);
 
   @override
   final String id;
@@ -1445,7 +1445,7 @@ class _$GetVideoById$ implements GetVideoById$ {
 }
 
 abstract class GetVideoById$ implements GetVideoById {
-  const factory GetVideoById$({@required String id}) = _$GetVideoById$;
+  const factory GetVideoById$(String id) = _$GetVideoById$;
 
   String get id;
   $GetVideoById$CopyWith<GetVideoById$> get copyWith;
@@ -1701,9 +1701,9 @@ class _$UpdateVideoTearOff {
   const _$UpdateVideoTearOff();
 
 // ignore: unused_element
-  UpdateVideo$ call({@required String id}) {
+  UpdateVideo$ call(String id) {
     return UpdateVideo$(
-      id: id,
+      id,
     );
   }
 
@@ -1795,14 +1795,14 @@ class _$UpdateVideo$CopyWithImpl<$Res> extends _$UpdateVideoCopyWithImpl<$Res>
     Object id = freezed,
   }) {
     return _then(UpdateVideo$(
-      id: id == freezed ? _value.id : id as String,
+      id == freezed ? _value.id : id as String,
     ));
   }
 }
 
 /// @nodoc
 class _$UpdateVideo$ implements UpdateVideo$ {
-  const _$UpdateVideo$({@required this.id}) : assert(id != null);
+  const _$UpdateVideo$(this.id) : assert(id != null);
 
   @override
   final String id;
@@ -1886,7 +1886,7 @@ class _$UpdateVideo$ implements UpdateVideo$ {
 }
 
 abstract class UpdateVideo$ implements UpdateVideo {
-  const factory UpdateVideo$({@required String id}) = _$UpdateVideo$;
+  const factory UpdateVideo$(String id) = _$UpdateVideo$;
 
   String get id;
   $UpdateVideo$CopyWith<UpdateVideo$> get copyWith;
@@ -2142,9 +2142,9 @@ class _$DeleteVideoTearOff {
   const _$DeleteVideoTearOff();
 
 // ignore: unused_element
-  DeleteVideo$ call({@required String id}) {
+  DeleteVideo$ call(String id) {
     return DeleteVideo$(
-      id: id,
+      id,
     );
   }
 
@@ -2234,14 +2234,14 @@ class _$DeleteVideo$CopyWithImpl<$Res> extends _$DeleteVideoCopyWithImpl<$Res>
     Object id = freezed,
   }) {
     return _then(DeleteVideo$(
-      id: id == freezed ? _value.id : id as String,
+      id == freezed ? _value.id : id as String,
     ));
   }
 }
 
 /// @nodoc
 class _$DeleteVideo$ implements DeleteVideo$ {
-  const _$DeleteVideo$({@required this.id}) : assert(id != null);
+  const _$DeleteVideo$(this.id) : assert(id != null);
 
   @override
   final String id;
@@ -2325,7 +2325,7 @@ class _$DeleteVideo$ implements DeleteVideo$ {
 }
 
 abstract class DeleteVideo$ implements DeleteVideo {
-  const factory DeleteVideo$({@required String id}) = _$DeleteVideo$;
+  const factory DeleteVideo$(String id) = _$DeleteVideo$;
 
   String get id;
   $DeleteVideo$CopyWith<DeleteVideo$> get copyWith;
@@ -2557,11 +2557,19 @@ class _$UpdateVideoInfoTearOff {
 
 // ignore: unused_element
   UpdateVideoInfo$ call(
-      {String addVideo, String removeVideo, String description}) {
+      {String addVideo,
+      String removeVideo,
+      String addThumbnail,
+      String removeThumbnail,
+      String description,
+      String title}) {
     return UpdateVideoInfo$(
       addVideo: addVideo,
       removeVideo: removeVideo,
+      addThumbnail: addThumbnail,
+      removeThumbnail: removeThumbnail,
       description: description,
+      title: title,
     );
   }
 }
@@ -2574,7 +2582,10 @@ const $UpdateVideoInfo = _$UpdateVideoInfoTearOff();
 mixin _$UpdateVideoInfo {
   String get addVideo;
   String get removeVideo;
+  String get addThumbnail;
+  String get removeThumbnail;
   String get description;
+  String get title;
 
   $UpdateVideoInfoCopyWith<UpdateVideoInfo> get copyWith;
 }
@@ -2584,7 +2595,13 @@ abstract class $UpdateVideoInfoCopyWith<$Res> {
   factory $UpdateVideoInfoCopyWith(
           UpdateVideoInfo value, $Res Function(UpdateVideoInfo) then) =
       _$UpdateVideoInfoCopyWithImpl<$Res>;
-  $Res call({String addVideo, String removeVideo, String description});
+  $Res call(
+      {String addVideo,
+      String removeVideo,
+      String addThumbnail,
+      String removeThumbnail,
+      String description,
+      String title});
 }
 
 /// @nodoc
@@ -2600,14 +2617,24 @@ class _$UpdateVideoInfoCopyWithImpl<$Res>
   $Res call({
     Object addVideo = freezed,
     Object removeVideo = freezed,
+    Object addThumbnail = freezed,
+    Object removeThumbnail = freezed,
     Object description = freezed,
+    Object title = freezed,
   }) {
     return _then(_value.copyWith(
       addVideo: addVideo == freezed ? _value.addVideo : addVideo as String,
       removeVideo:
           removeVideo == freezed ? _value.removeVideo : removeVideo as String,
+      addThumbnail: addThumbnail == freezed
+          ? _value.addThumbnail
+          : addThumbnail as String,
+      removeThumbnail: removeThumbnail == freezed
+          ? _value.removeThumbnail
+          : removeThumbnail as String,
       description:
           description == freezed ? _value.description : description as String,
+      title: title == freezed ? _value.title : title as String,
     ));
   }
 }
@@ -2619,7 +2646,13 @@ abstract class $UpdateVideoInfo$CopyWith<$Res>
           UpdateVideoInfo$ value, $Res Function(UpdateVideoInfo$) then) =
       _$UpdateVideoInfo$CopyWithImpl<$Res>;
   @override
-  $Res call({String addVideo, String removeVideo, String description});
+  $Res call(
+      {String addVideo,
+      String removeVideo,
+      String addThumbnail,
+      String removeThumbnail,
+      String description,
+      String title});
 }
 
 /// @nodoc
@@ -2637,32 +2670,54 @@ class _$UpdateVideoInfo$CopyWithImpl<$Res>
   $Res call({
     Object addVideo = freezed,
     Object removeVideo = freezed,
+    Object addThumbnail = freezed,
+    Object removeThumbnail = freezed,
     Object description = freezed,
+    Object title = freezed,
   }) {
     return _then(UpdateVideoInfo$(
       addVideo: addVideo == freezed ? _value.addVideo : addVideo as String,
       removeVideo:
           removeVideo == freezed ? _value.removeVideo : removeVideo as String,
+      addThumbnail: addThumbnail == freezed
+          ? _value.addThumbnail
+          : addThumbnail as String,
+      removeThumbnail: removeThumbnail == freezed
+          ? _value.removeThumbnail
+          : removeThumbnail as String,
       description:
           description == freezed ? _value.description : description as String,
+      title: title == freezed ? _value.title : title as String,
     ));
   }
 }
 
 /// @nodoc
 class _$UpdateVideoInfo$ implements UpdateVideoInfo$ {
-  const _$UpdateVideoInfo$({this.addVideo, this.removeVideo, this.description});
+  const _$UpdateVideoInfo$(
+      {this.addVideo,
+      this.removeVideo,
+      this.addThumbnail,
+      this.removeThumbnail,
+      this.description,
+      this.title});
 
   @override
   final String addVideo;
   @override
   final String removeVideo;
   @override
+  final String addThumbnail;
+  @override
+  final String removeThumbnail;
+  @override
   final String description;
+  @override
+  final String title;
 
   @override
   String toString() {
-    return 'UpdateVideoInfo(addVideo: $addVideo, removeVideo: $removeVideo, description: $description)';
+    return 'UpdateVideoInfo(addVideo: $addVideo, removeVideo: $removeVideo, addThumbnail: $addThumbnail, removeThumbnail: $removeThumbnail, description: $description, title: $title)';
   }
 
   @override
@@ -2675,9 +2730,17 @@ class _$UpdateVideoInfo$ implements UpdateVideoInfo$ {
             (identical(other.removeVideo, removeVideo) ||
                 const DeepCollectionEquality()
                     .equals(other.removeVideo, removeVideo)) &&
+            (identical(other.addThumbnail, addThumbnail) ||
+                const DeepCollectionEquality()
+                    .equals(other.addThumbnail, addThumbnail)) &&
+            (identical(other.removeThumbnail, removeThumbnail) ||
+                const DeepCollectionEquality()
+                    .equals(other.removeThumbnail, removeThumbnail)) &&
             (identical(other.description, description) ||
                 const DeepCollectionEquality()
-                    .equals(other.description, description)));
+                    .equals(other.description, description)) &&
+            (identical(other.title, title) ||
+                const DeepCollectionEquality().equals(other.title, title)));
   }
 
   @override
@@ -2685,7 +2748,10 @@ class _$UpdateVideoInfo$ implements UpdateVideoInfo$ {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(addVideo) ^
       const DeepCollectionEquality().hash(removeVideo) ^
-      const DeepCollectionEquality().hash(description);
+      const DeepCollectionEquality().hash(addThumbnail) ^
+      const DeepCollectionEquality().hash(removeThumbnail) ^
+      const DeepCollectionEquality().hash(description) ^
+      const DeepCollectionEquality().hash(title);
 
   @override
   $UpdateVideoInfo$CopyWith<UpdateVideoInfo$> get copyWith =>
@@ -2696,14 +2762,23 @@ abstract class UpdateVideoInfo$ implements UpdateVideoInfo {
   const factory UpdateVideoInfo$(
       {String addVideo,
       String removeVideo,
-      String description}) = _$UpdateVideoInfo$;
+      String addThumbnail,
+      String removeThumbnail,
+      String description,
+      String title}) = _$UpdateVideoInfo$;
 
   @override
   String get addVideo;
   @override
   String get removeVideo;
   @override
+  String get addThumbnail;
+  @override
+  String get removeThumbnail;
+  @override
   String get description;
+  @override
+  String get title;
   @override
   $UpdateVideoInfo$CopyWith<UpdateVideoInfo$> get copyWith;
 }

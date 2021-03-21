@@ -12,13 +12,17 @@ abstract class Video implements Built<Video, VideoBuilder> {
 
   String get uid;
 
-  String get video;
+  String get videoUrl;
+
+  String get title;
+
+  int get createdAt;
 
   @nullable
   String get description;
 
   @nullable
-  int get createdAt;
+  String get thumbnailUrl;
 
   Map<String, dynamic> get json =>
       serializers.serializeWith(serializer, this) as Map<String, dynamic>;

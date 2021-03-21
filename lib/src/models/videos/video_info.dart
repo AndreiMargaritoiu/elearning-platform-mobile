@@ -9,7 +9,13 @@ abstract class VideoInfo implements Built<VideoInfo, VideoInfoBuilder> {
   VideoInfo._();
 
   @nullable
-  String get path;
+  String get videoPath;
+
+  @nullable
+  String get thumbnailPath;
+
+  @nullable
+  String get title;
 
   @nullable
   String get description;

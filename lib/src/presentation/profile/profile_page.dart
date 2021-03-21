@@ -36,7 +36,7 @@ class _ProfilePageState extends State<ProfilePage> {
     if (path != null) {
       StoreProvider.of<AppState>(context)
           .dispatch(UpdateVideoInfo(addVideo: path));
-      Navigator.pushNamed(context, AppRoutes.videoDetails);
+      Navigator.pushNamed(context, AppRoutes.addVideoPage);
     }
   }
 
@@ -255,7 +255,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       Row(
                         children: <Widget>[
                           IconButton(
-                            icon: const Icon(Icons.playlist_add_check_outlined),
+                            icon: const Icon(Icons.playlist_add_rounded),
                             onPressed: () {
                               Navigator.pushNamed(
                                   context, AppRoutes.createPlaylistPage);

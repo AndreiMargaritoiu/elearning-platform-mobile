@@ -70,10 +70,22 @@ class _$VideoInfoSerializer implements StructuredSerializer<VideoInfo> {
   Iterable<Object> serialize(Serializers serializers, VideoInfo object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[];
-    if (object.path != null) {
+    if (object.videoPath != null) {
       result
-        ..add('path')
-        ..add(serializers.serialize(object.path,
+        ..add('videoPath')
+        ..add(serializers.serialize(object.videoPath,
+            specifiedType: const FullType(String)));
+    }
+    if (object.thumbnailPath != null) {
+      result
+        ..add('thumbnailPath')
+        ..add(serializers.serialize(object.thumbnailPath,
+            specifiedType: const FullType(String)));
+    }
+    if (object.title != null) {
+      result
+        ..add('title')
+        ..add(serializers.serialize(object.title,
             specifiedType: const FullType(String)));
     }
     if (object.description != null) {
@@ -96,8 +108,16 @@ class _$VideoInfoSerializer implements StructuredSerializer<VideoInfo> {
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
-        case 'path':
-          result.path = serializers.deserialize(value,
+        case 'videoPath':
+          result.videoPath = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'thumbnailPath':
+          result.thumbnailPath = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'title':
+          result.title = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
         case 'description':
@@ -125,9 +145,15 @@ class _$VideoSerializer implements StructuredSerializer<Video> {
       serializers.serialize(object.id, specifiedType: const FullType(String)),
       'uid',
       serializers.serialize(object.uid, specifiedType: const FullType(String)),
-      'video',
-      serializers.serialize(object.video,
+      'videoUrl',
+      serializers.serialize(object.videoUrl,
           specifiedType: const FullType(String)),
+      'title',
+      serializers.serialize(object.title,
+          specifiedType: const FullType(String)),
+      'createdAt',
+      serializers.serialize(object.createdAt,
+          specifiedType: const FullType(int)),
     ];
     if (object.description != null) {
       result
@@ -135,11 +161,11 @@ class _$VideoSerializer implements StructuredSerializer<Video> {
         ..add(serializers.serialize(object.description,
             specifiedType: const FullType(String)));
     }
-    if (object.createdAt != null) {
+    if (object.thumbnailUrl != null) {
       result
-        ..add('createdAt')
-        ..add(serializers.serialize(object.createdAt,
-            specifiedType: const FullType(int)));
+        ..add('thumbnailUrl')
+        ..add(serializers.serialize(object.thumbnailUrl,
+            specifiedType: const FullType(String)));
     }
     return result;
   }
@@ -163,17 +189,25 @@ class _$VideoSerializer implements StructuredSerializer<Video> {
           result.uid = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
-        case 'video':
-          result.video = serializers.deserialize(value,
+        case 'videoUrl':
+          result.videoUrl = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
-        case 'description':
-          result.description = serializers.deserialize(value,
+        case 'title':
+          result.title = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
         case 'createdAt':
           result.createdAt = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int;
+          break;
+        case 'description':
+          result.description = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'thumbnailUrl':
+          result.thumbnailUrl = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
           break;
       }
     }
@@ -288,14 +322,20 @@ class VideosStateBuilder implements Builder<VideosState, VideosStateBuilder> {
 
 class _$VideoInfo extends VideoInfo {
   @override
-  final String path;
+  final String videoPath;
+  @override
+  final String thumbnailPath;
+  @override
+  final String title;
   @override
   final String description;
 
   factory _$VideoInfo([void Function(VideoInfoBuilder) updates]) =>
       (new VideoInfoBuilder()..update(updates)).build();
 
-  _$VideoInfo._({this.path, this.description}) : super._();
+  _$VideoInfo._(
+      {this.videoPath, this.thumbnailPath, this.title, this.description})
+      : super._();
 
   @override
   VideoInfo rebuild(void Function(VideoInfoBuilder) updates) =>
@@ -308,19 +348,26 @@ class _$VideoInfo extends VideoInfo {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is VideoInfo &&
-        path == other.path &&
+        videoPath == other.videoPath &&
+        thumbnailPath == other.thumbnailPath &&
+        title == other.title &&
         description == other.description;
   }
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, path.hashCode), description.hashCode));
+    return $jf($jc(
+        $jc($jc($jc(0, videoPath.hashCode), thumbnailPath.hashCode),
+            title.hashCode),
+        description.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('VideoInfo')
-          ..add('path', path)
+          ..add('videoPath', videoPath)
+          ..add('thumbnailPath', thumbnailPath)
+          ..add('title', title)
           ..add('description', description))
         .toString();
   }
@@ -329,9 +376,18 @@ class _$VideoInfo extends VideoInfo {
 class VideoInfoBuilder implements Builder<VideoInfo, VideoInfoBuilder> {
   _$VideoInfo _$v;
 
-  String _path;
-  String get path => _$this._path;
-  set path(String path) => _$this._path = path;
+  String _videoPath;
+  String get videoPath => _$this._videoPath;
+  set videoPath(String videoPath) => _$this._videoPath = videoPath;
+
+  String _thumbnailPath;
+  String get thumbnailPath => _$this._thumbnailPath;
+  set thumbnailPath(String thumbnailPath) =>
+      _$this._thumbnailPath = thumbnailPath;
+
+  String _title;
+  String get title => _$this._title;
+  set title(String title) => _$this._title = title;
 
   String _description;
   String get description => _$this._description;
@@ -341,7 +397,9 @@ class VideoInfoBuilder implements Builder<VideoInfo, VideoInfoBuilder> {
 
   VideoInfoBuilder get _$this {
     if (_$v != null) {
-      _path = _$v.path;
+      _videoPath = _$v.videoPath;
+      _thumbnailPath = _$v.thumbnailPath;
+      _title = _$v.title;
       _description = _$v.description;
       _$v = null;
     }
@@ -363,8 +421,12 @@ class VideoInfoBuilder implements Builder<VideoInfo, VideoInfoBuilder> {
 
   @override
   _$VideoInfo build() {
-    final _$result =
-        _$v ?? new _$VideoInfo._(path: path, description: description);
+    final _$result = _$v ??
+        new _$VideoInfo._(
+            videoPath: videoPath,
+            thumbnailPath: thumbnailPath,
+            title: title,
+            description: description);
     replace(_$result);
     return _$result;
   }
@@ -376,16 +438,27 @@ class _$Video extends Video {
   @override
   final String uid;
   @override
-  final String video;
+  final String videoUrl;
+  @override
+  final String title;
+  @override
+  final int createdAt;
   @override
   final String description;
   @override
-  final int createdAt;
+  final String thumbnailUrl;
 
   factory _$Video([void Function(VideoBuilder) updates]) =>
       (new VideoBuilder()..update(updates)).build();
 
-  _$Video._({this.id, this.uid, this.video, this.description, this.createdAt})
+  _$Video._(
+      {this.id,
+      this.uid,
+      this.videoUrl,
+      this.title,
+      this.createdAt,
+      this.description,
+      this.thumbnailUrl})
       : super._() {
     if (id == null) {
       throw new BuiltValueNullFieldError('Video', 'id');
@@ -393,8 +466,14 @@ class _$Video extends Video {
     if (uid == null) {
       throw new BuiltValueNullFieldError('Video', 'uid');
     }
-    if (video == null) {
-      throw new BuiltValueNullFieldError('Video', 'video');
+    if (videoUrl == null) {
+      throw new BuiltValueNullFieldError('Video', 'videoUrl');
+    }
+    if (title == null) {
+      throw new BuiltValueNullFieldError('Video', 'title');
+    }
+    if (createdAt == null) {
+      throw new BuiltValueNullFieldError('Video', 'createdAt');
     }
   }
 
@@ -411,17 +490,25 @@ class _$Video extends Video {
     return other is Video &&
         id == other.id &&
         uid == other.uid &&
-        video == other.video &&
+        videoUrl == other.videoUrl &&
+        title == other.title &&
+        createdAt == other.createdAt &&
         description == other.description &&
-        createdAt == other.createdAt;
+        thumbnailUrl == other.thumbnailUrl;
   }
 
   @override
   int get hashCode {
     return $jf($jc(
-        $jc($jc($jc($jc(0, id.hashCode), uid.hashCode), video.hashCode),
+        $jc(
+            $jc(
+                $jc(
+                    $jc($jc($jc(0, id.hashCode), uid.hashCode),
+                        videoUrl.hashCode),
+                    title.hashCode),
+                createdAt.hashCode),
             description.hashCode),
-        createdAt.hashCode));
+        thumbnailUrl.hashCode));
   }
 
   @override
@@ -429,9 +516,11 @@ class _$Video extends Video {
     return (newBuiltValueToStringHelper('Video')
           ..add('id', id)
           ..add('uid', uid)
-          ..add('video', video)
+          ..add('videoUrl', videoUrl)
+          ..add('title', title)
+          ..add('createdAt', createdAt)
           ..add('description', description)
-          ..add('createdAt', createdAt))
+          ..add('thumbnailUrl', thumbnailUrl))
         .toString();
   }
 }
@@ -447,17 +536,25 @@ class VideoBuilder implements Builder<Video, VideoBuilder> {
   String get uid => _$this._uid;
   set uid(String uid) => _$this._uid = uid;
 
-  String _video;
-  String get video => _$this._video;
-  set video(String video) => _$this._video = video;
+  String _videoUrl;
+  String get videoUrl => _$this._videoUrl;
+  set videoUrl(String videoUrl) => _$this._videoUrl = videoUrl;
+
+  String _title;
+  String get title => _$this._title;
+  set title(String title) => _$this._title = title;
+
+  int _createdAt;
+  int get createdAt => _$this._createdAt;
+  set createdAt(int createdAt) => _$this._createdAt = createdAt;
 
   String _description;
   String get description => _$this._description;
   set description(String description) => _$this._description = description;
 
-  int _createdAt;
-  int get createdAt => _$this._createdAt;
-  set createdAt(int createdAt) => _$this._createdAt = createdAt;
+  String _thumbnailUrl;
+  String get thumbnailUrl => _$this._thumbnailUrl;
+  set thumbnailUrl(String thumbnailUrl) => _$this._thumbnailUrl = thumbnailUrl;
 
   VideoBuilder();
 
@@ -465,9 +562,11 @@ class VideoBuilder implements Builder<Video, VideoBuilder> {
     if (_$v != null) {
       _id = _$v.id;
       _uid = _$v.uid;
-      _video = _$v.video;
-      _description = _$v.description;
+      _videoUrl = _$v.videoUrl;
+      _title = _$v.title;
       _createdAt = _$v.createdAt;
+      _description = _$v.description;
+      _thumbnailUrl = _$v.thumbnailUrl;
       _$v = null;
     }
     return this;
@@ -492,9 +591,11 @@ class VideoBuilder implements Builder<Video, VideoBuilder> {
         new _$Video._(
             id: id,
             uid: uid,
-            video: video,
+            videoUrl: videoUrl,
+            title: title,
+            createdAt: createdAt,
             description: description,
-            createdAt: createdAt);
+            thumbnailUrl: thumbnailUrl);
     replace(_$result);
     return _$result;
   }

@@ -40,7 +40,6 @@ class _EditVideoPageState extends State<EditVideoPage> {
                   if (value.length < 3) {
                     return 'Please choose a bigger description';
                   }
-
                   return null;
                 },
               ),
@@ -50,14 +49,14 @@ class _EditVideoPageState extends State<EditVideoPage> {
                     child: const Text('Update'),
                     onPressed: () {
                       StoreProvider.of<AppState>(context)
-                          .dispatch(UpdateVideo(id: widget.currentVideo.id));
+                          .dispatch(UpdateVideo(widget.currentVideo.id));
                     },
                   ),
                   MaterialButton(
                     child: const Text('Delete'),
                     onPressed: () {
                       StoreProvider.of<AppState>(context)
-                          .dispatch(DeleteVideo(id: widget.currentVideo.id));
+                          .dispatch(DeleteVideo(widget.currentVideo.id));
                       Navigator.pushNamed(context, AppRoutes.profilePage);
                     },
                   ),

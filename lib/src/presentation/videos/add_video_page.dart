@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:image_picker/image_picker.dart';
 
 import 'package:elearning_platform_mobile/src/actions/index.dart';
 import 'package:elearning_platform_mobile/src/containers/index.dart';
@@ -17,53 +18,72 @@ class AddVideoPage extends StatelessWidget {
       builder: (BuildContext context, VideoInfo info) {
         return Scaffold(
           appBar: AppBar(
-            title: const Text('Add video'),
+            title: const Text('New video'),
             actions: <Widget>[
               FlatButton(
-                child: const Text('Next'),
+                child: const Text('Share'),
                 onPressed: () {
-                  if (info.path.isNotEmpty) {
-                    Navigator.pushNamed(context, AppRoutes.videoDetails);
+                  if (info.title != null && info.title.isNotEmpty) {
+                    StoreProvider.of<AppState>(context)
+                        .dispatch(const AddVideo());
+                    Navigator.popUntil(
+                        context, ModalRoute.withName(AppRoutes.home));
                   } else {
                     // show error
                   }
                 },
-              )
+              ),
             ],
           ),
-          body:
-//          body: GridView.builder(
-//            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-//              crossAxisCount: 1,
-//            ),
-//            itemCount: 1,
-//            itemBuilder: (BuildContext context, int index) {
-//              if (index == 0) {
-//                return Center(
-//                  child: IconButton(
-//                    icon: const Icon(Icons.add),
-//                    onPressed: () async {
-//                      final PickedFile file = await ImagePicker()
-//                          .getImage(source: ImageSource.gallery);
-//                      print(file);
-//                      if (file != null) {
-//                        StoreProvider.of<AppState>(context)
-//                            .dispatch(UpdateVideoInfo(addVideo: file.path));
-//                      }
-//                    },
-//                  ),
-//                );
-//              }
-              GridTile(
-            child: Image.file(File(info.path)),
-            header: GridTileBar(
-              trailing: IconButton(
-                icon: const Icon(Icons.delete),
-                onPressed: () {
-                  StoreProvider.of<AppState>(context)
-                      .dispatch(UpdateVideoInfo(removeVideo: info.path));
-                },
-              ),
+          body: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              children: <Widget>[
+                TextField(
+                  decoration:
+                      const InputDecoration(hintText: 'Write a title...'),
+                  onChanged: (String value) {
+                    StoreProvider.of<AppState>(context)
+                        .dispatch(UpdateVideoInfo(title: value));
+                  },
+                ),
+                TextField(
+                  decoration:
+                      const InputDecoration(hintText: 'Write a description...'),
+                  onChanged: (String value) {
+                    StoreProvider.of<AppState>(context)
+                        .dispatch(UpdateVideoInfo(description: value));
+                  },
+                ),
+                if (info.thumbnailPath != null)
+                  Expanded(
+                    child: GridTile(
+                      child: Image.file(File(info.thumbnailPath)),
+                      header: GridTileBar(
+                        trailing: IconButton(
+                          icon: const Icon(Icons.delete),
+                          onPressed: () {
+                            StoreProvider.of<AppState>(context).dispatch(
+                                UpdateVideoInfo(
+                                    removeThumbnail: info.thumbnailPath));
+                          },
+                        ),
+                      ),
+                    ),
+                  )
+                else
+                  IconButton(
+                    icon: const Icon(Icons.add),
+                    onPressed: () async {
+                      final PickedFile file = await ImagePicker()
+                          .getImage(source: ImageSource.gallery);
+                      if (file != null) {
+                        StoreProvider.of<AppState>(context)
+                            .dispatch(UpdateVideoInfo(addThumbnail: file.path));
+                      }
+                    },
+                  ),
+              ],
             ),
           ),
         );

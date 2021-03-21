@@ -28,11 +28,11 @@ class _CreatePlaylistPageState extends State<CreatePlaylistPage> {
                 child: const Text('Next'),
                 onPressed: () {
                   if (info.title != null) {
-                    Navigator.pushNamed(context, AppRoutes.selectVideosPage);
                     if (info.category == null) {
                       StoreProvider.of<AppState>(context)
                           .dispatch(UpdatePlaylistInfo(category: dropdownValue));
                     }
+                    Navigator.pushNamed(context, AppRoutes.selectVideosPage);
                   } else {
                     // show error
                   }
