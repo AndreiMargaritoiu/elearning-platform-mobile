@@ -32,8 +32,8 @@ class _FeedPageState extends State<FeedPage> {
       body: UsersContainer(
         builder: (BuildContext context, Map<String, AppUser> users) {
           return VideosContainer(
-              builder: (BuildContext context, List<Video> videos) {
-            return ListView.builder(
+            builder: (BuildContext context, List<Video> videos) {
+              return ListView.builder(
                 itemCount: videos.length,
                 itemBuilder: (BuildContext context, int index) {
                   final Video video = videos[index];
@@ -56,15 +56,49 @@ class _FeedPageState extends State<FeedPage> {
                         title: Text(user.username),
                       ),
                       MaterialButton(
-                          child: Text(video.description),
-                          onPressed: () {
-                            Navigator.pushNamed(context, AppRoutes.videoPlayer,
-                                arguments: video);
-                          })
+                        child: Card(
+                          child: Row(
+                            children: <Widget>[
+                              if (video.thumbnailUrl != null &&
+                                  video.thumbnailUrl.isNotEmpty)
+                                Image.network(
+                                  video.thumbnailUrl,
+                                  height: 120,
+                                  width: 80,
+                                  fit: BoxFit.cover,
+                                )
+                              else
+                                Container(height: 120,
+                                  width: 80,
+                                  decoration: const BoxDecoration(
+                                    color: Colors.green,
+                                  ),
+                                 ),
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                    left: 8, top: 8, bottom: 8),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    Text(video.title),
+                                    Text(video.description),
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                        onPressed: () {
+                          Navigator.pushNamed(context, AppRoutes.videoPlayer,
+                              arguments: video);
+                        },
+                      )
                     ],
                   );
-                });
-          });
+                },
+              );
+            },
+          );
 
 //          return PostsContainer(
 //            builder: (BuildContext context, List<Post> posts) {

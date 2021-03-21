@@ -28,9 +28,11 @@ class VideosApi {
 
   Future<Video> addVideo(VideoInfo info, String uid) async {
     final DocumentReference ref = _firestore.collection('videos').doc();
-    final String videoUrl = await _uploadFile(ref.id, info.videoPath, 'videos');
-    final String thumbnailUrl = info.thumbnailPath.isNotEmpty ?
-          await _uploadFile(ref.id, info.thumbnailPath, 'videoThumbnails') : '';
+    final String videoUrl = await _uploadFile(ref.id, info.videoPath);
+    final String thumbnailUrl =
+        info.thumbnailPath != null && info.thumbnailPath.isNotEmpty
+            ? await _uploadFile(ref.id, info.thumbnailPath)
+            : null;
 
     final Video newVideo = Video((VideoBuilder b) {
       b
@@ -47,9 +49,9 @@ class VideosApi {
     return newVideo;
   }
 
-  Future<String> _uploadFile(String id, String path, String location) async {
+  Future<String> _uploadFile(String id, String path) async {
     final DocumentReference ref = _firestore.collection('NOT_USED').doc();
-    final Reference storageRef = _storage.ref('$location/$id/${ref.id}');
+    final Reference storageRef = _storage.ref('videos/$id/${ref.id}');
     await storageRef.putFile(File(path));
     final String url = await storageRef.getDownloadURL();
 
@@ -83,7 +85,6 @@ class VideosApi {
 
   Future<void> deleteVideo(String id) async {
     final DocumentReference ref = _firestore.collection('videos').doc(id);
-
     await ref.delete();
   }
 

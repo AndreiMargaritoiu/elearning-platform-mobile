@@ -6,6 +6,7 @@ import 'package:elearning_platform_mobile/src/containers/index.dart';
 import 'package:elearning_platform_mobile/src/models/index.dart';
 import 'package:elearning_platform_mobile/src/presentation/routes.dart';
 
+
 class EditVideoPage extends StatefulWidget {
   const EditVideoPage({this.currentVideo, Key key}) : super(key: key);
 
@@ -16,53 +17,77 @@ class EditVideoPage extends StatefulWidget {
 }
 
 class _EditVideoPageState extends State<EditVideoPage> {
+
   @override
   Widget build(BuildContext context) {
     return VideoInfoContainer(
       builder: (BuildContext context, VideoInfo info) {
         return Scaffold(
           appBar: AppBar(
-            title: Text(widget.currentVideo.id),
+            title: const Text('Edit video page'),
           ),
-          body: Column(
-            children: <Widget>[
-              TextFormField(
-                decoration: const InputDecoration(
-                  hintText: 'description',
+          body: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              children: <Widget>[
+                TextFormField(
+                  decoration: const InputDecoration(
+                    hintText: 'title',
+                  ),
+                  initialValue: widget.currentVideo.title,
+                  keyboardType: TextInputType.name,
+                  onChanged: (String value) {
+                    StoreProvider.of<AppState>(context)
+                        .dispatch(UpdateVideoInfo(title: value));
+                  },
+                  validator: (String value) {
+                    if (value.length < 3) {
+                      return 'Please choose a bigger description';
+                    }
+                    return null;
+                  },
                 ),
-                initialValue: widget.currentVideo.description,
-                keyboardType: TextInputType.name,
-                onChanged: (String value) {
-                  StoreProvider.of<AppState>(context)
-                      .dispatch(UpdateVideoInfo(description: value));
-                },
-                validator: (String value) {
-                  if (value.length < 3) {
-                    return 'Please choose a bigger description';
-                  }
-                  return null;
-                },
-              ),
-              Row(
-                children: <Widget>[
-                  MaterialButton(
-                    child: const Text('Update'),
-                    onPressed: () {
-                      StoreProvider.of<AppState>(context)
-                          .dispatch(UpdateVideo(widget.currentVideo.id));
-                    },
+                TextFormField(
+                  decoration: const InputDecoration(
+                    hintText: 'description',
                   ),
-                  MaterialButton(
-                    child: const Text('Delete'),
-                    onPressed: () {
-                      StoreProvider.of<AppState>(context)
-                          .dispatch(DeleteVideo(widget.currentVideo.id));
-                      Navigator.pushNamed(context, AppRoutes.profilePage);
-                    },
-                  ),
-                ],
-              )
-            ],
+                  initialValue: widget.currentVideo.description,
+                  keyboardType: TextInputType.name,
+                  onChanged: (String value) {
+                    StoreProvider.of<AppState>(context)
+                        .dispatch(UpdateVideoInfo(description: value));
+                  },
+                  validator: (String value) {
+                    if (value.length < 3) {
+                      return 'Please choose a bigger description';
+                    }
+                    return null;
+                  },
+                ),
+                Row(
+                  children: <Widget>[
+                    MaterialButton(
+                      child: const Text('Update'),
+                      onPressed: () {
+                        StoreProvider.of<AppState>(context)
+                            .dispatch(UpdateVideo(widget.currentVideo.id));
+                        Navigator.popUntil(
+                            context, ModalRoute.withName(AppRoutes.home));
+                      },
+                    ),
+                    MaterialButton(
+                      child: const Text('Delete'),
+                      onPressed: () {
+                        StoreProvider.of<AppState>(context)
+                            .dispatch(DeleteVideo(widget.currentVideo.id));
+                        Navigator.popUntil(
+                            context, ModalRoute.withName(AppRoutes.home));
+                      },
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         );
       },

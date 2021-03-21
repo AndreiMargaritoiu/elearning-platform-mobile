@@ -41,9 +41,10 @@ class _SelectVideosPageState extends State<SelectVideosPage> {
                 child: const Text('Share'),
                 onPressed: () {
                   if (info.videoRefs != null) {
-                    Navigator.pushNamed(context, AppRoutes.home);
                     StoreProvider.of<AppState>(context)
                         .dispatch(const CreatePlaylist());
+                    Navigator.popUntil(
+                        context, ModalRoute.withName(AppRoutes.home));
                   } else {
                     // show error
                   }

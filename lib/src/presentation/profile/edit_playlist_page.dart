@@ -16,60 +16,79 @@ class EditPlaylistPage extends StatefulWidget {
 }
 
 class _EditPlaylistPageState extends State<EditPlaylistPage> {
-
   @override
   Widget build(BuildContext context) {
-
     return PlaylistInfoContainer(
       builder: (BuildContext context, PlaylistInfo info) {
         return Scaffold(
           appBar: AppBar(
-            title: Text(widget.currentPlaylist.id),
+            title: const Text('Edit playlist page'),
           ),
-          body: Column(
-            children: <Widget>[
-              TextFormField(
-                decoration: const InputDecoration(
-                  hintText: 'description',
+          body: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              children: <Widget>[
+                TextFormField(
+                  decoration: const InputDecoration(
+                    hintText: 'title',
+                  ),
+                  initialValue: widget.currentPlaylist.title,
+                  keyboardType: TextInputType.name,
+                  onChanged: (String value) {
+                    StoreProvider.of<AppState>(context)
+                        .dispatch(UpdatePlaylistInfo(title: value));
+                  },
+                  validator: (String value) {
+                    if (value.length < 3) {
+                      return 'Please choose a bigger title';
+                    }
+                    return null;
+                  },
                 ),
-                initialValue: widget.currentPlaylist.description,
-                keyboardType: TextInputType.name,
-                onChanged: (String value) {
-                  StoreProvider.of<AppState>(context)
-                      .dispatch(UpdatePlaylistInfo(description: value));
-                },
-                validator: (String value) {
-                  if (value.length < 3) {
-                    return 'Please choose a bigger description';
-                  }
-
-                  return null;
-                },
-              ),
-              Row(
-                children: <Widget>[
-                  MaterialButton(
-                    child: const Text('Update'),
-                    onPressed: () {
-                      StoreProvider.of<AppState>(context)
-                          .dispatch(UpdatePlaylist(id: widget.currentPlaylist.id));
-                    },
+                TextFormField(
+                  decoration: const InputDecoration(
+                    hintText: 'description',
                   ),
-                  MaterialButton(
-                    child: const Text('Delete'),
-                    onPressed: () {
-                      StoreProvider.of<AppState>(context)
-                          .dispatch(UpdatePlaylist(id: widget.currentPlaylist.id));
-                      Navigator.pushNamed(context, AppRoutes.profilePage);
-                    },
-                  ),
-                ],
-              )
-            ],
+                  initialValue: widget.currentPlaylist.description,
+                  keyboardType: TextInputType.name,
+                  onChanged: (String value) {
+                    StoreProvider.of<AppState>(context)
+                        .dispatch(UpdatePlaylistInfo(description: value));
+                  },
+                  validator: (String value) {
+                    if (value.length < 3) {
+                      return 'Please choose a bigger description';
+                    }
+                    return null;
+                  },
+                ),
+                Row(
+                  children: <Widget>[
+                    MaterialButton(
+                      child: const Text('Update'),
+                      onPressed: () {
+                        StoreProvider.of<AppState>(context).dispatch(
+                            UpdatePlaylist(id: widget.currentPlaylist.id));
+                        Navigator.popUntil(
+                            context, ModalRoute.withName(AppRoutes.home));
+                      },
+                    ),
+                    MaterialButton(
+                      child: const Text('Delete'),
+                      onPressed: () {
+                        StoreProvider.of<AppState>(context).dispatch(
+                            UpdatePlaylist(id: widget.currentPlaylist.id));
+                        Navigator.popUntil(
+                            context, ModalRoute.withName(AppRoutes.home));
+                      },
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         );
       },
     );
-
   }
 }

@@ -64,6 +64,12 @@ class PlaylistsApi {
       });
     }
 
+    if (info.title != null) {
+      await ref.update(<String, dynamic>{
+        'title': info.title,
+      });
+    }
+
     return await getPlaylistById(id: id);
   }
 
