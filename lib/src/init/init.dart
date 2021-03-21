@@ -28,6 +28,7 @@ Future<Store<AppState>> init() async {
   final AuthApi authApi = AuthApi(
     auth: auth,
     firestore: firestore,
+    storage: storage,
     google: GoogleSignIn(),
   );
 

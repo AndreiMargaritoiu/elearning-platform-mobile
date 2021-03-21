@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:built_collection/built_collection.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:elearning_platform_mobile/src/data/index.dart';
 import 'package:elearning_platform_mobile/src/models/index.dart';
@@ -10,16 +13,20 @@ class AuthApi {
   const AuthApi({
     @required FirebaseAuth auth,
     @required FirebaseFirestore firestore,
+    @required FirebaseStorage storage,
     @required GoogleSignIn google,
   })  : assert(auth != null),
         assert(firestore != null),
+        assert(storage != null),
         assert(google != null),
         _auth = auth,
         _firestore = firestore,
+        _storage = storage,
         _google = google;
 
   final FirebaseAuth _auth;
   final FirebaseFirestore _firestore;
+  final FirebaseStorage _storage;
   final GoogleSignIn _google;
 
   Future<AppUser> getCurrentUser() async {
@@ -122,6 +129,29 @@ class AuthApi {
 
   Future<AppUser> getUser(String uid) async {
     final DocumentSnapshot doc = await _firestore.doc('users/$uid').get();
+
     return AppUser.fromJson(doc.data());
+  }
+
+  Future<AppUser> updateUser(String path, String uid) async {
+    final DocumentReference ref = _firestore.collection('users').doc(uid);
+    final String photoUrlSaved = await _uploadProfilePic(ref.id, path);
+
+    if (photoUrlSaved != null) {
+      await ref.update(<String, dynamic>{
+        'photoUrl':  photoUrlSaved,
+      });
+    }
+
+    return await getUser(uid);
+  }
+
+  Future<String> _uploadProfilePic(String uid, String photoUrl) async {
+    final DocumentReference ref = _firestore.collection('users').doc(uid);
+    final Reference storageRef = _storage.ref('users/$uid/${ref.id}');
+    await storageRef.putFile(File(photoUrl));
+    final String url = await storageRef.getDownloadURL();
+
+    return url;
   }
 }

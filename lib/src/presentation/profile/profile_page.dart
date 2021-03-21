@@ -6,6 +6,7 @@ import 'package:elearning_platform_mobile/src/actions/index.dart';
 import 'package:elearning_platform_mobile/src/containers/index.dart';
 import 'package:elearning_platform_mobile/src/models/index.dart';
 import 'package:elearning_platform_mobile/src/presentation/routes.dart';
+import 'package:image_picker/image_picker.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key key}) : super(key: key);
@@ -83,14 +84,26 @@ class _ProfilePageState extends State<ProfilePage> {
                 Row(
                   children: <Widget>[
                     if (user.photoUrl != null)
-                      Image.network(
-                        user.photoUrl,
-                        height: MediaQuery.of(context).size.width,
-                        fit: BoxFit.cover,
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(80.0),
+                        child: Image.network(
+                          user.photoUrl,
+                          height: 80,
+                          width: 80,
+                          fit: BoxFit.cover,
+                        ),
                       )
                     else
                       FloatingActionButton(
-                          child: const Icon(Icons.image), onPressed: () {}),
+                          child: const Icon(Icons.image),
+                          onPressed: () async {
+                            final PickedFile file = await ImagePicker()
+                                .getImage(source: ImageSource.gallery);
+                            if (file != null) {
+                              StoreProvider.of<AppState>(context)
+                                  .dispatch(UpdateUser(file.path, user.uid));
+                            }
+                          }),
                     Padding(
                         padding: const EdgeInsets.only(left: 16),
                         child: Text(user.email))
@@ -124,7 +137,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           child: const Icon(Icons.video_collection),
                           onPressed: () {
                             setState(
-                                  () {
+                              () {
                                 isPlaylistPage = false;
                               },
                             );

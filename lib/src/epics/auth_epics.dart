@@ -23,10 +23,12 @@ class AuthEpics {
       TypedEpic<AppState, SearchUsers$>(_searchUsers),
       TypedEpic<AppState, UpdateFollowing$>(_updateFollowing),
       TypedEpic<AppState, GetUser$>(_getUser),
+      TypedEpic<AppState, UpdateUser$>(_updateUser),
     ]);
   }
 
-  Stream<AppAction> _initializeApp(Stream<InitializeApp$> actions, EpicStore<AppState> store) {
+  Stream<AppAction> _initializeApp(
+      Stream<InitializeApp$> actions, EpicStore<AppState> store) {
     return actions //
         .flatMap((InitializeApp$ action) => Stream<InitializeApp$>.value(action)
             .asyncMap((InitializeApp$ action) => _api.getCurrentUser())
@@ -37,26 +39,30 @@ class AuthEpics {
   Stream<AppAction> _login(Stream<Login$> actions, EpicStore<AppState> store) {
     return actions //
         .flatMap((Login$ action) => Stream<Login$>.value(action)
-            .asyncMap((Login$ action) => _api.login(email: action.email, password: action.password))
+            .asyncMap((Login$ action) =>
+                _api.login(email: action.email, password: action.password))
             .map((AppUser user) => Login.successful(user))
             .onErrorReturnWith((dynamic error) => Login.error(error))
             .doOnData(action.response));
   }
 
-  Stream<AppAction> _signup(Stream<Signup$> actions, EpicStore<AppState> store) {
+  Stream<AppAction> _signup(
+      Stream<Signup$> actions, EpicStore<AppState> store) {
     return actions //
         .flatMap((Signup$ action) => Stream<Signup$>.value(action)
             .asyncMap((Signup$ action) => _api.signUp(
                   email: store.state.auth.info.email,
                   password: store.state.auth.info.password,
-                  username: store.state.auth.info.username ?? store.state.auth.info.email.split('@').first,
+                  username: store.state.auth.info.username ??
+                      store.state.auth.info.email.split('@').first,
                 ))
             .map((AppUser user) => Signup.successful(user))
             .onErrorReturnWith((dynamic error) => Signup.error(error))
             .doOnData(action.response));
   }
 
-  Stream<AppAction> _signOut(Stream<SignOut$> actions, EpicStore<AppState> store) {
+  Stream<AppAction> _signOut(
+      Stream<SignOut$> actions, EpicStore<AppState> store) {
     return actions //
         .flatMap((SignOut$ action) => Stream<SignOut$>.value(action)
             .asyncMap((SignOut$ action) => _api.signOut())
@@ -64,24 +70,29 @@ class AuthEpics {
             .onErrorReturnWith((dynamic error) => SignOut.error(error)));
   }
 
-  Stream<AppAction> _signUpWithGoogle(Stream<SignUpWithGoogle$> actions, EpicStore<AppState> store) {
+  Stream<AppAction> _signUpWithGoogle(
+      Stream<SignUpWithGoogle$> actions, EpicStore<AppState> store) {
     return actions //
-        .flatMap((SignUpWithGoogle$ action) => Stream<SignUpWithGoogle$>.value(action)
+        .flatMap((SignUpWithGoogle$ action) => Stream<SignUpWithGoogle$>.value(
+                action)
             .asyncMap((SignUpWithGoogle$ action) => _api.signUpWithGoogle())
             .map((AppUser user) => SignUpWithGoogle.successful(user))
             .onErrorReturnWith((dynamic error) => SignUpWithGoogle.error(error))
             .doOnData(action.response));
   }
 
-  Stream<AppAction> _resetPassword(Stream<ResetPassword$> actions, EpicStore<AppState> store) {
+  Stream<AppAction> _resetPassword(
+      Stream<ResetPassword$> actions, EpicStore<AppState> store) {
     return actions //
         .flatMap((ResetPassword$ action) => Stream<ResetPassword$>.value(action)
-            .asyncMap((ResetPassword$ action) => _api.resetPassword(action.email))
+            .asyncMap(
+                (ResetPassword$ action) => _api.resetPassword(action.email))
             .mapTo(const ResetPassword.successful())
             .onErrorReturnWith((dynamic error) => ResetPassword.error(error)));
   }
 
-  Stream<AppAction> _searchUsers(Stream<SearchUsers$> actions, EpicStore<AppState> store) {
+  Stream<AppAction> _searchUsers(
+      Stream<SearchUsers$> actions, EpicStore<AppState> store) {
     return actions //
         .debounceTime(const Duration(milliseconds: 500))
         .flatMap((SearchUsers$ action) => Stream<SearchUsers$>.value(action)
@@ -90,23 +101,42 @@ class AuthEpics {
             .onErrorReturnWith((dynamic error) => SearchUsers.error(error)));
   }
 
-  Stream<AppAction> _updateFollowing(Stream<UpdateFollowing$> actions, EpicStore<AppState> store) {
+  Stream<AppAction> _updateFollowing(
+      Stream<UpdateFollowing$> actions, EpicStore<AppState> store) {
     return actions //
-        .flatMap((UpdateFollowing$ action) => Stream<UpdateFollowing$>.value(action)
-            .asyncMap((UpdateFollowing$ action) => _api.updateFollowing(
-                  uid: store.state.auth.user.uid,
-                  add: action.add,
-                  remove: action.remove,
-                ))
-            .mapTo(UpdateFollowing.successful(add: action.add, remove: action.remove))
-            .onErrorReturnWith((dynamic error) => UpdateFollowing.error(error)));
+        .flatMap((UpdateFollowing$ action) =>
+            Stream<UpdateFollowing$>.value(action)
+                .asyncMap((UpdateFollowing$ action) => _api.updateFollowing(
+                      uid: store.state.auth.user.uid,
+                      add: action.add,
+                      remove: action.remove,
+                    ))
+                .mapTo(UpdateFollowing.successful(
+                    add: action.add, remove: action.remove))
+                .onErrorReturnWith(
+                    (dynamic error) => UpdateFollowing.error(error)));
   }
 
-  Stream<AppAction> _getUser(Stream<GetUser$> actions, EpicStore<AppState> store) {
+  Stream<AppAction> _getUser(
+      Stream<GetUser$> actions, EpicStore<AppState> store) {
     return actions //
         .flatMap((GetUser$ action) => Stream<GetUser$>.value(action)
             .asyncMap((GetUser$ action) => _api.getUser(action.uid))
             .map((AppUser user) => GetUser.successful(user))
             .onErrorReturnWith((dynamic error) => GetUser.error(error)));
+  }
+
+  Stream<AppAction> _updateUser(
+      Stream<UpdateUser$> actions, EpicStore<AppState> store) {
+    return actions //
+        .flatMap((UpdateUser$ action) =>
+            Stream<UpdateUser$>.value(action)
+                .asyncMap((UpdateUser$ action) => _api.updateUser(
+                      action.path,
+                      store.state.auth.user.uid,
+                    ))
+                .map((AppUser user) => UpdateUser.successful(user))
+                .onErrorReturnWith(
+                    (dynamic error) => UpdateUser.error(error)));
   }
 }

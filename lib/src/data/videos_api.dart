@@ -44,15 +44,12 @@ class VideosApi {
   }
 
   Future<String> _uploadVideo(String id, String path) async {
-    String video = '';
     final DocumentReference ref = _firestore.collection('NOT_USED').doc();
     final Reference storageRef = _storage.ref('videos/$id/${ref.id}');
     await storageRef.putFile(File(path));
-
     final String url = await storageRef.getDownloadURL();
-    video = url;
 
-    return video;
+    return url;
   }
 
   Future<Video> getVideoById({@required String id}) async {

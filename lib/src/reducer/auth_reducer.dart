@@ -15,6 +15,7 @@ Reducer<AuthState> authReducer = combineReducers(<Reducer<AuthState>>[
   TypedReducer<AuthState, UpdateFollowingSuccessful>(
       _updateFollowingSuccessful),
   TypedReducer<AuthState, GetUserSuccessful>(_getUserSuccessful),
+  TypedReducer<AuthState, UpdateUserSuccessful>(_updateUserSuccessful),
 ]);
 
 AuthState _initializeAppSuccessful(
@@ -75,5 +76,14 @@ AuthState _updateFollowingSuccessful(
 AuthState _getUserSuccessful(AuthState state, GetUserSuccessful action) {
   return state.rebuild((AuthStateBuilder b) {
     b.users[action.user.uid] = action.user;
+  });
+}
+
+AuthState _updateUserSuccessful(
+    AuthState state, UpdateUserSuccessful action) {
+  return state.rebuild((AuthStateBuilder b) {
+    if (action.user != null) {
+      b.user.photoUrl = action.user.photoUrl;
+    }
   });
 }
