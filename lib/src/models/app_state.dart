@@ -8,6 +8,7 @@ abstract class AppState implements Built<AppState, AppStateBuilder> {
         ..posts = PostsState.initialState().toBuilder()
         ..videos = VideosState.initialState().toBuilder()
         ..mentorships = MentorshipsState.initialState().toBuilder()
+        ..trackedItems = TrackingsState.initialState().toBuilder()
         ..playlists = PlaylistsState.initialState().toBuilder();
     });
   }
@@ -26,6 +27,8 @@ abstract class AppState implements Built<AppState, AppStateBuilder> {
   PlaylistsState get playlists;
 
   MentorshipsState get mentorships;
+
+  TrackingsState get trackedItems;
 
   Map<String, dynamic> get json =>
       serializers.serializeWith(serializer, this) as Map<String, dynamic>;

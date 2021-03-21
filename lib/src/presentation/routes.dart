@@ -1,3 +1,5 @@
+import 'package:flutter/cupertino.dart';
+
 import 'package:elearning_platform_mobile/src/presentation/mentoring/add_mentorship_page.dart';
 import 'package:elearning_platform_mobile/src/presentation/mentoring/mentoring_page.dart';
 import 'package:elearning_platform_mobile/src/presentation/playlists/create_playlsit_page.dart';
@@ -8,7 +10,6 @@ import 'package:elearning_platform_mobile/src/presentation/videos/add_video_page
 import 'package:elearning_platform_mobile/src/presentation/videos/select_videos_page.dart';
 import 'package:elearning_platform_mobile/src/presentation/videos/video_details_page.dart';
 import 'package:elearning_platform_mobile/src/presentation/widgets/video_player_page.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:elearning_platform_mobile/src/presentation/home.dart';
 import 'package:elearning_platform_mobile/src/presentation/login/reset_password_page.dart';
 import 'package:elearning_platform_mobile/src/presentation/posts/create_post.dart';
@@ -71,7 +72,7 @@ class AppRoutes {
       return const SearchUsersPage();
     },
     videoPlayer: (BuildContext context) {
-      return VideoPlayerScreen(path: ModalRoute.of(context).settings.arguments);
+      return VideoPlayerScreen(currentVideo: ModalRoute.of(context).settings.arguments);
     },
     selectVideosPage: (BuildContext context) {
       return const SelectVideosPage();

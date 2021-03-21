@@ -1,9 +1,10 @@
-import 'package:elearning_platform_mobile/src/presentation/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+
 import 'package:elearning_platform_mobile/src/actions/index.dart';
 import 'package:elearning_platform_mobile/src/containers/index.dart';
 import 'package:elearning_platform_mobile/src/models/index.dart';
+import 'package:elearning_platform_mobile/src/presentation/routes.dart';
 
 class FeedPage extends StatefulWidget {
   const FeedPage({Key key}) : super(key: key);
@@ -58,7 +59,7 @@ class _FeedPageState extends State<FeedPage> {
                           child: Text(video.description),
                           onPressed: () {
                             Navigator.pushNamed(context, AppRoutes.videoPlayer,
-                                arguments: video.video);
+                                arguments: video);
                           })
                     ],
                   );

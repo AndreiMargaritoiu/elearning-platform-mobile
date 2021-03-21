@@ -4,6 +4,7 @@ import 'package:elearning_platform_mobile/src/reducer/auth_reducer.dart';
 import 'package:elearning_platform_mobile/src/reducer/mentoring_reducer.dart';
 import 'package:elearning_platform_mobile/src/reducer/playlists_reducer.dart';
 import 'package:elearning_platform_mobile/src/reducer/posts_reducer.dart';
+import 'package:elearning_platform_mobile/src/reducer/tracking_reducer.dart';
 import 'package:elearning_platform_mobile/src/reducer/videos_reducer.dart';
 import 'package:redux/redux.dart';
 
@@ -20,6 +21,7 @@ AppState _reducer(AppState state, dynamic action) {
       ..posts = postsReducer(state.posts, action).toBuilder()
       ..videos = videosReducer(state.videos, action).toBuilder()
       ..playlists = playlistsReducer(state.playlists, action).toBuilder()
+      ..trackedItems = trackingReducer(state.trackedItems, action).toBuilder()
       ..mentorships = mentoringReducer(state.mentorships, action).toBuilder();
   });
 }

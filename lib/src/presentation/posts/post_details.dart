@@ -2,13 +2,12 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:elearning_platform_mobile/src/actions/posts/index.dart';
+import 'package:location/location.dart';
+
+import 'package:elearning_platform_mobile/src/actions/index.dart';
 import 'package:elearning_platform_mobile/src/containers/index.dart';
 import 'package:elearning_platform_mobile/src/models/index.dart';
 import 'package:elearning_platform_mobile/src/presentation/routes.dart';
-import 'package:location/location.dart';
-
-import '../../actions/index.dart';
 
 class PostDetails extends StatelessWidget {
   const PostDetails({Key key}) : super(key: key);

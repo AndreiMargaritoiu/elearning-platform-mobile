@@ -2,10 +2,11 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:elearning_platform_mobile/src/init/init.dart';
-import 'package:elearning_platform_mobile/src/models/index.dart';
 import 'package:redux/redux.dart';
 import 'package:rxdart/rxdart.dart';
+
+import 'package:elearning_platform_mobile/src/init/init.dart';
+import 'package:elearning_platform_mobile/src/models/index.dart';
 
 mixin InitMixin<S extends StatefulWidget> on State<S> {
   final Completer<Store<AppState>> _completer = Completer<Store<AppState>>();

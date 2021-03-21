@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:elearning_platform_mobile/src/data/http_client_wrapper.dart';
 import 'package:elearning_platform_mobile/src/data/mentoring_api.dart';
 import 'package:elearning_platform_mobile/src/data/playlists_api.dart';
+import 'package:elearning_platform_mobile/src/data/tracking_api.dart';
 import 'package:elearning_platform_mobile/src/data/videos_api.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -44,12 +45,16 @@ Future<Store<AppState>> init() async {
   final MentoringApi mentoringApi = MentoringApi(
       firestore: firestore, clientWrapper: clientWrapper);
 
+  final TrackingApi trackingApi = TrackingApi(
+      firestore: firestore, clientWrapper: clientWrapper);
+
   final AppEpics epic = AppEpics(
     authApi: authApi,
     postsApi: postsApi,
     videosApi: videosApi,
     playlistsApi: playlistsApi,
     mentoringApi: mentoringApi,
+    trackingApi: trackingApi,
   );
 
   return Store<AppState>(

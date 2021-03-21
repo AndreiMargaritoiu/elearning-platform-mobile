@@ -8,6 +8,7 @@ import 'package:elearning_platform_mobile/src/models/posts/index.dart';
 import 'package:elearning_platform_mobile/src/models/videos/index.dart';
 import 'package:elearning_platform_mobile/src/models/playlists/index.dart';
 import 'package:elearning_platform_mobile/src/models/mentoring/index.dart';
+import 'package:elearning_platform_mobile/src/models/tracking/index.dart';
 
 import 'package:elearning_platform_mobile/src/models/serializers.dart';
 
@@ -16,6 +17,7 @@ export 'package:elearning_platform_mobile/src/models/posts/index.dart';
 export 'package:elearning_platform_mobile/src/models/videos/index.dart';
 export 'package:elearning_platform_mobile/src/models/playlists/index.dart';
 export 'package:elearning_platform_mobile/src/models/mentoring/index.dart';
+export 'package:elearning_platform_mobile/src/models/tracking/index.dart';
 
 part 'app_state.dart';
 part 'index.g.dart';

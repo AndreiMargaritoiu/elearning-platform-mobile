@@ -20,6 +20,9 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(PostInfo.serializer)
       ..add(PostsState.serializer)
       ..add(RegistrationInfo.serializer)
+      ..add(Tracking.serializer)
+      ..add(TrackingInfo.serializer)
+      ..add(TrackingsState.serializer)
       ..add(Video.serializer)
       ..add(VideoInfo.serializer)
       ..add(VideosState.serializer)
@@ -68,6 +71,9 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
           () => new ListBuilder<String>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(Tracking)]),
+          () => new ListBuilder<Tracking>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(Video)]),
           () => new ListBuilder<Video>())

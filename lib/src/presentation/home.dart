@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+
 import 'package:elearning_platform_mobile/src/containers/index.dart';
 import 'package:elearning_platform_mobile/src/models/index.dart';
-import 'file:///C:/Users/Andrei/Desktop/licenta/elearning_platform_mobile/lib/src/presentation/menu_page.dart';
 import 'package:elearning_platform_mobile/src/presentation/login/login_page.dart';
+import 'package:elearning_platform_mobile/src/presentation/menu_page.dart';
 
 class Home extends StatelessWidget {
   const Home({Key key}) : super(key: key);
