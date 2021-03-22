@@ -44,7 +44,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
           builder: (BuildContext context, TrackingInfo info) {
             return Scaffold(
               appBar: AppBar(
-                title: const Text('Butterfly Video'),
+                title: Text(widget.currentVideo.title),
               ),
               // Use a FutureBuilder to display a loading spinner while waiting for the
               // VideoPlayerController to finish initializing.

@@ -23,12 +23,7 @@ class _PlaylistsFeedPageState extends State<PlaylistsFeedPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const FlutterLogo(),
-        centerTitle: false,
-      ),
-      body: UsersContainer(
+    return UsersContainer(
         builder: (BuildContext context, Map<String, AppUser> users) {
           return PlaylistsContainer(
             builder: (BuildContext context, List<Playlist> playlists) {
@@ -55,7 +50,43 @@ class _PlaylistsFeedPageState extends State<PlaylistsFeedPage> {
                         title: Text(user.username),
                       ),
                       MaterialButton(
-                          child: Text(playlist.title), onPressed: () {})
+                          child: Card(
+                            child: Row(
+                              children: <Widget>[
+                                if (playlist.thumbnailUrl != null &&
+                                    playlist.thumbnailUrl.isNotEmpty)
+                                  Image.network(
+                                    playlist.thumbnailUrl,
+                                    height: 120,
+                                    width: 80,
+                                    fit: BoxFit.cover,
+                                  )
+                                else
+                                  Container(
+                                    height: 120,
+                                    width: 80,
+                                    decoration: const BoxDecoration(
+                                      color: Colors.green,
+                                    ),
+                                  ),
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 8, top: 8, bottom: 8),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: <Widget>[
+                                      Text(playlist.title),
+                                      Text(playlist.description),
+                                      Text(
+                                          'Videos: ${playlist.videoRefs.length}'),
+                                    ],
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                          onPressed: () {})
                     ],
                   );
                 },
@@ -63,7 +94,6 @@ class _PlaylistsFeedPageState extends State<PlaylistsFeedPage> {
             },
           );
         },
-      ),
     );
   }
 }

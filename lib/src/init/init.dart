@@ -41,7 +41,7 @@ Future<Store<AppState>> init() async {
       firestore: firestore, storage: storage, clientWrapper: clientWrapper);
 
   final PlaylistsApi playlistsApi = PlaylistsApi(
-      firestore: firestore, clientWrapper: clientWrapper);
+      firestore: firestore, storage: storage, clientWrapper: clientWrapper);
 
   final MentoringApi mentoringApi = MentoringApi(
       firestore: firestore, clientWrapper: clientWrapper);

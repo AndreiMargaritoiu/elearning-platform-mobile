@@ -12,10 +12,11 @@ abstract class Playlist implements Built<Playlist, PlaylistBuilder> {
 
   String get uid;
 
+  String get title;
+
   BuiltList<String> get videoRefs;
 
-  @nullable
-  String get title;
+  int get createdAt;
 
   @nullable
   String get description;
@@ -24,7 +25,7 @@ abstract class Playlist implements Built<Playlist, PlaylistBuilder> {
   String get category;
 
   @nullable
-  int get createdAt;
+  String get thumbnailUrl;
 
   Map<String, dynamic> get json =>
       serializers.serializeWith(serializer, this) as Map<String, dynamic>;

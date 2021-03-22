@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:file_picker/file_picker.dart';
 
 import 'package:elearning_platform_mobile/src/actions/index.dart';
-import 'package:elearning_platform_mobile/src/containers/index.dart';
 import 'package:elearning_platform_mobile/src/models/index.dart';
 import 'package:elearning_platform_mobile/src/presentation/routes.dart';
+import 'package:elearning_platform_mobile/src/presentation/videos/videos_feed_page.dart';
 
 class FeedPage extends StatefulWidget {
   const FeedPage({Key key}) : super(key: key);
@@ -14,12 +15,22 @@ class FeedPage extends StatefulWidget {
 }
 
 class _FeedPageState extends State<FeedPage> {
+  bool isSearchActive = false;
+
   @override
   void initState() {
     super.initState();
+  }
 
-    StoreProvider.of<AppState>(context, listen: false)
-        .dispatch(const ListenForVideos());
+  void _addVideo() async {
+    final FilePickerResult file = await FilePicker.platform.pickFiles();
+    final String path = file.files.single.path;
+    print(path);
+    if (path != null) {
+      StoreProvider.of<AppState>(context)
+          .dispatch(UpdateVideoInfo(addVideo: path));
+      Navigator.pushNamed(context, AppRoutes.addVideoPage);
+    }
   }
 
   @override
@@ -28,77 +39,22 @@ class _FeedPageState extends State<FeedPage> {
       appBar: AppBar(
         title: const FlutterLogo(),
         centerTitle: false,
-      ),
-      body: UsersContainer(
-        builder: (BuildContext context, Map<String, AppUser> users) {
-          return VideosContainer(
-            builder: (BuildContext context, List<Video> videos) {
-              return ListView.builder(
-                itemCount: videos.length,
-                itemBuilder: (BuildContext context, int index) {
-                  final Video video = videos[index];
-                  final AppUser user = users[video.uid];
-
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      ListTile(
-                        leading: user.photoUrl != null
-                            ? CircleAvatar(
-                                backgroundImage: NetworkImage(user.photoUrl),
-                              )
-                            : CircleAvatar(
-                                backgroundColor: Colors.grey.shade900,
-                                child: Text(
-                                  user.username[0].toUpperCase(),
-                                ),
-                              ),
-                        title: Text(user.username),
-                      ),
-                      MaterialButton(
-                        child: Card(
-                          child: Row(
-                            children: <Widget>[
-                              if (video.thumbnailUrl != null &&
-                                  video.thumbnailUrl.isNotEmpty)
-                                Image.network(
-                                  video.thumbnailUrl,
-                                  height: 120,
-                                  width: 80,
-                                  fit: BoxFit.cover,
-                                )
-                              else
-                                Container(height: 120,
-                                  width: 80,
-                                  decoration: const BoxDecoration(
-                                    color: Colors.green,
-                                  ),
-                                 ),
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                    left: 8, top: 8, bottom: 8),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    Text(video.title),
-                                    Text(video.description),
-                                  ],
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                        onPressed: () {
-                          Navigator.pushNamed(context, AppRoutes.videoPlayer,
-                              arguments: video);
-                        },
-                      )
-                    ],
-                  );
-                },
-              );
+        actions: <Widget>[
+          IconButton(
+            icon: const Icon(Icons.add_circle_outline),
+            onPressed: () {
+              _addContentModal(context);
             },
-          );
+          ),
+          IconButton(
+            icon: const Icon(Icons.favorite_outline),
+            onPressed: () {
+              _addContentModal(context);
+            },
+          ),
+        ],
+      ),
+      body: const VideosFeedPage(),
 
 //          return PostsContainer(
 //            builder: (BuildContext context, List<Post> posts) {
@@ -176,8 +132,75 @@ class _FeedPageState extends State<FeedPage> {
 //              );
 //            },
 //          );
-        },
-      ),
+//        },
+//      ),
+    );
+  }
+
+  void _addContentModal(BuildContext context) {
+    showModalBottomSheet<Widget>(
+      context: context,
+      builder: (BuildContext bc) {
+        return Container(
+          height: MediaQuery.of(context).size.height,
+          child: Padding(
+            padding: const EdgeInsets.only(top: 8),
+            child: Column(
+              children: <Widget>[
+                Container(
+                  height: 2,
+                  width: MediaQuery.of(context).size.width * .4,
+                  color: Colors.grey,
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Column(
+                    children: <Widget>[
+                      Container(
+                        child: const Text('Add content'),
+                      ),
+                      Row(
+                        children: <Widget>[
+                          IconButton(
+                            icon: const Icon(Icons.add_to_queue_outlined),
+                            onPressed: () {
+                              _addVideo();
+                            },
+                          ),
+                          MaterialButton(
+                            child: const Text('Video'),
+                            onPressed: () {
+                              _addVideo();
+                            },
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: <Widget>[
+                          IconButton(
+                            icon: const Icon(Icons.playlist_add_rounded),
+                            onPressed: () {
+                              Navigator.pushNamed(
+                                  context, AppRoutes.createPlaylistPage);
+                            },
+                          ),
+                          MaterialButton(
+                            child: const Text('Playlist'),
+                            onPressed: () {
+                              Navigator.pushNamed(
+                                  context, AppRoutes.createPlaylistPage);
+                            },
+                          )
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 }

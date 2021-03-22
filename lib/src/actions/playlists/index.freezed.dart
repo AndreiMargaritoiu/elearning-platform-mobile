@@ -2127,9 +2127,9 @@ class _$GetPlaylistByIdTearOff {
   const _$GetPlaylistByIdTearOff();
 
 // ignore: unused_element
-  GetPlaylistById$ call({@required String id}) {
+  GetPlaylistById$ call(String id) {
     return GetPlaylistById$(
-      id: id,
+      id,
     );
   }
 
@@ -2223,14 +2223,14 @@ class _$GetPlaylistById$CopyWithImpl<$Res>
     Object id = freezed,
   }) {
     return _then(GetPlaylistById$(
-      id: id == freezed ? _value.id : id as String,
+      id == freezed ? _value.id : id as String,
     ));
   }
 }
 
 /// @nodoc
 class _$GetPlaylistById$ implements GetPlaylistById$ {
-  const _$GetPlaylistById$({@required this.id}) : assert(id != null);
+  const _$GetPlaylistById$(this.id) : assert(id != null);
 
   @override
   final String id;
@@ -2314,7 +2314,7 @@ class _$GetPlaylistById$ implements GetPlaylistById$ {
 }
 
 abstract class GetPlaylistById$ implements GetPlaylistById {
-  const factory GetPlaylistById$({@required String id}) = _$GetPlaylistById$;
+  const factory GetPlaylistById$(String id) = _$GetPlaylistById$;
 
   String get id;
   $GetPlaylistById$CopyWith<GetPlaylistById$> get copyWith;
@@ -2574,9 +2574,10 @@ class _$UpdatePlaylistTearOff {
   const _$UpdatePlaylistTearOff();
 
 // ignore: unused_element
-  UpdatePlaylist$ call({@required String id}) {
+  UpdatePlaylist$ call(String id, {List<String> newVideos}) {
     return UpdatePlaylist$(
-      id: id,
+      id,
+      newVideos: newVideos,
     );
   }
 
@@ -2603,13 +2604,13 @@ const $UpdatePlaylist = _$UpdatePlaylistTearOff();
 mixin _$UpdatePlaylist {
   @optionalTypeArgs
   Result when<Result extends Object>(
-    Result $default(String id), {
+    Result $default(String id, List<String> newVideos), {
     @required Result successful(Playlist playlist),
     @required Result error(Object error),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>(
-    Result $default(String id), {
+    Result $default(String id, List<String> newVideos), {
     Result successful(Playlist playlist),
     Result error(Object error),
     @required Result orElse(),
@@ -2651,7 +2652,7 @@ abstract class $UpdatePlaylist$CopyWith<$Res> {
   factory $UpdatePlaylist$CopyWith(
           UpdatePlaylist$ value, $Res Function(UpdatePlaylist$) then) =
       _$UpdatePlaylist$CopyWithImpl<$Res>;
-  $Res call({String id});
+  $Res call({String id, List<String> newVideos});
 }
 
 /// @nodoc
@@ -2668,23 +2669,28 @@ class _$UpdatePlaylist$CopyWithImpl<$Res>
   @override
   $Res call({
     Object id = freezed,
+    Object newVideos = freezed,
   }) {
     return _then(UpdatePlaylist$(
-      id: id == freezed ? _value.id : id as String,
+      id == freezed ? _value.id : id as String,
+      newVideos:
+          newVideos == freezed ? _value.newVideos : newVideos as List<String>,
     ));
   }
 }
 
 /// @nodoc
 class _$UpdatePlaylist$ implements UpdatePlaylist$ {
-  const _$UpdatePlaylist$({@required this.id}) : assert(id != null);
+  const _$UpdatePlaylist$(this.id, {this.newVideos}) : assert(id != null);
 
   @override
   final String id;
+  @override
+  final List<String> newVideos;
 
   @override
   String toString() {
-    return 'UpdatePlaylist(id: $id)';
+    return 'UpdatePlaylist(id: $id, newVideos: $newVideos)';
   }
 
   @override
@@ -2692,12 +2698,17 @@ class _$UpdatePlaylist$ implements UpdatePlaylist$ {
     return identical(this, other) ||
         (other is UpdatePlaylist$ &&
             (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)));
+                const DeepCollectionEquality().equals(other.id, id)) &&
+            (identical(other.newVideos, newVideos) ||
+                const DeepCollectionEquality()
+                    .equals(other.newVideos, newVideos)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(id);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(id) ^
+      const DeepCollectionEquality().hash(newVideos);
 
   @override
   $UpdatePlaylist$CopyWith<UpdatePlaylist$> get copyWith =>
@@ -2706,27 +2717,27 @@ class _$UpdatePlaylist$ implements UpdatePlaylist$ {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>(
-    Result $default(String id), {
+    Result $default(String id, List<String> newVideos), {
     @required Result successful(Playlist playlist),
     @required Result error(Object error),
   }) {
     assert($default != null);
     assert(successful != null);
     assert(error != null);
-    return $default(id);
+    return $default(id, newVideos);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>(
-    Result $default(String id), {
+    Result $default(String id, List<String> newVideos), {
     Result successful(Playlist playlist),
     Result error(Object error),
     @required Result orElse(),
   }) {
     assert(orElse != null);
     if ($default != null) {
-      return $default(id);
+      return $default(id, newVideos);
     }
     return orElse();
   }
@@ -2761,9 +2772,11 @@ class _$UpdatePlaylist$ implements UpdatePlaylist$ {
 }
 
 abstract class UpdatePlaylist$ implements UpdatePlaylist {
-  const factory UpdatePlaylist$({@required String id}) = _$UpdatePlaylist$;
+  const factory UpdatePlaylist$(String id, {List<String> newVideos}) =
+      _$UpdatePlaylist$;
 
   String get id;
+  List<String> get newVideos;
   $UpdatePlaylist$CopyWith<UpdatePlaylist$> get copyWith;
 }
 
@@ -2830,7 +2843,7 @@ class _$UpdatePlaylistSuccessful implements UpdatePlaylistSuccessful {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>(
-    Result $default(String id), {
+    Result $default(String id, List<String> newVideos), {
     @required Result successful(Playlist playlist),
     @required Result error(Object error),
   }) {
@@ -2843,7 +2856,7 @@ class _$UpdatePlaylistSuccessful implements UpdatePlaylistSuccessful {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>(
-    Result $default(String id), {
+    Result $default(String id, List<String> newVideos), {
     Result successful(Playlist playlist),
     Result error(Object error),
     @required Result orElse(),
@@ -2954,7 +2967,7 @@ class _$UpdatePlaylistError implements UpdatePlaylistError {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>(
-    Result $default(String id), {
+    Result $default(String id, List<String> newVideos), {
     @required Result successful(Playlist playlist),
     @required Result error(Object error),
   }) {
@@ -2967,7 +2980,7 @@ class _$UpdatePlaylistError implements UpdatePlaylistError {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>(
-    Result $default(String id), {
+    Result $default(String id, List<String> newVideos), {
     Result successful(Playlist playlist),
     Result error(Object error),
     @required Result orElse(),
@@ -3020,9 +3033,9 @@ class _$DeletePlaylistTearOff {
   const _$DeletePlaylistTearOff();
 
 // ignore: unused_element
-  DeletePlaylist$ call({@required String id}) {
+  DeletePlaylist$ call(String id) {
     return DeletePlaylist$(
-      id: id,
+      id,
     );
   }
 
@@ -3114,14 +3127,14 @@ class _$DeletePlaylist$CopyWithImpl<$Res>
     Object id = freezed,
   }) {
     return _then(DeletePlaylist$(
-      id: id == freezed ? _value.id : id as String,
+      id == freezed ? _value.id : id as String,
     ));
   }
 }
 
 /// @nodoc
 class _$DeletePlaylist$ implements DeletePlaylist$ {
-  const _$DeletePlaylist$({@required this.id}) : assert(id != null);
+  const _$DeletePlaylist$(this.id) : assert(id != null);
 
   @override
   final String id;
@@ -3205,7 +3218,7 @@ class _$DeletePlaylist$ implements DeletePlaylist$ {
 }
 
 abstract class DeletePlaylist$ implements DeletePlaylist {
-  const factory DeletePlaylist$({@required String id}) = _$DeletePlaylist$;
+  const factory DeletePlaylist$(String id) = _$DeletePlaylist$;
 
   String get id;
   $DeletePlaylist$CopyWith<DeletePlaylist$> get copyWith;
@@ -3440,12 +3453,16 @@ class _$UpdatePlaylistInfoTearOff {
   UpdatePlaylistInfo$ call(
       {String addVideoRef,
       String removeVideoRef,
+      String addThumbnail,
+      String removeThumbnail,
       String description,
       String title,
       String category}) {
     return UpdatePlaylistInfo$(
       addVideoRef: addVideoRef,
       removeVideoRef: removeVideoRef,
+      addThumbnail: addThumbnail,
+      removeThumbnail: removeThumbnail,
       description: description,
       title: title,
       category: category,
@@ -3461,6 +3478,8 @@ const $UpdatePlaylistInfo = _$UpdatePlaylistInfoTearOff();
 mixin _$UpdatePlaylistInfo {
   String get addVideoRef;
   String get removeVideoRef;
+  String get addThumbnail;
+  String get removeThumbnail;
   String get description;
   String get title;
   String get category;
@@ -3476,6 +3495,8 @@ abstract class $UpdatePlaylistInfoCopyWith<$Res> {
   $Res call(
       {String addVideoRef,
       String removeVideoRef,
+      String addThumbnail,
+      String removeThumbnail,
       String description,
       String title,
       String category});
@@ -3494,6 +3515,8 @@ class _$UpdatePlaylistInfoCopyWithImpl<$Res>
   $Res call({
     Object addVideoRef = freezed,
     Object removeVideoRef = freezed,
+    Object addThumbnail = freezed,
+    Object removeThumbnail = freezed,
     Object description = freezed,
     Object title = freezed,
     Object category = freezed,
@@ -3504,6 +3527,12 @@ class _$UpdatePlaylistInfoCopyWithImpl<$Res>
       removeVideoRef: removeVideoRef == freezed
           ? _value.removeVideoRef
           : removeVideoRef as String,
+      addThumbnail: addThumbnail == freezed
+          ? _value.addThumbnail
+          : addThumbnail as String,
+      removeThumbnail: removeThumbnail == freezed
+          ? _value.removeThumbnail
+          : removeThumbnail as String,
       description:
           description == freezed ? _value.description : description as String,
       title: title == freezed ? _value.title : title as String,
@@ -3522,6 +3551,8 @@ abstract class $UpdatePlaylistInfo$CopyWith<$Res>
   $Res call(
       {String addVideoRef,
       String removeVideoRef,
+      String addThumbnail,
+      String removeThumbnail,
       String description,
       String title,
       String category});
@@ -3542,6 +3573,8 @@ class _$UpdatePlaylistInfo$CopyWithImpl<$Res>
   $Res call({
     Object addVideoRef = freezed,
     Object removeVideoRef = freezed,
+    Object addThumbnail = freezed,
+    Object removeThumbnail = freezed,
     Object description = freezed,
     Object title = freezed,
     Object category = freezed,
@@ -3552,6 +3585,12 @@ class _$UpdatePlaylistInfo$CopyWithImpl<$Res>
       removeVideoRef: removeVideoRef == freezed
           ? _value.removeVideoRef
           : removeVideoRef as String,
+      addThumbnail: addThumbnail == freezed
+          ? _value.addThumbnail
+          : addThumbnail as String,
+      removeThumbnail: removeThumbnail == freezed
+          ? _value.removeThumbnail
+          : removeThumbnail as String,
       description:
           description == freezed ? _value.description : description as String,
       title: title == freezed ? _value.title : title as String,
@@ -3565,6 +3604,8 @@ class _$UpdatePlaylistInfo$ implements UpdatePlaylistInfo$ {
   const _$UpdatePlaylistInfo$(
       {this.addVideoRef,
       this.removeVideoRef,
+      this.addThumbnail,
+      this.removeThumbnail,
       this.description,
       this.title,
       this.category});
@@ -3574,6 +3615,10 @@ class _$UpdatePlaylistInfo$ implements UpdatePlaylistInfo$ {
   @override
   final String removeVideoRef;
   @override
+  final String addThumbnail;
+  @override
+  final String removeThumbnail;
+  @override
   final String description;
   @override
   final String title;
@@ -3582,7 +3627,7 @@ class _$UpdatePlaylistInfo$ implements UpdatePlaylistInfo$ {
 
   @override
   String toString() {
-    return 'UpdatePlaylistInfo(addVideoRef: $addVideoRef, removeVideoRef: $removeVideoRef, description: $description, title: $title, category: $category)';
+    return 'UpdatePlaylistInfo(addVideoRef: $addVideoRef, removeVideoRef: $removeVideoRef, addThumbnail: $addThumbnail, removeThumbnail: $removeThumbnail, description: $description, title: $title, category: $category)';
   }
 
   @override
@@ -3595,6 +3640,12 @@ class _$UpdatePlaylistInfo$ implements UpdatePlaylistInfo$ {
             (identical(other.removeVideoRef, removeVideoRef) ||
                 const DeepCollectionEquality()
                     .equals(other.removeVideoRef, removeVideoRef)) &&
+            (identical(other.addThumbnail, addThumbnail) ||
+                const DeepCollectionEquality()
+                    .equals(other.addThumbnail, addThumbnail)) &&
+            (identical(other.removeThumbnail, removeThumbnail) ||
+                const DeepCollectionEquality()
+                    .equals(other.removeThumbnail, removeThumbnail)) &&
             (identical(other.description, description) ||
                 const DeepCollectionEquality()
                     .equals(other.description, description)) &&
@@ -3610,6 +3661,8 @@ class _$UpdatePlaylistInfo$ implements UpdatePlaylistInfo$ {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(addVideoRef) ^
       const DeepCollectionEquality().hash(removeVideoRef) ^
+      const DeepCollectionEquality().hash(addThumbnail) ^
+      const DeepCollectionEquality().hash(removeThumbnail) ^
       const DeepCollectionEquality().hash(description) ^
       const DeepCollectionEquality().hash(title) ^
       const DeepCollectionEquality().hash(category);
@@ -3623,6 +3676,8 @@ abstract class UpdatePlaylistInfo$ implements UpdatePlaylistInfo {
   const factory UpdatePlaylistInfo$(
       {String addVideoRef,
       String removeVideoRef,
+      String addThumbnail,
+      String removeThumbnail,
       String description,
       String title,
       String category}) = _$UpdatePlaylistInfo$;
@@ -3631,6 +3686,10 @@ abstract class UpdatePlaylistInfo$ implements UpdatePlaylistInfo {
   String get addVideoRef;
   @override
   String get removeVideoRef;
+  @override
+  String get addThumbnail;
+  @override
+  String get removeThumbnail;
   @override
   String get description;
   @override

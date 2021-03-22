@@ -20,7 +20,7 @@ class _MenuPageState extends State<MenuPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: <Widget>[
-        const FeedPage(),
+        FeedPage(),
         const DiscoverPage(),
         const CreatePlaylistPage(),
         const MentoringPage(),
@@ -33,7 +33,7 @@ class _MenuPageState extends State<MenuPage> {
         },
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.video_collection_sharp),
+            icon: Icon(Icons.home_filled),
             label: 'feed',
           ),
           BottomNavigationBarItem(
@@ -41,7 +41,7 @@ class _MenuPageState extends State<MenuPage> {
             label: 'discover',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.trending_up_outlined),
+            icon: Icon(Icons.video_collection),
             label: 'trending',
           ),
           BottomNavigationBarItem(

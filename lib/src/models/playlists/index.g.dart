@@ -26,17 +26,17 @@ class _$PlaylistSerializer implements StructuredSerializer<Playlist> {
       serializers.serialize(object.id, specifiedType: const FullType(String)),
       'uid',
       serializers.serialize(object.uid, specifiedType: const FullType(String)),
+      'title',
+      serializers.serialize(object.title,
+          specifiedType: const FullType(String)),
       'videoRefs',
       serializers.serialize(object.videoRefs,
           specifiedType:
               const FullType(BuiltList, const [const FullType(String)])),
+      'createdAt',
+      serializers.serialize(object.createdAt,
+          specifiedType: const FullType(int)),
     ];
-    if (object.title != null) {
-      result
-        ..add('title')
-        ..add(serializers.serialize(object.title,
-            specifiedType: const FullType(String)));
-    }
     if (object.description != null) {
       result
         ..add('description')
@@ -49,11 +49,11 @@ class _$PlaylistSerializer implements StructuredSerializer<Playlist> {
         ..add(serializers.serialize(object.category,
             specifiedType: const FullType(String)));
     }
-    if (object.createdAt != null) {
+    if (object.thumbnailUrl != null) {
       result
-        ..add('createdAt')
-        ..add(serializers.serialize(object.createdAt,
-            specifiedType: const FullType(int)));
+        ..add('thumbnailUrl')
+        ..add(serializers.serialize(object.thumbnailUrl,
+            specifiedType: const FullType(String)));
     }
     return result;
   }
@@ -77,15 +77,19 @@ class _$PlaylistSerializer implements StructuredSerializer<Playlist> {
           result.uid = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
+        case 'title':
+          result.title = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
         case 'videoRefs':
           result.videoRefs.replace(serializers.deserialize(value,
                   specifiedType:
                       const FullType(BuiltList, const [const FullType(String)]))
               as BuiltList<Object>);
           break;
-        case 'title':
-          result.title = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+        case 'createdAt':
+          result.createdAt = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int;
           break;
         case 'description':
           result.description = serializers.deserialize(value,
@@ -95,9 +99,9 @@ class _$PlaylistSerializer implements StructuredSerializer<Playlist> {
           result.category = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
-        case 'createdAt':
-          result.createdAt = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+        case 'thumbnailUrl':
+          result.thumbnailUrl = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
           break;
       }
     }
@@ -134,6 +138,12 @@ class _$PlaylistInfoSerializer implements StructuredSerializer<PlaylistInfo> {
         ..add(serializers.serialize(object.category,
             specifiedType: const FullType(String)));
     }
+    if (object.thumbnailPath != null) {
+      result
+        ..add('thumbnailPath')
+        ..add(serializers.serialize(object.thumbnailPath,
+            specifiedType: const FullType(String)));
+    }
     if (object.videoRefs != null) {
       result
         ..add('videoRefs')
@@ -165,6 +175,10 @@ class _$PlaylistInfoSerializer implements StructuredSerializer<PlaylistInfo> {
           break;
         case 'category':
           result.category = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'thumbnailPath':
+          result.thumbnailPath = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
         case 'videoRefs':
@@ -238,15 +252,17 @@ class _$Playlist extends Playlist {
   @override
   final String uid;
   @override
+  final String title;
+  @override
   final BuiltList<String> videoRefs;
   @override
-  final String title;
+  final int createdAt;
   @override
   final String description;
   @override
   final String category;
   @override
-  final int createdAt;
+  final String thumbnailUrl;
 
   factory _$Playlist([void Function(PlaylistBuilder) updates]) =>
       (new PlaylistBuilder()..update(updates)).build();
@@ -254,11 +270,12 @@ class _$Playlist extends Playlist {
   _$Playlist._(
       {this.id,
       this.uid,
-      this.videoRefs,
       this.title,
+      this.videoRefs,
+      this.createdAt,
       this.description,
       this.category,
-      this.createdAt})
+      this.thumbnailUrl})
       : super._() {
     if (id == null) {
       throw new BuiltValueNullFieldError('Playlist', 'id');
@@ -266,8 +283,14 @@ class _$Playlist extends Playlist {
     if (uid == null) {
       throw new BuiltValueNullFieldError('Playlist', 'uid');
     }
+    if (title == null) {
+      throw new BuiltValueNullFieldError('Playlist', 'title');
+    }
     if (videoRefs == null) {
       throw new BuiltValueNullFieldError('Playlist', 'videoRefs');
+    }
+    if (createdAt == null) {
+      throw new BuiltValueNullFieldError('Playlist', 'createdAt');
     }
   }
 
@@ -284,11 +307,12 @@ class _$Playlist extends Playlist {
     return other is Playlist &&
         id == other.id &&
         uid == other.uid &&
-        videoRefs == other.videoRefs &&
         title == other.title &&
+        videoRefs == other.videoRefs &&
+        createdAt == other.createdAt &&
         description == other.description &&
         category == other.category &&
-        createdAt == other.createdAt;
+        thumbnailUrl == other.thumbnailUrl;
   }
 
   @override
@@ -297,12 +321,14 @@ class _$Playlist extends Playlist {
         $jc(
             $jc(
                 $jc(
-                    $jc($jc($jc(0, id.hashCode), uid.hashCode),
+                    $jc(
+                        $jc($jc($jc(0, id.hashCode), uid.hashCode),
+                            title.hashCode),
                         videoRefs.hashCode),
-                    title.hashCode),
+                    createdAt.hashCode),
                 description.hashCode),
             category.hashCode),
-        createdAt.hashCode));
+        thumbnailUrl.hashCode));
   }
 
   @override
@@ -310,11 +336,12 @@ class _$Playlist extends Playlist {
     return (newBuiltValueToStringHelper('Playlist')
           ..add('id', id)
           ..add('uid', uid)
-          ..add('videoRefs', videoRefs)
           ..add('title', title)
+          ..add('videoRefs', videoRefs)
+          ..add('createdAt', createdAt)
           ..add('description', description)
           ..add('category', category)
-          ..add('createdAt', createdAt))
+          ..add('thumbnailUrl', thumbnailUrl))
         .toString();
   }
 }
@@ -330,14 +357,18 @@ class PlaylistBuilder implements Builder<Playlist, PlaylistBuilder> {
   String get uid => _$this._uid;
   set uid(String uid) => _$this._uid = uid;
 
+  String _title;
+  String get title => _$this._title;
+  set title(String title) => _$this._title = title;
+
   ListBuilder<String> _videoRefs;
   ListBuilder<String> get videoRefs =>
       _$this._videoRefs ??= new ListBuilder<String>();
   set videoRefs(ListBuilder<String> videoRefs) => _$this._videoRefs = videoRefs;
 
-  String _title;
-  String get title => _$this._title;
-  set title(String title) => _$this._title = title;
+  int _createdAt;
+  int get createdAt => _$this._createdAt;
+  set createdAt(int createdAt) => _$this._createdAt = createdAt;
 
   String _description;
   String get description => _$this._description;
@@ -347,9 +378,9 @@ class PlaylistBuilder implements Builder<Playlist, PlaylistBuilder> {
   String get category => _$this._category;
   set category(String category) => _$this._category = category;
 
-  int _createdAt;
-  int get createdAt => _$this._createdAt;
-  set createdAt(int createdAt) => _$this._createdAt = createdAt;
+  String _thumbnailUrl;
+  String get thumbnailUrl => _$this._thumbnailUrl;
+  set thumbnailUrl(String thumbnailUrl) => _$this._thumbnailUrl = thumbnailUrl;
 
   PlaylistBuilder();
 
@@ -357,11 +388,12 @@ class PlaylistBuilder implements Builder<Playlist, PlaylistBuilder> {
     if (_$v != null) {
       _id = _$v.id;
       _uid = _$v.uid;
-      _videoRefs = _$v.videoRefs?.toBuilder();
       _title = _$v.title;
+      _videoRefs = _$v.videoRefs?.toBuilder();
+      _createdAt = _$v.createdAt;
       _description = _$v.description;
       _category = _$v.category;
-      _createdAt = _$v.createdAt;
+      _thumbnailUrl = _$v.thumbnailUrl;
       _$v = null;
     }
     return this;
@@ -388,11 +420,12 @@ class PlaylistBuilder implements Builder<Playlist, PlaylistBuilder> {
           new _$Playlist._(
               id: id,
               uid: uid,
-              videoRefs: videoRefs.build(),
               title: title,
+              videoRefs: videoRefs.build(),
+              createdAt: createdAt,
               description: description,
               category: category,
-              createdAt: createdAt);
+              thumbnailUrl: thumbnailUrl);
     } catch (_) {
       String _$failedField;
       try {
@@ -417,13 +450,19 @@ class _$PlaylistInfo extends PlaylistInfo {
   @override
   final String category;
   @override
+  final String thumbnailPath;
+  @override
   final BuiltList<String> videoRefs;
 
   factory _$PlaylistInfo([void Function(PlaylistInfoBuilder) updates]) =>
       (new PlaylistInfoBuilder()..update(updates)).build();
 
   _$PlaylistInfo._(
-      {this.title, this.description, this.category, this.videoRefs})
+      {this.title,
+      this.description,
+      this.category,
+      this.thumbnailPath,
+      this.videoRefs})
       : super._();
 
   @override
@@ -440,14 +479,17 @@ class _$PlaylistInfo extends PlaylistInfo {
         title == other.title &&
         description == other.description &&
         category == other.category &&
+        thumbnailPath == other.thumbnailPath &&
         videoRefs == other.videoRefs;
   }
 
   @override
   int get hashCode {
     return $jf($jc(
-        $jc($jc($jc(0, title.hashCode), description.hashCode),
-            category.hashCode),
+        $jc(
+            $jc($jc($jc(0, title.hashCode), description.hashCode),
+                category.hashCode),
+            thumbnailPath.hashCode),
         videoRefs.hashCode));
   }
 
@@ -457,6 +499,7 @@ class _$PlaylistInfo extends PlaylistInfo {
           ..add('title', title)
           ..add('description', description)
           ..add('category', category)
+          ..add('thumbnailPath', thumbnailPath)
           ..add('videoRefs', videoRefs))
         .toString();
   }
@@ -478,6 +521,11 @@ class PlaylistInfoBuilder
   String get category => _$this._category;
   set category(String category) => _$this._category = category;
 
+  String _thumbnailPath;
+  String get thumbnailPath => _$this._thumbnailPath;
+  set thumbnailPath(String thumbnailPath) =>
+      _$this._thumbnailPath = thumbnailPath;
+
   ListBuilder<String> _videoRefs;
   ListBuilder<String> get videoRefs =>
       _$this._videoRefs ??= new ListBuilder<String>();
@@ -490,6 +538,7 @@ class PlaylistInfoBuilder
       _title = _$v.title;
       _description = _$v.description;
       _category = _$v.category;
+      _thumbnailPath = _$v.thumbnailPath;
       _videoRefs = _$v.videoRefs?.toBuilder();
       _$v = null;
     }
@@ -518,6 +567,7 @@ class PlaylistInfoBuilder
               title: title,
               description: description,
               category: category,
+              thumbnailPath: thumbnailPath,
               videoRefs: _videoRefs?.build());
     } catch (_) {
       String _$failedField;

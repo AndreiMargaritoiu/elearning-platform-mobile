@@ -21,6 +21,10 @@ PlaylistsState _updatePlaylistInfo(
       b.info.videoRefs.add(action.addVideoRef);
     } else if (action.removeVideoRef != null) {
       b.info.videoRefs.remove(action.removeVideoRef);
+    } else if (action.addThumbnail != null) {
+      b.info.thumbnailPath = action.addThumbnail;
+    } else if (action.removeThumbnail != null) {
+      b.info.thumbnailPath = null;
     } else if (action.description != null) {
       b.info.description = action.description;
     } else if (action.title != null) {

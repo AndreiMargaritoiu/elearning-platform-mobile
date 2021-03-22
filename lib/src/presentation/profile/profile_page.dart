@@ -105,8 +105,13 @@ class _ProfilePageState extends State<ProfilePage> {
                             }
                           }),
                     Padding(
-                        padding: const EdgeInsets.only(left: 16),
-                        child: Text(user.email))
+                      padding: const EdgeInsets.only(left: 16),
+                      child: Column(
+                        children: <Widget>[
+                          Text(user.email),
+                        ],
+                      ),
+                    )
                   ],
                 ),
               ),

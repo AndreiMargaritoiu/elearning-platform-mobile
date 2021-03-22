@@ -20,6 +20,9 @@ abstract class PlaylistInfo
   String get category;
 
   @nullable
+  String get thumbnailPath;
+
+  @nullable
   BuiltList<String> get videoRefs;
 
   Map<String, dynamic> get json =>

@@ -38,8 +38,9 @@ class PlaylistsEpics {
     return actions //
         .flatMap((UpdatePlaylist$ action) => Stream<UpdatePlaylist$>.value(
                 action)
-            .asyncMap((UpdatePlaylist$ action) =>
-                _api.updatePlaylist(store.state.playlists.info, action.id))
+            .asyncMap((UpdatePlaylist$ action) => _api.updatePlaylist(
+                store.state.playlists.info, action.id,
+                newVideos: action.newVideos))
             .map((Playlist playlist) => UpdatePlaylist.successful(playlist))
             .onErrorReturnWith((dynamic error) => UpdatePlaylist.error(error)));
   }
