@@ -1,3 +1,4 @@
+import 'package:elearning_platform_mobile/src/presentation/mentoring/edit_mentorship_page.dart';
 import 'package:flutter/cupertino.dart';
 
 import 'package:elearning_platform_mobile/src/presentation/mentoring/add_mentorship_page.dart';
@@ -35,6 +36,7 @@ class AppRoutes {
   static const String editPlaylistPage = '/editPlaylistPage';
   static const String mentoringPage = '/mentoringPage';
   static const String addMentorshipPage = '/addMentorshipPage';
+  static const String editMentorshipPage = '/editMentorshipPage';
 
   static Map<String, WidgetBuilder> routes = <String, WidgetBuilder>{
     home: (BuildContext context) {
@@ -65,7 +67,8 @@ class AppRoutes {
       return const SearchUsersPage();
     },
     videoPlayer: (BuildContext context) {
-      return VideoPlayerScreen(currentVideo: ModalRoute.of(context).settings.arguments);
+      return VideoPlayerScreen(
+          currentVideo: ModalRoute.of(context).settings.arguments);
     },
     createPlaylistPage: (BuildContext context) {
       return const CreatePlaylistPage();
@@ -86,6 +89,10 @@ class AppRoutes {
     },
     addMentorshipPage: (BuildContext context) {
       return const AddMentorshipPage();
+    },
+    editMentorshipPage: (BuildContext context) {
+      return EditMentorshipPage(
+          currentMentorship: ModalRoute.of(context).settings.arguments);
     },
   };
 }

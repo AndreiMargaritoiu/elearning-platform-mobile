@@ -27,10 +27,6 @@ class _$MentorshipSerializer implements StructuredSerializer<Mentorship> {
       'mentorId',
       serializers.serialize(object.mentorId,
           specifiedType: const FullType(String)),
-      'menteeIds',
-      serializers.serialize(object.menteeIds,
-          specifiedType:
-              const FullType(BuiltList, const [const FullType(String)])),
     ];
     if (object.mentorEmail != null) {
       result
@@ -78,12 +74,6 @@ class _$MentorshipSerializer implements StructuredSerializer<Mentorship> {
           result.mentorId = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
-        case 'menteeIds':
-          result.menteeIds.replace(serializers.deserialize(value,
-                  specifiedType:
-                      const FullType(BuiltList, const [const FullType(String)]))
-              as BuiltList<Object>);
-          break;
         case 'mentorEmail':
           result.mentorEmail = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
@@ -118,19 +108,6 @@ class _$MentorshipInfoSerializer
   Iterable<Object> serialize(Serializers serializers, MentorshipInfo object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[];
-    if (object.menteeIds != null) {
-      result
-        ..add('menteeIds')
-        ..add(serializers.serialize(object.menteeIds,
-            specifiedType:
-                const FullType(BuiltList, const [const FullType(String)])));
-    }
-    if (object.mentorEmail != null) {
-      result
-        ..add('mentorEmail')
-        ..add(serializers.serialize(object.mentorEmail,
-            specifiedType: const FullType(String)));
-    }
     if (object.description != null) {
       result
         ..add('description')
@@ -141,12 +118,6 @@ class _$MentorshipInfoSerializer
       result
         ..add('price')
         ..add(serializers.serialize(object.price,
-            specifiedType: const FullType(int)));
-    }
-    if (object.createdAt != null) {
-      result
-        ..add('createdAt')
-        ..add(serializers.serialize(object.createdAt,
             specifiedType: const FullType(int)));
     }
     return result;
@@ -164,26 +135,12 @@ class _$MentorshipInfoSerializer
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
-        case 'menteeIds':
-          result.menteeIds.replace(serializers.deserialize(value,
-                  specifiedType:
-                      const FullType(BuiltList, const [const FullType(String)]))
-              as BuiltList<Object>);
-          break;
-        case 'mentorEmail':
-          result.mentorEmail = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          break;
         case 'description':
           result.description = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
         case 'price':
           result.price = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
-          break;
-        case 'createdAt':
-          result.createdAt = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int;
           break;
       }
@@ -251,8 +208,6 @@ class _$Mentorship extends Mentorship {
   @override
   final String mentorId;
   @override
-  final BuiltList<String> menteeIds;
-  @override
   final String mentorEmail;
   @override
   final String description;
@@ -267,7 +222,6 @@ class _$Mentorship extends Mentorship {
   _$Mentorship._(
       {this.id,
       this.mentorId,
-      this.menteeIds,
       this.mentorEmail,
       this.description,
       this.price,
@@ -278,9 +232,6 @@ class _$Mentorship extends Mentorship {
     }
     if (mentorId == null) {
       throw new BuiltValueNullFieldError('Mentorship', 'mentorId');
-    }
-    if (menteeIds == null) {
-      throw new BuiltValueNullFieldError('Mentorship', 'menteeIds');
     }
   }
 
@@ -297,7 +248,6 @@ class _$Mentorship extends Mentorship {
     return other is Mentorship &&
         id == other.id &&
         mentorId == other.mentorId &&
-        menteeIds == other.menteeIds &&
         mentorEmail == other.mentorEmail &&
         description == other.description &&
         price == other.price &&
@@ -309,9 +259,7 @@ class _$Mentorship extends Mentorship {
     return $jf($jc(
         $jc(
             $jc(
-                $jc(
-                    $jc($jc($jc(0, id.hashCode), mentorId.hashCode),
-                        menteeIds.hashCode),
+                $jc($jc($jc(0, id.hashCode), mentorId.hashCode),
                     mentorEmail.hashCode),
                 description.hashCode),
             price.hashCode),
@@ -323,7 +271,6 @@ class _$Mentorship extends Mentorship {
     return (newBuiltValueToStringHelper('Mentorship')
           ..add('id', id)
           ..add('mentorId', mentorId)
-          ..add('menteeIds', menteeIds)
           ..add('mentorEmail', mentorEmail)
           ..add('description', description)
           ..add('price', price)
@@ -342,11 +289,6 @@ class MentorshipBuilder implements Builder<Mentorship, MentorshipBuilder> {
   String _mentorId;
   String get mentorId => _$this._mentorId;
   set mentorId(String mentorId) => _$this._mentorId = mentorId;
-
-  ListBuilder<String> _menteeIds;
-  ListBuilder<String> get menteeIds =>
-      _$this._menteeIds ??= new ListBuilder<String>();
-  set menteeIds(ListBuilder<String> menteeIds) => _$this._menteeIds = menteeIds;
 
   String _mentorEmail;
   String get mentorEmail => _$this._mentorEmail;
@@ -370,7 +312,6 @@ class MentorshipBuilder implements Builder<Mentorship, MentorshipBuilder> {
     if (_$v != null) {
       _id = _$v.id;
       _mentorId = _$v.mentorId;
-      _menteeIds = _$v.menteeIds?.toBuilder();
       _mentorEmail = _$v.mentorEmail;
       _description = _$v.description;
       _price = _$v.price;
@@ -395,28 +336,14 @@ class MentorshipBuilder implements Builder<Mentorship, MentorshipBuilder> {
 
   @override
   _$Mentorship build() {
-    _$Mentorship _$result;
-    try {
-      _$result = _$v ??
-          new _$Mentorship._(
-              id: id,
-              mentorId: mentorId,
-              menteeIds: menteeIds.build(),
-              mentorEmail: mentorEmail,
-              description: description,
-              price: price,
-              createdAt: createdAt);
-    } catch (_) {
-      String _$failedField;
-      try {
-        _$failedField = 'menteeIds';
-        menteeIds.build();
-      } catch (e) {
-        throw new BuiltValueNestedFieldError(
-            'Mentorship', _$failedField, e.toString());
-      }
-      rethrow;
-    }
+    final _$result = _$v ??
+        new _$Mentorship._(
+            id: id,
+            mentorId: mentorId,
+            mentorEmail: mentorEmail,
+            description: description,
+            price: price,
+            createdAt: createdAt);
     replace(_$result);
     return _$result;
   }
@@ -424,26 +351,14 @@ class MentorshipBuilder implements Builder<Mentorship, MentorshipBuilder> {
 
 class _$MentorshipInfo extends MentorshipInfo {
   @override
-  final BuiltList<String> menteeIds;
-  @override
-  final String mentorEmail;
-  @override
   final String description;
   @override
   final int price;
-  @override
-  final int createdAt;
 
   factory _$MentorshipInfo([void Function(MentorshipInfoBuilder) updates]) =>
       (new MentorshipInfoBuilder()..update(updates)).build();
 
-  _$MentorshipInfo._(
-      {this.menteeIds,
-      this.mentorEmail,
-      this.description,
-      this.price,
-      this.createdAt})
-      : super._();
+  _$MentorshipInfo._({this.description, this.price}) : super._();
 
   @override
   MentorshipInfo rebuild(void Function(MentorshipInfoBuilder) updates) =>
@@ -457,31 +372,20 @@ class _$MentorshipInfo extends MentorshipInfo {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is MentorshipInfo &&
-        menteeIds == other.menteeIds &&
-        mentorEmail == other.mentorEmail &&
         description == other.description &&
-        price == other.price &&
-        createdAt == other.createdAt;
+        price == other.price;
   }
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc(
-            $jc($jc($jc(0, menteeIds.hashCode), mentorEmail.hashCode),
-                description.hashCode),
-            price.hashCode),
-        createdAt.hashCode));
+    return $jf($jc($jc(0, description.hashCode), price.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('MentorshipInfo')
-          ..add('menteeIds', menteeIds)
-          ..add('mentorEmail', mentorEmail)
           ..add('description', description)
-          ..add('price', price)
-          ..add('createdAt', createdAt))
+          ..add('price', price))
         .toString();
   }
 }
@@ -489,15 +393,6 @@ class _$MentorshipInfo extends MentorshipInfo {
 class MentorshipInfoBuilder
     implements Builder<MentorshipInfo, MentorshipInfoBuilder> {
   _$MentorshipInfo _$v;
-
-  ListBuilder<String> _menteeIds;
-  ListBuilder<String> get menteeIds =>
-      _$this._menteeIds ??= new ListBuilder<String>();
-  set menteeIds(ListBuilder<String> menteeIds) => _$this._menteeIds = menteeIds;
-
-  String _mentorEmail;
-  String get mentorEmail => _$this._mentorEmail;
-  set mentorEmail(String mentorEmail) => _$this._mentorEmail = mentorEmail;
 
   String _description;
   String get description => _$this._description;
@@ -507,19 +402,12 @@ class MentorshipInfoBuilder
   int get price => _$this._price;
   set price(int price) => _$this._price = price;
 
-  int _createdAt;
-  int get createdAt => _$this._createdAt;
-  set createdAt(int createdAt) => _$this._createdAt = createdAt;
-
   MentorshipInfoBuilder();
 
   MentorshipInfoBuilder get _$this {
     if (_$v != null) {
-      _menteeIds = _$v.menteeIds?.toBuilder();
-      _mentorEmail = _$v.mentorEmail;
       _description = _$v.description;
       _price = _$v.price;
-      _createdAt = _$v.createdAt;
       _$v = null;
     }
     return this;
@@ -540,26 +428,8 @@ class MentorshipInfoBuilder
 
   @override
   _$MentorshipInfo build() {
-    _$MentorshipInfo _$result;
-    try {
-      _$result = _$v ??
-          new _$MentorshipInfo._(
-              menteeIds: _menteeIds?.build(),
-              mentorEmail: mentorEmail,
-              description: description,
-              price: price,
-              createdAt: createdAt);
-    } catch (_) {
-      String _$failedField;
-      try {
-        _$failedField = 'menteeIds';
-        _menteeIds?.build();
-      } catch (e) {
-        throw new BuiltValueNestedFieldError(
-            'MentorshipInfo', _$failedField, e.toString());
-      }
-      rethrow;
-    }
+    final _$result =
+        _$v ?? new _$MentorshipInfo._(description: description, price: price);
     replace(_$result);
     return _$result;
   }

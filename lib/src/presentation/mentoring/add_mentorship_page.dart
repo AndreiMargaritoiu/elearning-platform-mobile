@@ -14,6 +14,8 @@ class AddMentorshipPage extends StatefulWidget {
 }
 
 class _AddMentorshipPageState extends State<AddMentorshipPage> {
+
+
   @override
   Widget build(BuildContext context) {
     return MentorshipInfoContainer(
@@ -23,12 +25,13 @@ class _AddMentorshipPageState extends State<AddMentorshipPage> {
             title: const Text('Add mentorship'),
             actions: <Widget>[
               FlatButton(
-                child: const Text('Add'),
+                child:  const Text('Add'),
                 onPressed: () {
                   if (info.description != null) {
                     StoreProvider.of<AppState>(context)
                         .dispatch(const AddMentorship());
-                    Navigator.pushNamed(context, AppRoutes.mentoringPage);
+                    Navigator.popUntil(
+                        context, ModalRoute.withName(AppRoutes.home));
                   } else {
                     // show error
                   }
@@ -36,26 +39,29 @@ class _AddMentorshipPageState extends State<AddMentorshipPage> {
               )
             ],
           ),
-          body: Column(
-            children: <Widget>[
-              TextField(
-                decoration:
-                    const InputDecoration(hintText: 'Write a description...'),
-                onChanged: (String value) {
-                  StoreProvider.of<AppState>(context)
-                      .dispatch(UpdateMentorshipInfo(description: value));
-                },
-              ),
-              TextField(
-                decoration:
-                    const InputDecoration(hintText: 'Write a price...'),
-                keyboardType: TextInputType.number,
-                onChanged: (String value) {
-                  StoreProvider.of<AppState>(context)
-                      .dispatch(UpdateMentorshipInfo(price: int.parse(value)));
-                },
-              ),
-            ],
+          body: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              children: <Widget>[
+                TextField(
+                  decoration:
+                      const InputDecoration(hintText: 'Write a description...'),
+                  onChanged: (String value) {
+                    StoreProvider.of<AppState>(context)
+                        .dispatch(UpdateMentorshipInfo(description: value));
+                  },
+                ),
+                TextField(
+                  decoration:
+                      const InputDecoration(hintText: 'Write a price...'),
+                  keyboardType: TextInputType.number,
+                  onChanged: (String value) {
+                    StoreProvider.of<AppState>(context).dispatch(
+                        UpdateMentorshipInfo(price: int.parse(value)));
+                  },
+                ),
+              ],
+            ),
           ),
         );
       },

@@ -45,7 +45,7 @@ class MentoringApi {
     return result;
   }
 
-  Future<Mentorship> getMentorshipById({@required String id}) async {
+  Future<Mentorship> getMentorshipById(String id) async {
     final DocumentSnapshot doc = await _firestore.doc('mentoring/$id').get();
 
     return Mentorship.fromJson(doc.data());
@@ -66,6 +66,12 @@ class MentoringApi {
       });
     }
 
-    return await getMentorshipById(id: id);
+    if (info.price != null) {
+      await ref.update(<String, dynamic>{
+        'price': info.price,
+      });
+    }
+
+    return await getMentorshipById(id);
   }
 }

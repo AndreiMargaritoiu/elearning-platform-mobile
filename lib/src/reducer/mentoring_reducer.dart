@@ -15,11 +15,7 @@ Reducer<MentorshipsState> mentoringReducer =
 MentorshipsState _updateMentorshipInfo(
     MentorshipsState state, UpdateMentorshipInfo action) {
   return state.rebuild((MentorshipsStateBuilder b) {
-    if (action.addMentee != null) {
-      b.info.menteeIds.add(action.addMentee);
-    } else if (action.removeMentee != null) {
-      b.info.menteeIds.remove(action.removeMentee);
-    } else if (action.description != null) {
+    if (action.description != null) {
       b.info.description = action.description;
     } else if (action.price != null) {
       b.info.price = action.price;

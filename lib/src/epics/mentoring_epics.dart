@@ -39,7 +39,7 @@ class MentoringEpics {
         .flatMap((GetMentorshipById$ action) =>
             Stream<GetMentorshipById$>.value(action)
                 .asyncMap((GetMentorshipById$ action) =>
-                    _api.getMentorshipById(id: action.id))
+                    _api.getMentorshipById(action.id))
                 .expand((Mentorship mentorship) => <AppAction>[
                       GetMentorshipById.successful(mentorship),
                     ])

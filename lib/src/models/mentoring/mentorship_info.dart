@@ -11,19 +11,10 @@ abstract class MentorshipInfo
   MentorshipInfo._();
 
   @nullable
-  BuiltList<String> get menteeIds;
-
-  @nullable
-  String get mentorEmail;
-
-  @nullable
   String get description;
 
   @nullable
   int get price;
-
-  @nullable
-  int get createdAt;
 
   Map<String, dynamic> get json =>
       serializers.serializeWith(serializer, this) as Map<String, dynamic>;

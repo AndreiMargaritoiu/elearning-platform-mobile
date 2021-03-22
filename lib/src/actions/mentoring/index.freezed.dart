@@ -860,9 +860,9 @@ class _$GetMentorshipByIdTearOff {
   const _$GetMentorshipByIdTearOff();
 
 // ignore: unused_element
-  GetMentorshipById$ call({@required String id}) {
+  GetMentorshipById$ call(String id) {
     return GetMentorshipById$(
-      id: id,
+      id,
     );
   }
 
@@ -956,14 +956,14 @@ class _$GetMentorshipById$CopyWithImpl<$Res>
     Object id = freezed,
   }) {
     return _then(GetMentorshipById$(
-      id: id == freezed ? _value.id : id as String,
+      id == freezed ? _value.id : id as String,
     ));
   }
 }
 
 /// @nodoc
 class _$GetMentorshipById$ implements GetMentorshipById$ {
-  const _$GetMentorshipById$({@required this.id}) : assert(id != null);
+  const _$GetMentorshipById$(this.id) : assert(id != null);
 
   @override
   final String id;
@@ -1047,8 +1047,7 @@ class _$GetMentorshipById$ implements GetMentorshipById$ {
 }
 
 abstract class GetMentorshipById$ implements GetMentorshipById {
-  const factory GetMentorshipById$({@required String id}) =
-      _$GetMentorshipById$;
+  const factory GetMentorshipById$(String id) = _$GetMentorshipById$;
 
   String get id;
   $GetMentorshipById$CopyWith<GetMentorshipById$> get copyWith;
@@ -1312,9 +1311,9 @@ class _$UpdateMentorshipTearOff {
   const _$UpdateMentorshipTearOff();
 
 // ignore: unused_element
-  UpdateMentorship$ call({@required String id}) {
+  UpdateMentorship$ call(String id) {
     return UpdateMentorship$(
-      id: id,
+      id,
     );
   }
 
@@ -1408,14 +1407,14 @@ class _$UpdateMentorship$CopyWithImpl<$Res>
     Object id = freezed,
   }) {
     return _then(UpdateMentorship$(
-      id: id == freezed ? _value.id : id as String,
+      id == freezed ? _value.id : id as String,
     ));
   }
 }
 
 /// @nodoc
 class _$UpdateMentorship$ implements UpdateMentorship$ {
-  const _$UpdateMentorship$({@required this.id}) : assert(id != null);
+  const _$UpdateMentorship$(this.id) : assert(id != null);
 
   @override
   final String id;
@@ -1499,7 +1498,7 @@ class _$UpdateMentorship$ implements UpdateMentorship$ {
 }
 
 abstract class UpdateMentorship$ implements UpdateMentorship {
-  const factory UpdateMentorship$({@required String id}) = _$UpdateMentorship$;
+  const factory UpdateMentorship$(String id) = _$UpdateMentorship$;
 
   String get id;
   $UpdateMentorship$CopyWith<UpdateMentorship$> get copyWith;
@@ -1761,9 +1760,9 @@ class _$DeleteMentorshipTearOff {
   const _$DeleteMentorshipTearOff();
 
 // ignore: unused_element
-  DeleteMentorship$ call({@required String id}) {
+  DeleteMentorship$ call(String id) {
     return DeleteMentorship$(
-      id: id,
+      id,
     );
   }
 
@@ -1855,14 +1854,14 @@ class _$DeleteMentorship$CopyWithImpl<$Res>
     Object id = freezed,
   }) {
     return _then(DeleteMentorship$(
-      id: id == freezed ? _value.id : id as String,
+      id == freezed ? _value.id : id as String,
     ));
   }
 }
 
 /// @nodoc
 class _$DeleteMentorship$ implements DeleteMentorship$ {
-  const _$DeleteMentorship$({@required this.id}) : assert(id != null);
+  const _$DeleteMentorship$(this.id) : assert(id != null);
 
   @override
   final String id;
@@ -1946,7 +1945,7 @@ class _$DeleteMentorship$ implements DeleteMentorship$ {
 }
 
 abstract class DeleteMentorship$ implements DeleteMentorship {
-  const factory DeleteMentorship$({@required String id}) = _$DeleteMentorship$;
+  const factory DeleteMentorship$(String id) = _$DeleteMentorship$;
 
   String get id;
   $DeleteMentorship$CopyWith<DeleteMentorship$> get copyWith;
@@ -2179,11 +2178,8 @@ class _$UpdateMentorshipInfoTearOff {
   const _$UpdateMentorshipInfoTearOff();
 
 // ignore: unused_element
-  UpdateMentorshipInfo$ call(
-      {String addMentee, String removeMentee, String description, int price}) {
+  UpdateMentorshipInfo$ call({String description, int price}) {
     return UpdateMentorshipInfo$(
-      addMentee: addMentee,
-      removeMentee: removeMentee,
       description: description,
       price: price,
     );
@@ -2196,8 +2192,6 @@ const $UpdateMentorshipInfo = _$UpdateMentorshipInfoTearOff();
 
 /// @nodoc
 mixin _$UpdateMentorshipInfo {
-  String get addMentee;
-  String get removeMentee;
   String get description;
   int get price;
 
@@ -2209,8 +2203,7 @@ abstract class $UpdateMentorshipInfoCopyWith<$Res> {
   factory $UpdateMentorshipInfoCopyWith(UpdateMentorshipInfo value,
           $Res Function(UpdateMentorshipInfo) then) =
       _$UpdateMentorshipInfoCopyWithImpl<$Res>;
-  $Res call(
-      {String addMentee, String removeMentee, String description, int price});
+  $Res call({String description, int price});
 }
 
 /// @nodoc
@@ -2224,16 +2217,10 @@ class _$UpdateMentorshipInfoCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object addMentee = freezed,
-    Object removeMentee = freezed,
     Object description = freezed,
     Object price = freezed,
   }) {
     return _then(_value.copyWith(
-      addMentee: addMentee == freezed ? _value.addMentee : addMentee as String,
-      removeMentee: removeMentee == freezed
-          ? _value.removeMentee
-          : removeMentee as String,
       description:
           description == freezed ? _value.description : description as String,
       price: price == freezed ? _value.price : price as int,
@@ -2248,8 +2235,7 @@ abstract class $UpdateMentorshipInfo$CopyWith<$Res>
           $Res Function(UpdateMentorshipInfo$) then) =
       _$UpdateMentorshipInfo$CopyWithImpl<$Res>;
   @override
-  $Res call(
-      {String addMentee, String removeMentee, String description, int price});
+  $Res call({String description, int price});
 }
 
 /// @nodoc
@@ -2265,16 +2251,10 @@ class _$UpdateMentorshipInfo$CopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object addMentee = freezed,
-    Object removeMentee = freezed,
     Object description = freezed,
     Object price = freezed,
   }) {
     return _then(UpdateMentorshipInfo$(
-      addMentee: addMentee == freezed ? _value.addMentee : addMentee as String,
-      removeMentee: removeMentee == freezed
-          ? _value.removeMentee
-          : removeMentee as String,
       description:
           description == freezed ? _value.description : description as String,
       price: price == freezed ? _value.price : price as int,
@@ -2284,13 +2264,8 @@ class _$UpdateMentorshipInfo$CopyWithImpl<$Res>
 
 /// @nodoc
 class _$UpdateMentorshipInfo$ implements UpdateMentorshipInfo$ {
-  const _$UpdateMentorshipInfo$(
-      {this.addMentee, this.removeMentee, this.description, this.price});
+  const _$UpdateMentorshipInfo$({this.description, this.price});
 
-  @override
-  final String addMentee;
-  @override
-  final String removeMentee;
   @override
   final String description;
   @override
@@ -2298,19 +2273,13 @@ class _$UpdateMentorshipInfo$ implements UpdateMentorshipInfo$ {
 
   @override
   String toString() {
-    return 'UpdateMentorshipInfo(addMentee: $addMentee, removeMentee: $removeMentee, description: $description, price: $price)';
+    return 'UpdateMentorshipInfo(description: $description, price: $price)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is UpdateMentorshipInfo$ &&
-            (identical(other.addMentee, addMentee) ||
-                const DeepCollectionEquality()
-                    .equals(other.addMentee, addMentee)) &&
-            (identical(other.removeMentee, removeMentee) ||
-                const DeepCollectionEquality()
-                    .equals(other.removeMentee, removeMentee)) &&
             (identical(other.description, description) ||
                 const DeepCollectionEquality()
                     .equals(other.description, description)) &&
@@ -2321,8 +2290,6 @@ class _$UpdateMentorshipInfo$ implements UpdateMentorshipInfo$ {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(addMentee) ^
-      const DeepCollectionEquality().hash(removeMentee) ^
       const DeepCollectionEquality().hash(description) ^
       const DeepCollectionEquality().hash(price);
 
@@ -2333,16 +2300,9 @@ class _$UpdateMentorshipInfo$ implements UpdateMentorshipInfo$ {
 }
 
 abstract class UpdateMentorshipInfo$ implements UpdateMentorshipInfo {
-  const factory UpdateMentorshipInfo$(
-      {String addMentee,
-      String removeMentee,
-      String description,
-      int price}) = _$UpdateMentorshipInfo$;
+  const factory UpdateMentorshipInfo$({String description, int price}) =
+      _$UpdateMentorshipInfo$;
 
-  @override
-  String get addMentee;
-  @override
-  String get removeMentee;
   @override
   String get description;
   @override

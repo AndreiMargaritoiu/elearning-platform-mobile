@@ -25,6 +25,9 @@ class _MentoringPageState extends State<MentoringPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Find your mentor'),
+      ),
       body: Column(
         children: <Widget>[
           Expanded(
@@ -56,7 +59,29 @@ class _MentoringPageState extends State<MentoringPage> {
                                     ),
                               title: Text(user.username),
                             ),
-                            Text(mentorship.description),
+                            MaterialButton(
+                              child: Card(
+                                child: Row(
+                                  children: <Widget>[
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: <Widget>[
+                                        Text(mentorship.description),
+                                        Text(
+                                            'Contact: ${mentorship.mentorEmail}'),
+                                        Text('Price: ${mentorship.price}'),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              onPressed: () {
+                                Navigator.pushNamed(
+                                    context, AppRoutes.editMentorshipPage,
+                                    arguments: mentorship);
+                              },
+                            )
                           ],
                         );
                       },
@@ -66,12 +91,17 @@ class _MentoringPageState extends State<MentoringPage> {
               },
             ),
           ),
-          FloatingActionButton(
-            child: const Icon(Icons.add),
-            onPressed: () {
-              Navigator.pushNamed(
-                  context, AppRoutes.addMentorshipPage);
-            },
+          Padding(
+            padding: const EdgeInsets.only(right: 16, bottom: 16),
+            child: Align(
+              alignment: Alignment.centerRight,
+              child: FloatingActionButton(
+                child: const Icon(Icons.add),
+                onPressed: () {
+                  Navigator.pushNamed(context, AppRoutes.addMentorshipPage);
+                },
+              ),
+            ),
           ),
         ],
       ),

@@ -6,25 +6,27 @@ import 'package:elearning_platform_mobile/src/containers/index.dart';
 import 'package:elearning_platform_mobile/src/models/index.dart';
 import 'package:elearning_platform_mobile/src/presentation/routes.dart';
 
+class EditMentorshipPage extends StatefulWidget {
+  const EditMentorshipPage({
+    this.currentMentorship,
+    Key key,
+  }) : super(key: key);
 
-class EditVideoPage extends StatefulWidget {
-  const EditVideoPage({this.currentVideo, Key key}) : super(key: key);
-
-  final Video currentVideo;
+  final Mentorship currentMentorship;
 
   @override
-  _EditVideoPageState createState() => _EditVideoPageState();
+  _EditMentorshipPageState createState() => _EditMentorshipPageState();
 }
 
-class _EditVideoPageState extends State<EditVideoPage> {
+class _EditMentorshipPageState extends State<EditMentorshipPage> {
 
   @override
   Widget build(BuildContext context) {
-    return VideoInfoContainer(
-      builder: (BuildContext context, VideoInfo info) {
+    return MentorshipInfoContainer(
+      builder: (BuildContext context, MentorshipInfo info) {
         return Scaffold(
           appBar: AppBar(
-            title: const Text('Edit video page'),
+            title: const Text('Edit mentorship page'),
           ),
           body: Padding(
             padding: const EdgeInsets.all(16),
@@ -32,30 +34,13 @@ class _EditVideoPageState extends State<EditVideoPage> {
               children: <Widget>[
                 TextFormField(
                   decoration: const InputDecoration(
-                    hintText: 'title',
-                  ),
-                  initialValue: widget.currentVideo.title,
-                  keyboardType: TextInputType.name,
-                  onChanged: (String value) {
-                    StoreProvider.of<AppState>(context)
-                        .dispatch(UpdateVideoInfo(title: value));
-                  },
-                  validator: (String value) {
-                    if (value.length < 3) {
-                      return 'Please choose a bigger title';
-                    }
-                    return null;
-                  },
-                ),
-                TextFormField(
-                  decoration: const InputDecoration(
                     hintText: 'description',
                   ),
-                  initialValue: widget.currentVideo.description,
+                  initialValue: widget.currentMentorship.description,
                   keyboardType: TextInputType.name,
                   onChanged: (String value) {
                     StoreProvider.of<AppState>(context)
-                        .dispatch(UpdateVideoInfo(description: value));
+                        .dispatch(UpdateMentorshipInfo(description: value));
                   },
                   validator: (String value) {
                     if (value.length < 3) {
@@ -64,13 +49,24 @@ class _EditVideoPageState extends State<EditVideoPage> {
                     return null;
                   },
                 ),
+                TextFormField(
+                  decoration: const InputDecoration(
+                    hintText: 'description',
+                  ),
+                  initialValue: widget.currentMentorship.price.toString(),
+                  keyboardType: TextInputType.number,
+                  onChanged: (String value) {
+                    StoreProvider.of<AppState>(context).dispatch(
+                        UpdateMentorshipInfo(price: int.parse(value)));
+                  },
+                ),
                 Row(
                   children: <Widget>[
                     MaterialButton(
                       child: const Text('Update'),
                       onPressed: () {
-                        StoreProvider.of<AppState>(context)
-                            .dispatch(UpdateVideo(widget.currentVideo.id));
+                        StoreProvider.of<AppState>(context).dispatch(
+                            UpdateMentorship(widget.currentMentorship.id));
                         Navigator.popUntil(
                             context, ModalRoute.withName(AppRoutes.home));
                       },
@@ -78,8 +74,8 @@ class _EditVideoPageState extends State<EditVideoPage> {
                     MaterialButton(
                       child: const Text('Delete'),
                       onPressed: () {
-                        StoreProvider.of<AppState>(context)
-                            .dispatch(DeleteVideo(widget.currentVideo.id));
+                        StoreProvider.of<AppState>(context).dispatch(
+                            DeleteMentorship(widget.currentMentorship.id));
                         Navigator.popUntil(
                             context, ModalRoute.withName(AppRoutes.home));
                       },
