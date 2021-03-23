@@ -1,3 +1,4 @@
+import 'package:elearning_platform_mobile/src/presentation/profile/others_profile_page.dart';
 import 'package:flutter/cupertino.dart';
 
 import 'package:elearning_platform_mobile/src/presentation/mentoring/add_mentorship_page.dart';
@@ -39,6 +40,7 @@ class AppRoutes {
   static const String addMentorshipPage = '/addMentorshipPage';
   static const String editMentorshipPage = '/editMentorshipPage';
   static const String playlistVideosPage = '/playlistVideosPage';
+  static const String othersProfilePage = '/othersProfilePage';
 
   static Map<String, WidgetBuilder> routes = <String, WidgetBuilder>{
     home: (BuildContext context) {
@@ -99,6 +101,10 @@ class AppRoutes {
     playlistVideosPage: (BuildContext context) {
       return PlaylistVideosPage(
           playlist: ModalRoute.of(context).settings.arguments);
+    },
+    othersProfilePage: (BuildContext context) {
+      return OthersProfilePage(
+          searchedUser: ModalRoute.of(context).settings.arguments);
     },
   };
 }

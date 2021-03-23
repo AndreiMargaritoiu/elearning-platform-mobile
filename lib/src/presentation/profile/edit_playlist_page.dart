@@ -24,7 +24,7 @@ class _EditPlaylistPageState extends State<EditPlaylistPage> {
     super.initState();
 
     StoreProvider.of<AppState>(context, listen: false)
-        .dispatch(const GetMyVideos());
+        .dispatch(const GetVideosByUid());
 
     for (int i = 0; i < 100; i++) {
       isSelected.add(false);

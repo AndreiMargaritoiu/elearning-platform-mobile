@@ -16,7 +16,7 @@ class VideosEpics {
     return combineEpics<AppState>(<Epic<AppState>>[
       TypedEpic<AppState, AddVideo$>(_addVideo),
       TypedEpic<AppState, ListenForVideos$>(_listenForVideo),
-      TypedEpic<AppState, GetMyVideos$>(_getMyVideos),
+      TypedEpic<AppState, GetVideosByUid$>(_getVideosByUid),
       TypedEpic<AppState, GetVideoById$>(_getVideoById),
       TypedEpic<AppState, GetVideosByPlaylistId$>(_getVideosByPlaylistId),
       TypedEpic<AppState, UpdateVideo$>(_updateVideo),
@@ -42,7 +42,7 @@ class VideosEpics {
             .expand((Video video) => <AppAction>[
                   GetVideoById.successful(video),
                 ])
-            .onErrorReturnWith((dynamic error) => ListenForPosts.error(error)));
+            .onErrorReturnWith((dynamic error) => GetVideoById.error(error)));
   }
 
   Stream<AppAction> _updateVideo(
@@ -64,15 +64,16 @@ class VideosEpics {
             .onErrorReturnWith((dynamic error) => DeleteVideo.error(error)));
   }
 
-  Stream<AppAction> _getMyVideos(
-      Stream<GetMyVideos$> actions, EpicStore<AppState> store) {
+  Stream<AppAction> _getVideosByUid(
+      Stream<GetVideosByUid$> actions, EpicStore<AppState> store) {
     return actions //
-        .flatMap((GetMyVideos$ action) => Stream<GetMyVideos$>.value(action)
-            .asyncMap((GetMyVideos$ action) => _api.getMyVideos(
-                  store.state.auth.user.uid,
+        .flatMap((GetVideosByUid$ action) => Stream<GetVideosByUid$>.value(
+                action)
+            .asyncMap((GetVideosByUid$ action) => _api.getVideosByUid(
+                  action.id ?? store.state.auth.user.uid,
                 ))
             .expand((List<Video> videos) => <AppAction>[
-                  GetMyVideos.successful(videos),
+                  GetVideosByUid.successful(videos),
                   ...videos
                       .map((Video video) => video.uid)
                       .toSet()
@@ -80,7 +81,7 @@ class VideosEpics {
                           (String uid) => store.state.auth.users[uid] == null)
                       .map((String uid) => GetUser(uid)),
                 ])
-            .onErrorReturnWith((dynamic error) => ListenForPosts.error(error)));
+            .onErrorReturnWith((dynamic error) => GetVideosByUid.error(error)));
   }
 
   Stream<AppAction> _getVideosByPlaylistId(
@@ -93,7 +94,7 @@ class VideosEpics {
                       action.playlistId,
                     ))
                 .expand((List<Video> videos) => <AppAction>[
-                      GetMyVideos.successful(videos),
+                      GetVideosByPlaylistId.successful(videos),
                       ...videos
                           .map((Video video) => video.uid)
                           .toSet()
@@ -102,28 +103,29 @@ class VideosEpics {
                           .map((String uid) => GetUser(uid)),
                     ])
                 .onErrorReturnWith(
-                    (dynamic error) => ListenForPosts.error(error)));
+                    (dynamic error) => GetVideosByPlaylistId.error(error)));
   }
 
   Stream<AppAction> _listenForVideo(
       Stream<ListenForVideos$> actions, EpicStore<AppState> store) {
     return actions //
-        .flatMap((ListenForVideos$ action) => Stream<ListenForVideos$>.value(
-                action)
-            .asyncMap(
-                (ListenForVideos$ action) => _api.listenForVideos(<String>[
-                      store.state.auth.user.uid,
-                      ...store.state.auth.user.following,
-                    ]))
-            .expand((List<Video> videos) => <AppAction>[
-                  ListenForVideos.successful(videos),
-                  ...videos
-                      .map((Video video) => video.uid)
-                      .toSet()
-                      .where(
-                          (String uid) => store.state.auth.users[uid] == null)
-                      .map((String uid) => GetUser(uid)),
-                ])
-            .onErrorReturnWith((dynamic error) => ListenForPosts.error(error)));
+        .flatMap((ListenForVideos$ action) =>
+            Stream<ListenForVideos$>.value(action)
+                .asyncMap(
+                    (ListenForVideos$ action) => _api.listenForVideos(<String>[
+                          store.state.auth.user.uid,
+                          ...store.state.auth.user.following,
+                        ]))
+                .expand((List<Video> videos) => <AppAction>[
+                      ListenForVideos.successful(videos),
+                      ...videos
+                          .map((Video video) => video.uid)
+                          .toSet()
+                          .where((String uid) =>
+                              store.state.auth.users[uid] == null)
+                          .map((String uid) => GetUser(uid)),
+                    ])
+                .onErrorReturnWith(
+                    (dynamic error) => ListenForVideos.error(error)));
   }
 }

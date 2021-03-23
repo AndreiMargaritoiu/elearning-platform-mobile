@@ -37,18 +37,25 @@ class _VideosFeedPageState extends State<VideosFeedPage> {
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    ListTile(
-                      leading: user.photoUrl != null
-                          ? CircleAvatar(
-                        backgroundImage: NetworkImage(user.photoUrl),
-                      )
-                          : CircleAvatar(
-                        backgroundColor: Colors.grey.shade900,
-                        child: Text(
-                          user.username[0].toUpperCase(),
-                        ),
+                    MaterialButton(
+                      child: ListTile(
+                        leading: user.photoUrl != null
+                            ? CircleAvatar(
+                                backgroundImage: NetworkImage(user.photoUrl),
+                              )
+                            : CircleAvatar(
+                                backgroundColor: Colors.grey.shade900,
+                                child: Text(
+                                  user.username[0].toUpperCase(),
+                                ),
+                              ),
+                        title: Text(user.username),
                       ),
-                      title: Text(user.username),
+                      onPressed: () {
+                        Navigator.pushNamed(
+                            context, AppRoutes.othersProfilePage,
+                            arguments: user);
+                      },
                     ),
                     MaterialButton(
                       child: Card(
@@ -63,7 +70,8 @@ class _VideosFeedPageState extends State<VideosFeedPage> {
                                 fit: BoxFit.cover,
                               )
                             else
-                              Container(height: 120,
+                              Container(
+                                height: 120,
                                 width: 80,
                                 decoration: const BoxDecoration(
                                   color: Colors.green,

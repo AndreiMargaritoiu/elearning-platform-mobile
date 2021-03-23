@@ -21,8 +21,8 @@ class _SelectVideosPageState extends State<SelectVideosPage> {
   void initState() {
     super.initState();
 
-    StoreProvider.of<AppState>(context, listen: false)
-        .dispatch(const GetMyVideos());
+//    StoreProvider.of<AppState>(context, listen: false)
+//        .dispatch(const GetMyVideos());
 
     for (int i = 0; i < 100; i++) {
       isSelected.add(false);

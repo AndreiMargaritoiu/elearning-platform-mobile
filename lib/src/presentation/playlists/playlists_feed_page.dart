@@ -37,18 +37,25 @@ class _PlaylistsFeedPageState extends State<PlaylistsFeedPage> {
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    ListTile(
-                      leading: user.photoUrl != null
-                          ? CircleAvatar(
-                              backgroundImage: NetworkImage(user.photoUrl),
-                            )
-                          : CircleAvatar(
-                              backgroundColor: Colors.grey.shade900,
-                              child: Text(
-                                user.username[0].toUpperCase(),
-                              ),
-                            ),
-                      title: Text(user.username),
+                    MaterialButton(
+                      child: ListTile(
+                        leading: user.photoUrl != null
+                            ? CircleAvatar(
+                          backgroundImage: NetworkImage(user.photoUrl),
+                        )
+                            : CircleAvatar(
+                          backgroundColor: Colors.grey.shade900,
+                          child: Text(
+                            user.username[0].toUpperCase(),
+                          ),
+                        ),
+                        title: Text(user.username),
+                      ),
+                      onPressed: () {
+                        Navigator.pushNamed(
+                            context, AppRoutes.othersProfilePage,
+                            arguments: user);
+                      },
                     ),
                     MaterialButton(
                       child: Card(

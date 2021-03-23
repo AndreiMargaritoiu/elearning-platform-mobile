@@ -88,7 +88,7 @@ class VideosApi {
     await ref.delete();
   }
 
-  Future<List<Video>> getMyVideos(String uid) async {
+  Future<List<Video>> getVideosByUid(String uid) async {
     final dynamic queryParams = {
       'uid': uid,
     };

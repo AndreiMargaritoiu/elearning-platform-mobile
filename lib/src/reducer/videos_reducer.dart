@@ -6,7 +6,7 @@ import 'package:elearning_platform_mobile/src/models/videos/index.dart';
 Reducer<VideosState> videosReducer = combineReducers(<Reducer<VideosState>>[
   TypedReducer<VideosState, UpdateVideoInfo>(_updateVideoInfo),
   TypedReducer<VideosState, AddVideoSuccessful>(_addVideoSuccessful),
-  TypedReducer<VideosState, GetMyVideosSuccessful>(_getMyVideosSuccessful),
+  TypedReducer<VideosState, GetVideosByUidSuccessful>(_getVideosByUidSuccessful),
   TypedReducer<VideosState, GetVideosByPlaylistIdSuccessful>(_getVideosByPlaylistIdSuccessful),
   TypedReducer<VideosState, ListenForVideosSuccessful>(
       _listenForVideosSuccessful),
@@ -45,8 +45,8 @@ VideosState _listenForVideosSuccessful(
   });
 }
 
-VideosState _getMyVideosSuccessful(
-    VideosState state, GetMyVideosSuccessful action) {
+VideosState _getVideosByUidSuccessful(
+    VideosState state, GetVideosByUidSuccessful action) {
   return state.rebuild((VideosStateBuilder b) {
     b.videos = ListBuilder<Video>(action.videos);
   });

@@ -20,7 +20,7 @@ class _MenuPageState extends State<MenuPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: <Widget>[
-        FeedPage(),
+        const FeedPage(),
         const DiscoverPage(),
         const CreatePlaylistPage(),
         const MentoringPage(),
