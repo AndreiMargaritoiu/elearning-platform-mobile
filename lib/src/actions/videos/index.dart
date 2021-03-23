@@ -12,3 +12,4 @@ part 'get_video_by_id.dart';
 part 'update_video.dart';
 part 'delete_video.dart';
 part 'set.dart';
+part 'get_videos_by_playlist_id.dart';

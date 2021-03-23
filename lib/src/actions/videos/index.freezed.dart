@@ -2782,3 +2782,461 @@ abstract class UpdateVideoInfo$ implements UpdateVideoInfo {
   @override
   $UpdateVideoInfo$CopyWith<UpdateVideoInfo$> get copyWith;
 }
+
+/// @nodoc
+class _$GetVideosByPlaylistIdTearOff {
+  const _$GetVideosByPlaylistIdTearOff();
+
+// ignore: unused_element
+  GetVideosByPlaylistId$ call(String playlistId) {
+    return GetVideosByPlaylistId$(
+      playlistId,
+    );
+  }
+
+// ignore: unused_element
+  GetVideosByPlaylistIdSuccessful successful(List<Video> videos) {
+    return GetVideosByPlaylistIdSuccessful(
+      videos,
+    );
+  }
+
+// ignore: unused_element
+  GetVideosByPlaylistIdError error(Object error) {
+    return GetVideosByPlaylistIdError(
+      error,
+    );
+  }
+}
+
+/// @nodoc
+// ignore: unused_element
+const $GetVideosByPlaylistId = _$GetVideosByPlaylistIdTearOff();
+
+/// @nodoc
+mixin _$GetVideosByPlaylistId {
+  @optionalTypeArgs
+  Result when<Result extends Object>(
+    Result $default(String playlistId), {
+    @required Result successful(List<Video> videos),
+    @required Result error(Object error),
+  });
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>(
+    Result $default(String playlistId), {
+    Result successful(List<Video> videos),
+    Result error(Object error),
+    @required Result orElse(),
+  });
+  @optionalTypeArgs
+  Result map<Result extends Object>(
+    Result $default(GetVideosByPlaylistId$ value), {
+    @required Result successful(GetVideosByPlaylistIdSuccessful value),
+    @required Result error(GetVideosByPlaylistIdError value),
+  });
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>(
+    Result $default(GetVideosByPlaylistId$ value), {
+    Result successful(GetVideosByPlaylistIdSuccessful value),
+    Result error(GetVideosByPlaylistIdError value),
+    @required Result orElse(),
+  });
+}
+
+/// @nodoc
+abstract class $GetVideosByPlaylistIdCopyWith<$Res> {
+  factory $GetVideosByPlaylistIdCopyWith(GetVideosByPlaylistId value,
+          $Res Function(GetVideosByPlaylistId) then) =
+      _$GetVideosByPlaylistIdCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$GetVideosByPlaylistIdCopyWithImpl<$Res>
+    implements $GetVideosByPlaylistIdCopyWith<$Res> {
+  _$GetVideosByPlaylistIdCopyWithImpl(this._value, this._then);
+
+  final GetVideosByPlaylistId _value;
+  // ignore: unused_field
+  final $Res Function(GetVideosByPlaylistId) _then;
+}
+
+/// @nodoc
+abstract class $GetVideosByPlaylistId$CopyWith<$Res> {
+  factory $GetVideosByPlaylistId$CopyWith(GetVideosByPlaylistId$ value,
+          $Res Function(GetVideosByPlaylistId$) then) =
+      _$GetVideosByPlaylistId$CopyWithImpl<$Res>;
+  $Res call({String playlistId});
+}
+
+/// @nodoc
+class _$GetVideosByPlaylistId$CopyWithImpl<$Res>
+    extends _$GetVideosByPlaylistIdCopyWithImpl<$Res>
+    implements $GetVideosByPlaylistId$CopyWith<$Res> {
+  _$GetVideosByPlaylistId$CopyWithImpl(GetVideosByPlaylistId$ _value,
+      $Res Function(GetVideosByPlaylistId$) _then)
+      : super(_value, (v) => _then(v as GetVideosByPlaylistId$));
+
+  @override
+  GetVideosByPlaylistId$ get _value => super._value as GetVideosByPlaylistId$;
+
+  @override
+  $Res call({
+    Object playlistId = freezed,
+  }) {
+    return _then(GetVideosByPlaylistId$(
+      playlistId == freezed ? _value.playlistId : playlistId as String,
+    ));
+  }
+}
+
+/// @nodoc
+class _$GetVideosByPlaylistId$ implements GetVideosByPlaylistId$ {
+  const _$GetVideosByPlaylistId$(this.playlistId) : assert(playlistId != null);
+
+  @override
+  final String playlistId;
+
+  @override
+  String toString() {
+    return 'GetVideosByPlaylistId(playlistId: $playlistId)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is GetVideosByPlaylistId$ &&
+            (identical(other.playlistId, playlistId) ||
+                const DeepCollectionEquality()
+                    .equals(other.playlistId, playlistId)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(playlistId);
+
+  @override
+  $GetVideosByPlaylistId$CopyWith<GetVideosByPlaylistId$> get copyWith =>
+      _$GetVideosByPlaylistId$CopyWithImpl<GetVideosByPlaylistId$>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>(
+    Result $default(String playlistId), {
+    @required Result successful(List<Video> videos),
+    @required Result error(Object error),
+  }) {
+    assert($default != null);
+    assert(successful != null);
+    assert(error != null);
+    return $default(playlistId);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>(
+    Result $default(String playlistId), {
+    Result successful(List<Video> videos),
+    Result error(Object error),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if ($default != null) {
+      return $default(playlistId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>(
+    Result $default(GetVideosByPlaylistId$ value), {
+    @required Result successful(GetVideosByPlaylistIdSuccessful value),
+    @required Result error(GetVideosByPlaylistIdError value),
+  }) {
+    assert($default != null);
+    assert(successful != null);
+    assert(error != null);
+    return $default(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>(
+    Result $default(GetVideosByPlaylistId$ value), {
+    Result successful(GetVideosByPlaylistIdSuccessful value),
+    Result error(GetVideosByPlaylistIdError value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if ($default != null) {
+      return $default(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetVideosByPlaylistId$ implements GetVideosByPlaylistId {
+  const factory GetVideosByPlaylistId$(String playlistId) =
+      _$GetVideosByPlaylistId$;
+
+  String get playlistId;
+  $GetVideosByPlaylistId$CopyWith<GetVideosByPlaylistId$> get copyWith;
+}
+
+/// @nodoc
+abstract class $GetVideosByPlaylistIdSuccessfulCopyWith<$Res> {
+  factory $GetVideosByPlaylistIdSuccessfulCopyWith(
+          GetVideosByPlaylistIdSuccessful value,
+          $Res Function(GetVideosByPlaylistIdSuccessful) then) =
+      _$GetVideosByPlaylistIdSuccessfulCopyWithImpl<$Res>;
+  $Res call({List<Video> videos});
+}
+
+/// @nodoc
+class _$GetVideosByPlaylistIdSuccessfulCopyWithImpl<$Res>
+    extends _$GetVideosByPlaylistIdCopyWithImpl<$Res>
+    implements $GetVideosByPlaylistIdSuccessfulCopyWith<$Res> {
+  _$GetVideosByPlaylistIdSuccessfulCopyWithImpl(
+      GetVideosByPlaylistIdSuccessful _value,
+      $Res Function(GetVideosByPlaylistIdSuccessful) _then)
+      : super(_value, (v) => _then(v as GetVideosByPlaylistIdSuccessful));
+
+  @override
+  GetVideosByPlaylistIdSuccessful get _value =>
+      super._value as GetVideosByPlaylistIdSuccessful;
+
+  @override
+  $Res call({
+    Object videos = freezed,
+  }) {
+    return _then(GetVideosByPlaylistIdSuccessful(
+      videos == freezed ? _value.videos : videos as List<Video>,
+    ));
+  }
+}
+
+/// @nodoc
+class _$GetVideosByPlaylistIdSuccessful
+    implements GetVideosByPlaylistIdSuccessful {
+  const _$GetVideosByPlaylistIdSuccessful(this.videos) : assert(videos != null);
+
+  @override
+  final List<Video> videos;
+
+  @override
+  String toString() {
+    return 'GetVideosByPlaylistId.successful(videos: $videos)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is GetVideosByPlaylistIdSuccessful &&
+            (identical(other.videos, videos) ||
+                const DeepCollectionEquality().equals(other.videos, videos)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(videos);
+
+  @override
+  $GetVideosByPlaylistIdSuccessfulCopyWith<GetVideosByPlaylistIdSuccessful>
+      get copyWith => _$GetVideosByPlaylistIdSuccessfulCopyWithImpl<
+          GetVideosByPlaylistIdSuccessful>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>(
+    Result $default(String playlistId), {
+    @required Result successful(List<Video> videos),
+    @required Result error(Object error),
+  }) {
+    assert($default != null);
+    assert(successful != null);
+    assert(error != null);
+    return successful(videos);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>(
+    Result $default(String playlistId), {
+    Result successful(List<Video> videos),
+    Result error(Object error),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (successful != null) {
+      return successful(videos);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>(
+    Result $default(GetVideosByPlaylistId$ value), {
+    @required Result successful(GetVideosByPlaylistIdSuccessful value),
+    @required Result error(GetVideosByPlaylistIdError value),
+  }) {
+    assert($default != null);
+    assert(successful != null);
+    assert(error != null);
+    return successful(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>(
+    Result $default(GetVideosByPlaylistId$ value), {
+    Result successful(GetVideosByPlaylistIdSuccessful value),
+    Result error(GetVideosByPlaylistIdError value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (successful != null) {
+      return successful(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetVideosByPlaylistIdSuccessful
+    implements GetVideosByPlaylistId {
+  const factory GetVideosByPlaylistIdSuccessful(List<Video> videos) =
+      _$GetVideosByPlaylistIdSuccessful;
+
+  List<Video> get videos;
+  $GetVideosByPlaylistIdSuccessfulCopyWith<GetVideosByPlaylistIdSuccessful>
+      get copyWith;
+}
+
+/// @nodoc
+abstract class $GetVideosByPlaylistIdErrorCopyWith<$Res> {
+  factory $GetVideosByPlaylistIdErrorCopyWith(GetVideosByPlaylistIdError value,
+          $Res Function(GetVideosByPlaylistIdError) then) =
+      _$GetVideosByPlaylistIdErrorCopyWithImpl<$Res>;
+  $Res call({Object error});
+}
+
+/// @nodoc
+class _$GetVideosByPlaylistIdErrorCopyWithImpl<$Res>
+    extends _$GetVideosByPlaylistIdCopyWithImpl<$Res>
+    implements $GetVideosByPlaylistIdErrorCopyWith<$Res> {
+  _$GetVideosByPlaylistIdErrorCopyWithImpl(GetVideosByPlaylistIdError _value,
+      $Res Function(GetVideosByPlaylistIdError) _then)
+      : super(_value, (v) => _then(v as GetVideosByPlaylistIdError));
+
+  @override
+  GetVideosByPlaylistIdError get _value =>
+      super._value as GetVideosByPlaylistIdError;
+
+  @override
+  $Res call({
+    Object error = freezed,
+  }) {
+    return _then(GetVideosByPlaylistIdError(
+      error == freezed ? _value.error : error,
+    ));
+  }
+}
+
+@Implements(ErrorAction)
+
+/// @nodoc
+class _$GetVideosByPlaylistIdError implements GetVideosByPlaylistIdError {
+  const _$GetVideosByPlaylistIdError(this.error) : assert(error != null);
+
+  @override
+  final Object error;
+
+  @override
+  String toString() {
+    return 'GetVideosByPlaylistId.error(error: $error)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is GetVideosByPlaylistIdError &&
+            (identical(other.error, error) ||
+                const DeepCollectionEquality().equals(other.error, error)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
+
+  @override
+  $GetVideosByPlaylistIdErrorCopyWith<GetVideosByPlaylistIdError>
+      get copyWith =>
+          _$GetVideosByPlaylistIdErrorCopyWithImpl<GetVideosByPlaylistIdError>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>(
+    Result $default(String playlistId), {
+    @required Result successful(List<Video> videos),
+    @required Result error(Object error),
+  }) {
+    assert($default != null);
+    assert(successful != null);
+    assert(error != null);
+    return error(this.error);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>(
+    Result $default(String playlistId), {
+    Result successful(List<Video> videos),
+    Result error(Object error),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (error != null) {
+      return error(this.error);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>(
+    Result $default(GetVideosByPlaylistId$ value), {
+    @required Result successful(GetVideosByPlaylistIdSuccessful value),
+    @required Result error(GetVideosByPlaylistIdError value),
+  }) {
+    assert($default != null);
+    assert(successful != null);
+    assert(error != null);
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>(
+    Result $default(GetVideosByPlaylistId$ value), {
+    Result successful(GetVideosByPlaylistIdSuccessful value),
+    Result error(GetVideosByPlaylistIdError value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetVideosByPlaylistIdError
+    implements GetVideosByPlaylistId, ErrorAction {
+  const factory GetVideosByPlaylistIdError(Object error) =
+      _$GetVideosByPlaylistIdError;
+
+  Object get error;
+  $GetVideosByPlaylistIdErrorCopyWith<GetVideosByPlaylistIdError> get copyWith;
+}

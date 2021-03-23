@@ -17,6 +17,7 @@ import 'package:elearning_platform_mobile/src/presentation/signup/username_page.
 import 'package:elearning_platform_mobile/src/presentation/widgets/search_users_page.dart';
 import 'package:elearning_platform_mobile/src/presentation/login/signup_page.dart';
 import 'package:elearning_platform_mobile/src/presentation/mentoring/edit_mentorship_page.dart';
+import 'package:elearning_platform_mobile/src/presentation/videos/playlist_videos_page.dart';
 
 // ignore: avoid_classes_with_only_static_members
 class AppRoutes {
@@ -37,6 +38,7 @@ class AppRoutes {
   static const String mentoringPage = '/mentoringPage';
   static const String addMentorshipPage = '/addMentorshipPage';
   static const String editMentorshipPage = '/editMentorshipPage';
+  static const String playlistVideosPage = '/playlistVideosPage';
 
   static Map<String, WidgetBuilder> routes = <String, WidgetBuilder>{
     home: (BuildContext context) {
@@ -93,6 +95,10 @@ class AppRoutes {
     editMentorshipPage: (BuildContext context) {
       return EditMentorshipPage(
           currentMentorship: ModalRoute.of(context).settings.arguments);
+    },
+    playlistVideosPage: (BuildContext context) {
+      return PlaylistVideosPage(
+          playlist: ModalRoute.of(context).settings.arguments);
     },
   };
 }

@@ -109,6 +109,16 @@ class VideosApi {
 //    return result;
   }
 
+  Future<List<Video>> getVideosByPlaylistId(String playlistId) async {
+    final dynamic queryParams = {
+      'playlistId': playlistId,
+    };
+    final Response response = await _clientWrapper.get('videos', queryParams);
+
+    final List<dynamic> data = jsonDecode(response.body);
+    return data.map((dynamic json) => Video.fromJson(json)).toList();
+  }
+
   Future<List<Video>> listenForVideos(List<String> following) async {
     final Response response = await _clientWrapper.get('videos');
 

@@ -18,6 +18,7 @@ class VideosEpics {
       TypedEpic<AppState, ListenForVideos$>(_listenForVideo),
       TypedEpic<AppState, GetMyVideos$>(_getMyVideos),
       TypedEpic<AppState, GetVideoById$>(_getVideoById),
+      TypedEpic<AppState, GetVideosByPlaylistId$>(_getVideosByPlaylistId),
       TypedEpic<AppState, UpdateVideo$>(_updateVideo),
       TypedEpic<AppState, DeleteVideo$>(_deleteVideo),
     ]);
@@ -37,8 +38,7 @@ class VideosEpics {
       Stream<GetVideoById$> actions, EpicStore<AppState> store) {
     return actions //
         .flatMap((GetVideoById$ action) => Stream<GetVideoById$>.value(action)
-            .asyncMap(
-                (GetVideoById$ action) => _api.getVideoById(action.id))
+            .asyncMap((GetVideoById$ action) => _api.getVideoById(action.id))
             .expand((Video video) => <AppAction>[
                   GetVideoById.successful(video),
                 ])
@@ -49,19 +49,19 @@ class VideosEpics {
       Stream<UpdateVideo$> actions, EpicStore<AppState> store) {
     return actions //
         .flatMap((UpdateVideo$ action) => Stream<UpdateVideo$>.value(action)
-        .asyncMap((UpdateVideo$ action) => _api.updateVideo(
-        store.state.videos.info, action.id))
-        .map((Video video) => UpdateVideo.successful(video))
-        .onErrorReturnWith((dynamic error) => UpdateVideo.error(error)));
+            .asyncMap((UpdateVideo$ action) =>
+                _api.updateVideo(store.state.videos.info, action.id))
+            .map((Video video) => UpdateVideo.successful(video))
+            .onErrorReturnWith((dynamic error) => UpdateVideo.error(error)));
   }
 
   Stream<AppAction> _deleteVideo(
       Stream<DeleteVideo$> actions, EpicStore<AppState> store) {
     return actions //
         .flatMap((DeleteVideo$ action) => Stream<DeleteVideo$>.value(action)
-        .asyncMap((DeleteVideo$ action) => _api.deleteVideo(action.id))
-        .mapTo(const DeleteVideo.successful())
-        .onErrorReturnWith((dynamic error) => DeleteVideo.error(error)));
+            .asyncMap((DeleteVideo$ action) => _api.deleteVideo(action.id))
+            .mapTo(const DeleteVideo.successful())
+            .onErrorReturnWith((dynamic error) => DeleteVideo.error(error)));
   }
 
   Stream<AppAction> _getMyVideos(
@@ -81,6 +81,28 @@ class VideosEpics {
                       .map((String uid) => GetUser(uid)),
                 ])
             .onErrorReturnWith((dynamic error) => ListenForPosts.error(error)));
+  }
+
+  Stream<AppAction> _getVideosByPlaylistId(
+      Stream<GetVideosByPlaylistId$> actions, EpicStore<AppState> store) {
+    return actions //
+        .flatMap((GetVideosByPlaylistId$ action) =>
+            Stream<GetVideosByPlaylistId$>.value(action)
+                .asyncMap((GetVideosByPlaylistId$ action) =>
+                    _api.getVideosByPlaylistId(
+                      action.playlistId,
+                    ))
+                .expand((List<Video> videos) => <AppAction>[
+                      GetMyVideos.successful(videos),
+                      ...videos
+                          .map((Video video) => video.uid)
+                          .toSet()
+                          .where((String uid) =>
+                              store.state.auth.users[uid] == null)
+                          .map((String uid) => GetUser(uid)),
+                    ])
+                .onErrorReturnWith(
+                    (dynamic error) => ListenForPosts.error(error)));
   }
 
   Stream<AppAction> _listenForVideo(
