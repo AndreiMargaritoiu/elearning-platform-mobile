@@ -24,7 +24,7 @@ class _EditPlaylistPageState extends State<EditPlaylistPage> {
     super.initState();
 
     StoreProvider.of<AppState>(context, listen: false)
-        .dispatch(const GetVideosByUid());
+        .dispatch(const GetVideosByUid(),);
 
     for (int i = 0; i < 100; i++) {
       isSelected.add(false);
@@ -51,7 +51,7 @@ class _EditPlaylistPageState extends State<EditPlaylistPage> {
                   keyboardType: TextInputType.name,
                   onChanged: (String value) {
                     StoreProvider.of<AppState>(context)
-                        .dispatch(UpdatePlaylistInfo(title: value));
+                        .dispatch(UpdatePlaylistInfo(title: value),);
                   },
                   validator: (String value) {
                     if (value.length < 3) {
@@ -68,7 +68,7 @@ class _EditPlaylistPageState extends State<EditPlaylistPage> {
                   keyboardType: TextInputType.name,
                   onChanged: (String value) {
                     StoreProvider.of<AppState>(context)
-                        .dispatch(UpdatePlaylistInfo(description: value));
+                        .dispatch(UpdatePlaylistInfo(description: value),);
                   },
                   validator: (String value) {
                     if (value.length < 3) {
@@ -89,18 +89,18 @@ class _EditPlaylistPageState extends State<EditPlaylistPage> {
                       child: const Text('Update'),
                       onPressed: () {
                         StoreProvider.of<AppState>(context).dispatch(
-                            UpdatePlaylist(widget.currentPlaylist.id));
+                            UpdatePlaylist(widget.currentPlaylist.id),);
                         Navigator.popUntil(
-                            context, ModalRoute.withName(AppRoutes.home));
+                            context, ModalRoute.withName(AppRoutes.home),);
                       },
                     ),
                     MaterialButton(
                       child: const Text('Delete'),
                       onPressed: () {
                         StoreProvider.of<AppState>(context).dispatch(
-                            UpdatePlaylist(widget.currentPlaylist.id));
+                            UpdatePlaylist(widget.currentPlaylist.id),);
                         Navigator.popUntil(
-                            context, ModalRoute.withName(AppRoutes.home));
+                            context, ModalRoute.withName(AppRoutes.home),);
                       },
                     ),
                   ],
@@ -162,12 +162,12 @@ class _EditPlaylistPageState extends State<EditPlaylistPage> {
                                               ? StoreProvider.of<AppState>(
                                               context)
                                               .dispatch(UpdatePlaylistInfo(
-                                              addVideoRef: video.id))
+                                              addVideoRef: video.id),)
                                               : StoreProvider.of<AppState>(
                                               context)
                                               .dispatch(UpdatePlaylistInfo(
                                               removeVideoRef:
-                                              video.id));
+                                              video.id),);
                                         },
                                       )
                                     ],

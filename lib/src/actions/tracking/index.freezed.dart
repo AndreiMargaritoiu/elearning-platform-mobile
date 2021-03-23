@@ -93,7 +93,7 @@ class _$TrackAction$CopyWithImpl<$Res> extends _$TrackActionCopyWithImpl<$Res>
     implements $TrackAction$CopyWith<$Res> {
   _$TrackAction$CopyWithImpl(
       TrackAction$ _value, $Res Function(TrackAction$) _then)
-      : super(_value, (v) => _then(v as TrackAction$));
+      : super(_value, (v) => _then(v as TrackAction$),);
 
   @override
   TrackAction$ get _value => super._value as TrackAction$;
@@ -190,7 +190,7 @@ class _$TrackActionSuccessfulCopyWithImpl<$Res>
     implements $TrackActionSuccessfulCopyWith<$Res> {
   _$TrackActionSuccessfulCopyWithImpl(
       TrackActionSuccessful _value, $Res Function(TrackActionSuccessful) _then)
-      : super(_value, (v) => _then(v as TrackActionSuccessful));
+      : super(_value, (v) => _then(v as TrackActionSuccessful),);
 
   @override
   TrackActionSuccessful get _value => super._value as TrackActionSuccessful;
@@ -288,7 +288,7 @@ class _$TrackActionErrorCopyWithImpl<$Res>
     implements $TrackActionErrorCopyWith<$Res> {
   _$TrackActionErrorCopyWithImpl(
       TrackActionError _value, $Res Function(TrackActionError) _then)
-      : super(_value, (v) => _then(v as TrackActionError));
+      : super(_value, (v) => _then(v as TrackActionError),);
 
   @override
   TrackActionError get _value => super._value as TrackActionError;
@@ -299,7 +299,7 @@ class _$TrackActionErrorCopyWithImpl<$Res>
   }) {
     return _then(TrackActionError(
       error == freezed ? _value.error : error,
-    ));
+    ),);
   }
 }
 
@@ -322,7 +322,7 @@ class _$TrackActionError implements TrackActionError {
     return identical(this, other) ||
         (other is TrackActionError &&
             (identical(other.error, error) ||
-                const DeepCollectionEquality().equals(other.error, error)));
+                const DeepCollectionEquality().equals(other.error, error),));
   }
 
   @override
@@ -443,7 +443,7 @@ class _$UpdateTrackingInfoCopyWithImpl<$Res>
   }) {
     return _then(_value.copyWith(
       vid: vid == freezed ? _value.vid : vid as String,
-    ));
+    ),);
   }
 }
 
@@ -463,7 +463,7 @@ class _$UpdateTrackingInfo$CopyWithImpl<$Res>
     implements $UpdateTrackingInfo$CopyWith<$Res> {
   _$UpdateTrackingInfo$CopyWithImpl(
       UpdateTrackingInfo$ _value, $Res Function(UpdateTrackingInfo$) _then)
-      : super(_value, (v) => _then(v as UpdateTrackingInfo$));
+      : super(_value, (v) => _then(v as UpdateTrackingInfo$),);
 
   @override
   UpdateTrackingInfo$ get _value => super._value as UpdateTrackingInfo$;
@@ -474,7 +474,7 @@ class _$UpdateTrackingInfo$CopyWithImpl<$Res>
   }) {
     return _then(UpdateTrackingInfo$(
       vid: vid == freezed ? _value.vid : vid as String,
-    ));
+    ),);
   }
 }
 
@@ -495,7 +495,7 @@ class _$UpdateTrackingInfo$ implements UpdateTrackingInfo$ {
     return identical(this, other) ||
         (other is UpdateTrackingInfo$ &&
             (identical(other.vid, vid) ||
-                const DeepCollectionEquality().equals(other.vid, vid)));
+                const DeepCollectionEquality().equals(other.vid, vid),));
   }
 
   @override

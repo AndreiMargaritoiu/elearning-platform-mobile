@@ -92,7 +92,7 @@ abstract class $AddVideo$CopyWith<$Res> {
 class _$AddVideo$CopyWithImpl<$Res> extends _$AddVideoCopyWithImpl<$Res>
     implements $AddVideo$CopyWith<$Res> {
   _$AddVideo$CopyWithImpl(AddVideo$ _value, $Res Function(AddVideo$) _then)
-      : super(_value, (v) => _then(v as AddVideo$));
+      : super(_value, (v) => _then(v as AddVideo$),);
 
   @override
   AddVideo$ get _value => super._value as AddVideo$;
@@ -190,7 +190,7 @@ class _$AddVideoSuccessfulCopyWithImpl<$Res>
     implements $AddVideoSuccessfulCopyWith<$Res> {
   _$AddVideoSuccessfulCopyWithImpl(
       AddVideoSuccessful _value, $Res Function(AddVideoSuccessful) _then)
-      : super(_value, (v) => _then(v as AddVideoSuccessful));
+      : super(_value, (v) => _then(v as AddVideoSuccessful),);
 
   @override
   AddVideoSuccessful get _value => super._value as AddVideoSuccessful;
@@ -201,7 +201,7 @@ class _$AddVideoSuccessfulCopyWithImpl<$Res>
   }) {
     return _then(AddVideoSuccessful(
       video == freezed ? _value.video : video as Video,
-    ));
+    ),);
   }
 }
 
@@ -222,7 +222,7 @@ class _$AddVideoSuccessful implements AddVideoSuccessful {
     return identical(this, other) ||
         (other is AddVideoSuccessful &&
             (identical(other.video, video) ||
-                const DeepCollectionEquality().equals(other.video, video)));
+                const DeepCollectionEquality().equals(other.video, video),));
   }
 
   @override
@@ -310,7 +310,7 @@ class _$AddVideoErrorCopyWithImpl<$Res> extends _$AddVideoCopyWithImpl<$Res>
     implements $AddVideoErrorCopyWith<$Res> {
   _$AddVideoErrorCopyWithImpl(
       AddVideoError _value, $Res Function(AddVideoError) _then)
-      : super(_value, (v) => _then(v as AddVideoError));
+      : super(_value, (v) => _then(v as AddVideoError),);
 
   @override
   AddVideoError get _value => super._value as AddVideoError;
@@ -321,7 +321,7 @@ class _$AddVideoErrorCopyWithImpl<$Res> extends _$AddVideoCopyWithImpl<$Res>
   }) {
     return _then(AddVideoError(
       error == freezed ? _value.error : error,
-    ));
+    ),);
   }
 }
 
@@ -344,7 +344,7 @@ class _$AddVideoError implements AddVideoError {
     return identical(this, other) ||
         (other is AddVideoError &&
             (identical(other.error, error) ||
-                const DeepCollectionEquality().equals(other.error, error)));
+                const DeepCollectionEquality().equals(other.error, error),));
   }
 
   @override
@@ -507,7 +507,7 @@ class _$ListenForVideos$CopyWithImpl<$Res>
     implements $ListenForVideos$CopyWith<$Res> {
   _$ListenForVideos$CopyWithImpl(
       ListenForVideos$ _value, $Res Function(ListenForVideos$) _then)
-      : super(_value, (v) => _then(v as ListenForVideos$));
+      : super(_value, (v) => _then(v as ListenForVideos$),);
 
   @override
   ListenForVideos$ get _value => super._value as ListenForVideos$;
@@ -605,7 +605,7 @@ class _$ListenForVideosSuccessfulCopyWithImpl<$Res>
     implements $ListenForVideosSuccessfulCopyWith<$Res> {
   _$ListenForVideosSuccessfulCopyWithImpl(ListenForVideosSuccessful _value,
       $Res Function(ListenForVideosSuccessful) _then)
-      : super(_value, (v) => _then(v as ListenForVideosSuccessful));
+      : super(_value, (v) => _then(v as ListenForVideosSuccessful),);
 
   @override
   ListenForVideosSuccessful get _value =>
@@ -617,7 +617,7 @@ class _$ListenForVideosSuccessfulCopyWithImpl<$Res>
   }) {
     return _then(ListenForVideosSuccessful(
       videos == freezed ? _value.videos : videos as List<Video>,
-    ));
+    ),);
   }
 }
 
@@ -638,7 +638,7 @@ class _$ListenForVideosSuccessful implements ListenForVideosSuccessful {
     return identical(this, other) ||
         (other is ListenForVideosSuccessful &&
             (identical(other.videos, videos) ||
-                const DeepCollectionEquality().equals(other.videos, videos)));
+                const DeepCollectionEquality().equals(other.videos, videos),));
   }
 
   @override
@@ -729,7 +729,7 @@ class _$ListenForVideosErrorCopyWithImpl<$Res>
     implements $ListenForVideosErrorCopyWith<$Res> {
   _$ListenForVideosErrorCopyWithImpl(
       ListenForVideosError _value, $Res Function(ListenForVideosError) _then)
-      : super(_value, (v) => _then(v as ListenForVideosError));
+      : super(_value, (v) => _then(v as ListenForVideosError),);
 
   @override
   ListenForVideosError get _value => super._value as ListenForVideosError;
@@ -740,7 +740,7 @@ class _$ListenForVideosErrorCopyWithImpl<$Res>
   }) {
     return _then(ListenForVideosError(
       error == freezed ? _value.error : error,
-    ));
+    ),);
   }
 }
 
@@ -763,7 +763,7 @@ class _$ListenForVideosError implements ListenForVideosError {
     return identical(this, other) ||
         (other is ListenForVideosError &&
             (identical(other.error, error) ||
-                const DeepCollectionEquality().equals(other.error, error)));
+                const DeepCollectionEquality().equals(other.error, error),));
   }
 
   @override
@@ -930,7 +930,7 @@ class _$GetVideosByUid$CopyWithImpl<$Res>
     implements $GetVideosByUid$CopyWith<$Res> {
   _$GetVideosByUid$CopyWithImpl(
       GetVideosByUid$ _value, $Res Function(GetVideosByUid$) _then)
-      : super(_value, (v) => _then(v as GetVideosByUid$));
+      : super(_value, (v) => _then(v as GetVideosByUid$),);
 
   @override
   GetVideosByUid$ get _value => super._value as GetVideosByUid$;
@@ -941,7 +941,7 @@ class _$GetVideosByUid$CopyWithImpl<$Res>
   }) {
     return _then(GetVideosByUid$(
       id: id == freezed ? _value.id : id as String,
-    ));
+    ),);
   }
 }
 
@@ -962,7 +962,7 @@ class _$GetVideosByUid$ implements GetVideosByUid$ {
     return identical(this, other) ||
         (other is GetVideosByUid$ &&
             (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)));
+                const DeepCollectionEquality().equals(other.id, id),));
   }
 
   @override
@@ -1051,7 +1051,7 @@ class _$GetVideosByUidSuccessfulCopyWithImpl<$Res>
     implements $GetVideosByUidSuccessfulCopyWith<$Res> {
   _$GetVideosByUidSuccessfulCopyWithImpl(GetVideosByUidSuccessful _value,
       $Res Function(GetVideosByUidSuccessful) _then)
-      : super(_value, (v) => _then(v as GetVideosByUidSuccessful));
+      : super(_value, (v) => _then(v as GetVideosByUidSuccessful),);
 
   @override
   GetVideosByUidSuccessful get _value =>
@@ -1063,7 +1063,7 @@ class _$GetVideosByUidSuccessfulCopyWithImpl<$Res>
   }) {
     return _then(GetVideosByUidSuccessful(
       videos == freezed ? _value.videos : videos as List<Video>,
-    ));
+    ),);
   }
 }
 
@@ -1084,7 +1084,7 @@ class _$GetVideosByUidSuccessful implements GetVideosByUidSuccessful {
     return identical(this, other) ||
         (other is GetVideosByUidSuccessful &&
             (identical(other.videos, videos) ||
-                const DeepCollectionEquality().equals(other.videos, videos)));
+                const DeepCollectionEquality().equals(other.videos, videos),));
   }
 
   @override
@@ -1175,7 +1175,7 @@ class _$GetVideosByUidErrorCopyWithImpl<$Res>
     implements $GetVideosByUidErrorCopyWith<$Res> {
   _$GetVideosByUidErrorCopyWithImpl(
       GetVideosByUidError _value, $Res Function(GetVideosByUidError) _then)
-      : super(_value, (v) => _then(v as GetVideosByUidError));
+      : super(_value, (v) => _then(v as GetVideosByUidError),);
 
   @override
   GetVideosByUidError get _value => super._value as GetVideosByUidError;
@@ -1186,7 +1186,7 @@ class _$GetVideosByUidErrorCopyWithImpl<$Res>
   }) {
     return _then(GetVideosByUidError(
       error == freezed ? _value.error : error,
-    ));
+    ),);
   }
 }
 
@@ -1209,7 +1209,7 @@ class _$GetVideosByUidError implements GetVideosByUidError {
     return identical(this, other) ||
         (other is GetVideosByUidError &&
             (identical(other.error, error) ||
-                const DeepCollectionEquality().equals(other.error, error)));
+                const DeepCollectionEquality().equals(other.error, error),));
   }
 
   @override
@@ -1373,7 +1373,7 @@ class _$GetVideoById$CopyWithImpl<$Res> extends _$GetVideoByIdCopyWithImpl<$Res>
     implements $GetVideoById$CopyWith<$Res> {
   _$GetVideoById$CopyWithImpl(
       GetVideoById$ _value, $Res Function(GetVideoById$) _then)
-      : super(_value, (v) => _then(v as GetVideoById$));
+      : super(_value, (v) => _then(v as GetVideoById$),);
 
   @override
   GetVideoById$ get _value => super._value as GetVideoById$;
@@ -1384,7 +1384,7 @@ class _$GetVideoById$CopyWithImpl<$Res> extends _$GetVideoByIdCopyWithImpl<$Res>
   }) {
     return _then(GetVideoById$(
       id == freezed ? _value.id : id as String,
-    ));
+    ),);
   }
 }
 
@@ -1405,7 +1405,7 @@ class _$GetVideoById$ implements GetVideoById$ {
     return identical(this, other) ||
         (other is GetVideoById$ &&
             (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)));
+                const DeepCollectionEquality().equals(other.id, id),));
   }
 
   @override
@@ -1494,7 +1494,7 @@ class _$GetVideoByIdSuccessfulCopyWithImpl<$Res>
     implements $GetVideoByIdSuccessfulCopyWith<$Res> {
   _$GetVideoByIdSuccessfulCopyWithImpl(GetVideoByIdSuccessful _value,
       $Res Function(GetVideoByIdSuccessful) _then)
-      : super(_value, (v) => _then(v as GetVideoByIdSuccessful));
+      : super(_value, (v) => _then(v as GetVideoByIdSuccessful),);
 
   @override
   GetVideoByIdSuccessful get _value => super._value as GetVideoByIdSuccessful;
@@ -1505,7 +1505,7 @@ class _$GetVideoByIdSuccessfulCopyWithImpl<$Res>
   }) {
     return _then(GetVideoByIdSuccessful(
       videos == freezed ? _value.videos : videos as Video,
-    ));
+    ),);
   }
 }
 
@@ -1526,7 +1526,7 @@ class _$GetVideoByIdSuccessful implements GetVideoByIdSuccessful {
     return identical(this, other) ||
         (other is GetVideoByIdSuccessful &&
             (identical(other.videos, videos) ||
-                const DeepCollectionEquality().equals(other.videos, videos)));
+                const DeepCollectionEquality().equals(other.videos, videos),));
   }
 
   @override
@@ -1616,7 +1616,7 @@ class _$GetVideoByIdErrorCopyWithImpl<$Res>
     implements $GetVideoByIdErrorCopyWith<$Res> {
   _$GetVideoByIdErrorCopyWithImpl(
       GetVideoByIdError _value, $Res Function(GetVideoByIdError) _then)
-      : super(_value, (v) => _then(v as GetVideoByIdError));
+      : super(_value, (v) => _then(v as GetVideoByIdError),);
 
   @override
   GetVideoByIdError get _value => super._value as GetVideoByIdError;
@@ -1627,7 +1627,7 @@ class _$GetVideoByIdErrorCopyWithImpl<$Res>
   }) {
     return _then(GetVideoByIdError(
       error == freezed ? _value.error : error,
-    ));
+    ),);
   }
 }
 
@@ -1650,7 +1650,7 @@ class _$GetVideoByIdError implements GetVideoByIdError {
     return identical(this, other) ||
         (other is GetVideoByIdError &&
             (identical(other.error, error) ||
-                const DeepCollectionEquality().equals(other.error, error)));
+                const DeepCollectionEquality().equals(other.error, error),));
   }
 
   @override
@@ -1814,7 +1814,7 @@ class _$UpdateVideo$CopyWithImpl<$Res> extends _$UpdateVideoCopyWithImpl<$Res>
     implements $UpdateVideo$CopyWith<$Res> {
   _$UpdateVideo$CopyWithImpl(
       UpdateVideo$ _value, $Res Function(UpdateVideo$) _then)
-      : super(_value, (v) => _then(v as UpdateVideo$));
+      : super(_value, (v) => _then(v as UpdateVideo$),);
 
   @override
   UpdateVideo$ get _value => super._value as UpdateVideo$;
@@ -1825,7 +1825,7 @@ class _$UpdateVideo$CopyWithImpl<$Res> extends _$UpdateVideoCopyWithImpl<$Res>
   }) {
     return _then(UpdateVideo$(
       id == freezed ? _value.id : id as String,
-    ));
+    ),);
   }
 }
 
@@ -1846,7 +1846,7 @@ class _$UpdateVideo$ implements UpdateVideo$ {
     return identical(this, other) ||
         (other is UpdateVideo$ &&
             (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)));
+                const DeepCollectionEquality().equals(other.id, id),));
   }
 
   @override
@@ -1935,7 +1935,7 @@ class _$UpdateVideoSuccessfulCopyWithImpl<$Res>
     implements $UpdateVideoSuccessfulCopyWith<$Res> {
   _$UpdateVideoSuccessfulCopyWithImpl(
       UpdateVideoSuccessful _value, $Res Function(UpdateVideoSuccessful) _then)
-      : super(_value, (v) => _then(v as UpdateVideoSuccessful));
+      : super(_value, (v) => _then(v as UpdateVideoSuccessful),);
 
   @override
   UpdateVideoSuccessful get _value => super._value as UpdateVideoSuccessful;
@@ -1946,7 +1946,7 @@ class _$UpdateVideoSuccessfulCopyWithImpl<$Res>
   }) {
     return _then(UpdateVideoSuccessful(
       video == freezed ? _value.video : video as Video,
-    ));
+    ),);
   }
 }
 
@@ -1967,7 +1967,7 @@ class _$UpdateVideoSuccessful implements UpdateVideoSuccessful {
     return identical(this, other) ||
         (other is UpdateVideoSuccessful &&
             (identical(other.video, video) ||
-                const DeepCollectionEquality().equals(other.video, video)));
+                const DeepCollectionEquality().equals(other.video, video),));
   }
 
   @override
@@ -2057,7 +2057,7 @@ class _$UpdateVideoErrorCopyWithImpl<$Res>
     implements $UpdateVideoErrorCopyWith<$Res> {
   _$UpdateVideoErrorCopyWithImpl(
       UpdateVideoError _value, $Res Function(UpdateVideoError) _then)
-      : super(_value, (v) => _then(v as UpdateVideoError));
+      : super(_value, (v) => _then(v as UpdateVideoError),);
 
   @override
   UpdateVideoError get _value => super._value as UpdateVideoError;
@@ -2068,7 +2068,7 @@ class _$UpdateVideoErrorCopyWithImpl<$Res>
   }) {
     return _then(UpdateVideoError(
       error == freezed ? _value.error : error,
-    ));
+    ),);
   }
 }
 
@@ -2091,7 +2091,7 @@ class _$UpdateVideoError implements UpdateVideoError {
     return identical(this, other) ||
         (other is UpdateVideoError &&
             (identical(other.error, error) ||
-                const DeepCollectionEquality().equals(other.error, error)));
+                const DeepCollectionEquality().equals(other.error, error),));
   }
 
   @override
@@ -2253,7 +2253,7 @@ class _$DeleteVideo$CopyWithImpl<$Res> extends _$DeleteVideoCopyWithImpl<$Res>
     implements $DeleteVideo$CopyWith<$Res> {
   _$DeleteVideo$CopyWithImpl(
       DeleteVideo$ _value, $Res Function(DeleteVideo$) _then)
-      : super(_value, (v) => _then(v as DeleteVideo$));
+      : super(_value, (v) => _then(v as DeleteVideo$),);
 
   @override
   DeleteVideo$ get _value => super._value as DeleteVideo$;
@@ -2264,7 +2264,7 @@ class _$DeleteVideo$CopyWithImpl<$Res> extends _$DeleteVideoCopyWithImpl<$Res>
   }) {
     return _then(DeleteVideo$(
       id == freezed ? _value.id : id as String,
-    ));
+    ),);
   }
 }
 
@@ -2285,7 +2285,7 @@ class _$DeleteVideo$ implements DeleteVideo$ {
     return identical(this, other) ||
         (other is DeleteVideo$ &&
             (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)));
+                const DeepCollectionEquality().equals(other.id, id),));
   }
 
   @override
@@ -2373,7 +2373,7 @@ class _$DeleteVideoSuccessfulCopyWithImpl<$Res>
     implements $DeleteVideoSuccessfulCopyWith<$Res> {
   _$DeleteVideoSuccessfulCopyWithImpl(
       DeleteVideoSuccessful _value, $Res Function(DeleteVideoSuccessful) _then)
-      : super(_value, (v) => _then(v as DeleteVideoSuccessful));
+      : super(_value, (v) => _then(v as DeleteVideoSuccessful),);
 
   @override
   DeleteVideoSuccessful get _value => super._value as DeleteVideoSuccessful;
@@ -2471,7 +2471,7 @@ class _$DeleteVideoErrorCopyWithImpl<$Res>
     implements $DeleteVideoErrorCopyWith<$Res> {
   _$DeleteVideoErrorCopyWithImpl(
       DeleteVideoError _value, $Res Function(DeleteVideoError) _then)
-      : super(_value, (v) => _then(v as DeleteVideoError));
+      : super(_value, (v) => _then(v as DeleteVideoError),);
 
   @override
   DeleteVideoError get _value => super._value as DeleteVideoError;
@@ -2482,7 +2482,7 @@ class _$DeleteVideoErrorCopyWithImpl<$Res>
   }) {
     return _then(DeleteVideoError(
       error == freezed ? _value.error : error,
-    ));
+    ),);
   }
 }
 
@@ -2505,7 +2505,7 @@ class _$DeleteVideoError implements DeleteVideoError {
     return identical(this, other) ||
         (other is DeleteVideoError &&
             (identical(other.error, error) ||
-                const DeepCollectionEquality().equals(other.error, error)));
+                const DeepCollectionEquality().equals(other.error, error),));
   }
 
   @override
@@ -2664,7 +2664,7 @@ class _$UpdateVideoInfoCopyWithImpl<$Res>
       description:
           description == freezed ? _value.description : description as String,
       title: title == freezed ? _value.title : title as String,
-    ));
+    ),);
   }
 }
 
@@ -2690,7 +2690,7 @@ class _$UpdateVideoInfo$CopyWithImpl<$Res>
     implements $UpdateVideoInfo$CopyWith<$Res> {
   _$UpdateVideoInfo$CopyWithImpl(
       UpdateVideoInfo$ _value, $Res Function(UpdateVideoInfo$) _then)
-      : super(_value, (v) => _then(v as UpdateVideoInfo$));
+      : super(_value, (v) => _then(v as UpdateVideoInfo$),);
 
   @override
   UpdateVideoInfo$ get _value => super._value as UpdateVideoInfo$;
@@ -2717,7 +2717,7 @@ class _$UpdateVideoInfo$CopyWithImpl<$Res>
       description:
           description == freezed ? _value.description : description as String,
       title: title == freezed ? _value.title : title as String,
-    ));
+    ),);
   }
 }
 
@@ -2755,21 +2755,21 @@ class _$UpdateVideoInfo$ implements UpdateVideoInfo$ {
         (other is UpdateVideoInfo$ &&
             (identical(other.addVideo, addVideo) ||
                 const DeepCollectionEquality()
-                    .equals(other.addVideo, addVideo)) &&
+                    .equals(other.addVideo, addVideo),) &&
             (identical(other.removeVideo, removeVideo) ||
                 const DeepCollectionEquality()
-                    .equals(other.removeVideo, removeVideo)) &&
+                    .equals(other.removeVideo, removeVideo),) &&
             (identical(other.addThumbnail, addThumbnail) ||
                 const DeepCollectionEquality()
-                    .equals(other.addThumbnail, addThumbnail)) &&
+                    .equals(other.addThumbnail, addThumbnail),) &&
             (identical(other.removeThumbnail, removeThumbnail) ||
                 const DeepCollectionEquality()
-                    .equals(other.removeThumbnail, removeThumbnail)) &&
+                    .equals(other.removeThumbnail, removeThumbnail),) &&
             (identical(other.description, description) ||
                 const DeepCollectionEquality()
-                    .equals(other.description, description)) &&
+                    .equals(other.description, description),) &&
             (identical(other.title, title) ||
-                const DeepCollectionEquality().equals(other.title, title)));
+                const DeepCollectionEquality().equals(other.title, title),));
   }
 
   @override
@@ -2903,7 +2903,7 @@ class _$GetVideosByPlaylistId$CopyWithImpl<$Res>
     implements $GetVideosByPlaylistId$CopyWith<$Res> {
   _$GetVideosByPlaylistId$CopyWithImpl(GetVideosByPlaylistId$ _value,
       $Res Function(GetVideosByPlaylistId$) _then)
-      : super(_value, (v) => _then(v as GetVideosByPlaylistId$));
+      : super(_value, (v) => _then(v as GetVideosByPlaylistId$),);
 
   @override
   GetVideosByPlaylistId$ get _value => super._value as GetVideosByPlaylistId$;
@@ -2914,7 +2914,7 @@ class _$GetVideosByPlaylistId$CopyWithImpl<$Res>
   }) {
     return _then(GetVideosByPlaylistId$(
       playlistId == freezed ? _value.playlistId : playlistId as String,
-    ));
+    ),);
   }
 }
 
@@ -2936,7 +2936,7 @@ class _$GetVideosByPlaylistId$ implements GetVideosByPlaylistId$ {
         (other is GetVideosByPlaylistId$ &&
             (identical(other.playlistId, playlistId) ||
                 const DeepCollectionEquality()
-                    .equals(other.playlistId, playlistId)));
+                    .equals(other.playlistId, playlistId),));
   }
 
   @override
@@ -3029,7 +3029,7 @@ class _$GetVideosByPlaylistIdSuccessfulCopyWithImpl<$Res>
   _$GetVideosByPlaylistIdSuccessfulCopyWithImpl(
       GetVideosByPlaylistIdSuccessful _value,
       $Res Function(GetVideosByPlaylistIdSuccessful) _then)
-      : super(_value, (v) => _then(v as GetVideosByPlaylistIdSuccessful));
+      : super(_value, (v) => _then(v as GetVideosByPlaylistIdSuccessful),);
 
   @override
   GetVideosByPlaylistIdSuccessful get _value =>
@@ -3041,7 +3041,7 @@ class _$GetVideosByPlaylistIdSuccessfulCopyWithImpl<$Res>
   }) {
     return _then(GetVideosByPlaylistIdSuccessful(
       videos == freezed ? _value.videos : videos as List<Video>,
-    ));
+    ),);
   }
 }
 
@@ -3063,7 +3063,7 @@ class _$GetVideosByPlaylistIdSuccessful
     return identical(this, other) ||
         (other is GetVideosByPlaylistIdSuccessful &&
             (identical(other.videos, videos) ||
-                const DeepCollectionEquality().equals(other.videos, videos)));
+                const DeepCollectionEquality().equals(other.videos, videos),));
   }
 
   @override
@@ -3156,7 +3156,7 @@ class _$GetVideosByPlaylistIdErrorCopyWithImpl<$Res>
     implements $GetVideosByPlaylistIdErrorCopyWith<$Res> {
   _$GetVideosByPlaylistIdErrorCopyWithImpl(GetVideosByPlaylistIdError _value,
       $Res Function(GetVideosByPlaylistIdError) _then)
-      : super(_value, (v) => _then(v as GetVideosByPlaylistIdError));
+      : super(_value, (v) => _then(v as GetVideosByPlaylistIdError),);
 
   @override
   GetVideosByPlaylistIdError get _value =>
@@ -3168,7 +3168,7 @@ class _$GetVideosByPlaylistIdErrorCopyWithImpl<$Res>
   }) {
     return _then(GetVideosByPlaylistIdError(
       error == freezed ? _value.error : error,
-    ));
+    ),);
   }
 }
 
@@ -3191,7 +3191,7 @@ class _$GetVideosByPlaylistIdError implements GetVideosByPlaylistIdError {
     return identical(this, other) ||
         (other is GetVideosByPlaylistIdError &&
             (identical(other.error, error) ||
-                const DeepCollectionEquality().equals(other.error, error)));
+                const DeepCollectionEquality().equals(other.error, error),));
   }
 
   @override

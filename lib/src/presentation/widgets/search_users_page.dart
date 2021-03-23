@@ -23,8 +23,9 @@ class SearchUsersPage extends StatelessWidget {
                     hintText: 'search',
                   ),
                   onChanged: (String value) {
-                    StoreProvider.of<AppState>(context)
-                        .dispatch(SearchUsers(value));
+                    StoreProvider.of<AppState>(context).dispatch(
+                      SearchUsers(value),
+                    );
                   },
                 ),
               ),
@@ -54,7 +55,6 @@ class SearchUsersPage extends StatelessWidget {
                               } else {
                                 action = UpdateFollowing(add: user.uid);
                               }
-
                               StoreProvider.of<AppState>(context)
                                   .dispatch(action);
                             },

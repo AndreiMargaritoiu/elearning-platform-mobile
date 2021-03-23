@@ -2,12 +2,13 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:elearning_platform_mobile/src/data/http_client_wrapper.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:elearning_platform_mobile/src/models/index.dart';
 import 'package:http/http.dart';
 import 'package:meta/meta.dart';
 import 'package:quiver/iterables.dart';
+
+import 'package:elearning_platform_mobile/src/data/http_client_wrapper.dart';
+import 'package:elearning_platform_mobile/src/models/index.dart';
 
 class VideosApi {
   const VideosApi(
@@ -34,16 +35,18 @@ class VideosApi {
             ? await _uploadFile(ref.id, info.thumbnailPath)
             : null;
 
-    final Video newVideo = Video((VideoBuilder b) {
-      b
-        ..id = ref.id
-        ..uid = uid
-        ..videoUrl = videoUrl
-        ..thumbnailUrl = thumbnailUrl
-        ..description = info.description
-        ..title = info.title
-        ..createdAt = DateTime.now().toUtc().millisecondsSinceEpoch;
-    });
+    final Video newVideo = Video(
+      (VideoBuilder b) {
+        b
+          ..id = ref.id
+          ..uid = uid
+          ..videoUrl = videoUrl
+          ..thumbnailUrl = thumbnailUrl
+          ..description = info.description
+          ..title = info.title
+          ..createdAt = DateTime.now().toUtc().millisecondsSinceEpoch;
+      },
+    );
 
     await ref.set(newVideo.json);
     return newVideo;
@@ -52,7 +55,9 @@ class VideosApi {
   Future<String> _uploadFile(String id, String path) async {
     final DocumentReference ref = _firestore.collection('NOT_USED').doc();
     final Reference storageRef = _storage.ref('videos/$id/${ref.id}');
-    await storageRef.putFile(File(path));
+    await storageRef.putFile(
+      File(path),
+    );
     final String url = await storageRef.getDownloadURL();
 
     return url;
@@ -69,15 +74,19 @@ class VideosApi {
     final DocumentReference ref = _firestore.collection('videos').doc(id);
 
     if (info.description != null) {
-      await ref.update(<String, dynamic>{
-        'description': info.description,
-      });
+      await ref.update(
+        <String, dynamic>{
+          'description': info.description,
+        },
+      );
     }
 
     if (info.title != null) {
-      await ref.update(<String, dynamic>{
-        'title': info.title,
-      });
+      await ref.update(
+        <String, dynamic>{
+          'title': info.title,
+        },
+      );
     }
 
     return await getVideoById(id);
@@ -95,7 +104,11 @@ class VideosApi {
     final Response response = await _clientWrapper.get('videos', queryParams);
 
     final List<dynamic> data = jsonDecode(response.body);
-    return data.map((dynamic json) => Video.fromJson(json)).toList();
+    return data
+        .map(
+          (dynamic json) => Video.fromJson(json),
+        )
+        .toList();
 
 //    final QuerySnapshot snapshot = await _firestore
 //        .collection('videos') //
@@ -103,7 +116,7 @@ class VideosApi {
 //        .get();
 //
 //    final List<Video> result = snapshot.docs //
-//        .map((QueryDocumentSnapshot doc) => Video.fromJson(doc.data()))
+//        .map((QueryDocumentSnapshot doc) => Video.fromJson(doc.data(),),)
 //        .toList();
 //
 //    return result;
@@ -116,14 +129,22 @@ class VideosApi {
     final Response response = await _clientWrapper.get('videos', queryParams);
 
     final List<dynamic> data = jsonDecode(response.body);
-    return data.map((dynamic json) => Video.fromJson(json)).toList();
+    return data
+        .map(
+          (dynamic json) => Video.fromJson(json),
+        )
+        .toList();
   }
 
   Future<List<Video>> listenForVideos(List<String> following) async {
     final Response response = await _clientWrapper.get('videos');
 
     final List<dynamic> data = jsonDecode(response.body);
-    return data.map((dynamic json) => Video.fromJson(json)).toList();
+    return data
+        .map(
+          (dynamic json) => Video.fromJson(json),
+        )
+        .toList();
 
 //    final List<Video> newResult = <Video>[];
 //    final List<List<String>> parts = partition(following, 10).toList();
@@ -134,7 +155,7 @@ class VideosApi {
 //          .get();
 //
 //      final List<Video> result = snapshot.docs //
-//          .map((QueryDocumentSnapshot doc) => Video.fromJson(doc.data()))
+//          .map((QueryDocumentSnapshot doc) => Video.fromJson(doc.data(),),)
 //          .toList();
 //
 //      newResult.addAll(result);

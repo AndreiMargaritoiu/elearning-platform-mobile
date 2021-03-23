@@ -60,8 +60,9 @@ class _ResetPasswordPageState extends State<ResetPasswordPage>
                       child: const Text('Send email'),
                       onPressed: () {
                         if (Form.of(context).validate()) {
-                          StoreProvider.of<AppState>(context)
-                              .dispatch(ResetPassword(_email.text));
+                          StoreProvider.of<AppState>(context).dispatch(
+                            ResetPassword(_email.text),
+                          );
                         }
                       },
                     ),

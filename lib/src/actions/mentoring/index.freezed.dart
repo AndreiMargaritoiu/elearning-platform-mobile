@@ -97,7 +97,7 @@ class _$AddMentorship$CopyWithImpl<$Res>
     implements $AddMentorship$CopyWith<$Res> {
   _$AddMentorship$CopyWithImpl(
       AddMentorship$ _value, $Res Function(AddMentorship$) _then)
-      : super(_value, (v) => _then(v as AddMentorship$));
+      : super(_value, (v) => _then(v as AddMentorship$),);
 
   @override
   AddMentorship$ get _value => super._value as AddMentorship$;
@@ -195,7 +195,7 @@ class _$AddMentorshipSuccessfulCopyWithImpl<$Res>
     implements $AddMentorshipSuccessfulCopyWith<$Res> {
   _$AddMentorshipSuccessfulCopyWithImpl(AddMentorshipSuccessful _value,
       $Res Function(AddMentorshipSuccessful) _then)
-      : super(_value, (v) => _then(v as AddMentorshipSuccessful));
+      : super(_value, (v) => _then(v as AddMentorshipSuccessful),);
 
   @override
   AddMentorshipSuccessful get _value => super._value as AddMentorshipSuccessful;
@@ -206,7 +206,7 @@ class _$AddMentorshipSuccessfulCopyWithImpl<$Res>
   }) {
     return _then(AddMentorshipSuccessful(
       mentorship == freezed ? _value.mentorship : mentorship as Mentorship,
-    ));
+    ),);
   }
 }
 
@@ -228,7 +228,7 @@ class _$AddMentorshipSuccessful implements AddMentorshipSuccessful {
         (other is AddMentorshipSuccessful &&
             (identical(other.mentorship, mentorship) ||
                 const DeepCollectionEquality()
-                    .equals(other.mentorship, mentorship)));
+                    .equals(other.mentorship, mentorship),));
   }
 
   @override
@@ -319,7 +319,7 @@ class _$AddMentorshipErrorCopyWithImpl<$Res>
     implements $AddMentorshipErrorCopyWith<$Res> {
   _$AddMentorshipErrorCopyWithImpl(
       AddMentorshipError _value, $Res Function(AddMentorshipError) _then)
-      : super(_value, (v) => _then(v as AddMentorshipError));
+      : super(_value, (v) => _then(v as AddMentorshipError),);
 
   @override
   AddMentorshipError get _value => super._value as AddMentorshipError;
@@ -330,7 +330,7 @@ class _$AddMentorshipErrorCopyWithImpl<$Res>
   }) {
     return _then(AddMentorshipError(
       error == freezed ? _value.error : error,
-    ));
+    ),);
   }
 }
 
@@ -353,7 +353,7 @@ class _$AddMentorshipError implements AddMentorshipError {
     return identical(this, other) ||
         (other is AddMentorshipError &&
             (identical(other.error, error) ||
-                const DeepCollectionEquality().equals(other.error, error)));
+                const DeepCollectionEquality().equals(other.error, error),));
   }
 
   @override
@@ -516,7 +516,7 @@ class _$GetAllMentorships$CopyWithImpl<$Res>
     implements $GetAllMentorships$CopyWith<$Res> {
   _$GetAllMentorships$CopyWithImpl(
       GetAllMentorships$ _value, $Res Function(GetAllMentorships$) _then)
-      : super(_value, (v) => _then(v as GetAllMentorships$));
+      : super(_value, (v) => _then(v as GetAllMentorships$),);
 
   @override
   GetAllMentorships$ get _value => super._value as GetAllMentorships$;
@@ -615,7 +615,7 @@ class _$GetAllMentorshipsSuccessfulCopyWithImpl<$Res>
     implements $GetAllMentorshipsSuccessfulCopyWith<$Res> {
   _$GetAllMentorshipsSuccessfulCopyWithImpl(GetAllMentorshipsSuccessful _value,
       $Res Function(GetAllMentorshipsSuccessful) _then)
-      : super(_value, (v) => _then(v as GetAllMentorshipsSuccessful));
+      : super(_value, (v) => _then(v as GetAllMentorshipsSuccessful),);
 
   @override
   GetAllMentorshipsSuccessful get _value =>
@@ -629,7 +629,7 @@ class _$GetAllMentorshipsSuccessfulCopyWithImpl<$Res>
       mentorships == freezed
           ? _value.mentorships
           : mentorships as List<Mentorship>,
-    ));
+    ),);
   }
 }
 
@@ -652,7 +652,7 @@ class _$GetAllMentorshipsSuccessful implements GetAllMentorshipsSuccessful {
         (other is GetAllMentorshipsSuccessful &&
             (identical(other.mentorships, mentorships) ||
                 const DeepCollectionEquality()
-                    .equals(other.mentorships, mentorships)));
+                    .equals(other.mentorships, mentorships),));
   }
 
   @override
@@ -744,7 +744,7 @@ class _$GetAllMentorshipsErrorCopyWithImpl<$Res>
     implements $GetAllMentorshipsErrorCopyWith<$Res> {
   _$GetAllMentorshipsErrorCopyWithImpl(GetAllMentorshipsError _value,
       $Res Function(GetAllMentorshipsError) _then)
-      : super(_value, (v) => _then(v as GetAllMentorshipsError));
+      : super(_value, (v) => _then(v as GetAllMentorshipsError),);
 
   @override
   GetAllMentorshipsError get _value => super._value as GetAllMentorshipsError;
@@ -755,7 +755,7 @@ class _$GetAllMentorshipsErrorCopyWithImpl<$Res>
   }) {
     return _then(GetAllMentorshipsError(
       error == freezed ? _value.error : error,
-    ));
+    ),);
   }
 }
 
@@ -778,7 +778,7 @@ class _$GetAllMentorshipsError implements GetAllMentorshipsError {
     return identical(this, other) ||
         (other is GetAllMentorshipsError &&
             (identical(other.error, error) ||
-                const DeepCollectionEquality().equals(other.error, error)));
+                const DeepCollectionEquality().equals(other.error, error),));
   }
 
   @override
@@ -946,7 +946,7 @@ class _$GetMentorshipById$CopyWithImpl<$Res>
     implements $GetMentorshipById$CopyWith<$Res> {
   _$GetMentorshipById$CopyWithImpl(
       GetMentorshipById$ _value, $Res Function(GetMentorshipById$) _then)
-      : super(_value, (v) => _then(v as GetMentorshipById$));
+      : super(_value, (v) => _then(v as GetMentorshipById$),);
 
   @override
   GetMentorshipById$ get _value => super._value as GetMentorshipById$;
@@ -957,7 +957,7 @@ class _$GetMentorshipById$CopyWithImpl<$Res>
   }) {
     return _then(GetMentorshipById$(
       id == freezed ? _value.id : id as String,
-    ));
+    ),);
   }
 }
 
@@ -978,7 +978,7 @@ class _$GetMentorshipById$ implements GetMentorshipById$ {
     return identical(this, other) ||
         (other is GetMentorshipById$ &&
             (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)));
+                const DeepCollectionEquality().equals(other.id, id),));
   }
 
   @override
@@ -1068,7 +1068,7 @@ class _$GetMentorshipByIdSuccessfulCopyWithImpl<$Res>
     implements $GetMentorshipByIdSuccessfulCopyWith<$Res> {
   _$GetMentorshipByIdSuccessfulCopyWithImpl(GetMentorshipByIdSuccessful _value,
       $Res Function(GetMentorshipByIdSuccessful) _then)
-      : super(_value, (v) => _then(v as GetMentorshipByIdSuccessful));
+      : super(_value, (v) => _then(v as GetMentorshipByIdSuccessful),);
 
   @override
   GetMentorshipByIdSuccessful get _value =>
@@ -1080,7 +1080,7 @@ class _$GetMentorshipByIdSuccessfulCopyWithImpl<$Res>
   }) {
     return _then(GetMentorshipByIdSuccessful(
       mentorship == freezed ? _value.mentorship : mentorship as Mentorship,
-    ));
+    ),);
   }
 }
 
@@ -1103,7 +1103,7 @@ class _$GetMentorshipByIdSuccessful implements GetMentorshipByIdSuccessful {
         (other is GetMentorshipByIdSuccessful &&
             (identical(other.mentorship, mentorship) ||
                 const DeepCollectionEquality()
-                    .equals(other.mentorship, mentorship)));
+                    .equals(other.mentorship, mentorship),));
   }
 
   @override
@@ -1195,7 +1195,7 @@ class _$GetMentorshipByIdErrorCopyWithImpl<$Res>
     implements $GetMentorshipByIdErrorCopyWith<$Res> {
   _$GetMentorshipByIdErrorCopyWithImpl(GetMentorshipByIdError _value,
       $Res Function(GetMentorshipByIdError) _then)
-      : super(_value, (v) => _then(v as GetMentorshipByIdError));
+      : super(_value, (v) => _then(v as GetMentorshipByIdError),);
 
   @override
   GetMentorshipByIdError get _value => super._value as GetMentorshipByIdError;
@@ -1206,7 +1206,7 @@ class _$GetMentorshipByIdErrorCopyWithImpl<$Res>
   }) {
     return _then(GetMentorshipByIdError(
       error == freezed ? _value.error : error,
-    ));
+    ),);
   }
 }
 
@@ -1229,7 +1229,7 @@ class _$GetMentorshipByIdError implements GetMentorshipByIdError {
     return identical(this, other) ||
         (other is GetMentorshipByIdError &&
             (identical(other.error, error) ||
-                const DeepCollectionEquality().equals(other.error, error)));
+                const DeepCollectionEquality().equals(other.error, error),));
   }
 
   @override
@@ -1397,7 +1397,7 @@ class _$UpdateMentorship$CopyWithImpl<$Res>
     implements $UpdateMentorship$CopyWith<$Res> {
   _$UpdateMentorship$CopyWithImpl(
       UpdateMentorship$ _value, $Res Function(UpdateMentorship$) _then)
-      : super(_value, (v) => _then(v as UpdateMentorship$));
+      : super(_value, (v) => _then(v as UpdateMentorship$),);
 
   @override
   UpdateMentorship$ get _value => super._value as UpdateMentorship$;
@@ -1408,7 +1408,7 @@ class _$UpdateMentorship$CopyWithImpl<$Res>
   }) {
     return _then(UpdateMentorship$(
       id == freezed ? _value.id : id as String,
-    ));
+    ),);
   }
 }
 
@@ -1429,7 +1429,7 @@ class _$UpdateMentorship$ implements UpdateMentorship$ {
     return identical(this, other) ||
         (other is UpdateMentorship$ &&
             (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)));
+                const DeepCollectionEquality().equals(other.id, id),));
   }
 
   @override
@@ -1518,7 +1518,7 @@ class _$UpdateMentorshipSuccessfulCopyWithImpl<$Res>
     implements $UpdateMentorshipSuccessfulCopyWith<$Res> {
   _$UpdateMentorshipSuccessfulCopyWithImpl(UpdateMentorshipSuccessful _value,
       $Res Function(UpdateMentorshipSuccessful) _then)
-      : super(_value, (v) => _then(v as UpdateMentorshipSuccessful));
+      : super(_value, (v) => _then(v as UpdateMentorshipSuccessful),);
 
   @override
   UpdateMentorshipSuccessful get _value =>
@@ -1530,7 +1530,7 @@ class _$UpdateMentorshipSuccessfulCopyWithImpl<$Res>
   }) {
     return _then(UpdateMentorshipSuccessful(
       mentorship == freezed ? _value.mentorship : mentorship as Mentorship,
-    ));
+    ),);
   }
 }
 
@@ -1553,7 +1553,7 @@ class _$UpdateMentorshipSuccessful implements UpdateMentorshipSuccessful {
         (other is UpdateMentorshipSuccessful &&
             (identical(other.mentorship, mentorship) ||
                 const DeepCollectionEquality()
-                    .equals(other.mentorship, mentorship)));
+                    .equals(other.mentorship, mentorship),));
   }
 
   @override
@@ -1645,7 +1645,7 @@ class _$UpdateMentorshipErrorCopyWithImpl<$Res>
     implements $UpdateMentorshipErrorCopyWith<$Res> {
   _$UpdateMentorshipErrorCopyWithImpl(
       UpdateMentorshipError _value, $Res Function(UpdateMentorshipError) _then)
-      : super(_value, (v) => _then(v as UpdateMentorshipError));
+      : super(_value, (v) => _then(v as UpdateMentorshipError),);
 
   @override
   UpdateMentorshipError get _value => super._value as UpdateMentorshipError;
@@ -1656,7 +1656,7 @@ class _$UpdateMentorshipErrorCopyWithImpl<$Res>
   }) {
     return _then(UpdateMentorshipError(
       error == freezed ? _value.error : error,
-    ));
+    ),);
   }
 }
 
@@ -1679,7 +1679,7 @@ class _$UpdateMentorshipError implements UpdateMentorshipError {
     return identical(this, other) ||
         (other is UpdateMentorshipError &&
             (identical(other.error, error) ||
-                const DeepCollectionEquality().equals(other.error, error)));
+                const DeepCollectionEquality().equals(other.error, error),));
   }
 
   @override
@@ -1844,7 +1844,7 @@ class _$DeleteMentorship$CopyWithImpl<$Res>
     implements $DeleteMentorship$CopyWith<$Res> {
   _$DeleteMentorship$CopyWithImpl(
       DeleteMentorship$ _value, $Res Function(DeleteMentorship$) _then)
-      : super(_value, (v) => _then(v as DeleteMentorship$));
+      : super(_value, (v) => _then(v as DeleteMentorship$),);
 
   @override
   DeleteMentorship$ get _value => super._value as DeleteMentorship$;
@@ -1855,7 +1855,7 @@ class _$DeleteMentorship$CopyWithImpl<$Res>
   }) {
     return _then(DeleteMentorship$(
       id == freezed ? _value.id : id as String,
-    ));
+    ),);
   }
 }
 
@@ -1876,7 +1876,7 @@ class _$DeleteMentorship$ implements DeleteMentorship$ {
     return identical(this, other) ||
         (other is DeleteMentorship$ &&
             (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)));
+                const DeepCollectionEquality().equals(other.id, id),));
   }
 
   @override
@@ -1964,7 +1964,7 @@ class _$DeleteMentorshipSuccessfulCopyWithImpl<$Res>
     implements $DeleteMentorshipSuccessfulCopyWith<$Res> {
   _$DeleteMentorshipSuccessfulCopyWithImpl(DeleteMentorshipSuccessful _value,
       $Res Function(DeleteMentorshipSuccessful) _then)
-      : super(_value, (v) => _then(v as DeleteMentorshipSuccessful));
+      : super(_value, (v) => _then(v as DeleteMentorshipSuccessful),);
 
   @override
   DeleteMentorshipSuccessful get _value =>
@@ -2063,7 +2063,7 @@ class _$DeleteMentorshipErrorCopyWithImpl<$Res>
     implements $DeleteMentorshipErrorCopyWith<$Res> {
   _$DeleteMentorshipErrorCopyWithImpl(
       DeleteMentorshipError _value, $Res Function(DeleteMentorshipError) _then)
-      : super(_value, (v) => _then(v as DeleteMentorshipError));
+      : super(_value, (v) => _then(v as DeleteMentorshipError),);
 
   @override
   DeleteMentorshipError get _value => super._value as DeleteMentorshipError;
@@ -2074,7 +2074,7 @@ class _$DeleteMentorshipErrorCopyWithImpl<$Res>
   }) {
     return _then(DeleteMentorshipError(
       error == freezed ? _value.error : error,
-    ));
+    ),);
   }
 }
 
@@ -2097,7 +2097,7 @@ class _$DeleteMentorshipError implements DeleteMentorshipError {
     return identical(this, other) ||
         (other is DeleteMentorshipError &&
             (identical(other.error, error) ||
-                const DeepCollectionEquality().equals(other.error, error)));
+                const DeepCollectionEquality().equals(other.error, error),));
   }
 
   @override
@@ -2224,7 +2224,7 @@ class _$UpdateMentorshipInfoCopyWithImpl<$Res>
       description:
           description == freezed ? _value.description : description as String,
       price: price == freezed ? _value.price : price as int,
-    ));
+    ),);
   }
 }
 
@@ -2244,7 +2244,7 @@ class _$UpdateMentorshipInfo$CopyWithImpl<$Res>
     implements $UpdateMentorshipInfo$CopyWith<$Res> {
   _$UpdateMentorshipInfo$CopyWithImpl(
       UpdateMentorshipInfo$ _value, $Res Function(UpdateMentorshipInfo$) _then)
-      : super(_value, (v) => _then(v as UpdateMentorshipInfo$));
+      : super(_value, (v) => _then(v as UpdateMentorshipInfo$),);
 
   @override
   UpdateMentorshipInfo$ get _value => super._value as UpdateMentorshipInfo$;
@@ -2258,7 +2258,7 @@ class _$UpdateMentorshipInfo$CopyWithImpl<$Res>
       description:
           description == freezed ? _value.description : description as String,
       price: price == freezed ? _value.price : price as int,
-    ));
+    ),);
   }
 }
 
@@ -2282,9 +2282,9 @@ class _$UpdateMentorshipInfo$ implements UpdateMentorshipInfo$ {
         (other is UpdateMentorshipInfo$ &&
             (identical(other.description, description) ||
                 const DeepCollectionEquality()
-                    .equals(other.description, description)) &&
+                    .equals(other.description, description),) &&
             (identical(other.price, price) ||
-                const DeepCollectionEquality().equals(other.price, price)));
+                const DeepCollectionEquality().equals(other.price, price),));
   }
 
   @override

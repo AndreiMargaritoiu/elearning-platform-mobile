@@ -19,7 +19,7 @@ class _MentoringPageState extends State<MentoringPage> {
     super.initState();
 
     StoreProvider.of<AppState>(context, listen: false)
-        .dispatch(const GetAllMentorships());
+        .dispatch(const GetAllMentorships(),);
   }
 
   @override

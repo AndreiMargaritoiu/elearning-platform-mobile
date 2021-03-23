@@ -40,7 +40,7 @@ class _EditMentorshipPageState extends State<EditMentorshipPage> {
                   keyboardType: TextInputType.name,
                   onChanged: (String value) {
                     StoreProvider.of<AppState>(context)
-                        .dispatch(UpdateMentorshipInfo(description: value));
+                        .dispatch(UpdateMentorshipInfo(description: value),);
                   },
                   validator: (String value) {
                     if (value.length < 3) {
@@ -57,7 +57,7 @@ class _EditMentorshipPageState extends State<EditMentorshipPage> {
                   keyboardType: TextInputType.number,
                   onChanged: (String value) {
                     StoreProvider.of<AppState>(context).dispatch(
-                        UpdateMentorshipInfo(price: int.parse(value)));
+                        UpdateMentorshipInfo(price: int.parse(value),));
                   },
                 ),
                 Row(
@@ -66,18 +66,18 @@ class _EditMentorshipPageState extends State<EditMentorshipPage> {
                       child: const Text('Update'),
                       onPressed: () {
                         StoreProvider.of<AppState>(context).dispatch(
-                            UpdateMentorship(widget.currentMentorship.id));
+                            UpdateMentorship(widget.currentMentorship.id),);
                         Navigator.popUntil(
-                            context, ModalRoute.withName(AppRoutes.home));
+                            context, ModalRoute.withName(AppRoutes.home),);
                       },
                     ),
                     MaterialButton(
                       child: const Text('Delete'),
                       onPressed: () {
                         StoreProvider.of<AppState>(context).dispatch(
-                            DeleteMentorship(widget.currentMentorship.id));
+                            DeleteMentorship(widget.currentMentorship.id),);
                         Navigator.popUntil(
-                            context, ModalRoute.withName(AppRoutes.home));
+                            context, ModalRoute.withName(AppRoutes.home),);
                       },
                     ),
                   ],

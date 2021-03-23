@@ -47,7 +47,7 @@ class CreatePost extends StatelessWidget {
 //                      final PickedFile file = await ImagePicker().getImage(source: ImageSource.gallery);
 //
 //                      if (file != null) {
-//                        StoreProvider.of<AppState>(context).dispatch(UpdatePostInfo(addImage: file.path));
+//                        StoreProvider.of<AppState>(context).dispatch(UpdatePostInfo(addImage: file.path),);
 //                      }
                     },
                   ),
@@ -65,8 +65,9 @@ class CreatePost extends StatelessWidget {
                   trailing: IconButton(
                     icon: const Icon(Icons.delete),
                     onPressed: () {
-                      StoreProvider.of<AppState>(context)
-                          .dispatch(UpdatePostInfo(removeImage: path));
+                      StoreProvider.of<AppState>(context).dispatch(
+                        UpdatePostInfo(removeImage: path),
+                      );
                     },
                   ),
                 ),

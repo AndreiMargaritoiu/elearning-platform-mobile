@@ -83,7 +83,8 @@ class _SignupPageState extends State<SignupPage> with DialogMixin {
                               keyboardType: TextInputType.emailAddress,
                               onChanged: (String value) {
                                 StoreProvider.of<AppState>(context).dispatch(
-                                    UpdateRegistrationInfo(email: value));
+                                  UpdateRegistrationInfo(email: value),
+                                );
                               },
                               validator: (String value) {
                                 if (value.length < 3) {
@@ -113,7 +114,8 @@ class _SignupPageState extends State<SignupPage> with DialogMixin {
                                   : '',
                               onChanged: (String value) {
                                 StoreProvider.of<AppState>(context).dispatch(
-                                    UpdateRegistrationInfo(username: value));
+                                  UpdateRegistrationInfo(username: value),
+                                );
                               },
                               validator: (String value) {
                                 if (value.length < 3) {
@@ -140,7 +142,8 @@ class _SignupPageState extends State<SignupPage> with DialogMixin {
                               keyboardType: TextInputType.visiblePassword,
                               onChanged: (String value) {
                                 StoreProvider.of<AppState>(context).dispatch(
-                                    UpdateRegistrationInfo(password: value));
+                                  UpdateRegistrationInfo(password: value),
+                                );
                               },
                               validator: (String value) {
                                 if (value.length < 3) {

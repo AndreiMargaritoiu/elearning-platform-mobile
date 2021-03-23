@@ -23,8 +23,13 @@ class PostDetails extends StatelessWidget {
               FlatButton(
                 child: const Text('Share'),
                 onPressed: () {
-                  StoreProvider.of<AppState>(context).dispatch(const CreatePost());
-                  Navigator.popUntil(context, ModalRoute.withName(AppRoutes.home));
+                  StoreProvider.of<AppState>(context).dispatch(
+                    const CreatePost(),
+                  );
+                  Navigator.popUntil(
+                    context,
+                    ModalRoute.withName(AppRoutes.home),
+                  );
                 },
               ),
             ],
@@ -65,7 +70,9 @@ class PostDetails extends StatelessWidget {
                         maxLines: 3,
                         keyboardType: TextInputType.text,
                         onChanged: (String value) {
-                          StoreProvider.of<AppState>(context).dispatch(UpdatePostInfo(description: value));
+                          StoreProvider.of<AppState>(context).dispatch(
+                            UpdatePostInfo(description: value),
+                          );
                         },
                       ),
                     ),
@@ -76,10 +83,13 @@ class PostDetails extends StatelessWidget {
                   title: const Text('Tag people'),
                   trailing: const Icon(Icons.person),
                   onTap: () async {
-                    final dynamic user = await Navigator.pushNamed(context, AppRoutes.searchUsers);
+                    final dynamic user = await Navigator.pushNamed(
+                        context, AppRoutes.searchUsers);
 
                     if (user != null && !info.users.contains(user)) {
-                      StoreProvider.of<AppState>(context).dispatch(UpdatePostInfo(addUser: user));
+                      StoreProvider.of<AppState>(context).dispatch(
+                        UpdatePostInfo(addUser: user),
+                      );
                     }
                   },
                 ),
@@ -88,7 +98,9 @@ class PostDetails extends StatelessWidget {
                     return Chip(
                       label: Text(user.username),
                       onDeleted: () {
-                        StoreProvider.of<AppState>(context).dispatch(UpdatePostInfo(removeUser: user));
+                        StoreProvider.of<AppState>(context).dispatch(
+                          UpdatePostInfo(removeUser: user),
+                        );
                       },
                     );
                   }).toList(),
@@ -96,12 +108,14 @@ class PostDetails extends StatelessWidget {
                 const Divider(),
                 ListTile(
                   title: const Text('Add location'),
-                  subtitle: info.lat != null ? Text('${info.lat}/${info.lng}') : null,
+                  subtitle:
+                      info.lat != null ? Text('${info.lat}/${info.lng}') : null,
                   trailing: const Icon(Icons.location_on),
                   onTap: () async {
                     final Location location = Location();
 
-                    PermissionStatus permissionResult = await location.hasPermission();
+                    PermissionStatus permissionResult =
+                        await location.hasPermission();
                     if (permissionResult != PermissionStatus.granted &&
                         permissionResult != PermissionStatus.grantedLimited) {
                       permissionResult = await location.requestPermission();
@@ -113,8 +127,10 @@ class PostDetails extends StatelessWidget {
                     }
 
                     final LocationData result = await location.getLocation();
-                    StoreProvider.of<AppState>(context)
-                        .dispatch(UpdatePostInfo(lat: result.latitude, lng: result.longitude));
+                    StoreProvider.of<AppState>(context).dispatch(
+                      UpdatePostInfo(
+                          lat: result.latitude, lng: result.longitude),
+                    );
                   },
                 ),
               ],

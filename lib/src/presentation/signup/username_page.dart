@@ -34,7 +34,7 @@ class UsernamePage extends StatelessWidget {
                           keyboardType: TextInputType.name,
                           onChanged: (String value) {
                             StoreProvider.of<AppState>(context).dispatch(
-                                UpdateRegistrationInfo(username: value));
+                                UpdateRegistrationInfo(username: value),);
                           },
                           validator: (String value) {
                             if (value.length < 3) {
@@ -68,7 +68,7 @@ class UsernamePage extends StatelessWidget {
                             recognizer: TapGestureRecognizer()
                               ..onTap = () {
                                 Navigator.popUntil(context,
-                                    ModalRoute.withName(AppRoutes.home));
+                                    ModalRoute.withName(AppRoutes.home),);
                               },
                           ),
                         ],

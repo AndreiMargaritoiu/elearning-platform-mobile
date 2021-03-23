@@ -57,26 +57,31 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
                       child: VideoPlayer(_controller),
                     );
                   } else {
-                    return const Center(child: CircularProgressIndicator());
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
                   }
                 },
               ),
-
               floatingActionButton: FloatingActionButton(
                 onPressed: () {
                   if (widget.currentVideo.uid != currentUser.uid) {
-                    StoreProvider.of<AppState>(context)
-                        .dispatch(UpdateTrackingInfo(vid: widget.currentVideo.id));
-                    StoreProvider.of<AppState>(context)
-                        .dispatch(const TrackAction());
+                    StoreProvider.of<AppState>(context).dispatch(
+                      UpdateTrackingInfo(vid: widget.currentVideo.id),
+                    );
+                    StoreProvider.of<AppState>(context).dispatch(
+                      const TrackAction(),
+                    );
                   }
-                  setState(() {
-                    if (_controller.value.isPlaying) {
-                      _controller.pause();
-                    } else {
-                      _controller.play();
-                    }
-                  });
+                  setState(
+                    () {
+                      if (_controller.value.isPlaying) {
+                        _controller.pause();
+                      } else {
+                        _controller.play();
+                      }
+                    },
+                  );
                 },
                 child: Icon(
                   _controller.value.isPlaying ? Icons.pause : Icons.play_arrow,

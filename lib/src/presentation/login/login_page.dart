@@ -76,13 +76,16 @@ class _LoginPageState extends State<LoginPage> with DialogMixin {
                         FlatButton(
                           child: const Text('Sign in with Google'),
                           onPressed: () {
-                            StoreProvider.of<AppState>(context).dispatch(SignUpWithGoogle(_response));
+                            StoreProvider.of<AppState>(context).dispatch(
+                              SignUpWithGoogle(_response),
+                            );
                           },
                         ),
                         FlatButton(
                           child: const Text('Reset password'),
                           onPressed: () {
-                            Navigator.pushNamed(context, AppRoutes.resetPassword);
+                            Navigator.pushNamed(
+                                context, AppRoutes.resetPassword);
                           },
                         ),
                       ],
@@ -92,11 +95,13 @@ class _LoginPageState extends State<LoginPage> with DialogMixin {
                       child: const Text('Login'),
                       onPressed: () {
                         if (Form.of(context).validate()) {
-                          StoreProvider.of<AppState>(context).dispatch(Login(
-                            email: _email.text,
-                            password: _password.text,
-                            response: _response,
-                          ));
+                          StoreProvider.of<AppState>(context).dispatch(
+                            Login(
+                              email: _email.text,
+                              password: _password.text,
+                              response: _response,
+                            ),
+                          );
                         }
                       },
                     ),

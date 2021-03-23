@@ -25,9 +25,9 @@ class AddVideoPage extends StatelessWidget {
                 onPressed: () {
                   if (info.title != null && info.title.isNotEmpty) {
                     StoreProvider.of<AppState>(context)
-                        .dispatch(const AddVideo());
+                        .dispatch(const AddVideo(),);
                     Navigator.popUntil(
-                        context, ModalRoute.withName(AppRoutes.home));
+                        context, ModalRoute.withName(AppRoutes.home),);
                   } else {
                     // show error
                   }
@@ -44,7 +44,7 @@ class AddVideoPage extends StatelessWidget {
                       const InputDecoration(hintText: 'Write a title...'),
                   onChanged: (String value) {
                     StoreProvider.of<AppState>(context)
-                        .dispatch(UpdateVideoInfo(title: value));
+                        .dispatch(UpdateVideoInfo(title: value),);
                   },
                 ),
                 TextField(
@@ -52,20 +52,20 @@ class AddVideoPage extends StatelessWidget {
                       const InputDecoration(hintText: 'Write a description...'),
                   onChanged: (String value) {
                     StoreProvider.of<AppState>(context)
-                        .dispatch(UpdateVideoInfo(description: value));
+                        .dispatch(UpdateVideoInfo(description: value),);
                   },
                 ),
                 if (info.thumbnailPath != null)
                   Expanded(
                     child: GridTile(
-                      child: Image.file(File(info.thumbnailPath)),
+                      child: Image.file(File(info.thumbnailPath),),
                       header: GridTileBar(
                         trailing: IconButton(
                           icon: const Icon(Icons.delete),
                           onPressed: () {
                             StoreProvider.of<AppState>(context).dispatch(
                                 UpdateVideoInfo(
-                                    removeThumbnail: info.thumbnailPath));
+                                    removeThumbnail: info.thumbnailPath),);
                           },
                         ),
                       ),
@@ -79,7 +79,7 @@ class AddVideoPage extends StatelessWidget {
                           .getImage(source: ImageSource.gallery);
                       if (file != null) {
                         StoreProvider.of<AppState>(context)
-                            .dispatch(UpdateVideoInfo(addThumbnail: file.path));
+                            .dispatch(UpdateVideoInfo(addThumbnail: file.path),);
                       }
                     },
                   ),

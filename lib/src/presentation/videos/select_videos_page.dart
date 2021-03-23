@@ -21,8 +21,9 @@ class _SelectVideosPageState extends State<SelectVideosPage> {
   void initState() {
     super.initState();
 
-//    StoreProvider.of<AppState>(context, listen: false)
-//        .dispatch(const GetMyVideos());
+    StoreProvider.of<AppState>(context, listen: false).dispatch(
+      const GetVideosByUid(),
+    );
 
     for (int i = 0; i < 100; i++) {
       isSelected.add(false);
@@ -42,9 +43,11 @@ class _SelectVideosPageState extends State<SelectVideosPage> {
                 onPressed: () {
                   if (info.videoRefs != null) {
                     StoreProvider.of<AppState>(context)
-                        .dispatch(const CreatePlaylist());
+                        .dispatch(const CreatePlaylist(),);
                     Navigator.popUntil(
-                        context, ModalRoute.withName(AppRoutes.home));
+                      context,
+                      ModalRoute.withName(AppRoutes.home),
+                    );
                   } else {
                     // show error
                   }
@@ -73,11 +76,15 @@ class _SelectVideosPageState extends State<SelectVideosPage> {
                                 });
                                 isSelected[index]
                                     ? StoreProvider.of<AppState>(context)
-                                        .dispatch(UpdatePlaylistInfo(
-                                            addVideoRef: video.id))
+                                        .dispatch(
+                                        UpdatePlaylistInfo(
+                                            addVideoRef: video.id),
+                                      )
                                     : StoreProvider.of<AppState>(context)
-                                        .dispatch(UpdatePlaylistInfo(
-                                            removeVideoRef: video.id));
+                                        .dispatch(
+                                        UpdatePlaylistInfo(
+                                            removeVideoRef: video.id),
+                                      );
                               })
                         ],
                       )

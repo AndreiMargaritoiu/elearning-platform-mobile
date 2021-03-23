@@ -1,7 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:meta/meta.dart';
+
 import 'package:elearning_platform_mobile/src/data/http_client_wrapper.dart';
 import 'package:elearning_platform_mobile/src/models/index.dart';
-import 'package:meta/meta.dart';
 
 class MentoringApi {
   const MentoringApi(
@@ -18,15 +19,17 @@ class MentoringApi {
   Future<Mentorship> addMentorship(MentorshipInfo info, AppUser user) async {
     final DocumentReference ref = _firestore.collection('mentoring').doc();
 
-    final Mentorship mentorship = Mentorship((MentorshipBuilder b) {
-      b
-        ..id = ref.id
-        ..mentorId = user.uid
-        ..mentorEmail = user.email
-        ..description = info.description
-        ..price = info.price
-        ..createdAt = DateTime.now().toUtc().millisecondsSinceEpoch;
-    });
+    final Mentorship mentorship = Mentorship(
+      (MentorshipBuilder b) {
+        b
+          ..id = ref.id
+          ..mentorId = user.uid
+          ..mentorEmail = user.email
+          ..description = info.description
+          ..price = info.price
+          ..createdAt = DateTime.now().toUtc().millisecondsSinceEpoch;
+      },
+    );
 
     await ref.set(mentorship.json);
 
@@ -39,7 +42,11 @@ class MentoringApi {
         .get();
 
     final List<Mentorship> result = snapshot.docs //
-        .map((QueryDocumentSnapshot doc) => Mentorship.fromJson(doc.data()))
+        .map(
+          (QueryDocumentSnapshot doc) => Mentorship.fromJson(
+            doc.data(),
+          ),
+        )
         .toList();
 
     return result;
@@ -48,7 +55,9 @@ class MentoringApi {
   Future<Mentorship> getMentorshipById(String id) async {
     final DocumentSnapshot doc = await _firestore.doc('mentoring/$id').get();
 
-    return Mentorship.fromJson(doc.data());
+    return Mentorship.fromJson(
+      doc.data(),
+    );
   }
 
   Future<void> deleteMentorship(String id) async {
@@ -61,15 +70,19 @@ class MentoringApi {
     final DocumentReference ref = _firestore.collection('mentoring').doc(id);
 
     if (info.description != null) {
-      await ref.update(<String, dynamic>{
-        'description': info.description,
-      });
+      await ref.update(
+        <String, dynamic>{
+          'description': info.description,
+        },
+      );
     }
 
     if (info.price != null) {
-      await ref.update(<String, dynamic>{
-        'price': info.price,
-      });
+      await ref.update(
+        <String, dynamic>{
+          'price': info.price,
+        },
+      );
     }
 
     return await getMentorshipById(id);

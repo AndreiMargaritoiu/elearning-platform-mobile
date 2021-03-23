@@ -25,7 +25,7 @@ class _CreatePlaylistPageState extends State<CreatePlaylistPage> {
     super.initState();
 
     StoreProvider.of<AppState>(context, listen: false)
-        .dispatch(const GetVideosByUid());
+        .dispatch(const GetVideosByUid(),);
 
     for (int i = 0; i < 100; i++) {
       isSelected.add(false);
@@ -49,12 +49,12 @@ class _CreatePlaylistPageState extends State<CreatePlaylistPage> {
                       info.videoRefs.isNotEmpty) {
                     if (info.category == null) {
                       StoreProvider.of<AppState>(context).dispatch(
-                          UpdatePlaylistInfo(category: dropdownValue));
+                          UpdatePlaylistInfo(category: dropdownValue),);
                     }
                     StoreProvider.of<AppState>(context)
-                        .dispatch(const CreatePlaylist());
+                        .dispatch(const CreatePlaylist(),);
                     Navigator.popUntil(
-                        context, ModalRoute.withName(AppRoutes.home));
+                        context, ModalRoute.withName(AppRoutes.home),);
                   } else {
                     // show error
                   }
@@ -71,7 +71,7 @@ class _CreatePlaylistPageState extends State<CreatePlaylistPage> {
                       const InputDecoration(hintText: 'Write a title...'),
                   onChanged: (String value) {
                     StoreProvider.of<AppState>(context)
-                        .dispatch(UpdatePlaylistInfo(title: value));
+                        .dispatch(UpdatePlaylistInfo(title: value),);
                   },
                 ),
                 TextField(
@@ -79,7 +79,7 @@ class _CreatePlaylistPageState extends State<CreatePlaylistPage> {
                       const InputDecoration(hintText: 'Write a description...'),
                   onChanged: (String value) {
                     StoreProvider.of<AppState>(context)
-                        .dispatch(UpdatePlaylistInfo(description: value));
+                        .dispatch(UpdatePlaylistInfo(description: value),);
                   },
                 ),
                 MaterialButton(
@@ -102,7 +102,7 @@ class _CreatePlaylistPageState extends State<CreatePlaylistPage> {
                       () {
                         dropdownValue = newValue;
                         StoreProvider.of<AppState>(context)
-                            .dispatch(UpdatePlaylistInfo(category: newValue));
+                            .dispatch(UpdatePlaylistInfo(category: newValue),);
                       },
                     );
                   },
@@ -110,14 +110,14 @@ class _CreatePlaylistPageState extends State<CreatePlaylistPage> {
                 if (info.thumbnailPath != null)
                   Expanded(
                     child: GridTile(
-                      child: Image.file(File(info.thumbnailPath)),
+                      child: Image.file(File(info.thumbnailPath),),
                       header: GridTileBar(
                         trailing: IconButton(
                           icon: const Icon(Icons.delete),
                           onPressed: () {
                             StoreProvider.of<AppState>(context).dispatch(
                                 UpdatePlaylistInfo(
-                                    removeThumbnail: info.thumbnailPath));
+                                    removeThumbnail: info.thumbnailPath),);
                           },
                         ),
                       ),
@@ -131,7 +131,7 @@ class _CreatePlaylistPageState extends State<CreatePlaylistPage> {
                           .getImage(source: ImageSource.gallery);
                       if (file != null) {
                         StoreProvider.of<AppState>(context).dispatch(
-                            UpdatePlaylistInfo(addThumbnail: file.path));
+                            UpdatePlaylistInfo(addThumbnail: file.path),);
                       }
                     },
                   ),
@@ -192,12 +192,12 @@ class _CreatePlaylistPageState extends State<CreatePlaylistPage> {
                                               ? StoreProvider.of<AppState>(
                                                       context)
                                                   .dispatch(UpdatePlaylistInfo(
-                                                      addVideoRef: video.id))
+                                                      addVideoRef: video.id),)
                                               : StoreProvider.of<AppState>(
                                                       context)
                                                   .dispatch(UpdatePlaylistInfo(
                                                       removeVideoRef:
-                                                          video.id));
+                                                          video.id),);
                                         },
                                       )
                                     ],

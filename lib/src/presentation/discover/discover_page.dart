@@ -18,7 +18,7 @@ class _DiscoverPageState extends State<DiscoverPage> {
     super.initState();
 
 //    StoreProvider.of<AppState>(context, listen: false)
-//        .dispatch(const GetAllPlaylists());
+//        .dispatch(const GetAllPlaylists(),);
 
 //    KeyboardVisibilityNotification().addNewListener(
 //      onChange: (bool visible) {

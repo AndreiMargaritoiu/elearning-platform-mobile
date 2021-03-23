@@ -1,18 +1,20 @@
 import 'package:built_collection/built_collection.dart';
-import 'package:elearning_platform_mobile/src/actions/index.dart';
-import 'package:elearning_platform_mobile/src/models/playlists/index.dart';
 import 'package:redux/redux.dart';
 
-Reducer<PlaylistsState> playlistsReducer =
-    combineReducers(<Reducer<PlaylistsState>>[
-  TypedReducer<PlaylistsState, UpdatePlaylistInfo>(_updatePlaylistInfo),
-  TypedReducer<PlaylistsState, CreatePlaylistSuccessful>(
-      _createPlaylistSuccessful),
-  TypedReducer<PlaylistsState, GetPlaylistsByUidSuccessful>(
-      _getPlaylistsByUidSuccessful),
-  TypedReducer<PlaylistsState, GetAllPlaylistsSuccessful>(
-      _getAllPlaylistsSuccessful),
-]);
+import 'package:elearning_platform_mobile/src/actions/index.dart';
+import 'package:elearning_platform_mobile/src/models/playlists/index.dart';
+
+Reducer<PlaylistsState> playlistsReducer = combineReducers(
+  <Reducer<PlaylistsState>>[
+    TypedReducer<PlaylistsState, UpdatePlaylistInfo>(_updatePlaylistInfo),
+    TypedReducer<PlaylistsState, CreatePlaylistSuccessful>(
+        _createPlaylistSuccessful),
+    TypedReducer<PlaylistsState, GetPlaylistsByUidSuccessful>(
+        _getPlaylistsByUidSuccessful),
+    TypedReducer<PlaylistsState, GetAllPlaylistsSuccessful>(
+        _getAllPlaylistsSuccessful),
+  ],
+);
 
 PlaylistsState _updatePlaylistInfo(
     PlaylistsState state, UpdatePlaylistInfo action) {
@@ -39,21 +41,27 @@ PlaylistsState _updatePlaylistInfo(
 
 PlaylistsState _createPlaylistSuccessful(
     PlaylistsState state, CreatePlaylistSuccessful action) {
-  return state.rebuild((PlaylistsStateBuilder b) {
-    b.info = PlaylistInfo().toBuilder();
-  });
+  return state.rebuild(
+    (PlaylistsStateBuilder b) {
+      b.info = PlaylistInfo().toBuilder();
+    },
+  );
 }
 
 PlaylistsState _getAllPlaylistsSuccessful(
     PlaylistsState state, GetAllPlaylistsSuccessful action) {
-  return state.rebuild((PlaylistsStateBuilder b) {
-    b.playlists = ListBuilder<Playlist>(action.playlists);
-  });
+  return state.rebuild(
+    (PlaylistsStateBuilder b) {
+      b.playlists = ListBuilder<Playlist>(action.playlists);
+    },
+  );
 }
 
 PlaylistsState _getPlaylistsByUidSuccessful(
     PlaylistsState state, GetPlaylistsByUidSuccessful action) {
-  return state.rebuild((PlaylistsStateBuilder b) {
-    b.playlists = ListBuilder<Playlist>(action.playlists);
-  });
+  return state.rebuild(
+    (PlaylistsStateBuilder b) {
+      b.playlists = ListBuilder<Playlist>(action.playlists);
+    },
+  );
 }

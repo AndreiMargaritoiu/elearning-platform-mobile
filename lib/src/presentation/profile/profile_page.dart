@@ -23,10 +23,10 @@ class _ProfilePageState extends State<ProfilePage> {
     super.initState();
 
     StoreProvider.of<AppState>(context, listen: false)
-        .dispatch(const GetVideosByUid());
+        .dispatch(const GetVideosByUid(),);
 
     StoreProvider.of<AppState>(context, listen: false)
-        .dispatch(const GetPlaylistsByUid());
+        .dispatch(const GetPlaylistsByUid(),);
   }
 
   void _addVideo() async {
@@ -35,7 +35,7 @@ class _ProfilePageState extends State<ProfilePage> {
     print(path);
     if (path != null) {
       StoreProvider.of<AppState>(context)
-          .dispatch(UpdateVideoInfo(addVideo: path));
+          .dispatch(UpdateVideoInfo(addVideo: path),);
       Navigator.pushNamed(context, AppRoutes.addVideoPage);
     }
   }
@@ -43,7 +43,7 @@ class _ProfilePageState extends State<ProfilePage> {
   void _handleDotsMenuClick(String value) {
     switch (value) {
       case 'Logout':
-        StoreProvider.of<AppState>(context).dispatch(const SignOut());
+        StoreProvider.of<AppState>(context).dispatch(const SignOut(),);
         break;
       case 'Settings':
         break;
@@ -101,7 +101,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                 .getImage(source: ImageSource.gallery);
                             if (file != null) {
                               StoreProvider.of<AppState>(context)
-                                  .dispatch(UpdateUser(file.path, user.uid));
+                                  .dispatch(UpdateUser(file.path, user.uid),);
                             }
                           }),
                     Padding(

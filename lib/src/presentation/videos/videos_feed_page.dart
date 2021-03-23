@@ -18,8 +18,9 @@ class _VideosFeedPageState extends State<VideosFeedPage> {
   void initState() {
     super.initState();
 
-    StoreProvider.of<AppState>(context, listen: false)
-        .dispatch(const ListenForVideos());
+    StoreProvider.of<AppState>(context, listen: false).dispatch(
+      const ListenForVideos(),
+    );
   }
 
   @override

@@ -23,10 +23,10 @@ class _OthersProfilePageState extends State<OthersProfilePage> {
     super.initState();
 
     StoreProvider.of<AppState>(context, listen: false)
-        .dispatch(GetPlaylistsByUid(id: widget.searchedUser.uid));
+        .dispatch(GetPlaylistsByUid(id: widget.searchedUser.uid),);
 
     StoreProvider.of<AppState>(context, listen: false)
-        .dispatch(GetVideosByUid(id: widget.searchedUser.uid));
+        .dispatch(GetVideosByUid(id: widget.searchedUser.uid),);
   }
 
   @override

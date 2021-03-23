@@ -21,7 +21,7 @@ class _PlaylistVideosPageState extends State<PlaylistVideosPage> {
     super.initState();
 
     StoreProvider.of<AppState>(context, listen: false)
-        .dispatch(GetVideosByPlaylistId(widget.playlist.id));
+        .dispatch(GetVideosByPlaylistId(widget.playlist.id),);
   }
 
   @override

@@ -1,3 +1,6 @@
+import 'package:meta/meta.dart';
+import 'package:redux_epics/redux_epics.dart';
+
 import 'package:elearning_platform_mobile/src/data/auth_api.dart';
 import 'package:elearning_platform_mobile/src/data/mentoring_api.dart';
 import 'package:elearning_platform_mobile/src/data/playlists_api.dart';
@@ -11,8 +14,6 @@ import 'package:elearning_platform_mobile/src/epics/posts_epics.dart';
 import 'package:elearning_platform_mobile/src/epics/tracking_epics.dart';
 import 'package:elearning_platform_mobile/src/epics/videos_epics.dart';
 import 'package:elearning_platform_mobile/src/models/index.dart';
-import 'package:meta/meta.dart';
-import 'package:redux_epics/redux_epics.dart';
 
 class AppEpics {
   const AppEpics(
@@ -43,13 +44,15 @@ class AppEpics {
   final TrackingApi _trackingApi;
 
   Epic<AppState> get epics {
-    return combineEpics<AppState>(<Epic<AppState>>[
-      AuthEpics(api: _authApi).epics,
-      PostsEpics(api: _postsApi).epics,
-      VideosEpics(api: _videosApi).epics,
-      PlaylistsEpics(api: _playlistApi).epics,
-      MentoringEpics(api: _mentoringApi).epics,
-      TrackingEpics(api: _trackingApi).epics,
-    ]);
+    return combineEpics<AppState>(
+      <Epic<AppState>>[
+        AuthEpics(api: _authApi).epics,
+        PostsEpics(api: _postsApi).epics,
+        VideosEpics(api: _videosApi).epics,
+        PlaylistsEpics(api: _playlistApi).epics,
+        MentoringEpics(api: _mentoringApi).epics,
+        TrackingEpics(api: _trackingApi).epics,
+      ],
+    );
   }
 }

@@ -2,7 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 mixin DialogMixin {
-  Future<void> showErrorDialog(BuildContext context, String title, Object error) {
+  Future<void> showErrorDialog(
+      BuildContext context, String title, Object error) {
     if (Theme.of(context).platform == TargetPlatform.android) {
       return showDialog(
         context: context,

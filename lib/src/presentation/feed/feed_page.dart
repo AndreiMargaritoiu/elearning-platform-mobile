@@ -28,7 +28,7 @@ class _FeedPageState extends State<FeedPage> {
     print(path);
     if (path != null) {
       StoreProvider.of<AppState>(context)
-          .dispatch(UpdateVideoInfo(addVideo: path));
+          .dispatch(UpdateVideoInfo(addVideo: path),);
       Navigator.pushNamed(context, AppRoutes.addVideoPage);
     }
   }

@@ -30,10 +30,10 @@
 //                      keyboardType: TextInputType.emailAddress,
 //                      onChanged: (String value) {
 //                        StoreProvider.of<AppState>(context)
-//                            .dispatch(UpdateRegistrationInfo(email: value));
+//                            .dispatch(UpdateRegistrationInfo(email: value),);
 //                      },
 //                      validator: (String value) {
-//                        if (!value.contains('@') || !value.contains('.')) {
+//                        if (!value.contains('@') || !value.contains('.'),) {
 //                          return 'Please enter a valid email address';
 //                        }
 //
@@ -44,7 +44,7 @@
 //                    FlatButton(
 //                      child: const Text('Continue'),
 //                      onPressed: () {
-//                        if (Form.of(context).validate()) {
+//                        if (Form.of(context).validate(),) {
 //                          Navigator.pushNamed(context, AppRoutes.username);
 //                        }
 //                      },
@@ -62,7 +62,7 @@
 //                            recognizer: TapGestureRecognizer()
 //                              ..onTap = () {
 //                                Navigator.popUntil(context,
-//                                    ModalRoute.withName(AppRoutes.home));
+//                                    ModalRoute.withName(AppRoutes.home),);
 //                              },
 //                          ),
 //                        ],

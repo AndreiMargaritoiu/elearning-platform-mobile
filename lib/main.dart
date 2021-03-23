@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:redux/redux.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+
 import 'package:elearning_platform_mobile/src/models/index.dart';
 import 'package:elearning_platform_mobile/src/presentation/mixin/init_mixin.dart';
 import 'package:elearning_platform_mobile/src/presentation/routes.dart';
 
-
 void main() {
-  runApp(const ElearningPlatform());
+  runApp(const ElearningPlatform(),);
 }
 
 class ElearningPlatform extends StatefulWidget {
@@ -19,6 +19,7 @@ class ElearningPlatform extends StatefulWidget {
 
 class _ElearningPlatform extends State<ElearningPlatform>
     with InitMixin<ElearningPlatform> {
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<Store<AppState>>(

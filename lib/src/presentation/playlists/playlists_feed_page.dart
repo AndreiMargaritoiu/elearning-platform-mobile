@@ -19,7 +19,7 @@ class _PlaylistsFeedPageState extends State<PlaylistsFeedPage> {
     super.initState();
 
     StoreProvider.of<AppState>(context, listen: false)
-        .dispatch(const GetAllPlaylists());
+        .dispatch(const GetAllPlaylists(),);
   }
 
   @override
