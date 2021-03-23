@@ -20,22 +20,22 @@ class _$AppStateSerializer implements StructuredSerializer<AppState> {
     final result = <Object>[
       'auth',
       serializers.serialize(object.auth,
-          specifiedType: const FullType(AuthState),),
+          specifiedType: const FullType(AuthState)),
       'posts',
       serializers.serialize(object.posts,
-          specifiedType: const FullType(PostsState),),
+          specifiedType: const FullType(PostsState)),
       'videos',
       serializers.serialize(object.videos,
-          specifiedType: const FullType(VideosState),),
+          specifiedType: const FullType(VideosState)),
       'playlists',
       serializers.serialize(object.playlists,
-          specifiedType: const FullType(PlaylistsState),),
+          specifiedType: const FullType(PlaylistsState)),
       'mentorships',
       serializers.serialize(object.mentorships,
-          specifiedType: const FullType(MentorshipsState),),
+          specifiedType: const FullType(MentorshipsState)),
       'trackedItems',
       serializers.serialize(object.trackedItems,
-          specifiedType: const FullType(TrackingsState),),
+          specifiedType: const FullType(TrackingsState)),
     ];
 
     return result;
@@ -47,35 +47,35 @@ class _$AppStateSerializer implements StructuredSerializer<AppState> {
     final result = new AppStateBuilder();
 
     final iterator = serialized.iterator;
-    while (iterator.moveNext(),) {
+    while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
         case 'auth':
           result.auth.replace(serializers.deserialize(value,
-              specifiedType: const FullType(AuthState),) as AuthState);
+              specifiedType: const FullType(AuthState)) as AuthState);
           break;
         case 'posts':
           result.posts.replace(serializers.deserialize(value,
-              specifiedType: const FullType(PostsState),) as PostsState);
+              specifiedType: const FullType(PostsState)) as PostsState);
           break;
         case 'videos':
           result.videos.replace(serializers.deserialize(value,
-              specifiedType: const FullType(VideosState),) as VideosState);
+              specifiedType: const FullType(VideosState)) as VideosState);
           break;
         case 'playlists':
           result.playlists.replace(serializers.deserialize(value,
-              specifiedType: const FullType(PlaylistsState),) as PlaylistsState);
+              specifiedType: const FullType(PlaylistsState)) as PlaylistsState);
           break;
         case 'mentorships':
           result.mentorships.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(MentorshipsState),)
+                  specifiedType: const FullType(MentorshipsState))
               as MentorshipsState);
           break;
         case 'trackedItems':
           result.trackedItems.replace(serializers.deserialize(value,
-              specifiedType: const FullType(TrackingsState),) as TrackingsState);
+              specifiedType: const FullType(TrackingsState)) as TrackingsState);
           break;
       }
     }
@@ -99,7 +99,7 @@ class _$AppState extends AppState {
   final TrackingsState trackedItems;
 
   factory _$AppState([void Function(AppStateBuilder) updates]) =>
-      (new AppStateBuilder()..update(updates),).build();
+      (new AppStateBuilder()..update(updates)).build();
 
   _$AppState._(
       {this.auth,
@@ -131,14 +131,14 @@ class _$AppState extends AppState {
 
   @override
   AppState rebuild(void Function(AppStateBuilder) updates) =>
-      (toBuilder()..update(updates),).build();
+      (toBuilder()..update(updates)).build();
 
   @override
   AppStateBuilder toBuilder() => new AppStateBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
-    if (identical(other, this),) return true;
+    if (identical(other, this)) return true;
     return other is AppState &&
         auth == other.auth &&
         posts == other.posts &&
@@ -157,7 +157,7 @@ class _$AppState extends AppState {
                     videos.hashCode),
                 playlists.hashCode),
             mentorships.hashCode),
-        trackedItems.hashCode),);
+        trackedItems.hashCode));
   }
 
   @override
@@ -168,7 +168,7 @@ class _$AppState extends AppState {
           ..add('videos', videos)
           ..add('playlists', playlists)
           ..add('mentorships', mentorships)
-          ..add('trackedItems', trackedItems),)
+          ..add('trackedItems', trackedItems))
         .toString();
   }
 }
@@ -245,7 +245,7 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
               videos: videos.build(),
               playlists: playlists.build(),
               mentorships: mentorships.build(),
-              trackedItems: trackedItems.build(),);
+              trackedItems: trackedItems.build());
     } catch (_) {
       String _$failedField;
       try {
@@ -263,7 +263,7 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
         trackedItems.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'AppState', _$failedField, e.toString(),);
+            'AppState', _$failedField, e.toString());
       }
       rethrow;
     }

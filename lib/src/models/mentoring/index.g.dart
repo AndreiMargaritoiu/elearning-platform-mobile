@@ -23,34 +23,34 @@ class _$MentorshipSerializer implements StructuredSerializer<Mentorship> {
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
       'id',
-      serializers.serialize(object.id, specifiedType: const FullType(String),),
+      serializers.serialize(object.id, specifiedType: const FullType(String)),
       'mentorId',
       serializers.serialize(object.mentorId,
-          specifiedType: const FullType(String),),
+          specifiedType: const FullType(String)),
     ];
     if (object.mentorEmail != null) {
       result
         ..add('mentorEmail')
         ..add(serializers.serialize(object.mentorEmail,
-            specifiedType: const FullType(String),));
+            specifiedType: const FullType(String)));
     }
     if (object.description != null) {
       result
         ..add('description')
         ..add(serializers.serialize(object.description,
-            specifiedType: const FullType(String),));
+            specifiedType: const FullType(String)));
     }
     if (object.price != null) {
       result
         ..add('price')
         ..add(serializers.serialize(object.price,
-            specifiedType: const FullType(int),));
+            specifiedType: const FullType(int)));
     }
     if (object.createdAt != null) {
       result
         ..add('createdAt')
         ..add(serializers.serialize(object.createdAt,
-            specifiedType: const FullType(int),));
+            specifiedType: const FullType(int)));
     }
     return result;
   }
@@ -61,34 +61,34 @@ class _$MentorshipSerializer implements StructuredSerializer<Mentorship> {
     final result = new MentorshipBuilder();
 
     final iterator = serialized.iterator;
-    while (iterator.moveNext(),) {
+    while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
         case 'id':
           result.id = serializers.deserialize(value,
-              specifiedType: const FullType(String),) as String;
+              specifiedType: const FullType(String)) as String;
           break;
         case 'mentorId':
           result.mentorId = serializers.deserialize(value,
-              specifiedType: const FullType(String),) as String;
+              specifiedType: const FullType(String)) as String;
           break;
         case 'mentorEmail':
           result.mentorEmail = serializers.deserialize(value,
-              specifiedType: const FullType(String),) as String;
+              specifiedType: const FullType(String)) as String;
           break;
         case 'description':
           result.description = serializers.deserialize(value,
-              specifiedType: const FullType(String),) as String;
+              specifiedType: const FullType(String)) as String;
           break;
         case 'price':
           result.price = serializers.deserialize(value,
-              specifiedType: const FullType(int),) as int;
+              specifiedType: const FullType(int)) as int;
           break;
         case 'createdAt':
           result.createdAt = serializers.deserialize(value,
-              specifiedType: const FullType(int),) as int;
+              specifiedType: const FullType(int)) as int;
           break;
       }
     }
@@ -112,13 +112,13 @@ class _$MentorshipInfoSerializer
       result
         ..add('description')
         ..add(serializers.serialize(object.description,
-            specifiedType: const FullType(String),));
+            specifiedType: const FullType(String)));
     }
     if (object.price != null) {
       result
         ..add('price')
         ..add(serializers.serialize(object.price,
-            specifiedType: const FullType(int),));
+            specifiedType: const FullType(int)));
     }
     return result;
   }
@@ -130,18 +130,18 @@ class _$MentorshipInfoSerializer
     final result = new MentorshipInfoBuilder();
 
     final iterator = serialized.iterator;
-    while (iterator.moveNext(),) {
+    while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
         case 'description':
           result.description = serializers.deserialize(value,
-              specifiedType: const FullType(String),) as String;
+              specifiedType: const FullType(String)) as String;
           break;
         case 'price':
           result.price = serializers.deserialize(value,
-              specifiedType: const FullType(int),) as int;
+              specifiedType: const FullType(int)) as int;
           break;
       }
     }
@@ -163,11 +163,11 @@ class _$MentorshipsStateSerializer
     final result = <Object>[
       'info',
       serializers.serialize(object.info,
-          specifiedType: const FullType(MentorshipInfo),),
+          specifiedType: const FullType(MentorshipInfo)),
       'mentorships',
       serializers.serialize(object.mentorships,
           specifiedType:
-              const FullType(BuiltList, const [const FullType(Mentorship)]),),
+              const FullType(BuiltList, const [const FullType(Mentorship)])),
     ];
 
     return result;
@@ -180,19 +180,19 @@ class _$MentorshipsStateSerializer
     final result = new MentorshipsStateBuilder();
 
     final iterator = serialized.iterator;
-    while (iterator.moveNext(),) {
+    while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
         case 'info':
           result.info.replace(serializers.deserialize(value,
-              specifiedType: const FullType(MentorshipInfo),) as MentorshipInfo);
+              specifiedType: const FullType(MentorshipInfo)) as MentorshipInfo);
           break;
         case 'mentorships':
           result.mentorships.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType(Mentorship)]),)
+                      BuiltList, const [const FullType(Mentorship)]))
               as BuiltList<Object>);
           break;
       }
@@ -217,7 +217,7 @@ class _$Mentorship extends Mentorship {
   final int createdAt;
 
   factory _$Mentorship([void Function(MentorshipBuilder) updates]) =>
-      (new MentorshipBuilder()..update(updates),).build();
+      (new MentorshipBuilder()..update(updates)).build();
 
   _$Mentorship._(
       {this.id,
@@ -237,14 +237,14 @@ class _$Mentorship extends Mentorship {
 
   @override
   Mentorship rebuild(void Function(MentorshipBuilder) updates) =>
-      (toBuilder()..update(updates),).build();
+      (toBuilder()..update(updates)).build();
 
   @override
   MentorshipBuilder toBuilder() => new MentorshipBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
-    if (identical(other, this),) return true;
+    if (identical(other, this)) return true;
     return other is Mentorship &&
         id == other.id &&
         mentorId == other.mentorId &&
@@ -263,7 +263,7 @@ class _$Mentorship extends Mentorship {
                     mentorEmail.hashCode),
                 description.hashCode),
             price.hashCode),
-        createdAt.hashCode),);
+        createdAt.hashCode));
   }
 
   @override
@@ -274,7 +274,7 @@ class _$Mentorship extends Mentorship {
           ..add('mentorEmail', mentorEmail)
           ..add('description', description)
           ..add('price', price)
-          ..add('createdAt', createdAt),)
+          ..add('createdAt', createdAt))
         .toString();
   }
 }
@@ -356,13 +356,13 @@ class _$MentorshipInfo extends MentorshipInfo {
   final int price;
 
   factory _$MentorshipInfo([void Function(MentorshipInfoBuilder) updates]) =>
-      (new MentorshipInfoBuilder()..update(updates),).build();
+      (new MentorshipInfoBuilder()..update(updates)).build();
 
   _$MentorshipInfo._({this.description, this.price}) : super._();
 
   @override
   MentorshipInfo rebuild(void Function(MentorshipInfoBuilder) updates) =>
-      (toBuilder()..update(updates),).build();
+      (toBuilder()..update(updates)).build();
 
   @override
   MentorshipInfoBuilder toBuilder() =>
@@ -370,7 +370,7 @@ class _$MentorshipInfo extends MentorshipInfo {
 
   @override
   bool operator ==(Object other) {
-    if (identical(other, this),) return true;
+    if (identical(other, this)) return true;
     return other is MentorshipInfo &&
         description == other.description &&
         price == other.price;
@@ -378,14 +378,14 @@ class _$MentorshipInfo extends MentorshipInfo {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, description.hashCode), price.hashCode),);
+    return $jf($jc($jc(0, description.hashCode), price.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('MentorshipInfo')
           ..add('description', description)
-          ..add('price', price),)
+          ..add('price', price))
         .toString();
   }
 }
@@ -443,7 +443,7 @@ class _$MentorshipsState extends MentorshipsState {
 
   factory _$MentorshipsState(
           [void Function(MentorshipsStateBuilder) updates]) =>
-      (new MentorshipsStateBuilder()..update(updates),).build();
+      (new MentorshipsStateBuilder()..update(updates)).build();
 
   _$MentorshipsState._({this.info, this.mentorships}) : super._() {
     if (info == null) {
@@ -456,7 +456,7 @@ class _$MentorshipsState extends MentorshipsState {
 
   @override
   MentorshipsState rebuild(void Function(MentorshipsStateBuilder) updates) =>
-      (toBuilder()..update(updates),).build();
+      (toBuilder()..update(updates)).build();
 
   @override
   MentorshipsStateBuilder toBuilder() =>
@@ -464,7 +464,7 @@ class _$MentorshipsState extends MentorshipsState {
 
   @override
   bool operator ==(Object other) {
-    if (identical(other, this),) return true;
+    if (identical(other, this)) return true;
     return other is MentorshipsState &&
         info == other.info &&
         mentorships == other.mentorships;
@@ -472,14 +472,14 @@ class _$MentorshipsState extends MentorshipsState {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, info.hashCode), mentorships.hashCode),);
+    return $jf($jc($jc(0, info.hashCode), mentorships.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('MentorshipsState')
           ..add('info', info)
-          ..add('mentorships', mentorships),)
+          ..add('mentorships', mentorships))
         .toString();
   }
 }
@@ -529,7 +529,7 @@ class MentorshipsStateBuilder
     try {
       _$result = _$v ??
           new _$MentorshipsState._(
-              info: info.build(), mentorships: mentorships.build(),);
+              info: info.build(), mentorships: mentorships.build());
     } catch (_) {
       String _$failedField;
       try {
@@ -539,7 +539,7 @@ class MentorshipsStateBuilder
         mentorships.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'MentorshipsState', _$failedField, e.toString(),);
+            'MentorshipsState', _$failedField, e.toString());
       }
       rethrow;
     }

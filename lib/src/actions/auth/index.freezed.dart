@@ -95,7 +95,7 @@ abstract class $GetUser$CopyWith<$Res> {
 class _$GetUser$CopyWithImpl<$Res> extends _$GetUserCopyWithImpl<$Res>
     implements $GetUser$CopyWith<$Res> {
   _$GetUser$CopyWithImpl(GetUser$ _value, $Res Function(GetUser$) _then)
-      : super(_value, (v) => _then(v as GetUser$),);
+      : super(_value, (v) => _then(v as GetUser$));
 
   @override
   GetUser$ get _value => super._value as GetUser$;
@@ -106,7 +106,7 @@ class _$GetUser$CopyWithImpl<$Res> extends _$GetUserCopyWithImpl<$Res>
   }) {
     return _then(GetUser$(
       uid == freezed ? _value.uid : uid as String,
-    ),);
+    ));
   }
 }
 
@@ -127,7 +127,7 @@ class _$GetUser$ implements GetUser$ {
     return identical(this, other) ||
         (other is GetUser$ &&
             (identical(other.uid, uid) ||
-                const DeepCollectionEquality().equals(other.uid, uid),));
+                const DeepCollectionEquality().equals(other.uid, uid)));
   }
 
   @override
@@ -215,7 +215,7 @@ class _$GetUserSuccessfulCopyWithImpl<$Res> extends _$GetUserCopyWithImpl<$Res>
     implements $GetUserSuccessfulCopyWith<$Res> {
   _$GetUserSuccessfulCopyWithImpl(
       GetUserSuccessful _value, $Res Function(GetUserSuccessful) _then)
-      : super(_value, (v) => _then(v as GetUserSuccessful),);
+      : super(_value, (v) => _then(v as GetUserSuccessful));
 
   @override
   GetUserSuccessful get _value => super._value as GetUserSuccessful;
@@ -226,7 +226,7 @@ class _$GetUserSuccessfulCopyWithImpl<$Res> extends _$GetUserCopyWithImpl<$Res>
   }) {
     return _then(GetUserSuccessful(
       user == freezed ? _value.user : user as AppUser,
-    ),);
+    ));
   }
 }
 
@@ -247,7 +247,7 @@ class _$GetUserSuccessful implements GetUserSuccessful {
     return identical(this, other) ||
         (other is GetUserSuccessful &&
             (identical(other.user, user) ||
-                const DeepCollectionEquality().equals(other.user, user),));
+                const DeepCollectionEquality().equals(other.user, user)));
   }
 
   @override
@@ -335,7 +335,7 @@ class _$GetUserErrorCopyWithImpl<$Res> extends _$GetUserCopyWithImpl<$Res>
     implements $GetUserErrorCopyWith<$Res> {
   _$GetUserErrorCopyWithImpl(
       GetUserError _value, $Res Function(GetUserError) _then)
-      : super(_value, (v) => _then(v as GetUserError),);
+      : super(_value, (v) => _then(v as GetUserError));
 
   @override
   GetUserError get _value => super._value as GetUserError;
@@ -346,7 +346,7 @@ class _$GetUserErrorCopyWithImpl<$Res> extends _$GetUserCopyWithImpl<$Res>
   }) {
     return _then(GetUserError(
       error == freezed ? _value.error : error,
-    ),);
+    ));
   }
 }
 
@@ -369,7 +369,7 @@ class _$GetUserError implements GetUserError {
     return identical(this, other) ||
         (other is GetUserError &&
             (identical(other.error, error) ||
-                const DeepCollectionEquality().equals(other.error, error),));
+                const DeepCollectionEquality().equals(other.error, error)));
   }
 
   @override
@@ -532,7 +532,7 @@ class _$InitializeApp$CopyWithImpl<$Res>
     implements $InitializeApp$CopyWith<$Res> {
   _$InitializeApp$CopyWithImpl(
       InitializeApp$ _value, $Res Function(InitializeApp$) _then)
-      : super(_value, (v) => _then(v as InitializeApp$),);
+      : super(_value, (v) => _then(v as InitializeApp$));
 
   @override
   InitializeApp$ get _value => super._value as InitializeApp$;
@@ -630,7 +630,7 @@ class _$InitializeAppSuccessfulCopyWithImpl<$Res>
     implements $InitializeAppSuccessfulCopyWith<$Res> {
   _$InitializeAppSuccessfulCopyWithImpl(InitializeAppSuccessful _value,
       $Res Function(InitializeAppSuccessful) _then)
-      : super(_value, (v) => _then(v as InitializeAppSuccessful),);
+      : super(_value, (v) => _then(v as InitializeAppSuccessful));
 
   @override
   InitializeAppSuccessful get _value => super._value as InitializeAppSuccessful;
@@ -641,7 +641,7 @@ class _$InitializeAppSuccessfulCopyWithImpl<$Res>
   }) {
     return _then(InitializeAppSuccessful(
       user == freezed ? _value.user : user as AppUser,
-    ),);
+    ));
   }
 }
 
@@ -663,7 +663,7 @@ class _$InitializeAppSuccessful implements InitializeAppSuccessful {
     return identical(this, other) ||
         (other is InitializeAppSuccessful &&
             (identical(other.user, user) ||
-                const DeepCollectionEquality().equals(other.user, user),));
+                const DeepCollectionEquality().equals(other.user, user)));
   }
 
   @override
@@ -755,7 +755,7 @@ class _$InitializeAppErrorCopyWithImpl<$Res>
     implements $InitializeAppErrorCopyWith<$Res> {
   _$InitializeAppErrorCopyWithImpl(
       InitializeAppError _value, $Res Function(InitializeAppError) _then)
-      : super(_value, (v) => _then(v as InitializeAppError),);
+      : super(_value, (v) => _then(v as InitializeAppError));
 
   @override
   InitializeAppError get _value => super._value as InitializeAppError;
@@ -766,7 +766,7 @@ class _$InitializeAppErrorCopyWithImpl<$Res>
   }) {
     return _then(InitializeAppError(
       error == freezed ? _value.error : error,
-    ),);
+    ));
   }
 }
 
@@ -789,7 +789,7 @@ class _$InitializeAppError implements InitializeAppError {
     return identical(this, other) ||
         (other is InitializeAppError &&
             (identical(other.error, error) ||
-                const DeepCollectionEquality().equals(other.error, error),));
+                const DeepCollectionEquality().equals(other.error, error)));
   }
 
   @override
@@ -957,7 +957,7 @@ abstract class $Login$CopyWith<$Res> {
 class _$Login$CopyWithImpl<$Res> extends _$LoginCopyWithImpl<$Res>
     implements $Login$CopyWith<$Res> {
   _$Login$CopyWithImpl(Login$ _value, $Res Function(Login$) _then)
-      : super(_value, (v) => _then(v as Login$),);
+      : super(_value, (v) => _then(v as Login$));
 
   @override
   Login$ get _value => super._value as Login$;
@@ -974,7 +974,7 @@ class _$Login$CopyWithImpl<$Res> extends _$LoginCopyWithImpl<$Res>
       response: response == freezed
           ? _value.response
           : response as void Function(AppAction),
-    ),);
+    ));
   }
 }
 
@@ -1003,13 +1003,13 @@ class _$Login$ implements Login$ {
     return identical(this, other) ||
         (other is Login$ &&
             (identical(other.email, email) ||
-                const DeepCollectionEquality().equals(other.email, email),) &&
+                const DeepCollectionEquality().equals(other.email, email)) &&
             (identical(other.password, password) ||
                 const DeepCollectionEquality()
-                    .equals(other.password, password),) &&
+                    .equals(other.password, password)) &&
             (identical(other.response, response) ||
                 const DeepCollectionEquality()
-                    .equals(other.response, response),));
+                    .equals(other.response, response)));
   }
 
   @override
@@ -1107,7 +1107,7 @@ class _$LoginSuccessfulCopyWithImpl<$Res> extends _$LoginCopyWithImpl<$Res>
     implements $LoginSuccessfulCopyWith<$Res> {
   _$LoginSuccessfulCopyWithImpl(
       LoginSuccessful _value, $Res Function(LoginSuccessful) _then)
-      : super(_value, (v) => _then(v as LoginSuccessful),);
+      : super(_value, (v) => _then(v as LoginSuccessful));
 
   @override
   LoginSuccessful get _value => super._value as LoginSuccessful;
@@ -1118,7 +1118,7 @@ class _$LoginSuccessfulCopyWithImpl<$Res> extends _$LoginCopyWithImpl<$Res>
   }) {
     return _then(LoginSuccessful(
       user == freezed ? _value.user : user as AppUser,
-    ),);
+    ));
   }
 }
 
@@ -1139,7 +1139,7 @@ class _$LoginSuccessful implements LoginSuccessful {
     return identical(this, other) ||
         (other is LoginSuccessful &&
             (identical(other.user, user) ||
-                const DeepCollectionEquality().equals(other.user, user),));
+                const DeepCollectionEquality().equals(other.user, user)));
   }
 
   @override
@@ -1228,7 +1228,7 @@ abstract class $LoginErrorCopyWith<$Res> {
 class _$LoginErrorCopyWithImpl<$Res> extends _$LoginCopyWithImpl<$Res>
     implements $LoginErrorCopyWith<$Res> {
   _$LoginErrorCopyWithImpl(LoginError _value, $Res Function(LoginError) _then)
-      : super(_value, (v) => _then(v as LoginError),);
+      : super(_value, (v) => _then(v as LoginError));
 
   @override
   LoginError get _value => super._value as LoginError;
@@ -1239,7 +1239,7 @@ class _$LoginErrorCopyWithImpl<$Res> extends _$LoginCopyWithImpl<$Res>
   }) {
     return _then(LoginError(
       error == freezed ? _value.error : error,
-    ),);
+    ));
   }
 }
 
@@ -1262,7 +1262,7 @@ class _$LoginError implements LoginError {
     return identical(this, other) ||
         (other is LoginError &&
             (identical(other.error, error) ||
-                const DeepCollectionEquality().equals(other.error, error),));
+                const DeepCollectionEquality().equals(other.error, error)));
   }
 
   @override
@@ -1428,7 +1428,7 @@ class _$ResetPassword$CopyWithImpl<$Res>
     implements $ResetPassword$CopyWith<$Res> {
   _$ResetPassword$CopyWithImpl(
       ResetPassword$ _value, $Res Function(ResetPassword$) _then)
-      : super(_value, (v) => _then(v as ResetPassword$),);
+      : super(_value, (v) => _then(v as ResetPassword$));
 
   @override
   ResetPassword$ get _value => super._value as ResetPassword$;
@@ -1439,7 +1439,7 @@ class _$ResetPassword$CopyWithImpl<$Res>
   }) {
     return _then(ResetPassword$(
       email == freezed ? _value.email : email as String,
-    ),);
+    ));
   }
 }
 
@@ -1460,7 +1460,7 @@ class _$ResetPassword$ implements ResetPassword$ {
     return identical(this, other) ||
         (other is ResetPassword$ &&
             (identical(other.email, email) ||
-                const DeepCollectionEquality().equals(other.email, email),));
+                const DeepCollectionEquality().equals(other.email, email)));
   }
 
   @override
@@ -1548,7 +1548,7 @@ class _$ResetPasswordSuccessfulCopyWithImpl<$Res>
     implements $ResetPasswordSuccessfulCopyWith<$Res> {
   _$ResetPasswordSuccessfulCopyWithImpl(ResetPasswordSuccessful _value,
       $Res Function(ResetPasswordSuccessful) _then)
-      : super(_value, (v) => _then(v as ResetPasswordSuccessful),);
+      : super(_value, (v) => _then(v as ResetPasswordSuccessful));
 
   @override
   ResetPasswordSuccessful get _value => super._value as ResetPasswordSuccessful;
@@ -1646,7 +1646,7 @@ class _$ResetPasswordErrorCopyWithImpl<$Res>
     implements $ResetPasswordErrorCopyWith<$Res> {
   _$ResetPasswordErrorCopyWithImpl(
       ResetPasswordError _value, $Res Function(ResetPasswordError) _then)
-      : super(_value, (v) => _then(v as ResetPasswordError),);
+      : super(_value, (v) => _then(v as ResetPasswordError));
 
   @override
   ResetPasswordError get _value => super._value as ResetPasswordError;
@@ -1657,7 +1657,7 @@ class _$ResetPasswordErrorCopyWithImpl<$Res>
   }) {
     return _then(ResetPasswordError(
       error == freezed ? _value.error : error,
-    ),);
+    ));
   }
 }
 
@@ -1680,7 +1680,7 @@ class _$ResetPasswordError implements ResetPasswordError {
     return identical(this, other) ||
         (other is ResetPasswordError &&
             (identical(other.error, error) ||
-                const DeepCollectionEquality().equals(other.error, error),));
+                const DeepCollectionEquality().equals(other.error, error)));
   }
 
   @override
@@ -1844,7 +1844,7 @@ class _$SearchUsers$CopyWithImpl<$Res> extends _$SearchUsersCopyWithImpl<$Res>
     implements $SearchUsers$CopyWith<$Res> {
   _$SearchUsers$CopyWithImpl(
       SearchUsers$ _value, $Res Function(SearchUsers$) _then)
-      : super(_value, (v) => _then(v as SearchUsers$),);
+      : super(_value, (v) => _then(v as SearchUsers$));
 
   @override
   SearchUsers$ get _value => super._value as SearchUsers$;
@@ -1855,7 +1855,7 @@ class _$SearchUsers$CopyWithImpl<$Res> extends _$SearchUsersCopyWithImpl<$Res>
   }) {
     return _then(SearchUsers$(
       query == freezed ? _value.query : query as String,
-    ),);
+    ));
   }
 }
 
@@ -1876,7 +1876,7 @@ class _$SearchUsers$ implements SearchUsers$ {
     return identical(this, other) ||
         (other is SearchUsers$ &&
             (identical(other.query, query) ||
-                const DeepCollectionEquality().equals(other.query, query),));
+                const DeepCollectionEquality().equals(other.query, query)));
   }
 
   @override
@@ -1965,7 +1965,7 @@ class _$SearchUsersSuccessfulCopyWithImpl<$Res>
     implements $SearchUsersSuccessfulCopyWith<$Res> {
   _$SearchUsersSuccessfulCopyWithImpl(
       SearchUsersSuccessful _value, $Res Function(SearchUsersSuccessful) _then)
-      : super(_value, (v) => _then(v as SearchUsersSuccessful),);
+      : super(_value, (v) => _then(v as SearchUsersSuccessful));
 
   @override
   SearchUsersSuccessful get _value => super._value as SearchUsersSuccessful;
@@ -1976,7 +1976,7 @@ class _$SearchUsersSuccessfulCopyWithImpl<$Res>
   }) {
     return _then(SearchUsersSuccessful(
       users == freezed ? _value.users : users as List<AppUser>,
-    ),);
+    ));
   }
 }
 
@@ -1997,7 +1997,7 @@ class _$SearchUsersSuccessful implements SearchUsersSuccessful {
     return identical(this, other) ||
         (other is SearchUsersSuccessful &&
             (identical(other.users, users) ||
-                const DeepCollectionEquality().equals(other.users, users),));
+                const DeepCollectionEquality().equals(other.users, users)));
   }
 
   @override
@@ -2088,7 +2088,7 @@ class _$SearchUsersErrorCopyWithImpl<$Res>
     implements $SearchUsersErrorCopyWith<$Res> {
   _$SearchUsersErrorCopyWithImpl(
       SearchUsersError _value, $Res Function(SearchUsersError) _then)
-      : super(_value, (v) => _then(v as SearchUsersError),);
+      : super(_value, (v) => _then(v as SearchUsersError));
 
   @override
   SearchUsersError get _value => super._value as SearchUsersError;
@@ -2099,7 +2099,7 @@ class _$SearchUsersErrorCopyWithImpl<$Res>
   }) {
     return _then(SearchUsersError(
       error == freezed ? _value.error : error,
-    ),);
+    ));
   }
 }
 
@@ -2122,7 +2122,7 @@ class _$SearchUsersError implements SearchUsersError {
     return identical(this, other) ||
         (other is SearchUsersError &&
             (identical(other.error, error) ||
-                const DeepCollectionEquality().equals(other.error, error),));
+                const DeepCollectionEquality().equals(other.error, error)));
   }
 
   @override
@@ -2252,7 +2252,7 @@ class _$UpdateRegistrationInfoCopyWithImpl<$Res>
       email: email == freezed ? _value.email : email as String,
       password: password == freezed ? _value.password : password as String,
       username: username == freezed ? _value.username : username as String,
-    ),);
+    ));
   }
 }
 
@@ -2272,7 +2272,7 @@ class _$UpdateRegistrationInfo$CopyWithImpl<$Res>
     implements $UpdateRegistrationInfo$CopyWith<$Res> {
   _$UpdateRegistrationInfo$CopyWithImpl(UpdateRegistrationInfo$ _value,
       $Res Function(UpdateRegistrationInfo$) _then)
-      : super(_value, (v) => _then(v as UpdateRegistrationInfo$),);
+      : super(_value, (v) => _then(v as UpdateRegistrationInfo$));
 
   @override
   UpdateRegistrationInfo$ get _value => super._value as UpdateRegistrationInfo$;
@@ -2287,7 +2287,7 @@ class _$UpdateRegistrationInfo$CopyWithImpl<$Res>
       email: email == freezed ? _value.email : email as String,
       password: password == freezed ? _value.password : password as String,
       username: username == freezed ? _value.username : username as String,
-    ),);
+    ));
   }
 }
 
@@ -2312,13 +2312,13 @@ class _$UpdateRegistrationInfo$ implements UpdateRegistrationInfo$ {
     return identical(this, other) ||
         (other is UpdateRegistrationInfo$ &&
             (identical(other.email, email) ||
-                const DeepCollectionEquality().equals(other.email, email),) &&
+                const DeepCollectionEquality().equals(other.email, email)) &&
             (identical(other.password, password) ||
                 const DeepCollectionEquality()
-                    .equals(other.password, password),) &&
+                    .equals(other.password, password)) &&
             (identical(other.username, username) ||
                 const DeepCollectionEquality()
-                    .equals(other.username, username),));
+                    .equals(other.username, username)));
   }
 
   @override
@@ -2431,7 +2431,7 @@ abstract class $SignOut$CopyWith<$Res> {
 class _$SignOut$CopyWithImpl<$Res> extends _$SignOutCopyWithImpl<$Res>
     implements $SignOut$CopyWith<$Res> {
   _$SignOut$CopyWithImpl(SignOut$ _value, $Res Function(SignOut$) _then)
-      : super(_value, (v) => _then(v as SignOut$),);
+      : super(_value, (v) => _then(v as SignOut$));
 
   @override
   SignOut$ get _value => super._value as SignOut$;
@@ -2527,7 +2527,7 @@ class _$SignOutSuccessfulCopyWithImpl<$Res> extends _$SignOutCopyWithImpl<$Res>
     implements $SignOutSuccessfulCopyWith<$Res> {
   _$SignOutSuccessfulCopyWithImpl(
       SignOutSuccessful _value, $Res Function(SignOutSuccessful) _then)
-      : super(_value, (v) => _then(v as SignOutSuccessful),);
+      : super(_value, (v) => _then(v as SignOutSuccessful));
 
   @override
   SignOutSuccessful get _value => super._value as SignOutSuccessful;
@@ -2624,7 +2624,7 @@ class _$SignOutErrorCopyWithImpl<$Res> extends _$SignOutCopyWithImpl<$Res>
     implements $SignOutErrorCopyWith<$Res> {
   _$SignOutErrorCopyWithImpl(
       SignOutError _value, $Res Function(SignOutError) _then)
-      : super(_value, (v) => _then(v as SignOutError),);
+      : super(_value, (v) => _then(v as SignOutError));
 
   @override
   SignOutError get _value => super._value as SignOutError;
@@ -2635,7 +2635,7 @@ class _$SignOutErrorCopyWithImpl<$Res> extends _$SignOutCopyWithImpl<$Res>
   }) {
     return _then(SignOutError(
       error == freezed ? _value.error : error,
-    ),);
+    ));
   }
 }
 
@@ -2658,7 +2658,7 @@ class _$SignOutError implements SignOutError {
     return identical(this, other) ||
         (other is SignOutError &&
             (identical(other.error, error) ||
-                const DeepCollectionEquality().equals(other.error, error),));
+                const DeepCollectionEquality().equals(other.error, error)));
   }
 
   @override
@@ -2819,7 +2819,7 @@ abstract class $Signup$CopyWith<$Res> {
 class _$Signup$CopyWithImpl<$Res> extends _$SignupCopyWithImpl<$Res>
     implements $Signup$CopyWith<$Res> {
   _$Signup$CopyWithImpl(Signup$ _value, $Res Function(Signup$) _then)
-      : super(_value, (v) => _then(v as Signup$),);
+      : super(_value, (v) => _then(v as Signup$));
 
   @override
   Signup$ get _value => super._value as Signup$;
@@ -2832,7 +2832,7 @@ class _$Signup$CopyWithImpl<$Res> extends _$SignupCopyWithImpl<$Res>
       response == freezed
           ? _value.response
           : response as void Function(AppAction),
-    ),);
+    ));
   }
 }
 
@@ -2854,7 +2854,7 @@ class _$Signup$ implements Signup$ {
         (other is Signup$ &&
             (identical(other.response, response) ||
                 const DeepCollectionEquality()
-                    .equals(other.response, response),));
+                    .equals(other.response, response)));
   }
 
   @override
@@ -2942,7 +2942,7 @@ class _$SignupSuccessfulCopyWithImpl<$Res> extends _$SignupCopyWithImpl<$Res>
     implements $SignupSuccessfulCopyWith<$Res> {
   _$SignupSuccessfulCopyWithImpl(
       SignupSuccessful _value, $Res Function(SignupSuccessful) _then)
-      : super(_value, (v) => _then(v as SignupSuccessful),);
+      : super(_value, (v) => _then(v as SignupSuccessful));
 
   @override
   SignupSuccessful get _value => super._value as SignupSuccessful;
@@ -2953,7 +2953,7 @@ class _$SignupSuccessfulCopyWithImpl<$Res> extends _$SignupCopyWithImpl<$Res>
   }) {
     return _then(SignupSuccessful(
       user == freezed ? _value.user : user as AppUser,
-    ),);
+    ));
   }
 }
 
@@ -2974,7 +2974,7 @@ class _$SignupSuccessful implements SignupSuccessful {
     return identical(this, other) ||
         (other is SignupSuccessful &&
             (identical(other.user, user) ||
-                const DeepCollectionEquality().equals(other.user, user),));
+                const DeepCollectionEquality().equals(other.user, user)));
   }
 
   @override
@@ -3062,7 +3062,7 @@ class _$SignupErrorCopyWithImpl<$Res> extends _$SignupCopyWithImpl<$Res>
     implements $SignupErrorCopyWith<$Res> {
   _$SignupErrorCopyWithImpl(
       SignupError _value, $Res Function(SignupError) _then)
-      : super(_value, (v) => _then(v as SignupError),);
+      : super(_value, (v) => _then(v as SignupError));
 
   @override
   SignupError get _value => super._value as SignupError;
@@ -3073,7 +3073,7 @@ class _$SignupErrorCopyWithImpl<$Res> extends _$SignupCopyWithImpl<$Res>
   }) {
     return _then(SignupError(
       error == freezed ? _value.error : error,
-    ),);
+    ));
   }
 }
 
@@ -3096,7 +3096,7 @@ class _$SignupError implements SignupError {
     return identical(this, other) ||
         (other is SignupError &&
             (identical(other.error, error) ||
-                const DeepCollectionEquality().equals(other.error, error),));
+                const DeepCollectionEquality().equals(other.error, error)));
   }
 
   @override
@@ -3262,7 +3262,7 @@ class _$SignUpWithGoogle$CopyWithImpl<$Res>
     implements $SignUpWithGoogle$CopyWith<$Res> {
   _$SignUpWithGoogle$CopyWithImpl(
       SignUpWithGoogle$ _value, $Res Function(SignUpWithGoogle$) _then)
-      : super(_value, (v) => _then(v as SignUpWithGoogle$),);
+      : super(_value, (v) => _then(v as SignUpWithGoogle$));
 
   @override
   SignUpWithGoogle$ get _value => super._value as SignUpWithGoogle$;
@@ -3275,7 +3275,7 @@ class _$SignUpWithGoogle$CopyWithImpl<$Res>
       response == freezed
           ? _value.response
           : response as void Function(AppAction),
-    ),);
+    ));
   }
 }
 
@@ -3297,7 +3297,7 @@ class _$SignUpWithGoogle$ implements SignUpWithGoogle$ {
         (other is SignUpWithGoogle$ &&
             (identical(other.response, response) ||
                 const DeepCollectionEquality()
-                    .equals(other.response, response),));
+                    .equals(other.response, response)));
   }
 
   @override
@@ -3387,7 +3387,7 @@ class _$SignUpWithGoogleSuccessfulCopyWithImpl<$Res>
     implements $SignUpWithGoogleSuccessfulCopyWith<$Res> {
   _$SignUpWithGoogleSuccessfulCopyWithImpl(SignUpWithGoogleSuccessful _value,
       $Res Function(SignUpWithGoogleSuccessful) _then)
-      : super(_value, (v) => _then(v as SignUpWithGoogleSuccessful),);
+      : super(_value, (v) => _then(v as SignUpWithGoogleSuccessful));
 
   @override
   SignUpWithGoogleSuccessful get _value =>
@@ -3399,7 +3399,7 @@ class _$SignUpWithGoogleSuccessfulCopyWithImpl<$Res>
   }) {
     return _then(SignUpWithGoogleSuccessful(
       user == freezed ? _value.user : user as AppUser,
-    ),);
+    ));
   }
 }
 
@@ -3420,7 +3420,7 @@ class _$SignUpWithGoogleSuccessful implements SignUpWithGoogleSuccessful {
     return identical(this, other) ||
         (other is SignUpWithGoogleSuccessful &&
             (identical(other.user, user) ||
-                const DeepCollectionEquality().equals(other.user, user),));
+                const DeepCollectionEquality().equals(other.user, user)));
   }
 
   @override
@@ -3512,7 +3512,7 @@ class _$SignUpWithGoogleErrorCopyWithImpl<$Res>
     implements $SignUpWithGoogleErrorCopyWith<$Res> {
   _$SignUpWithGoogleErrorCopyWithImpl(
       SignUpWithGoogleError _value, $Res Function(SignUpWithGoogleError) _then)
-      : super(_value, (v) => _then(v as SignUpWithGoogleError),);
+      : super(_value, (v) => _then(v as SignUpWithGoogleError));
 
   @override
   SignUpWithGoogleError get _value => super._value as SignUpWithGoogleError;
@@ -3523,7 +3523,7 @@ class _$SignUpWithGoogleErrorCopyWithImpl<$Res>
   }) {
     return _then(SignUpWithGoogleError(
       error == freezed ? _value.error : error,
-    ),);
+    ));
   }
 }
 
@@ -3546,7 +3546,7 @@ class _$SignUpWithGoogleError implements SignUpWithGoogleError {
     return identical(this, other) ||
         (other is SignUpWithGoogleError &&
             (identical(other.error, error) ||
-                const DeepCollectionEquality().equals(other.error, error),));
+                const DeepCollectionEquality().equals(other.error, error)));
   }
 
   @override
@@ -3715,7 +3715,7 @@ class _$UpdateFollowing$CopyWithImpl<$Res>
     implements $UpdateFollowing$CopyWith<$Res> {
   _$UpdateFollowing$CopyWithImpl(
       UpdateFollowing$ _value, $Res Function(UpdateFollowing$) _then)
-      : super(_value, (v) => _then(v as UpdateFollowing$),);
+      : super(_value, (v) => _then(v as UpdateFollowing$));
 
   @override
   UpdateFollowing$ get _value => super._value as UpdateFollowing$;
@@ -3728,7 +3728,7 @@ class _$UpdateFollowing$CopyWithImpl<$Res>
     return _then(UpdateFollowing$(
       add: add == freezed ? _value.add : add as String,
       remove: remove == freezed ? _value.remove : remove as String,
-    ),);
+    ));
   }
 }
 
@@ -3751,9 +3751,9 @@ class _$UpdateFollowing$ implements UpdateFollowing$ {
     return identical(this, other) ||
         (other is UpdateFollowing$ &&
             (identical(other.add, add) ||
-                const DeepCollectionEquality().equals(other.add, add),) &&
+                const DeepCollectionEquality().equals(other.add, add)) &&
             (identical(other.remove, remove) ||
-                const DeepCollectionEquality().equals(other.remove, remove),));
+                const DeepCollectionEquality().equals(other.remove, remove)));
   }
 
   @override
@@ -3846,7 +3846,7 @@ class _$UpdateFollowingSuccessfulCopyWithImpl<$Res>
     implements $UpdateFollowingSuccessfulCopyWith<$Res> {
   _$UpdateFollowingSuccessfulCopyWithImpl(UpdateFollowingSuccessful _value,
       $Res Function(UpdateFollowingSuccessful) _then)
-      : super(_value, (v) => _then(v as UpdateFollowingSuccessful),);
+      : super(_value, (v) => _then(v as UpdateFollowingSuccessful));
 
   @override
   UpdateFollowingSuccessful get _value =>
@@ -3860,7 +3860,7 @@ class _$UpdateFollowingSuccessfulCopyWithImpl<$Res>
     return _then(UpdateFollowingSuccessful(
       add: add == freezed ? _value.add : add as String,
       remove: remove == freezed ? _value.remove : remove as String,
-    ),);
+    ));
   }
 }
 
@@ -3883,9 +3883,9 @@ class _$UpdateFollowingSuccessful implements UpdateFollowingSuccessful {
     return identical(this, other) ||
         (other is UpdateFollowingSuccessful &&
             (identical(other.add, add) ||
-                const DeepCollectionEquality().equals(other.add, add),) &&
+                const DeepCollectionEquality().equals(other.add, add)) &&
             (identical(other.remove, remove) ||
-                const DeepCollectionEquality().equals(other.remove, remove),));
+                const DeepCollectionEquality().equals(other.remove, remove)));
   }
 
   @override
@@ -3979,7 +3979,7 @@ class _$UpdateFollowingErrorCopyWithImpl<$Res>
     implements $UpdateFollowingErrorCopyWith<$Res> {
   _$UpdateFollowingErrorCopyWithImpl(
       UpdateFollowingError _value, $Res Function(UpdateFollowingError) _then)
-      : super(_value, (v) => _then(v as UpdateFollowingError),);
+      : super(_value, (v) => _then(v as UpdateFollowingError));
 
   @override
   UpdateFollowingError get _value => super._value as UpdateFollowingError;
@@ -3990,7 +3990,7 @@ class _$UpdateFollowingErrorCopyWithImpl<$Res>
   }) {
     return _then(UpdateFollowingError(
       error == freezed ? _value.error : error,
-    ),);
+    ));
   }
 }
 
@@ -4013,7 +4013,7 @@ class _$UpdateFollowingError implements UpdateFollowingError {
     return identical(this, other) ||
         (other is UpdateFollowingError &&
             (identical(other.error, error) ||
-                const DeepCollectionEquality().equals(other.error, error),));
+                const DeepCollectionEquality().equals(other.error, error)));
   }
 
   @override
@@ -4179,7 +4179,7 @@ class _$UpdateUser$CopyWithImpl<$Res> extends _$UpdateUserCopyWithImpl<$Res>
     implements $UpdateUser$CopyWith<$Res> {
   _$UpdateUser$CopyWithImpl(
       UpdateUser$ _value, $Res Function(UpdateUser$) _then)
-      : super(_value, (v) => _then(v as UpdateUser$),);
+      : super(_value, (v) => _then(v as UpdateUser$));
 
   @override
   UpdateUser$ get _value => super._value as UpdateUser$;
@@ -4192,7 +4192,7 @@ class _$UpdateUser$CopyWithImpl<$Res> extends _$UpdateUserCopyWithImpl<$Res>
     return _then(UpdateUser$(
       path == freezed ? _value.path : path as String,
       uid == freezed ? _value.uid : uid as String,
-    ),);
+    ));
   }
 }
 
@@ -4217,9 +4217,9 @@ class _$UpdateUser$ implements UpdateUser$ {
     return identical(this, other) ||
         (other is UpdateUser$ &&
             (identical(other.path, path) ||
-                const DeepCollectionEquality().equals(other.path, path),) &&
+                const DeepCollectionEquality().equals(other.path, path)) &&
             (identical(other.uid, uid) ||
-                const DeepCollectionEquality().equals(other.uid, uid),));
+                const DeepCollectionEquality().equals(other.uid, uid)));
   }
 
   @override
@@ -4311,7 +4311,7 @@ class _$UpdateUserSuccessfulCopyWithImpl<$Res>
     implements $UpdateUserSuccessfulCopyWith<$Res> {
   _$UpdateUserSuccessfulCopyWithImpl(
       UpdateUserSuccessful _value, $Res Function(UpdateUserSuccessful) _then)
-      : super(_value, (v) => _then(v as UpdateUserSuccessful),);
+      : super(_value, (v) => _then(v as UpdateUserSuccessful));
 
   @override
   UpdateUserSuccessful get _value => super._value as UpdateUserSuccessful;
@@ -4322,7 +4322,7 @@ class _$UpdateUserSuccessfulCopyWithImpl<$Res>
   }) {
     return _then(UpdateUserSuccessful(
       user == freezed ? _value.user : user as AppUser,
-    ),);
+    ));
   }
 }
 
@@ -4343,7 +4343,7 @@ class _$UpdateUserSuccessful implements UpdateUserSuccessful {
     return identical(this, other) ||
         (other is UpdateUserSuccessful &&
             (identical(other.user, user) ||
-                const DeepCollectionEquality().equals(other.user, user),));
+                const DeepCollectionEquality().equals(other.user, user)));
   }
 
   @override
@@ -4432,7 +4432,7 @@ class _$UpdateUserErrorCopyWithImpl<$Res> extends _$UpdateUserCopyWithImpl<$Res>
     implements $UpdateUserErrorCopyWith<$Res> {
   _$UpdateUserErrorCopyWithImpl(
       UpdateUserError _value, $Res Function(UpdateUserError) _then)
-      : super(_value, (v) => _then(v as UpdateUserError),);
+      : super(_value, (v) => _then(v as UpdateUserError));
 
   @override
   UpdateUserError get _value => super._value as UpdateUserError;
@@ -4443,7 +4443,7 @@ class _$UpdateUserErrorCopyWithImpl<$Res> extends _$UpdateUserCopyWithImpl<$Res>
   }) {
     return _then(UpdateUserError(
       error == freezed ? _value.error : error,
-    ),);
+    ));
   }
 }
 
@@ -4466,7 +4466,7 @@ class _$UpdateUserError implements UpdateUserError {
     return identical(this, other) ||
         (other is UpdateUserError &&
             (identical(other.error, error) ||
-                const DeepCollectionEquality().equals(other.error, error),));
+                const DeepCollectionEquality().equals(other.error, error)));
   }
 
   @override

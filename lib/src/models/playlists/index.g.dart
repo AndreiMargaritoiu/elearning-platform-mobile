@@ -23,37 +23,37 @@ class _$PlaylistSerializer implements StructuredSerializer<Playlist> {
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
       'id',
-      serializers.serialize(object.id, specifiedType: const FullType(String),),
+      serializers.serialize(object.id, specifiedType: const FullType(String)),
       'uid',
-      serializers.serialize(object.uid, specifiedType: const FullType(String),),
+      serializers.serialize(object.uid, specifiedType: const FullType(String)),
       'title',
       serializers.serialize(object.title,
-          specifiedType: const FullType(String),),
+          specifiedType: const FullType(String)),
       'videoRefs',
       serializers.serialize(object.videoRefs,
           specifiedType:
-              const FullType(BuiltList, const [const FullType(String)]),),
+              const FullType(BuiltList, const [const FullType(String)])),
       'createdAt',
       serializers.serialize(object.createdAt,
-          specifiedType: const FullType(int),),
+          specifiedType: const FullType(int)),
     ];
     if (object.description != null) {
       result
         ..add('description')
         ..add(serializers.serialize(object.description,
-            specifiedType: const FullType(String),));
+            specifiedType: const FullType(String)));
     }
     if (object.category != null) {
       result
         ..add('category')
         ..add(serializers.serialize(object.category,
-            specifiedType: const FullType(String),));
+            specifiedType: const FullType(String)));
     }
     if (object.thumbnailUrl != null) {
       result
         ..add('thumbnailUrl')
         ..add(serializers.serialize(object.thumbnailUrl,
-            specifiedType: const FullType(String),));
+            specifiedType: const FullType(String)));
     }
     return result;
   }
@@ -64,44 +64,44 @@ class _$PlaylistSerializer implements StructuredSerializer<Playlist> {
     final result = new PlaylistBuilder();
 
     final iterator = serialized.iterator;
-    while (iterator.moveNext(),) {
+    while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
         case 'id':
           result.id = serializers.deserialize(value,
-              specifiedType: const FullType(String),) as String;
+              specifiedType: const FullType(String)) as String;
           break;
         case 'uid':
           result.uid = serializers.deserialize(value,
-              specifiedType: const FullType(String),) as String;
+              specifiedType: const FullType(String)) as String;
           break;
         case 'title':
           result.title = serializers.deserialize(value,
-              specifiedType: const FullType(String),) as String;
+              specifiedType: const FullType(String)) as String;
           break;
         case 'videoRefs':
           result.videoRefs.replace(serializers.deserialize(value,
                   specifiedType:
-                      const FullType(BuiltList, const [const FullType(String)]),)
+                      const FullType(BuiltList, const [const FullType(String)]))
               as BuiltList<Object>);
           break;
         case 'createdAt':
           result.createdAt = serializers.deserialize(value,
-              specifiedType: const FullType(int),) as int;
+              specifiedType: const FullType(int)) as int;
           break;
         case 'description':
           result.description = serializers.deserialize(value,
-              specifiedType: const FullType(String),) as String;
+              specifiedType: const FullType(String)) as String;
           break;
         case 'category':
           result.category = serializers.deserialize(value,
-              specifiedType: const FullType(String),) as String;
+              specifiedType: const FullType(String)) as String;
           break;
         case 'thumbnailUrl':
           result.thumbnailUrl = serializers.deserialize(value,
-              specifiedType: const FullType(String),) as String;
+              specifiedType: const FullType(String)) as String;
           break;
       }
     }
@@ -124,32 +124,32 @@ class _$PlaylistInfoSerializer implements StructuredSerializer<PlaylistInfo> {
       result
         ..add('title')
         ..add(serializers.serialize(object.title,
-            specifiedType: const FullType(String),));
+            specifiedType: const FullType(String)));
     }
     if (object.description != null) {
       result
         ..add('description')
         ..add(serializers.serialize(object.description,
-            specifiedType: const FullType(String),));
+            specifiedType: const FullType(String)));
     }
     if (object.category != null) {
       result
         ..add('category')
         ..add(serializers.serialize(object.category,
-            specifiedType: const FullType(String),));
+            specifiedType: const FullType(String)));
     }
     if (object.thumbnailPath != null) {
       result
         ..add('thumbnailPath')
         ..add(serializers.serialize(object.thumbnailPath,
-            specifiedType: const FullType(String),));
+            specifiedType: const FullType(String)));
     }
     if (object.videoRefs != null) {
       result
         ..add('videoRefs')
         ..add(serializers.serialize(object.videoRefs,
             specifiedType:
-                const FullType(BuiltList, const [const FullType(String)]),));
+                const FullType(BuiltList, const [const FullType(String)])));
     }
     return result;
   }
@@ -160,31 +160,31 @@ class _$PlaylistInfoSerializer implements StructuredSerializer<PlaylistInfo> {
     final result = new PlaylistInfoBuilder();
 
     final iterator = serialized.iterator;
-    while (iterator.moveNext(),) {
+    while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
         case 'title':
           result.title = serializers.deserialize(value,
-              specifiedType: const FullType(String),) as String;
+              specifiedType: const FullType(String)) as String;
           break;
         case 'description':
           result.description = serializers.deserialize(value,
-              specifiedType: const FullType(String),) as String;
+              specifiedType: const FullType(String)) as String;
           break;
         case 'category':
           result.category = serializers.deserialize(value,
-              specifiedType: const FullType(String),) as String;
+              specifiedType: const FullType(String)) as String;
           break;
         case 'thumbnailPath':
           result.thumbnailPath = serializers.deserialize(value,
-              specifiedType: const FullType(String),) as String;
+              specifiedType: const FullType(String)) as String;
           break;
         case 'videoRefs':
           result.videoRefs.replace(serializers.deserialize(value,
                   specifiedType:
-                      const FullType(BuiltList, const [const FullType(String)]),)
+                      const FullType(BuiltList, const [const FullType(String)]))
               as BuiltList<Object>);
           break;
       }
@@ -207,11 +207,11 @@ class _$PlaylistsStateSerializer
     final result = <Object>[
       'info',
       serializers.serialize(object.info,
-          specifiedType: const FullType(PlaylistInfo),),
+          specifiedType: const FullType(PlaylistInfo)),
       'playlists',
       serializers.serialize(object.playlists,
           specifiedType:
-              const FullType(BuiltList, const [const FullType(Playlist)]),),
+              const FullType(BuiltList, const [const FullType(Playlist)])),
     ];
 
     return result;
@@ -224,19 +224,19 @@ class _$PlaylistsStateSerializer
     final result = new PlaylistsStateBuilder();
 
     final iterator = serialized.iterator;
-    while (iterator.moveNext(),) {
+    while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
         case 'info':
           result.info.replace(serializers.deserialize(value,
-              specifiedType: const FullType(PlaylistInfo),) as PlaylistInfo);
+              specifiedType: const FullType(PlaylistInfo)) as PlaylistInfo);
           break;
         case 'playlists':
           result.playlists.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType(Playlist)]),)
+                      BuiltList, const [const FullType(Playlist)]))
               as BuiltList<Object>);
           break;
       }
@@ -265,7 +265,7 @@ class _$Playlist extends Playlist {
   final String thumbnailUrl;
 
   factory _$Playlist([void Function(PlaylistBuilder) updates]) =>
-      (new PlaylistBuilder()..update(updates),).build();
+      (new PlaylistBuilder()..update(updates)).build();
 
   _$Playlist._(
       {this.id,
@@ -296,14 +296,14 @@ class _$Playlist extends Playlist {
 
   @override
   Playlist rebuild(void Function(PlaylistBuilder) updates) =>
-      (toBuilder()..update(updates),).build();
+      (toBuilder()..update(updates)).build();
 
   @override
   PlaylistBuilder toBuilder() => new PlaylistBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
-    if (identical(other, this),) return true;
+    if (identical(other, this)) return true;
     return other is Playlist &&
         id == other.id &&
         uid == other.uid &&
@@ -328,7 +328,7 @@ class _$Playlist extends Playlist {
                     createdAt.hashCode),
                 description.hashCode),
             category.hashCode),
-        thumbnailUrl.hashCode),);
+        thumbnailUrl.hashCode));
   }
 
   @override
@@ -341,7 +341,7 @@ class _$Playlist extends Playlist {
           ..add('createdAt', createdAt)
           ..add('description', description)
           ..add('category', category)
-          ..add('thumbnailUrl', thumbnailUrl),)
+          ..add('thumbnailUrl', thumbnailUrl))
         .toString();
   }
 }
@@ -433,7 +433,7 @@ class PlaylistBuilder implements Builder<Playlist, PlaylistBuilder> {
         videoRefs.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'Playlist', _$failedField, e.toString(),);
+            'Playlist', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -455,7 +455,7 @@ class _$PlaylistInfo extends PlaylistInfo {
   final BuiltList<String> videoRefs;
 
   factory _$PlaylistInfo([void Function(PlaylistInfoBuilder) updates]) =>
-      (new PlaylistInfoBuilder()..update(updates),).build();
+      (new PlaylistInfoBuilder()..update(updates)).build();
 
   _$PlaylistInfo._(
       {this.title,
@@ -467,14 +467,14 @@ class _$PlaylistInfo extends PlaylistInfo {
 
   @override
   PlaylistInfo rebuild(void Function(PlaylistInfoBuilder) updates) =>
-      (toBuilder()..update(updates),).build();
+      (toBuilder()..update(updates)).build();
 
   @override
   PlaylistInfoBuilder toBuilder() => new PlaylistInfoBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
-    if (identical(other, this),) return true;
+    if (identical(other, this)) return true;
     return other is PlaylistInfo &&
         title == other.title &&
         description == other.description &&
@@ -490,7 +490,7 @@ class _$PlaylistInfo extends PlaylistInfo {
             $jc($jc($jc(0, title.hashCode), description.hashCode),
                 category.hashCode),
             thumbnailPath.hashCode),
-        videoRefs.hashCode),);
+        videoRefs.hashCode));
   }
 
   @override
@@ -500,7 +500,7 @@ class _$PlaylistInfo extends PlaylistInfo {
           ..add('description', description)
           ..add('category', category)
           ..add('thumbnailPath', thumbnailPath)
-          ..add('videoRefs', videoRefs),)
+          ..add('videoRefs', videoRefs))
         .toString();
   }
 }
@@ -568,7 +568,7 @@ class PlaylistInfoBuilder
               description: description,
               category: category,
               thumbnailPath: thumbnailPath,
-              videoRefs: _videoRefs?.build(),);
+              videoRefs: _videoRefs?.build());
     } catch (_) {
       String _$failedField;
       try {
@@ -576,7 +576,7 @@ class PlaylistInfoBuilder
         _videoRefs?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'PlaylistInfo', _$failedField, e.toString(),);
+            'PlaylistInfo', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -592,7 +592,7 @@ class _$PlaylistsState extends PlaylistsState {
   final BuiltList<Playlist> playlists;
 
   factory _$PlaylistsState([void Function(PlaylistsStateBuilder) updates]) =>
-      (new PlaylistsStateBuilder()..update(updates),).build();
+      (new PlaylistsStateBuilder()..update(updates)).build();
 
   _$PlaylistsState._({this.info, this.playlists}) : super._() {
     if (info == null) {
@@ -605,7 +605,7 @@ class _$PlaylistsState extends PlaylistsState {
 
   @override
   PlaylistsState rebuild(void Function(PlaylistsStateBuilder) updates) =>
-      (toBuilder()..update(updates),).build();
+      (toBuilder()..update(updates)).build();
 
   @override
   PlaylistsStateBuilder toBuilder() =>
@@ -613,7 +613,7 @@ class _$PlaylistsState extends PlaylistsState {
 
   @override
   bool operator ==(Object other) {
-    if (identical(other, this),) return true;
+    if (identical(other, this)) return true;
     return other is PlaylistsState &&
         info == other.info &&
         playlists == other.playlists;
@@ -621,14 +621,14 @@ class _$PlaylistsState extends PlaylistsState {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, info.hashCode), playlists.hashCode),);
+    return $jf($jc($jc(0, info.hashCode), playlists.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('PlaylistsState')
           ..add('info', info)
-          ..add('playlists', playlists),)
+          ..add('playlists', playlists))
         .toString();
   }
 }
@@ -677,7 +677,7 @@ class PlaylistsStateBuilder
     try {
       _$result = _$v ??
           new _$PlaylistsState._(
-              info: info.build(), playlists: playlists.build(),);
+              info: info.build(), playlists: playlists.build());
     } catch (_) {
       String _$failedField;
       try {
@@ -687,7 +687,7 @@ class PlaylistsStateBuilder
         playlists.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'PlaylistsState', _$failedField, e.toString(),);
+            'PlaylistsState', _$failedField, e.toString());
       }
       rethrow;
     }

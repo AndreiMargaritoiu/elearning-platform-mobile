@@ -23,24 +23,24 @@ class _$TrackingSerializer implements StructuredSerializer<Tracking> {
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
       'id',
-      serializers.serialize(object.id, specifiedType: const FullType(String),),
+      serializers.serialize(object.id, specifiedType: const FullType(String)),
       'uid',
-      serializers.serialize(object.uid, specifiedType: const FullType(String),),
+      serializers.serialize(object.uid, specifiedType: const FullType(String)),
       'createdAt',
       serializers.serialize(object.createdAt,
-          specifiedType: const FullType(int),),
+          specifiedType: const FullType(int)),
     ];
     if (object.vid != null) {
       result
         ..add('vid')
         ..add(serializers.serialize(object.vid,
-            specifiedType: const FullType(String),));
+            specifiedType: const FullType(String)));
     }
     if (object.pid != null) {
       result
         ..add('pid')
         ..add(serializers.serialize(object.pid,
-            specifiedType: const FullType(String),));
+            specifiedType: const FullType(String)));
     }
     return result;
   }
@@ -51,30 +51,30 @@ class _$TrackingSerializer implements StructuredSerializer<Tracking> {
     final result = new TrackingBuilder();
 
     final iterator = serialized.iterator;
-    while (iterator.moveNext(),) {
+    while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
         case 'id':
           result.id = serializers.deserialize(value,
-              specifiedType: const FullType(String),) as String;
+              specifiedType: const FullType(String)) as String;
           break;
         case 'uid':
           result.uid = serializers.deserialize(value,
-              specifiedType: const FullType(String),) as String;
+              specifiedType: const FullType(String)) as String;
           break;
         case 'vid':
           result.vid = serializers.deserialize(value,
-              specifiedType: const FullType(String),) as String;
+              specifiedType: const FullType(String)) as String;
           break;
         case 'pid':
           result.pid = serializers.deserialize(value,
-              specifiedType: const FullType(String),) as String;
+              specifiedType: const FullType(String)) as String;
           break;
         case 'createdAt':
           result.createdAt = serializers.deserialize(value,
-              specifiedType: const FullType(int),) as int;
+              specifiedType: const FullType(int)) as int;
           break;
       }
     }
@@ -96,11 +96,11 @@ class _$TrackingsStateSerializer
     final result = <Object>[
       'info',
       serializers.serialize(object.info,
-          specifiedType: const FullType(TrackingInfo),),
+          specifiedType: const FullType(TrackingInfo)),
       'trackedItems',
       serializers.serialize(object.trackedItems,
           specifiedType:
-              const FullType(BuiltList, const [const FullType(Tracking)]),),
+              const FullType(BuiltList, const [const FullType(Tracking)])),
     ];
 
     return result;
@@ -113,19 +113,19 @@ class _$TrackingsStateSerializer
     final result = new TrackingsStateBuilder();
 
     final iterator = serialized.iterator;
-    while (iterator.moveNext(),) {
+    while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
         case 'info':
           result.info.replace(serializers.deserialize(value,
-              specifiedType: const FullType(TrackingInfo),) as TrackingInfo);
+              specifiedType: const FullType(TrackingInfo)) as TrackingInfo);
           break;
         case 'trackedItems':
           result.trackedItems.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType(Tracking)]),)
+                      BuiltList, const [const FullType(Tracking)]))
               as BuiltList<Object>);
           break;
       }
@@ -149,7 +149,7 @@ class _$TrackingInfoSerializer implements StructuredSerializer<TrackingInfo> {
       result
         ..add('vid')
         ..add(serializers.serialize(object.vid,
-            specifiedType: const FullType(String),));
+            specifiedType: const FullType(String)));
     }
     return result;
   }
@@ -160,14 +160,14 @@ class _$TrackingInfoSerializer implements StructuredSerializer<TrackingInfo> {
     final result = new TrackingInfoBuilder();
 
     final iterator = serialized.iterator;
-    while (iterator.moveNext(),) {
+    while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
         case 'vid':
           result.vid = serializers.deserialize(value,
-              specifiedType: const FullType(String),) as String;
+              specifiedType: const FullType(String)) as String;
           break;
       }
     }
@@ -189,7 +189,7 @@ class _$Tracking extends Tracking {
   final int createdAt;
 
   factory _$Tracking([void Function(TrackingBuilder) updates]) =>
-      (new TrackingBuilder()..update(updates),).build();
+      (new TrackingBuilder()..update(updates)).build();
 
   _$Tracking._({this.id, this.uid, this.vid, this.pid, this.createdAt})
       : super._() {
@@ -206,14 +206,14 @@ class _$Tracking extends Tracking {
 
   @override
   Tracking rebuild(void Function(TrackingBuilder) updates) =>
-      (toBuilder()..update(updates),).build();
+      (toBuilder()..update(updates)).build();
 
   @override
   TrackingBuilder toBuilder() => new TrackingBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
-    if (identical(other, this),) return true;
+    if (identical(other, this)) return true;
     return other is Tracking &&
         id == other.id &&
         uid == other.uid &&
@@ -227,7 +227,7 @@ class _$Tracking extends Tracking {
     return $jf($jc(
         $jc($jc($jc($jc(0, id.hashCode), uid.hashCode), vid.hashCode),
             pid.hashCode),
-        createdAt.hashCode),);
+        createdAt.hashCode));
   }
 
   @override
@@ -237,7 +237,7 @@ class _$Tracking extends Tracking {
           ..add('uid', uid)
           ..add('vid', vid)
           ..add('pid', pid)
-          ..add('createdAt', createdAt),)
+          ..add('createdAt', createdAt))
         .toString();
   }
 }
@@ -309,7 +309,7 @@ class _$TrackingsState extends TrackingsState {
   final BuiltList<Tracking> trackedItems;
 
   factory _$TrackingsState([void Function(TrackingsStateBuilder) updates]) =>
-      (new TrackingsStateBuilder()..update(updates),).build();
+      (new TrackingsStateBuilder()..update(updates)).build();
 
   _$TrackingsState._({this.info, this.trackedItems}) : super._() {
     if (info == null) {
@@ -322,7 +322,7 @@ class _$TrackingsState extends TrackingsState {
 
   @override
   TrackingsState rebuild(void Function(TrackingsStateBuilder) updates) =>
-      (toBuilder()..update(updates),).build();
+      (toBuilder()..update(updates)).build();
 
   @override
   TrackingsStateBuilder toBuilder() =>
@@ -330,7 +330,7 @@ class _$TrackingsState extends TrackingsState {
 
   @override
   bool operator ==(Object other) {
-    if (identical(other, this),) return true;
+    if (identical(other, this)) return true;
     return other is TrackingsState &&
         info == other.info &&
         trackedItems == other.trackedItems;
@@ -338,14 +338,14 @@ class _$TrackingsState extends TrackingsState {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, info.hashCode), trackedItems.hashCode),);
+    return $jf($jc($jc(0, info.hashCode), trackedItems.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('TrackingsState')
           ..add('info', info)
-          ..add('trackedItems', trackedItems),)
+          ..add('trackedItems', trackedItems))
         .toString();
   }
 }
@@ -394,7 +394,7 @@ class TrackingsStateBuilder
     try {
       _$result = _$v ??
           new _$TrackingsState._(
-              info: info.build(), trackedItems: trackedItems.build(),);
+              info: info.build(), trackedItems: trackedItems.build());
     } catch (_) {
       String _$failedField;
       try {
@@ -404,7 +404,7 @@ class TrackingsStateBuilder
         trackedItems.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'TrackingsState', _$failedField, e.toString(),);
+            'TrackingsState', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -418,31 +418,31 @@ class _$TrackingInfo extends TrackingInfo {
   final String vid;
 
   factory _$TrackingInfo([void Function(TrackingInfoBuilder) updates]) =>
-      (new TrackingInfoBuilder()..update(updates),).build();
+      (new TrackingInfoBuilder()..update(updates)).build();
 
   _$TrackingInfo._({this.vid}) : super._();
 
   @override
   TrackingInfo rebuild(void Function(TrackingInfoBuilder) updates) =>
-      (toBuilder()..update(updates),).build();
+      (toBuilder()..update(updates)).build();
 
   @override
   TrackingInfoBuilder toBuilder() => new TrackingInfoBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
-    if (identical(other, this),) return true;
+    if (identical(other, this)) return true;
     return other is TrackingInfo && vid == other.vid;
   }
 
   @override
   int get hashCode {
-    return $jf($jc(0, vid.hashCode),);
+    return $jf($jc(0, vid.hashCode));
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('TrackingInfo')..add('vid', vid),)
+    return (newBuiltValueToStringHelper('TrackingInfo')..add('vid', vid))
         .toString();
   }
 }

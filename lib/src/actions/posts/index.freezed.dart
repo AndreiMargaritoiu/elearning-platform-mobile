@@ -95,7 +95,7 @@ class _$CreatePost$CopyWithImpl<$Res> extends _$CreatePostCopyWithImpl<$Res>
     implements $CreatePost$CopyWith<$Res> {
   _$CreatePost$CopyWithImpl(
       CreatePost$ _value, $Res Function(CreatePost$) _then)
-      : super(_value, (v) => _then(v as CreatePost$),);
+      : super(_value, (v) => _then(v as CreatePost$));
 
   @override
   CreatePost$ get _value => super._value as CreatePost$;
@@ -193,7 +193,7 @@ class _$CreatePostSuccessfulCopyWithImpl<$Res>
     implements $CreatePostSuccessfulCopyWith<$Res> {
   _$CreatePostSuccessfulCopyWithImpl(
       CreatePostSuccessful _value, $Res Function(CreatePostSuccessful) _then)
-      : super(_value, (v) => _then(v as CreatePostSuccessful),);
+      : super(_value, (v) => _then(v as CreatePostSuccessful));
 
   @override
   CreatePostSuccessful get _value => super._value as CreatePostSuccessful;
@@ -204,7 +204,7 @@ class _$CreatePostSuccessfulCopyWithImpl<$Res>
   }) {
     return _then(CreatePostSuccessful(
       post == freezed ? _value.post : post as Post,
-    ),);
+    ));
   }
 }
 
@@ -225,7 +225,7 @@ class _$CreatePostSuccessful implements CreatePostSuccessful {
     return identical(this, other) ||
         (other is CreatePostSuccessful &&
             (identical(other.post, post) ||
-                const DeepCollectionEquality().equals(other.post, post),));
+                const DeepCollectionEquality().equals(other.post, post)));
   }
 
   @override
@@ -314,7 +314,7 @@ class _$CreatePostErrorCopyWithImpl<$Res> extends _$CreatePostCopyWithImpl<$Res>
     implements $CreatePostErrorCopyWith<$Res> {
   _$CreatePostErrorCopyWithImpl(
       CreatePostError _value, $Res Function(CreatePostError) _then)
-      : super(_value, (v) => _then(v as CreatePostError),);
+      : super(_value, (v) => _then(v as CreatePostError));
 
   @override
   CreatePostError get _value => super._value as CreatePostError;
@@ -325,7 +325,7 @@ class _$CreatePostErrorCopyWithImpl<$Res> extends _$CreatePostCopyWithImpl<$Res>
   }) {
     return _then(CreatePostError(
       error == freezed ? _value.error : error,
-    ),);
+    ));
   }
 }
 
@@ -348,7 +348,7 @@ class _$CreatePostError implements CreatePostError {
     return identical(this, other) ||
         (other is CreatePostError &&
             (identical(other.error, error) ||
-                const DeepCollectionEquality().equals(other.error, error),));
+                const DeepCollectionEquality().equals(other.error, error)));
   }
 
   @override
@@ -511,7 +511,7 @@ class _$ListenForPosts$CopyWithImpl<$Res>
     implements $ListenForPosts$CopyWith<$Res> {
   _$ListenForPosts$CopyWithImpl(
       ListenForPosts$ _value, $Res Function(ListenForPosts$) _then)
-      : super(_value, (v) => _then(v as ListenForPosts$),);
+      : super(_value, (v) => _then(v as ListenForPosts$));
 
   @override
   ListenForPosts$ get _value => super._value as ListenForPosts$;
@@ -609,7 +609,7 @@ class _$ListenForPostsSuccessfulCopyWithImpl<$Res>
     implements $ListenForPostsSuccessfulCopyWith<$Res> {
   _$ListenForPostsSuccessfulCopyWithImpl(ListenForPostsSuccessful _value,
       $Res Function(ListenForPostsSuccessful) _then)
-      : super(_value, (v) => _then(v as ListenForPostsSuccessful),);
+      : super(_value, (v) => _then(v as ListenForPostsSuccessful));
 
   @override
   ListenForPostsSuccessful get _value =>
@@ -621,7 +621,7 @@ class _$ListenForPostsSuccessfulCopyWithImpl<$Res>
   }) {
     return _then(ListenForPostsSuccessful(
       posts == freezed ? _value.posts : posts as List<Post>,
-    ),);
+    ));
   }
 }
 
@@ -642,7 +642,7 @@ class _$ListenForPostsSuccessful implements ListenForPostsSuccessful {
     return identical(this, other) ||
         (other is ListenForPostsSuccessful &&
             (identical(other.posts, posts) ||
-                const DeepCollectionEquality().equals(other.posts, posts),));
+                const DeepCollectionEquality().equals(other.posts, posts)));
   }
 
   @override
@@ -733,7 +733,7 @@ class _$ListenForPostsErrorCopyWithImpl<$Res>
     implements $ListenForPostsErrorCopyWith<$Res> {
   _$ListenForPostsErrorCopyWithImpl(
       ListenForPostsError _value, $Res Function(ListenForPostsError) _then)
-      : super(_value, (v) => _then(v as ListenForPostsError),);
+      : super(_value, (v) => _then(v as ListenForPostsError));
 
   @override
   ListenForPostsError get _value => super._value as ListenForPostsError;
@@ -744,7 +744,7 @@ class _$ListenForPostsErrorCopyWithImpl<$Res>
   }) {
     return _then(ListenForPostsError(
       error == freezed ? _value.error : error,
-    ),);
+    ));
   }
 }
 
@@ -767,7 +767,7 @@ class _$ListenForPostsError implements ListenForPostsError {
     return identical(this, other) ||
         (other is ListenForPostsError &&
             (identical(other.error, error) ||
-                const DeepCollectionEquality().equals(other.error, error),));
+                const DeepCollectionEquality().equals(other.error, error)));
   }
 
   @override
@@ -929,7 +929,7 @@ class _$UpdatePostInfoCopyWithImpl<$Res>
       addUser: addUser == freezed ? _value.addUser : addUser as AppUser,
       removeUser:
           removeUser == freezed ? _value.removeUser : removeUser as AppUser,
-    ),);
+    ));
   }
 }
 
@@ -956,7 +956,7 @@ class _$UpdatePostInfo$CopyWithImpl<$Res>
     implements $UpdatePostInfo$CopyWith<$Res> {
   _$UpdatePostInfo$CopyWithImpl(
       UpdatePostInfo$ _value, $Res Function(UpdatePostInfo$) _then)
-      : super(_value, (v) => _then(v as UpdatePostInfo$),);
+      : super(_value, (v) => _then(v as UpdatePostInfo$));
 
   @override
   UpdatePostInfo$ get _value => super._value as UpdatePostInfo$;
@@ -982,7 +982,7 @@ class _$UpdatePostInfo$CopyWithImpl<$Res>
       addUser: addUser == freezed ? _value.addUser : addUser as AppUser,
       removeUser:
           removeUser == freezed ? _value.removeUser : removeUser as AppUser,
-    ),);
+    ));
   }
 }
 
@@ -1023,23 +1023,23 @@ class _$UpdatePostInfo$ implements UpdatePostInfo$ {
         (other is UpdatePostInfo$ &&
             (identical(other.addImage, addImage) ||
                 const DeepCollectionEquality()
-                    .equals(other.addImage, addImage),) &&
+                    .equals(other.addImage, addImage)) &&
             (identical(other.removeImage, removeImage) ||
                 const DeepCollectionEquality()
-                    .equals(other.removeImage, removeImage),) &&
+                    .equals(other.removeImage, removeImage)) &&
             (identical(other.description, description) ||
                 const DeepCollectionEquality()
-                    .equals(other.description, description),) &&
+                    .equals(other.description, description)) &&
             (identical(other.lng, lng) ||
-                const DeepCollectionEquality().equals(other.lng, lng),) &&
+                const DeepCollectionEquality().equals(other.lng, lng)) &&
             (identical(other.lat, lat) ||
-                const DeepCollectionEquality().equals(other.lat, lat),) &&
+                const DeepCollectionEquality().equals(other.lat, lat)) &&
             (identical(other.addUser, addUser) ||
                 const DeepCollectionEquality()
-                    .equals(other.addUser, addUser),) &&
+                    .equals(other.addUser, addUser)) &&
             (identical(other.removeUser, removeUser) ||
                 const DeepCollectionEquality()
-                    .equals(other.removeUser, removeUser),));
+                    .equals(other.removeUser, removeUser)));
   }
 
   @override

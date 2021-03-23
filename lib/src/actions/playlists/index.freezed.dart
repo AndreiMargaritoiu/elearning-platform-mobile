@@ -97,7 +97,7 @@ class _$CreatePlaylist$CopyWithImpl<$Res>
     implements $CreatePlaylist$CopyWith<$Res> {
   _$CreatePlaylist$CopyWithImpl(
       CreatePlaylist$ _value, $Res Function(CreatePlaylist$) _then)
-      : super(_value, (v) => _then(v as CreatePlaylist$),);
+      : super(_value, (v) => _then(v as CreatePlaylist$));
 
   @override
   CreatePlaylist$ get _value => super._value as CreatePlaylist$;
@@ -195,7 +195,7 @@ class _$CreatePlaylistSuccessfulCopyWithImpl<$Res>
     implements $CreatePlaylistSuccessfulCopyWith<$Res> {
   _$CreatePlaylistSuccessfulCopyWithImpl(CreatePlaylistSuccessful _value,
       $Res Function(CreatePlaylistSuccessful) _then)
-      : super(_value, (v) => _then(v as CreatePlaylistSuccessful),);
+      : super(_value, (v) => _then(v as CreatePlaylistSuccessful));
 
   @override
   CreatePlaylistSuccessful get _value =>
@@ -207,7 +207,7 @@ class _$CreatePlaylistSuccessfulCopyWithImpl<$Res>
   }) {
     return _then(CreatePlaylistSuccessful(
       playlist == freezed ? _value.playlist : playlist as Playlist,
-    ),);
+    ));
   }
 }
 
@@ -229,7 +229,7 @@ class _$CreatePlaylistSuccessful implements CreatePlaylistSuccessful {
         (other is CreatePlaylistSuccessful &&
             (identical(other.playlist, playlist) ||
                 const DeepCollectionEquality()
-                    .equals(other.playlist, playlist),));
+                    .equals(other.playlist, playlist)));
   }
 
   @override
@@ -320,7 +320,7 @@ class _$CreatePlaylistErrorCopyWithImpl<$Res>
     implements $CreatePlaylistErrorCopyWith<$Res> {
   _$CreatePlaylistErrorCopyWithImpl(
       CreatePlaylistError _value, $Res Function(CreatePlaylistError) _then)
-      : super(_value, (v) => _then(v as CreatePlaylistError),);
+      : super(_value, (v) => _then(v as CreatePlaylistError));
 
   @override
   CreatePlaylistError get _value => super._value as CreatePlaylistError;
@@ -331,7 +331,7 @@ class _$CreatePlaylistErrorCopyWithImpl<$Res>
   }) {
     return _then(CreatePlaylistError(
       error == freezed ? _value.error : error,
-    ),);
+    ));
   }
 }
 
@@ -354,7 +354,7 @@ class _$CreatePlaylistError implements CreatePlaylistError {
     return identical(this, other) ||
         (other is CreatePlaylistError &&
             (identical(other.error, error) ||
-                const DeepCollectionEquality().equals(other.error, error),));
+                const DeepCollectionEquality().equals(other.error, error)));
   }
 
   @override
@@ -517,7 +517,7 @@ class _$GetAllPlaylists$CopyWithImpl<$Res>
     implements $GetAllPlaylists$CopyWith<$Res> {
   _$GetAllPlaylists$CopyWithImpl(
       GetAllPlaylists$ _value, $Res Function(GetAllPlaylists$) _then)
-      : super(_value, (v) => _then(v as GetAllPlaylists$),);
+      : super(_value, (v) => _then(v as GetAllPlaylists$));
 
   @override
   GetAllPlaylists$ get _value => super._value as GetAllPlaylists$;
@@ -615,7 +615,7 @@ class _$GetAllPlaylistsSuccessfulCopyWithImpl<$Res>
     implements $GetAllPlaylistsSuccessfulCopyWith<$Res> {
   _$GetAllPlaylistsSuccessfulCopyWithImpl(GetAllPlaylistsSuccessful _value,
       $Res Function(GetAllPlaylistsSuccessful) _then)
-      : super(_value, (v) => _then(v as GetAllPlaylistsSuccessful),);
+      : super(_value, (v) => _then(v as GetAllPlaylistsSuccessful));
 
   @override
   GetAllPlaylistsSuccessful get _value =>
@@ -627,7 +627,7 @@ class _$GetAllPlaylistsSuccessfulCopyWithImpl<$Res>
   }) {
     return _then(GetAllPlaylistsSuccessful(
       playlists == freezed ? _value.playlists : playlists as List<Playlist>,
-    ),);
+    ));
   }
 }
 
@@ -649,7 +649,7 @@ class _$GetAllPlaylistsSuccessful implements GetAllPlaylistsSuccessful {
         (other is GetAllPlaylistsSuccessful &&
             (identical(other.playlists, playlists) ||
                 const DeepCollectionEquality()
-                    .equals(other.playlists, playlists),));
+                    .equals(other.playlists, playlists)));
   }
 
   @override
@@ -740,7 +740,7 @@ class _$GetAllPlaylistsErrorCopyWithImpl<$Res>
     implements $GetAllPlaylistsErrorCopyWith<$Res> {
   _$GetAllPlaylistsErrorCopyWithImpl(
       GetAllPlaylistsError _value, $Res Function(GetAllPlaylistsError) _then)
-      : super(_value, (v) => _then(v as GetAllPlaylistsError),);
+      : super(_value, (v) => _then(v as GetAllPlaylistsError));
 
   @override
   GetAllPlaylistsError get _value => super._value as GetAllPlaylistsError;
@@ -751,7 +751,7 @@ class _$GetAllPlaylistsErrorCopyWithImpl<$Res>
   }) {
     return _then(GetAllPlaylistsError(
       error == freezed ? _value.error : error,
-    ),);
+    ));
   }
 }
 
@@ -774,7 +774,7 @@ class _$GetAllPlaylistsError implements GetAllPlaylistsError {
     return identical(this, other) ||
         (other is GetAllPlaylistsError &&
             (identical(other.error, error) ||
-                const DeepCollectionEquality().equals(other.error, error),));
+                const DeepCollectionEquality().equals(other.error, error)));
   }
 
   @override
@@ -941,7 +941,7 @@ class _$GetPlaylistsByUid$CopyWithImpl<$Res>
     implements $GetPlaylistsByUid$CopyWith<$Res> {
   _$GetPlaylistsByUid$CopyWithImpl(
       GetPlaylistsByUid$ _value, $Res Function(GetPlaylistsByUid$) _then)
-      : super(_value, (v) => _then(v as GetPlaylistsByUid$),);
+      : super(_value, (v) => _then(v as GetPlaylistsByUid$));
 
   @override
   GetPlaylistsByUid$ get _value => super._value as GetPlaylistsByUid$;
@@ -952,7 +952,7 @@ class _$GetPlaylistsByUid$CopyWithImpl<$Res>
   }) {
     return _then(GetPlaylistsByUid$(
       id: id == freezed ? _value.id : id as String,
-    ),);
+    ));
   }
 }
 
@@ -973,7 +973,7 @@ class _$GetPlaylistsByUid$ implements GetPlaylistsByUid$ {
     return identical(this, other) ||
         (other is GetPlaylistsByUid$ &&
             (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id),));
+                const DeepCollectionEquality().equals(other.id, id)));
   }
 
   @override
@@ -1063,7 +1063,7 @@ class _$GetPlaylistsByUidSuccessfulCopyWithImpl<$Res>
     implements $GetPlaylistsByUidSuccessfulCopyWith<$Res> {
   _$GetPlaylistsByUidSuccessfulCopyWithImpl(GetPlaylistsByUidSuccessful _value,
       $Res Function(GetPlaylistsByUidSuccessful) _then)
-      : super(_value, (v) => _then(v as GetPlaylistsByUidSuccessful),);
+      : super(_value, (v) => _then(v as GetPlaylistsByUidSuccessful));
 
   @override
   GetPlaylistsByUidSuccessful get _value =>
@@ -1075,7 +1075,7 @@ class _$GetPlaylistsByUidSuccessfulCopyWithImpl<$Res>
   }) {
     return _then(GetPlaylistsByUidSuccessful(
       playlists == freezed ? _value.playlists : playlists as List<Playlist>,
-    ),);
+    ));
   }
 }
 
@@ -1098,7 +1098,7 @@ class _$GetPlaylistsByUidSuccessful implements GetPlaylistsByUidSuccessful {
         (other is GetPlaylistsByUidSuccessful &&
             (identical(other.playlists, playlists) ||
                 const DeepCollectionEquality()
-                    .equals(other.playlists, playlists),));
+                    .equals(other.playlists, playlists)));
   }
 
   @override
@@ -1190,7 +1190,7 @@ class _$GetPlaylistsByUidErrorCopyWithImpl<$Res>
     implements $GetPlaylistsByUidErrorCopyWith<$Res> {
   _$GetPlaylistsByUidErrorCopyWithImpl(GetPlaylistsByUidError _value,
       $Res Function(GetPlaylistsByUidError) _then)
-      : super(_value, (v) => _then(v as GetPlaylistsByUidError),);
+      : super(_value, (v) => _then(v as GetPlaylistsByUidError));
 
   @override
   GetPlaylistsByUidError get _value => super._value as GetPlaylistsByUidError;
@@ -1201,7 +1201,7 @@ class _$GetPlaylistsByUidErrorCopyWithImpl<$Res>
   }) {
     return _then(GetPlaylistsByUidError(
       error == freezed ? _value.error : error,
-    ),);
+    ));
   }
 }
 
@@ -1224,7 +1224,7 @@ class _$GetPlaylistsByUidError implements GetPlaylistsByUidError {
     return identical(this, other) ||
         (other is GetPlaylistsByUidError &&
             (identical(other.error, error) ||
-                const DeepCollectionEquality().equals(other.error, error),));
+                const DeepCollectionEquality().equals(other.error, error)));
   }
 
   @override
@@ -1389,7 +1389,7 @@ class _$GetSchoolPlaylists$CopyWithImpl<$Res>
     implements $GetSchoolPlaylists$CopyWith<$Res> {
   _$GetSchoolPlaylists$CopyWithImpl(
       GetSchoolPlaylists$ _value, $Res Function(GetSchoolPlaylists$) _then)
-      : super(_value, (v) => _then(v as GetSchoolPlaylists$),);
+      : super(_value, (v) => _then(v as GetSchoolPlaylists$));
 
   @override
   GetSchoolPlaylists$ get _value => super._value as GetSchoolPlaylists$;
@@ -1489,7 +1489,7 @@ class _$GetSchoolPlaylistsSuccessfulCopyWithImpl<$Res>
   _$GetSchoolPlaylistsSuccessfulCopyWithImpl(
       GetSchoolPlaylistsSuccessful _value,
       $Res Function(GetSchoolPlaylistsSuccessful) _then)
-      : super(_value, (v) => _then(v as GetSchoolPlaylistsSuccessful),);
+      : super(_value, (v) => _then(v as GetSchoolPlaylistsSuccessful));
 
   @override
   GetSchoolPlaylistsSuccessful get _value =>
@@ -1501,7 +1501,7 @@ class _$GetSchoolPlaylistsSuccessfulCopyWithImpl<$Res>
   }) {
     return _then(GetSchoolPlaylistsSuccessful(
       playlists == freezed ? _value.playlists : playlists as List<Playlist>,
-    ),);
+    ));
   }
 }
 
@@ -1524,7 +1524,7 @@ class _$GetSchoolPlaylistsSuccessful implements GetSchoolPlaylistsSuccessful {
         (other is GetSchoolPlaylistsSuccessful &&
             (identical(other.playlists, playlists) ||
                 const DeepCollectionEquality()
-                    .equals(other.playlists, playlists),));
+                    .equals(other.playlists, playlists)));
   }
 
   @override
@@ -1616,7 +1616,7 @@ class _$GetSchoolPlaylistsErrorCopyWithImpl<$Res>
     implements $GetSchoolPlaylistsErrorCopyWith<$Res> {
   _$GetSchoolPlaylistsErrorCopyWithImpl(GetSchoolPlaylistsError _value,
       $Res Function(GetSchoolPlaylistsError) _then)
-      : super(_value, (v) => _then(v as GetSchoolPlaylistsError),);
+      : super(_value, (v) => _then(v as GetSchoolPlaylistsError));
 
   @override
   GetSchoolPlaylistsError get _value => super._value as GetSchoolPlaylistsError;
@@ -1627,7 +1627,7 @@ class _$GetSchoolPlaylistsErrorCopyWithImpl<$Res>
   }) {
     return _then(GetSchoolPlaylistsError(
       error == freezed ? _value.error : error,
-    ),);
+    ));
   }
 }
 
@@ -1650,7 +1650,7 @@ class _$GetSchoolPlaylistsError implements GetSchoolPlaylistsError {
     return identical(this, other) ||
         (other is GetSchoolPlaylistsError &&
             (identical(other.error, error) ||
-                const DeepCollectionEquality().equals(other.error, error),));
+                const DeepCollectionEquality().equals(other.error, error)));
   }
 
   @override
@@ -1816,7 +1816,7 @@ class _$GetOtherPlaylists$CopyWithImpl<$Res>
     implements $GetOtherPlaylists$CopyWith<$Res> {
   _$GetOtherPlaylists$CopyWithImpl(
       GetOtherPlaylists$ _value, $Res Function(GetOtherPlaylists$) _then)
-      : super(_value, (v) => _then(v as GetOtherPlaylists$),);
+      : super(_value, (v) => _then(v as GetOtherPlaylists$));
 
   @override
   GetOtherPlaylists$ get _value => super._value as GetOtherPlaylists$;
@@ -1915,7 +1915,7 @@ class _$GetOtherPlaylistsSuccessfulCopyWithImpl<$Res>
     implements $GetOtherPlaylistsSuccessfulCopyWith<$Res> {
   _$GetOtherPlaylistsSuccessfulCopyWithImpl(GetOtherPlaylistsSuccessful _value,
       $Res Function(GetOtherPlaylistsSuccessful) _then)
-      : super(_value, (v) => _then(v as GetOtherPlaylistsSuccessful),);
+      : super(_value, (v) => _then(v as GetOtherPlaylistsSuccessful));
 
   @override
   GetOtherPlaylistsSuccessful get _value =>
@@ -1927,7 +1927,7 @@ class _$GetOtherPlaylistsSuccessfulCopyWithImpl<$Res>
   }) {
     return _then(GetOtherPlaylistsSuccessful(
       playlists == freezed ? _value.playlists : playlists as List<Playlist>,
-    ),);
+    ));
   }
 }
 
@@ -1950,7 +1950,7 @@ class _$GetOtherPlaylistsSuccessful implements GetOtherPlaylistsSuccessful {
         (other is GetOtherPlaylistsSuccessful &&
             (identical(other.playlists, playlists) ||
                 const DeepCollectionEquality()
-                    .equals(other.playlists, playlists),));
+                    .equals(other.playlists, playlists)));
   }
 
   @override
@@ -2042,7 +2042,7 @@ class _$GetOtherPlaylistsErrorCopyWithImpl<$Res>
     implements $GetOtherPlaylistsErrorCopyWith<$Res> {
   _$GetOtherPlaylistsErrorCopyWithImpl(GetOtherPlaylistsError _value,
       $Res Function(GetOtherPlaylistsError) _then)
-      : super(_value, (v) => _then(v as GetOtherPlaylistsError),);
+      : super(_value, (v) => _then(v as GetOtherPlaylistsError));
 
   @override
   GetOtherPlaylistsError get _value => super._value as GetOtherPlaylistsError;
@@ -2053,7 +2053,7 @@ class _$GetOtherPlaylistsErrorCopyWithImpl<$Res>
   }) {
     return _then(GetOtherPlaylistsError(
       error == freezed ? _value.error : error,
-    ),);
+    ));
   }
 }
 
@@ -2076,7 +2076,7 @@ class _$GetOtherPlaylistsError implements GetOtherPlaylistsError {
     return identical(this, other) ||
         (other is GetOtherPlaylistsError &&
             (identical(other.error, error) ||
-                const DeepCollectionEquality().equals(other.error, error),));
+                const DeepCollectionEquality().equals(other.error, error)));
   }
 
   @override
@@ -2244,7 +2244,7 @@ class _$GetPlaylistById$CopyWithImpl<$Res>
     implements $GetPlaylistById$CopyWith<$Res> {
   _$GetPlaylistById$CopyWithImpl(
       GetPlaylistById$ _value, $Res Function(GetPlaylistById$) _then)
-      : super(_value, (v) => _then(v as GetPlaylistById$),);
+      : super(_value, (v) => _then(v as GetPlaylistById$));
 
   @override
   GetPlaylistById$ get _value => super._value as GetPlaylistById$;
@@ -2255,7 +2255,7 @@ class _$GetPlaylistById$CopyWithImpl<$Res>
   }) {
     return _then(GetPlaylistById$(
       id == freezed ? _value.id : id as String,
-    ),);
+    ));
   }
 }
 
@@ -2276,7 +2276,7 @@ class _$GetPlaylistById$ implements GetPlaylistById$ {
     return identical(this, other) ||
         (other is GetPlaylistById$ &&
             (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id),));
+                const DeepCollectionEquality().equals(other.id, id)));
   }
 
   @override
@@ -2365,7 +2365,7 @@ class _$GetPlaylistByIdSuccessfulCopyWithImpl<$Res>
     implements $GetPlaylistByIdSuccessfulCopyWith<$Res> {
   _$GetPlaylistByIdSuccessfulCopyWithImpl(GetPlaylistByIdSuccessful _value,
       $Res Function(GetPlaylistByIdSuccessful) _then)
-      : super(_value, (v) => _then(v as GetPlaylistByIdSuccessful),);
+      : super(_value, (v) => _then(v as GetPlaylistByIdSuccessful));
 
   @override
   GetPlaylistByIdSuccessful get _value =>
@@ -2377,7 +2377,7 @@ class _$GetPlaylistByIdSuccessfulCopyWithImpl<$Res>
   }) {
     return _then(GetPlaylistByIdSuccessful(
       playlist == freezed ? _value.playlist : playlist as Playlist,
-    ),);
+    ));
   }
 }
 
@@ -2399,7 +2399,7 @@ class _$GetPlaylistByIdSuccessful implements GetPlaylistByIdSuccessful {
         (other is GetPlaylistByIdSuccessful &&
             (identical(other.playlist, playlist) ||
                 const DeepCollectionEquality()
-                    .equals(other.playlist, playlist),));
+                    .equals(other.playlist, playlist)));
   }
 
   @override
@@ -2490,7 +2490,7 @@ class _$GetPlaylistByIdErrorCopyWithImpl<$Res>
     implements $GetPlaylistByIdErrorCopyWith<$Res> {
   _$GetPlaylistByIdErrorCopyWithImpl(
       GetPlaylistByIdError _value, $Res Function(GetPlaylistByIdError) _then)
-      : super(_value, (v) => _then(v as GetPlaylistByIdError),);
+      : super(_value, (v) => _then(v as GetPlaylistByIdError));
 
   @override
   GetPlaylistByIdError get _value => super._value as GetPlaylistByIdError;
@@ -2501,7 +2501,7 @@ class _$GetPlaylistByIdErrorCopyWithImpl<$Res>
   }) {
     return _then(GetPlaylistByIdError(
       error == freezed ? _value.error : error,
-    ),);
+    ));
   }
 }
 
@@ -2524,7 +2524,7 @@ class _$GetPlaylistByIdError implements GetPlaylistByIdError {
     return identical(this, other) ||
         (other is GetPlaylistByIdError &&
             (identical(other.error, error) ||
-                const DeepCollectionEquality().equals(other.error, error),));
+                const DeepCollectionEquality().equals(other.error, error)));
   }
 
   @override
@@ -2692,7 +2692,7 @@ class _$UpdatePlaylist$CopyWithImpl<$Res>
     implements $UpdatePlaylist$CopyWith<$Res> {
   _$UpdatePlaylist$CopyWithImpl(
       UpdatePlaylist$ _value, $Res Function(UpdatePlaylist$) _then)
-      : super(_value, (v) => _then(v as UpdatePlaylist$),);
+      : super(_value, (v) => _then(v as UpdatePlaylist$));
 
   @override
   UpdatePlaylist$ get _value => super._value as UpdatePlaylist$;
@@ -2706,7 +2706,7 @@ class _$UpdatePlaylist$CopyWithImpl<$Res>
       id == freezed ? _value.id : id as String,
       newVideos:
           newVideos == freezed ? _value.newVideos : newVideos as List<String>,
-    ),);
+    ));
   }
 }
 
@@ -2729,10 +2729,10 @@ class _$UpdatePlaylist$ implements UpdatePlaylist$ {
     return identical(this, other) ||
         (other is UpdatePlaylist$ &&
             (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id),) &&
+                const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.newVideos, newVideos) ||
                 const DeepCollectionEquality()
-                    .equals(other.newVideos, newVideos),));
+                    .equals(other.newVideos, newVideos)));
   }
 
   @override
@@ -2825,7 +2825,7 @@ class _$UpdatePlaylistSuccessfulCopyWithImpl<$Res>
     implements $UpdatePlaylistSuccessfulCopyWith<$Res> {
   _$UpdatePlaylistSuccessfulCopyWithImpl(UpdatePlaylistSuccessful _value,
       $Res Function(UpdatePlaylistSuccessful) _then)
-      : super(_value, (v) => _then(v as UpdatePlaylistSuccessful),);
+      : super(_value, (v) => _then(v as UpdatePlaylistSuccessful));
 
   @override
   UpdatePlaylistSuccessful get _value =>
@@ -2837,7 +2837,7 @@ class _$UpdatePlaylistSuccessfulCopyWithImpl<$Res>
   }) {
     return _then(UpdatePlaylistSuccessful(
       playlist == freezed ? _value.playlist : playlist as Playlist,
-    ),);
+    ));
   }
 }
 
@@ -2859,7 +2859,7 @@ class _$UpdatePlaylistSuccessful implements UpdatePlaylistSuccessful {
         (other is UpdatePlaylistSuccessful &&
             (identical(other.playlist, playlist) ||
                 const DeepCollectionEquality()
-                    .equals(other.playlist, playlist),));
+                    .equals(other.playlist, playlist)));
   }
 
   @override
@@ -2950,7 +2950,7 @@ class _$UpdatePlaylistErrorCopyWithImpl<$Res>
     implements $UpdatePlaylistErrorCopyWith<$Res> {
   _$UpdatePlaylistErrorCopyWithImpl(
       UpdatePlaylistError _value, $Res Function(UpdatePlaylistError) _then)
-      : super(_value, (v) => _then(v as UpdatePlaylistError),);
+      : super(_value, (v) => _then(v as UpdatePlaylistError));
 
   @override
   UpdatePlaylistError get _value => super._value as UpdatePlaylistError;
@@ -2961,7 +2961,7 @@ class _$UpdatePlaylistErrorCopyWithImpl<$Res>
   }) {
     return _then(UpdatePlaylistError(
       error == freezed ? _value.error : error,
-    ),);
+    ));
   }
 }
 
@@ -2984,7 +2984,7 @@ class _$UpdatePlaylistError implements UpdatePlaylistError {
     return identical(this, other) ||
         (other is UpdatePlaylistError &&
             (identical(other.error, error) ||
-                const DeepCollectionEquality().equals(other.error, error),));
+                const DeepCollectionEquality().equals(other.error, error)));
   }
 
   @override
@@ -3148,7 +3148,7 @@ class _$DeletePlaylist$CopyWithImpl<$Res>
     implements $DeletePlaylist$CopyWith<$Res> {
   _$DeletePlaylist$CopyWithImpl(
       DeletePlaylist$ _value, $Res Function(DeletePlaylist$) _then)
-      : super(_value, (v) => _then(v as DeletePlaylist$),);
+      : super(_value, (v) => _then(v as DeletePlaylist$));
 
   @override
   DeletePlaylist$ get _value => super._value as DeletePlaylist$;
@@ -3159,7 +3159,7 @@ class _$DeletePlaylist$CopyWithImpl<$Res>
   }) {
     return _then(DeletePlaylist$(
       id == freezed ? _value.id : id as String,
-    ),);
+    ));
   }
 }
 
@@ -3180,7 +3180,7 @@ class _$DeletePlaylist$ implements DeletePlaylist$ {
     return identical(this, other) ||
         (other is DeletePlaylist$ &&
             (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id),));
+                const DeepCollectionEquality().equals(other.id, id)));
   }
 
   @override
@@ -3268,7 +3268,7 @@ class _$DeletePlaylistSuccessfulCopyWithImpl<$Res>
     implements $DeletePlaylistSuccessfulCopyWith<$Res> {
   _$DeletePlaylistSuccessfulCopyWithImpl(DeletePlaylistSuccessful _value,
       $Res Function(DeletePlaylistSuccessful) _then)
-      : super(_value, (v) => _then(v as DeletePlaylistSuccessful),);
+      : super(_value, (v) => _then(v as DeletePlaylistSuccessful));
 
   @override
   DeletePlaylistSuccessful get _value =>
@@ -3367,7 +3367,7 @@ class _$DeletePlaylistErrorCopyWithImpl<$Res>
     implements $DeletePlaylistErrorCopyWith<$Res> {
   _$DeletePlaylistErrorCopyWithImpl(
       DeletePlaylistError _value, $Res Function(DeletePlaylistError) _then)
-      : super(_value, (v) => _then(v as DeletePlaylistError),);
+      : super(_value, (v) => _then(v as DeletePlaylistError));
 
   @override
   DeletePlaylistError get _value => super._value as DeletePlaylistError;
@@ -3378,7 +3378,7 @@ class _$DeletePlaylistErrorCopyWithImpl<$Res>
   }) {
     return _then(DeletePlaylistError(
       error == freezed ? _value.error : error,
-    ),);
+    ));
   }
 }
 
@@ -3401,7 +3401,7 @@ class _$DeletePlaylistError implements DeletePlaylistError {
     return identical(this, other) ||
         (other is DeletePlaylistError &&
             (identical(other.error, error) ||
-                const DeepCollectionEquality().equals(other.error, error),));
+                const DeepCollectionEquality().equals(other.error, error)));
   }
 
   @override
@@ -3568,7 +3568,7 @@ class _$UpdatePlaylistInfoCopyWithImpl<$Res>
           description == freezed ? _value.description : description as String,
       title: title == freezed ? _value.title : title as String,
       category: category == freezed ? _value.category : category as String,
-    ),);
+    ));
   }
 }
 
@@ -3595,7 +3595,7 @@ class _$UpdatePlaylistInfo$CopyWithImpl<$Res>
     implements $UpdatePlaylistInfo$CopyWith<$Res> {
   _$UpdatePlaylistInfo$CopyWithImpl(
       UpdatePlaylistInfo$ _value, $Res Function(UpdatePlaylistInfo$) _then)
-      : super(_value, (v) => _then(v as UpdatePlaylistInfo$),);
+      : super(_value, (v) => _then(v as UpdatePlaylistInfo$));
 
   @override
   UpdatePlaylistInfo$ get _value => super._value as UpdatePlaylistInfo$;
@@ -3626,7 +3626,7 @@ class _$UpdatePlaylistInfo$CopyWithImpl<$Res>
           description == freezed ? _value.description : description as String,
       title: title == freezed ? _value.title : title as String,
       category: category == freezed ? _value.category : category as String,
-    ),);
+    ));
   }
 }
 
@@ -3667,24 +3667,24 @@ class _$UpdatePlaylistInfo$ implements UpdatePlaylistInfo$ {
         (other is UpdatePlaylistInfo$ &&
             (identical(other.addVideoRef, addVideoRef) ||
                 const DeepCollectionEquality()
-                    .equals(other.addVideoRef, addVideoRef),) &&
+                    .equals(other.addVideoRef, addVideoRef)) &&
             (identical(other.removeVideoRef, removeVideoRef) ||
                 const DeepCollectionEquality()
-                    .equals(other.removeVideoRef, removeVideoRef),) &&
+                    .equals(other.removeVideoRef, removeVideoRef)) &&
             (identical(other.addThumbnail, addThumbnail) ||
                 const DeepCollectionEquality()
-                    .equals(other.addThumbnail, addThumbnail),) &&
+                    .equals(other.addThumbnail, addThumbnail)) &&
             (identical(other.removeThumbnail, removeThumbnail) ||
                 const DeepCollectionEquality()
-                    .equals(other.removeThumbnail, removeThumbnail),) &&
+                    .equals(other.removeThumbnail, removeThumbnail)) &&
             (identical(other.description, description) ||
                 const DeepCollectionEquality()
-                    .equals(other.description, description),) &&
+                    .equals(other.description, description)) &&
             (identical(other.title, title) ||
-                const DeepCollectionEquality().equals(other.title, title),) &&
+                const DeepCollectionEquality().equals(other.title, title)) &&
             (identical(other.category, category) ||
                 const DeepCollectionEquality()
-                    .equals(other.category, category),));
+                    .equals(other.category, category)));
   }
 
   @override
