@@ -14,7 +14,8 @@ class ResetPasswordPage extends StatefulWidget {
   _ResetPasswordPageState createState() => _ResetPasswordPageState();
 }
 
-class _ResetPasswordPageState extends State<ResetPasswordPage> with DialogMixin {
+class _ResetPasswordPageState extends State<ResetPasswordPage>
+    with DialogMixin {
   final TextEditingController _email = TextEditingController();
 
   void _response(AppAction action) {
@@ -56,10 +57,11 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> with DialogMixin 
                     ),
                     const Spacer(),
                     FlatButton(
-                      child: const Text('Login'),
+                      child: const Text('Send email'),
                       onPressed: () {
                         if (Form.of(context).validate()) {
-                          StoreProvider.of<AppState>(context).dispatch(ResetPassword(_email.text));
+                          StoreProvider.of<AppState>(context)
+                              .dispatch(ResetPassword(_email.text));
                         }
                       },
                     ),
@@ -75,7 +77,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> with DialogMixin 
                             ),
                             recognizer: TapGestureRecognizer()
                               ..onTap = () {
-                                Navigator.pushNamed(context, AppRoutes.signup);
+                                Navigator.pushNamed(context, AppRoutes.signUp);
                               },
                           ),
                         ],

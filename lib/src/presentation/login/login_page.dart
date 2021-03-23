@@ -112,7 +112,7 @@ class _LoginPageState extends State<LoginPage> with DialogMixin {
                             ),
                             recognizer: TapGestureRecognizer()
                               ..onTap = () {
-                                Navigator.pushNamed(context, AppRoutes.signup);
+                                Navigator.pushNamed(context, AppRoutes.signUp);
                               },
                           ),
                         ],

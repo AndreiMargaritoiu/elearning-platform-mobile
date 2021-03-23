@@ -1,4 +1,3 @@
-import 'package:elearning_platform_mobile/src/presentation/mentoring/edit_mentorship_page.dart';
 import 'package:flutter/cupertino.dart';
 
 import 'package:elearning_platform_mobile/src/presentation/mentoring/add_mentorship_page.dart';
@@ -14,14 +13,15 @@ import 'package:elearning_platform_mobile/src/presentation/login/reset_password_
 import 'package:elearning_platform_mobile/src/presentation/posts/create_post.dart';
 import 'package:elearning_platform_mobile/src/presentation/posts/post_details.dart';
 import 'package:elearning_platform_mobile/src/presentation/signup/password_page.dart';
-import 'package:elearning_platform_mobile/src/presentation/signup/signup_page.dart';
 import 'package:elearning_platform_mobile/src/presentation/signup/username_page.dart';
 import 'package:elearning_platform_mobile/src/presentation/widgets/search_users_page.dart';
+import 'package:elearning_platform_mobile/src/presentation/login/signup_page.dart';
+import 'package:elearning_platform_mobile/src/presentation/mentoring/edit_mentorship_page.dart';
 
 // ignore: avoid_classes_with_only_static_members
 class AppRoutes {
   static const String home = '/';
-  static const String signup = '/signup';
+  static const String signUp = '/signUp';
   static const String username = '/username';
   static const String password = '/password';
   static const String resetPassword = '/resetPassword';
@@ -42,7 +42,7 @@ class AppRoutes {
     home: (BuildContext context) {
       return const Home();
     },
-    signup: (BuildContext context) {
+    signUp: (BuildContext context) {
       return const SignupPage();
     },
     username: (BuildContext context) {
