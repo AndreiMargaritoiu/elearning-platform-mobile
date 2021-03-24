@@ -163,7 +163,7 @@ class _CreatePlaylistPageState extends State<CreatePlaylistPage> {
                   child: Column(
                     children: <Widget>[
                       Container(
-                        child: const Text('Add content'),
+                        child: const Text('Select videos'),
                       ),
                       VideosContainer(
                         builder: (BuildContext context, List<Video> videos) {

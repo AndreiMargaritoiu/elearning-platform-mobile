@@ -18,8 +18,9 @@ class _PlaylistsFeedPageState extends State<PlaylistsFeedPage> {
   void initState() {
     super.initState();
 
-    StoreProvider.of<AppState>(context, listen: false)
-        .dispatch(const GetAllPlaylists(),);
+    StoreProvider.of<AppState>(context, listen: false).dispatch(
+      const GetAllPlaylists(),
+    );
   }
 
   @override
@@ -41,14 +42,14 @@ class _PlaylistsFeedPageState extends State<PlaylistsFeedPage> {
                       child: ListTile(
                         leading: user.photoUrl != null
                             ? CircleAvatar(
-                          backgroundImage: NetworkImage(user.photoUrl),
-                        )
+                                backgroundImage: NetworkImage(user.photoUrl),
+                              )
                             : CircleAvatar(
-                          backgroundColor: Colors.grey.shade900,
-                          child: Text(
-                            user.username[0].toUpperCase(),
-                          ),
-                        ),
+                                backgroundColor: Colors.grey.shade900,
+                                child: Text(
+                                  user.username[0].toUpperCase(),
+                                ),
+                              ),
                         title: Text(user.username),
                       ),
                       onPressed: () {

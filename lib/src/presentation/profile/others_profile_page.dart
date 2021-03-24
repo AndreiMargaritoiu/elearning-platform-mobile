@@ -22,11 +22,13 @@ class _OthersProfilePageState extends State<OthersProfilePage> {
   void initState() {
     super.initState();
 
-    StoreProvider.of<AppState>(context, listen: false)
-        .dispatch(GetPlaylistsByUid(id: widget.searchedUser.uid),);
+    StoreProvider.of<AppState>(context, listen: false).dispatch(
+      GetPlaylistsByUid(id: widget.searchedUser.uid),
+    );
 
-    StoreProvider.of<AppState>(context, listen: false)
-        .dispatch(GetVideosByUid(id: widget.searchedUser.uid),);
+    StoreProvider.of<AppState>(context, listen: false).dispatch(
+      GetVideosByUid(id: widget.searchedUser.uid),
+    );
   }
 
   @override
@@ -57,6 +59,7 @@ class _OthersProfilePageState extends State<OthersProfilePage> {
                     else
                       CircleAvatar(
                         backgroundColor: Colors.grey.shade900,
+                        radius: 30,
                         child: Text(
                           user.username[0].toUpperCase(),
                         ),
@@ -81,7 +84,7 @@ class _OthersProfilePageState extends State<OthersProfilePage> {
                         child: const Icon(Icons.playlist_play),
                         onPressed: () {
                           setState(
-                                () {
+                            () {
                               isPlaylistPage = true;
                             },
                           );
@@ -89,10 +92,7 @@ class _OthersProfilePageState extends State<OthersProfilePage> {
                       ),
                       Container(
                         height: isPlaylistPage ? 2 : 0,
-                        width: MediaQuery
-                            .of(context)
-                            .size
-                            .width * .4,
+                        width: MediaQuery.of(context).size.width * .4,
                         color: Colors.grey,
                       ),
                     ],
@@ -103,7 +103,7 @@ class _OthersProfilePageState extends State<OthersProfilePage> {
                         child: const Icon(Icons.video_collection),
                         onPressed: () {
                           setState(
-                                () {
+                            () {
                               isPlaylistPage = false;
                             },
                           );
@@ -111,10 +111,7 @@ class _OthersProfilePageState extends State<OthersProfilePage> {
                       ),
                       Container(
                         height: isPlaylistPage ? 0 : 2,
-                        width: MediaQuery
-                            .of(context)
-                            .size
-                            .width * .4,
+                        width: MediaQuery.of(context).size.width * .4,
                         color: Colors.grey,
                       ),
                     ],
@@ -138,10 +135,45 @@ class _OthersProfilePageState extends State<OthersProfilePage> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
                                 MaterialButton(
-                                  child: Text(playlist.title),
+                                  child: Card(
+                                    child: Row(
+                                      children: <Widget>[
+                                        if (playlist.thumbnailUrl != null &&
+                                            playlist.thumbnailUrl.isNotEmpty)
+                                          Image.network(
+                                            playlist.thumbnailUrl,
+                                            height: 120,
+                                            width: 80,
+                                            fit: BoxFit.cover,
+                                          )
+                                        else
+                                          Container(
+                                            height: 120,
+                                            width: 80,
+                                            decoration: const BoxDecoration(
+                                              color: Colors.green,
+                                            ),
+                                          ),
+                                        Padding(
+                                          padding: const EdgeInsets.only(
+                                              left: 8, top: 8, bottom: 8),
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: <Widget>[
+                                              Text(playlist.title),
+                                              Text(playlist.description),
+                                              Text(
+                                                  'Videos: ${playlist.videoRefs.length}'),
+                                            ],
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ),
                                   onPressed: () {
                                     Navigator.pushNamed(
-                                        context, AppRoutes.editPlaylistPage,
+                                        context, AppRoutes.playlistVideosPage,
                                         arguments: playlist);
                                   },
                                 )
@@ -171,10 +203,43 @@ class _OthersProfilePageState extends State<OthersProfilePage> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
                                 MaterialButton(
-                                  child: Text(video.title),
+                                  child: Card(
+                                    child: Row(
+                                      children: <Widget>[
+                                        if (video.thumbnailUrl != null &&
+                                            video.thumbnailUrl.isNotEmpty)
+                                          Image.network(
+                                            video.thumbnailUrl,
+                                            height: 120,
+                                            width: 80,
+                                            fit: BoxFit.cover,
+                                          )
+                                        else
+                                          Container(
+                                            height: 120,
+                                            width: 80,
+                                            decoration: const BoxDecoration(
+                                              color: Colors.green,
+                                            ),
+                                          ),
+                                        Padding(
+                                          padding: const EdgeInsets.only(
+                                              left: 8, top: 8, bottom: 8),
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: <Widget>[
+                                              Text(video.title),
+                                              Text(video.description),
+                                            ],
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ),
                                   onPressed: () {
                                     Navigator.pushNamed(
-                                        context, AppRoutes.editVideoPage,
+                                        context, AppRoutes.videoPlayer,
                                         arguments: video);
                                   },
                                 )

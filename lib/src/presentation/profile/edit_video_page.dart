@@ -81,7 +81,9 @@ class _EditVideoPageState extends State<EditVideoPage> {
                         StoreProvider.of<AppState>(context)
                             .dispatch(DeleteVideo(widget.currentVideo.id),);
                         Navigator.popUntil(
-                            context, ModalRoute.withName(AppRoutes.home),);
+                          context,
+                          ModalRoute.withName(AppRoutes.home),
+                        );
                       },
                     ),
                   ],

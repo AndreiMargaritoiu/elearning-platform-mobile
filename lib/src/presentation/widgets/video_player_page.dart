@@ -64,6 +64,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
                 },
               ),
               floatingActionButton: FloatingActionButton(
+                backgroundColor: Colors.white,
                 onPressed: () {
                   if (widget.currentVideo.uid != currentUser.uid) {
                     StoreProvider.of<AppState>(context).dispatch(
@@ -87,6 +88,8 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
                   _controller.value.isPlaying ? Icons.pause : Icons.play_arrow,
                 ),
               ),
+              floatingActionButtonLocation:
+                  FloatingActionButtonLocation.centerFloat,
             );
           },
         );
