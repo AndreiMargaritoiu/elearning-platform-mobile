@@ -14,3 +14,4 @@ part 'update_video.dart';
 part 'delete_video.dart';
 part 'set.dart';
 part 'get_videos_by_playlist_id.dart';
+part 'search_videos.dart';

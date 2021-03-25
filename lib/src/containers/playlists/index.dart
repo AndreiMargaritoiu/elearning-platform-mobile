@@ -8,3 +8,4 @@ import 'package:elearning_platform_mobile/src/models/index.dart';
 
 part 'playlists_container.dart';
 part 'playlists_info_container.dart';
+part 'search_playlists_container.dart';

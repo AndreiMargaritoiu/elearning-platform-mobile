@@ -14,6 +14,7 @@ Reducer<VideosState> videosReducer = combineReducers(
         _getVideosByPlaylistIdSuccessful),
     TypedReducer<VideosState, ListenForVideosSuccessful>(
         _listenForVideosSuccessful),
+    TypedReducer<VideosState, SearchVideosSuccessful>(_searchVideosSuccessful),
   ],
 );
 
@@ -70,6 +71,15 @@ VideosState _getVideosByPlaylistIdSuccessful(
   return state.rebuild(
     (VideosStateBuilder b) {
       b.videos = ListBuilder<Video>(action.videos);
+    },
+  );
+}
+
+VideosState _searchVideosSuccessful(
+    VideosState state, SearchVideosSuccessful action) {
+  return state.rebuild(
+    (VideosStateBuilder b) {
+      b.searchResult = ListBuilder<Video>(action.videos);
     },
   );
 }

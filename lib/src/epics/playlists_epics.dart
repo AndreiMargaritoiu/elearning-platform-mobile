@@ -21,6 +21,7 @@ class PlaylistsEpics {
         TypedEpic<AppState, GetPlaylistsByUid$>(_getPlaylistsByUid),
         TypedEpic<AppState, UpdatePlaylist$>(_updatePlaylist),
         TypedEpic<AppState, DeletePlaylist$>(_deletePlaylist),
+        TypedEpic<AppState, SearchPlaylists$>(_searchPlaylists),
       ],
     );
   }
@@ -201,6 +202,27 @@ class PlaylistsEpics {
           .onErrorReturnWith(
             (dynamic error) => GetOtherPlaylists.error(error),
           ),
+    );
+  }
+
+  Stream<AppAction> _searchPlaylists(
+      Stream<SearchPlaylists$> actions, EpicStore<AppState> store) {
+    return actions //
+        .debounceTime(
+      const Duration(milliseconds: 500),
+    )
+        .flatMap(
+          (SearchPlaylists$ action) => Stream<SearchPlaylists$>.value(action)
+          .asyncMap(
+            (SearchPlaylists$ action) =>
+            _api.searchPlaylists(action.query, store.state.auth.user.uid),
+      )
+          .map(
+            (List<Playlist> playlists) => SearchPlaylists.successful(playlists),
+      )
+          .onErrorReturnWith(
+            (dynamic error) => SearchPlaylists.error(error),
+      ),
     );
   }
 }

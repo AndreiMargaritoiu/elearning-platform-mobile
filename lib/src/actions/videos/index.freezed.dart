@@ -3269,3 +3269,445 @@ abstract class GetVideosByPlaylistIdError
   Object get error;
   $GetVideosByPlaylistIdErrorCopyWith<GetVideosByPlaylistIdError> get copyWith;
 }
+
+/// @nodoc
+class _$SearchVideosTearOff {
+  const _$SearchVideosTearOff();
+
+// ignore: unused_element
+  SearchVideos$ call(String query) {
+    return SearchVideos$(
+      query,
+    );
+  }
+
+// ignore: unused_element
+  SearchVideosSuccessful successful(List<Video> videos) {
+    return SearchVideosSuccessful(
+      videos,
+    );
+  }
+
+// ignore: unused_element
+  SearchVideosError error(Object error) {
+    return SearchVideosError(
+      error,
+    );
+  }
+}
+
+/// @nodoc
+// ignore: unused_element
+const $SearchVideos = _$SearchVideosTearOff();
+
+/// @nodoc
+mixin _$SearchVideos {
+  @optionalTypeArgs
+  Result when<Result extends Object>(
+    Result $default(String query), {
+    @required Result successful(List<Video> videos),
+    @required Result error(Object error),
+  });
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>(
+    Result $default(String query), {
+    Result successful(List<Video> videos),
+    Result error(Object error),
+    @required Result orElse(),
+  });
+  @optionalTypeArgs
+  Result map<Result extends Object>(
+    Result $default(SearchVideos$ value), {
+    @required Result successful(SearchVideosSuccessful value),
+    @required Result error(SearchVideosError value),
+  });
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>(
+    Result $default(SearchVideos$ value), {
+    Result successful(SearchVideosSuccessful value),
+    Result error(SearchVideosError value),
+    @required Result orElse(),
+  });
+}
+
+/// @nodoc
+abstract class $SearchVideosCopyWith<$Res> {
+  factory $SearchVideosCopyWith(
+          SearchVideos value, $Res Function(SearchVideos) then) =
+      _$SearchVideosCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$SearchVideosCopyWithImpl<$Res> implements $SearchVideosCopyWith<$Res> {
+  _$SearchVideosCopyWithImpl(this._value, this._then);
+
+  final SearchVideos _value;
+  // ignore: unused_field
+  final $Res Function(SearchVideos) _then;
+}
+
+/// @nodoc
+abstract class $SearchVideos$CopyWith<$Res> {
+  factory $SearchVideos$CopyWith(
+          SearchVideos$ value, $Res Function(SearchVideos$) then) =
+      _$SearchVideos$CopyWithImpl<$Res>;
+  $Res call({String query});
+}
+
+/// @nodoc
+class _$SearchVideos$CopyWithImpl<$Res> extends _$SearchVideosCopyWithImpl<$Res>
+    implements $SearchVideos$CopyWith<$Res> {
+  _$SearchVideos$CopyWithImpl(
+      SearchVideos$ _value, $Res Function(SearchVideos$) _then)
+      : super(_value, (v) => _then(v as SearchVideos$));
+
+  @override
+  SearchVideos$ get _value => super._value as SearchVideos$;
+
+  @override
+  $Res call({
+    Object query = freezed,
+  }) {
+    return _then(SearchVideos$(
+      query == freezed ? _value.query : query as String,
+    ));
+  }
+}
+
+/// @nodoc
+class _$SearchVideos$ implements SearchVideos$ {
+  const _$SearchVideos$(this.query) : assert(query != null);
+
+  @override
+  final String query;
+
+  @override
+  String toString() {
+    return 'SearchVideos(query: $query)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is SearchVideos$ &&
+            (identical(other.query, query) ||
+                const DeepCollectionEquality().equals(other.query, query)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(query);
+
+  @override
+  $SearchVideos$CopyWith<SearchVideos$> get copyWith =>
+      _$SearchVideos$CopyWithImpl<SearchVideos$>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>(
+    Result $default(String query), {
+    @required Result successful(List<Video> videos),
+    @required Result error(Object error),
+  }) {
+    assert($default != null);
+    assert(successful != null);
+    assert(error != null);
+    return $default(query);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>(
+    Result $default(String query), {
+    Result successful(List<Video> videos),
+    Result error(Object error),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if ($default != null) {
+      return $default(query);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>(
+    Result $default(SearchVideos$ value), {
+    @required Result successful(SearchVideosSuccessful value),
+    @required Result error(SearchVideosError value),
+  }) {
+    assert($default != null);
+    assert(successful != null);
+    assert(error != null);
+    return $default(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>(
+    Result $default(SearchVideos$ value), {
+    Result successful(SearchVideosSuccessful value),
+    Result error(SearchVideosError value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if ($default != null) {
+      return $default(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SearchVideos$ implements SearchVideos {
+  const factory SearchVideos$(String query) = _$SearchVideos$;
+
+  String get query;
+  $SearchVideos$CopyWith<SearchVideos$> get copyWith;
+}
+
+/// @nodoc
+abstract class $SearchVideosSuccessfulCopyWith<$Res> {
+  factory $SearchVideosSuccessfulCopyWith(SearchVideosSuccessful value,
+          $Res Function(SearchVideosSuccessful) then) =
+      _$SearchVideosSuccessfulCopyWithImpl<$Res>;
+  $Res call({List<Video> videos});
+}
+
+/// @nodoc
+class _$SearchVideosSuccessfulCopyWithImpl<$Res>
+    extends _$SearchVideosCopyWithImpl<$Res>
+    implements $SearchVideosSuccessfulCopyWith<$Res> {
+  _$SearchVideosSuccessfulCopyWithImpl(SearchVideosSuccessful _value,
+      $Res Function(SearchVideosSuccessful) _then)
+      : super(_value, (v) => _then(v as SearchVideosSuccessful));
+
+  @override
+  SearchVideosSuccessful get _value => super._value as SearchVideosSuccessful;
+
+  @override
+  $Res call({
+    Object videos = freezed,
+  }) {
+    return _then(SearchVideosSuccessful(
+      videos == freezed ? _value.videos : videos as List<Video>,
+    ));
+  }
+}
+
+/// @nodoc
+class _$SearchVideosSuccessful implements SearchVideosSuccessful {
+  const _$SearchVideosSuccessful(this.videos) : assert(videos != null);
+
+  @override
+  final List<Video> videos;
+
+  @override
+  String toString() {
+    return 'SearchVideos.successful(videos: $videos)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is SearchVideosSuccessful &&
+            (identical(other.videos, videos) ||
+                const DeepCollectionEquality().equals(other.videos, videos)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(videos);
+
+  @override
+  $SearchVideosSuccessfulCopyWith<SearchVideosSuccessful> get copyWith =>
+      _$SearchVideosSuccessfulCopyWithImpl<SearchVideosSuccessful>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>(
+    Result $default(String query), {
+    @required Result successful(List<Video> videos),
+    @required Result error(Object error),
+  }) {
+    assert($default != null);
+    assert(successful != null);
+    assert(error != null);
+    return successful(videos);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>(
+    Result $default(String query), {
+    Result successful(List<Video> videos),
+    Result error(Object error),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (successful != null) {
+      return successful(videos);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>(
+    Result $default(SearchVideos$ value), {
+    @required Result successful(SearchVideosSuccessful value),
+    @required Result error(SearchVideosError value),
+  }) {
+    assert($default != null);
+    assert(successful != null);
+    assert(error != null);
+    return successful(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>(
+    Result $default(SearchVideos$ value), {
+    Result successful(SearchVideosSuccessful value),
+    Result error(SearchVideosError value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (successful != null) {
+      return successful(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SearchVideosSuccessful implements SearchVideos {
+  const factory SearchVideosSuccessful(List<Video> videos) =
+      _$SearchVideosSuccessful;
+
+  List<Video> get videos;
+  $SearchVideosSuccessfulCopyWith<SearchVideosSuccessful> get copyWith;
+}
+
+/// @nodoc
+abstract class $SearchVideosErrorCopyWith<$Res> {
+  factory $SearchVideosErrorCopyWith(
+          SearchVideosError value, $Res Function(SearchVideosError) then) =
+      _$SearchVideosErrorCopyWithImpl<$Res>;
+  $Res call({Object error});
+}
+
+/// @nodoc
+class _$SearchVideosErrorCopyWithImpl<$Res>
+    extends _$SearchVideosCopyWithImpl<$Res>
+    implements $SearchVideosErrorCopyWith<$Res> {
+  _$SearchVideosErrorCopyWithImpl(
+      SearchVideosError _value, $Res Function(SearchVideosError) _then)
+      : super(_value, (v) => _then(v as SearchVideosError));
+
+  @override
+  SearchVideosError get _value => super._value as SearchVideosError;
+
+  @override
+  $Res call({
+    Object error = freezed,
+  }) {
+    return _then(SearchVideosError(
+      error == freezed ? _value.error : error,
+    ));
+  }
+}
+
+@Implements(ErrorAction)
+
+/// @nodoc
+class _$SearchVideosError implements SearchVideosError {
+  const _$SearchVideosError(this.error) : assert(error != null);
+
+  @override
+  final Object error;
+
+  @override
+  String toString() {
+    return 'SearchVideos.error(error: $error)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is SearchVideosError &&
+            (identical(other.error, error) ||
+                const DeepCollectionEquality().equals(other.error, error)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
+
+  @override
+  $SearchVideosErrorCopyWith<SearchVideosError> get copyWith =>
+      _$SearchVideosErrorCopyWithImpl<SearchVideosError>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>(
+    Result $default(String query), {
+    @required Result successful(List<Video> videos),
+    @required Result error(Object error),
+  }) {
+    assert($default != null);
+    assert(successful != null);
+    assert(error != null);
+    return error(this.error);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>(
+    Result $default(String query), {
+    Result successful(List<Video> videos),
+    Result error(Object error),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (error != null) {
+      return error(this.error);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>(
+    Result $default(SearchVideos$ value), {
+    @required Result successful(SearchVideosSuccessful value),
+    @required Result error(SearchVideosError value),
+  }) {
+    assert($default != null);
+    assert(successful != null);
+    assert(error != null);
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>(
+    Result $default(SearchVideos$ value), {
+    Result successful(SearchVideosSuccessful value),
+    Result error(SearchVideosError value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SearchVideosError implements SearchVideos, ErrorAction {
+  const factory SearchVideosError(Object error) = _$SearchVideosError;
+
+  Object get error;
+  $SearchVideosErrorCopyWith<SearchVideosError> get copyWith;
+}

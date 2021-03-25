@@ -7,6 +7,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:http/http.dart';
 import 'package:meta/meta.dart';
 
+import 'package:elearning_platform_mobile/src/data/index.dart';
 import 'package:elearning_platform_mobile/src/data/http_client_wrapper.dart';
 import 'package:elearning_platform_mobile/src/models/index.dart';
 
@@ -45,6 +46,7 @@ class PlaylistsApi {
           ..category = info.category
           ..thumbnailUrl = thumbnailUrl
           ..videoRefs = ListBuilder<String>(info.videoRefs)
+          ..searchIndex = ListBuilder<String>(<String>[info.title].searchIndex)
           ..createdAt = DateTime.now().toUtc().millisecondsSinceEpoch;
       },
     );
@@ -186,6 +188,25 @@ class PlaylistsApi {
         .map(
           (dynamic json) => Playlist.fromJson(json),
         )
+        .toList();
+  }
+
+  Future<List<Playlist>> searchPlaylists(String query, String uid) async {
+    final QuerySnapshot snapshot = await _firestore
+        .collection('playlists')
+        .where('searchIndex', arrayContains: query)
+        .get();
+
+    final List<Playlist> foundPlaylists = snapshot.docs //
+        .map(
+          (QueryDocumentSnapshot snapshot) => Playlist.fromJson(
+            snapshot.data(),
+          ),
+        )
+        .toList();
+
+    return foundPlaylists
+        .where((Playlist playlist) => playlist.uid != uid)
         .toList();
   }
 }

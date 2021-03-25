@@ -15,3 +15,4 @@ part 'get_playlist_by_id.dart';
 part 'update_playlist.dart';
 part 'delete_playlist.dart';
 part 'set.dart';
+part 'search_playlists.dart';

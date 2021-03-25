@@ -8,3 +8,4 @@ import 'package:elearning_platform_mobile/src/models/index.dart';
 
 part 'videos_container.dart';
 part 'videos_info_container.dart';
+part 'search_videos_container.dart';

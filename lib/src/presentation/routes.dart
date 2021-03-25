@@ -1,3 +1,4 @@
+import 'package:elearning_platform_mobile/src/presentation/discover/search_page.dart';
 import 'package:elearning_platform_mobile/src/presentation/profile/others_profile_page.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -31,6 +32,7 @@ class AppRoutes {
   static const String postDetails = '/postDetails';
   static const String addVideoPage = '/addVideoPage';
   static const String searchUsers = '/searchUsers';
+  static const String searchPage = '/searchPage';
   static const String videoPlayer = '/videoPlayer';
   static const String createPlaylistPage = '/createPlaylistPage';
   static const String profilePage = '/profilePage';
@@ -69,6 +71,9 @@ class AppRoutes {
     },
     searchUsers: (BuildContext context) {
       return const SearchUsersPage();
+    },
+    searchPage: (BuildContext context) {
+      return const SearchPage();
     },
     videoPlayer: (BuildContext context) {
       return VideoPlayerScreen(

@@ -1,12 +1,14 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:built_collection/built_collection.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:http/http.dart';
 import 'package:meta/meta.dart';
 import 'package:quiver/iterables.dart';
 
+import 'package:elearning_platform_mobile/src/data/index.dart';
 import 'package:elearning_platform_mobile/src/data/http_client_wrapper.dart';
 import 'package:elearning_platform_mobile/src/models/index.dart';
 
@@ -44,6 +46,7 @@ class VideosApi {
           ..thumbnailUrl = thumbnailUrl
           ..description = info.description
           ..title = info.title
+          ..searchIndex = ListBuilder<String>(<String>[info.title].searchIndex)
           ..createdAt = DateTime.now().toUtc().millisecondsSinceEpoch;
       },
     );
@@ -162,5 +165,22 @@ class VideosApi {
 //    }
 //
 //    return newResult;
+  }
+
+  Future<List<Video>> searchVideos(String query, String uid) async {
+    final QuerySnapshot snapshot = await _firestore
+        .collection('videos')
+        .where('searchIndex', arrayContains: query)
+        .get();
+
+    final List<Video> foundVideos = snapshot.docs //
+        .map(
+          (QueryDocumentSnapshot snapshot) => Video.fromJson(
+            snapshot.data(),
+          ),
+        )
+        .toList();
+
+    return foundVideos.where((Video video) => video.uid != uid).toList();
   }
 }

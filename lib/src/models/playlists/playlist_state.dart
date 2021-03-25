@@ -17,6 +17,8 @@ abstract class PlaylistsState implements Built<PlaylistsState, PlaylistsStateBui
 
   BuiltList<Playlist> get playlists;
 
+  BuiltList<Playlist> get searchResult;
+
   Map<String, dynamic> get json =>
       serializers.serializeWith(serializer, this) as Map<String, dynamic>;
 

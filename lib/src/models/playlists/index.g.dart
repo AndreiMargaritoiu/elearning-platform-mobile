@@ -36,6 +36,10 @@ class _$PlaylistSerializer implements StructuredSerializer<Playlist> {
       'createdAt',
       serializers.serialize(object.createdAt,
           specifiedType: const FullType(int)),
+      'searchIndex',
+      serializers.serialize(object.searchIndex,
+          specifiedType:
+              const FullType(BuiltList, const [const FullType(String)])),
     ];
     if (object.description != null) {
       result
@@ -102,6 +106,12 @@ class _$PlaylistSerializer implements StructuredSerializer<Playlist> {
         case 'thumbnailUrl':
           result.thumbnailUrl = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
+          break;
+        case 'searchIndex':
+          result.searchIndex.replace(serializers.deserialize(value,
+                  specifiedType:
+                      const FullType(BuiltList, const [const FullType(String)]))
+              as BuiltList<Object>);
           break;
       }
     }
@@ -212,6 +222,10 @@ class _$PlaylistsStateSerializer
       serializers.serialize(object.playlists,
           specifiedType:
               const FullType(BuiltList, const [const FullType(Playlist)])),
+      'searchResult',
+      serializers.serialize(object.searchResult,
+          specifiedType:
+              const FullType(BuiltList, const [const FullType(Playlist)])),
     ];
 
     return result;
@@ -235,6 +249,12 @@ class _$PlaylistsStateSerializer
           break;
         case 'playlists':
           result.playlists.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(Playlist)]))
+              as BuiltList<Object>);
+          break;
+        case 'searchResult':
+          result.searchResult.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(Playlist)]))
               as BuiltList<Object>);
@@ -263,6 +283,8 @@ class _$Playlist extends Playlist {
   final String category;
   @override
   final String thumbnailUrl;
+  @override
+  final BuiltList<String> searchIndex;
 
   factory _$Playlist([void Function(PlaylistBuilder) updates]) =>
       (new PlaylistBuilder()..update(updates)).build();
@@ -275,7 +297,8 @@ class _$Playlist extends Playlist {
       this.createdAt,
       this.description,
       this.category,
-      this.thumbnailUrl})
+      this.thumbnailUrl,
+      this.searchIndex})
       : super._() {
     if (id == null) {
       throw new BuiltValueNullFieldError('Playlist', 'id');
@@ -291,6 +314,9 @@ class _$Playlist extends Playlist {
     }
     if (createdAt == null) {
       throw new BuiltValueNullFieldError('Playlist', 'createdAt');
+    }
+    if (searchIndex == null) {
+      throw new BuiltValueNullFieldError('Playlist', 'searchIndex');
     }
   }
 
@@ -312,7 +338,8 @@ class _$Playlist extends Playlist {
         createdAt == other.createdAt &&
         description == other.description &&
         category == other.category &&
-        thumbnailUrl == other.thumbnailUrl;
+        thumbnailUrl == other.thumbnailUrl &&
+        searchIndex == other.searchIndex;
   }
 
   @override
@@ -322,13 +349,15 @@ class _$Playlist extends Playlist {
             $jc(
                 $jc(
                     $jc(
-                        $jc($jc($jc(0, id.hashCode), uid.hashCode),
-                            title.hashCode),
-                        videoRefs.hashCode),
-                    createdAt.hashCode),
-                description.hashCode),
-            category.hashCode),
-        thumbnailUrl.hashCode));
+                        $jc(
+                            $jc($jc($jc(0, id.hashCode), uid.hashCode),
+                                title.hashCode),
+                            videoRefs.hashCode),
+                        createdAt.hashCode),
+                    description.hashCode),
+                category.hashCode),
+            thumbnailUrl.hashCode),
+        searchIndex.hashCode));
   }
 
   @override
@@ -341,7 +370,8 @@ class _$Playlist extends Playlist {
           ..add('createdAt', createdAt)
           ..add('description', description)
           ..add('category', category)
-          ..add('thumbnailUrl', thumbnailUrl))
+          ..add('thumbnailUrl', thumbnailUrl)
+          ..add('searchIndex', searchIndex))
         .toString();
   }
 }
@@ -382,6 +412,12 @@ class PlaylistBuilder implements Builder<Playlist, PlaylistBuilder> {
   String get thumbnailUrl => _$this._thumbnailUrl;
   set thumbnailUrl(String thumbnailUrl) => _$this._thumbnailUrl = thumbnailUrl;
 
+  ListBuilder<String> _searchIndex;
+  ListBuilder<String> get searchIndex =>
+      _$this._searchIndex ??= new ListBuilder<String>();
+  set searchIndex(ListBuilder<String> searchIndex) =>
+      _$this._searchIndex = searchIndex;
+
   PlaylistBuilder();
 
   PlaylistBuilder get _$this {
@@ -394,6 +430,7 @@ class PlaylistBuilder implements Builder<Playlist, PlaylistBuilder> {
       _description = _$v.description;
       _category = _$v.category;
       _thumbnailUrl = _$v.thumbnailUrl;
+      _searchIndex = _$v.searchIndex?.toBuilder();
       _$v = null;
     }
     return this;
@@ -425,12 +462,16 @@ class PlaylistBuilder implements Builder<Playlist, PlaylistBuilder> {
               createdAt: createdAt,
               description: description,
               category: category,
-              thumbnailUrl: thumbnailUrl);
+              thumbnailUrl: thumbnailUrl,
+              searchIndex: searchIndex.build());
     } catch (_) {
       String _$failedField;
       try {
         _$failedField = 'videoRefs';
         videoRefs.build();
+
+        _$failedField = 'searchIndex';
+        searchIndex.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             'Playlist', _$failedField, e.toString());
@@ -590,16 +631,22 @@ class _$PlaylistsState extends PlaylistsState {
   final PlaylistInfo info;
   @override
   final BuiltList<Playlist> playlists;
+  @override
+  final BuiltList<Playlist> searchResult;
 
   factory _$PlaylistsState([void Function(PlaylistsStateBuilder) updates]) =>
       (new PlaylistsStateBuilder()..update(updates)).build();
 
-  _$PlaylistsState._({this.info, this.playlists}) : super._() {
+  _$PlaylistsState._({this.info, this.playlists, this.searchResult})
+      : super._() {
     if (info == null) {
       throw new BuiltValueNullFieldError('PlaylistsState', 'info');
     }
     if (playlists == null) {
       throw new BuiltValueNullFieldError('PlaylistsState', 'playlists');
+    }
+    if (searchResult == null) {
+      throw new BuiltValueNullFieldError('PlaylistsState', 'searchResult');
     }
   }
 
@@ -616,19 +663,22 @@ class _$PlaylistsState extends PlaylistsState {
     if (identical(other, this)) return true;
     return other is PlaylistsState &&
         info == other.info &&
-        playlists == other.playlists;
+        playlists == other.playlists &&
+        searchResult == other.searchResult;
   }
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, info.hashCode), playlists.hashCode));
+    return $jf($jc(
+        $jc($jc(0, info.hashCode), playlists.hashCode), searchResult.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('PlaylistsState')
           ..add('info', info)
-          ..add('playlists', playlists))
+          ..add('playlists', playlists)
+          ..add('searchResult', searchResult))
         .toString();
   }
 }
@@ -647,12 +697,19 @@ class PlaylistsStateBuilder
   set playlists(ListBuilder<Playlist> playlists) =>
       _$this._playlists = playlists;
 
+  ListBuilder<Playlist> _searchResult;
+  ListBuilder<Playlist> get searchResult =>
+      _$this._searchResult ??= new ListBuilder<Playlist>();
+  set searchResult(ListBuilder<Playlist> searchResult) =>
+      _$this._searchResult = searchResult;
+
   PlaylistsStateBuilder();
 
   PlaylistsStateBuilder get _$this {
     if (_$v != null) {
       _info = _$v.info?.toBuilder();
       _playlists = _$v.playlists?.toBuilder();
+      _searchResult = _$v.searchResult?.toBuilder();
       _$v = null;
     }
     return this;
@@ -677,7 +734,9 @@ class PlaylistsStateBuilder
     try {
       _$result = _$v ??
           new _$PlaylistsState._(
-              info: info.build(), playlists: playlists.build());
+              info: info.build(),
+              playlists: playlists.build(),
+              searchResult: searchResult.build());
     } catch (_) {
       String _$failedField;
       try {
@@ -685,6 +744,8 @@ class PlaylistsStateBuilder
         info.build();
         _$failedField = 'playlists';
         playlists.build();
+        _$failedField = 'searchResult';
+        searchResult.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             'PlaylistsState', _$failedField, e.toString());

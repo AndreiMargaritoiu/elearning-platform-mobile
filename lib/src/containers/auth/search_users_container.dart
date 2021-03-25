@@ -1,7 +1,7 @@
 part of auth_conatiners;
 
-class SearchResultContainer extends StatelessWidget {
-  const SearchResultContainer({Key key, @required this.builder}) : super(key: key);
+class SearchUsersContainer extends StatelessWidget {
+  const SearchUsersContainer({Key key, @required this.builder}) : super(key: key);
 
   final ViewModelBuilder<List<AppUser>> builder;
 

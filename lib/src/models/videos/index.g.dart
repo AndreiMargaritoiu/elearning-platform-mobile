@@ -27,6 +27,10 @@ class _$VideosStateSerializer implements StructuredSerializer<VideosState> {
       serializers.serialize(object.videos,
           specifiedType:
               const FullType(BuiltList, const [const FullType(Video)])),
+      'searchResult',
+      serializers.serialize(object.searchResult,
+          specifiedType:
+              const FullType(BuiltList, const [const FullType(Video)])),
     ];
 
     return result;
@@ -49,6 +53,12 @@ class _$VideosStateSerializer implements StructuredSerializer<VideosState> {
           break;
         case 'videos':
           result.videos.replace(serializers.deserialize(value,
+                  specifiedType:
+                      const FullType(BuiltList, const [const FullType(Video)]))
+              as BuiltList<Object>);
+          break;
+        case 'searchResult':
+          result.searchResult.replace(serializers.deserialize(value,
                   specifiedType:
                       const FullType(BuiltList, const [const FullType(Video)]))
               as BuiltList<Object>);
@@ -154,6 +164,10 @@ class _$VideoSerializer implements StructuredSerializer<Video> {
       'createdAt',
       serializers.serialize(object.createdAt,
           specifiedType: const FullType(int)),
+      'searchIndex',
+      serializers.serialize(object.searchIndex,
+          specifiedType:
+              const FullType(BuiltList, const [const FullType(String)])),
     ];
     if (object.description != null) {
       result
@@ -209,6 +223,12 @@ class _$VideoSerializer implements StructuredSerializer<Video> {
           result.thumbnailUrl = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
+        case 'searchIndex':
+          result.searchIndex.replace(serializers.deserialize(value,
+                  specifiedType:
+                      const FullType(BuiltList, const [const FullType(String)]))
+              as BuiltList<Object>);
+          break;
       }
     }
 
@@ -221,16 +241,21 @@ class _$VideosState extends VideosState {
   final VideoInfo info;
   @override
   final BuiltList<Video> videos;
+  @override
+  final BuiltList<Video> searchResult;
 
   factory _$VideosState([void Function(VideosStateBuilder) updates]) =>
       (new VideosStateBuilder()..update(updates)).build();
 
-  _$VideosState._({this.info, this.videos}) : super._() {
+  _$VideosState._({this.info, this.videos, this.searchResult}) : super._() {
     if (info == null) {
       throw new BuiltValueNullFieldError('VideosState', 'info');
     }
     if (videos == null) {
       throw new BuiltValueNullFieldError('VideosState', 'videos');
+    }
+    if (searchResult == null) {
+      throw new BuiltValueNullFieldError('VideosState', 'searchResult');
     }
   }
 
@@ -244,19 +269,24 @@ class _$VideosState extends VideosState {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is VideosState && info == other.info && videos == other.videos;
+    return other is VideosState &&
+        info == other.info &&
+        videos == other.videos &&
+        searchResult == other.searchResult;
   }
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, info.hashCode), videos.hashCode));
+    return $jf($jc(
+        $jc($jc(0, info.hashCode), videos.hashCode), searchResult.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('VideosState')
           ..add('info', info)
-          ..add('videos', videos))
+          ..add('videos', videos)
+          ..add('searchResult', searchResult))
         .toString();
   }
 }
@@ -272,12 +302,19 @@ class VideosStateBuilder implements Builder<VideosState, VideosStateBuilder> {
   ListBuilder<Video> get videos => _$this._videos ??= new ListBuilder<Video>();
   set videos(ListBuilder<Video> videos) => _$this._videos = videos;
 
+  ListBuilder<Video> _searchResult;
+  ListBuilder<Video> get searchResult =>
+      _$this._searchResult ??= new ListBuilder<Video>();
+  set searchResult(ListBuilder<Video> searchResult) =>
+      _$this._searchResult = searchResult;
+
   VideosStateBuilder();
 
   VideosStateBuilder get _$this {
     if (_$v != null) {
       _info = _$v.info?.toBuilder();
       _videos = _$v.videos?.toBuilder();
+      _searchResult = _$v.searchResult?.toBuilder();
       _$v = null;
     }
     return this;
@@ -301,7 +338,10 @@ class VideosStateBuilder implements Builder<VideosState, VideosStateBuilder> {
     _$VideosState _$result;
     try {
       _$result = _$v ??
-          new _$VideosState._(info: info.build(), videos: videos.build());
+          new _$VideosState._(
+              info: info.build(),
+              videos: videos.build(),
+              searchResult: searchResult.build());
     } catch (_) {
       String _$failedField;
       try {
@@ -309,6 +349,8 @@ class VideosStateBuilder implements Builder<VideosState, VideosStateBuilder> {
         info.build();
         _$failedField = 'videos';
         videos.build();
+        _$failedField = 'searchResult';
+        searchResult.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             'VideosState', _$failedField, e.toString());
@@ -447,6 +489,8 @@ class _$Video extends Video {
   final String description;
   @override
   final String thumbnailUrl;
+  @override
+  final BuiltList<String> searchIndex;
 
   factory _$Video([void Function(VideoBuilder) updates]) =>
       (new VideoBuilder()..update(updates)).build();
@@ -458,7 +502,8 @@ class _$Video extends Video {
       this.title,
       this.createdAt,
       this.description,
-      this.thumbnailUrl})
+      this.thumbnailUrl,
+      this.searchIndex})
       : super._() {
     if (id == null) {
       throw new BuiltValueNullFieldError('Video', 'id');
@@ -474,6 +519,9 @@ class _$Video extends Video {
     }
     if (createdAt == null) {
       throw new BuiltValueNullFieldError('Video', 'createdAt');
+    }
+    if (searchIndex == null) {
+      throw new BuiltValueNullFieldError('Video', 'searchIndex');
     }
   }
 
@@ -494,7 +542,8 @@ class _$Video extends Video {
         title == other.title &&
         createdAt == other.createdAt &&
         description == other.description &&
-        thumbnailUrl == other.thumbnailUrl;
+        thumbnailUrl == other.thumbnailUrl &&
+        searchIndex == other.searchIndex;
   }
 
   @override
@@ -503,12 +552,14 @@ class _$Video extends Video {
         $jc(
             $jc(
                 $jc(
-                    $jc($jc($jc(0, id.hashCode), uid.hashCode),
-                        videoUrl.hashCode),
-                    title.hashCode),
-                createdAt.hashCode),
-            description.hashCode),
-        thumbnailUrl.hashCode));
+                    $jc(
+                        $jc($jc($jc(0, id.hashCode), uid.hashCode),
+                            videoUrl.hashCode),
+                        title.hashCode),
+                    createdAt.hashCode),
+                description.hashCode),
+            thumbnailUrl.hashCode),
+        searchIndex.hashCode));
   }
 
   @override
@@ -520,7 +571,8 @@ class _$Video extends Video {
           ..add('title', title)
           ..add('createdAt', createdAt)
           ..add('description', description)
-          ..add('thumbnailUrl', thumbnailUrl))
+          ..add('thumbnailUrl', thumbnailUrl)
+          ..add('searchIndex', searchIndex))
         .toString();
   }
 }
@@ -556,6 +608,12 @@ class VideoBuilder implements Builder<Video, VideoBuilder> {
   String get thumbnailUrl => _$this._thumbnailUrl;
   set thumbnailUrl(String thumbnailUrl) => _$this._thumbnailUrl = thumbnailUrl;
 
+  ListBuilder<String> _searchIndex;
+  ListBuilder<String> get searchIndex =>
+      _$this._searchIndex ??= new ListBuilder<String>();
+  set searchIndex(ListBuilder<String> searchIndex) =>
+      _$this._searchIndex = searchIndex;
+
   VideoBuilder();
 
   VideoBuilder get _$this {
@@ -567,6 +625,7 @@ class VideoBuilder implements Builder<Video, VideoBuilder> {
       _createdAt = _$v.createdAt;
       _description = _$v.description;
       _thumbnailUrl = _$v.thumbnailUrl;
+      _searchIndex = _$v.searchIndex?.toBuilder();
       _$v = null;
     }
     return this;
@@ -587,15 +646,29 @@ class VideoBuilder implements Builder<Video, VideoBuilder> {
 
   @override
   _$Video build() {
-    final _$result = _$v ??
-        new _$Video._(
-            id: id,
-            uid: uid,
-            videoUrl: videoUrl,
-            title: title,
-            createdAt: createdAt,
-            description: description,
-            thumbnailUrl: thumbnailUrl);
+    _$Video _$result;
+    try {
+      _$result = _$v ??
+          new _$Video._(
+              id: id,
+              uid: uid,
+              videoUrl: videoUrl,
+              title: title,
+              createdAt: createdAt,
+              description: description,
+              thumbnailUrl: thumbnailUrl,
+              searchIndex: searchIndex.build());
+    } catch (_) {
+      String _$failedField;
+      try {
+        _$failedField = 'searchIndex';
+        searchIndex.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            'Video', _$failedField, e.toString());
+      }
+      rethrow;
+    }
     replace(_$result);
     return _$result;
   }

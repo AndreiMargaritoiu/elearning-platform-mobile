@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:elearning_platform_mobile/src/presentation/routes.dart';
 import 'package:elearning_platform_mobile/src/presentation/playlists/playlists_feed_page.dart';
-import 'package:elearning_platform_mobile/src/presentation/widgets/search_users_page.dart';
 
 class DiscoverPage extends StatefulWidget {
   const DiscoverPage({Key key}) : super(key: key);
@@ -33,19 +33,20 @@ class _DiscoverPageState extends State<DiscoverPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: isSearchActive
-          ? const SearchUsersPage(showFollow: true)
-          : Column(
-              children: <Widget>[
-                Container(
-                  height: 80,
-                  child: const SearchUsersPage(showFollow: true),
-                ),
-                const Expanded(
-                  child: PlaylistsFeedPage(),
-                )
-              ],
+      appBar: AppBar(
+        title: MaterialButton(
+          child: const TextField(
+            decoration: InputDecoration(
+              hintText: 'search',
             ),
+            enabled: false,
+          ),
+          onPressed: () {
+             Navigator.pushNamed(context, AppRoutes.searchPage);
+          },
+        ),
+      ),
+      body: const PlaylistsFeedPage(),
     );
   }
 }

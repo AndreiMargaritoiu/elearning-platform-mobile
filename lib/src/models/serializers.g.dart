@@ -33,8 +33,17 @@ Serializers _$serializers = (new Serializers().toBuilder()
           const FullType(BuiltList, const [const FullType(Playlist)]),
           () => new ListBuilder<Playlist>())
       ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(Playlist)]),
+          () => new ListBuilder<Playlist>())
+      ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(Post)]),
           () => new ListBuilder<Post>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
           () => new ListBuilder<String>())
@@ -68,6 +77,9 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(Tracking)]),
           () => new ListBuilder<Tracking>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(Video)]),
+          () => new ListBuilder<Video>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(Video)]),
           () => new ListBuilder<Video>())

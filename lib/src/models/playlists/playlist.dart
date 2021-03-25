@@ -27,6 +27,8 @@ abstract class Playlist implements Built<Playlist, PlaylistBuilder> {
   @nullable
   String get thumbnailUrl;
 
+  BuiltList<String> get searchIndex;
+
   Map<String, dynamic> get json =>
       serializers.serializeWith(serializer, this) as Map<String, dynamic>;
 

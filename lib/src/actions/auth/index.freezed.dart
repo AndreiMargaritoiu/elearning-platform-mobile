@@ -1760,10 +1760,9 @@ class _$SearchUsersTearOff {
   const _$SearchUsersTearOff();
 
 // ignore: unused_element
-  SearchUsers$ call(String query, String uid) {
+  SearchUsers$ call(String query) {
     return SearchUsers$(
       query,
-      uid,
     );
   }
 
@@ -1790,13 +1789,13 @@ const $SearchUsers = _$SearchUsersTearOff();
 mixin _$SearchUsers {
   @optionalTypeArgs
   Result when<Result extends Object>(
-    Result $default(String query, String uid), {
+    Result $default(String query), {
     @required Result successful(List<AppUser> users),
     @required Result error(Object error),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>(
-    Result $default(String query, String uid), {
+    Result $default(String query), {
     Result successful(List<AppUser> users),
     Result error(Object error),
     @required Result orElse(),
@@ -1837,7 +1836,7 @@ abstract class $SearchUsers$CopyWith<$Res> {
   factory $SearchUsers$CopyWith(
           SearchUsers$ value, $Res Function(SearchUsers$) then) =
       _$SearchUsers$CopyWithImpl<$Res>;
-  $Res call({String query, String uid});
+  $Res call({String query});
 }
 
 /// @nodoc
@@ -1853,29 +1852,23 @@ class _$SearchUsers$CopyWithImpl<$Res> extends _$SearchUsersCopyWithImpl<$Res>
   @override
   $Res call({
     Object query = freezed,
-    Object uid = freezed,
   }) {
     return _then(SearchUsers$(
       query == freezed ? _value.query : query as String,
-      uid == freezed ? _value.uid : uid as String,
     ));
   }
 }
 
 /// @nodoc
 class _$SearchUsers$ implements SearchUsers$ {
-  const _$SearchUsers$(this.query, this.uid)
-      : assert(query != null),
-        assert(uid != null);
+  const _$SearchUsers$(this.query) : assert(query != null);
 
   @override
   final String query;
-  @override
-  final String uid;
 
   @override
   String toString() {
-    return 'SearchUsers(query: $query, uid: $uid)';
+    return 'SearchUsers(query: $query)';
   }
 
   @override
@@ -1883,16 +1876,12 @@ class _$SearchUsers$ implements SearchUsers$ {
     return identical(this, other) ||
         (other is SearchUsers$ &&
             (identical(other.query, query) ||
-                const DeepCollectionEquality().equals(other.query, query)) &&
-            (identical(other.uid, uid) ||
-                const DeepCollectionEquality().equals(other.uid, uid)));
+                const DeepCollectionEquality().equals(other.query, query)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(query) ^
-      const DeepCollectionEquality().hash(uid);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(query);
 
   @override
   $SearchUsers$CopyWith<SearchUsers$> get copyWith =>
@@ -1901,27 +1890,27 @@ class _$SearchUsers$ implements SearchUsers$ {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>(
-    Result $default(String query, String uid), {
+    Result $default(String query), {
     @required Result successful(List<AppUser> users),
     @required Result error(Object error),
   }) {
     assert($default != null);
     assert(successful != null);
     assert(error != null);
-    return $default(query, uid);
+    return $default(query);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>(
-    Result $default(String query, String uid), {
+    Result $default(String query), {
     Result successful(List<AppUser> users),
     Result error(Object error),
     @required Result orElse(),
   }) {
     assert(orElse != null);
     if ($default != null) {
-      return $default(query, uid);
+      return $default(query);
     }
     return orElse();
   }
@@ -1956,10 +1945,9 @@ class _$SearchUsers$ implements SearchUsers$ {
 }
 
 abstract class SearchUsers$ implements SearchUsers {
-  const factory SearchUsers$(String query, String uid) = _$SearchUsers$;
+  const factory SearchUsers$(String query) = _$SearchUsers$;
 
   String get query;
-  String get uid;
   $SearchUsers$CopyWith<SearchUsers$> get copyWith;
 }
 
@@ -2024,7 +2012,7 @@ class _$SearchUsersSuccessful implements SearchUsersSuccessful {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>(
-    Result $default(String query, String uid), {
+    Result $default(String query), {
     @required Result successful(List<AppUser> users),
     @required Result error(Object error),
   }) {
@@ -2037,7 +2025,7 @@ class _$SearchUsersSuccessful implements SearchUsersSuccessful {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>(
-    Result $default(String query, String uid), {
+    Result $default(String query), {
     Result successful(List<AppUser> users),
     Result error(Object error),
     @required Result orElse(),
@@ -2148,7 +2136,7 @@ class _$SearchUsersError implements SearchUsersError {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>(
-    Result $default(String query, String uid), {
+    Result $default(String query), {
     @required Result successful(List<AppUser> users),
     @required Result error(Object error),
   }) {
@@ -2161,7 +2149,7 @@ class _$SearchUsersError implements SearchUsersError {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>(
-    Result $default(String query, String uid), {
+    Result $default(String query), {
     Result successful(List<AppUser> users),
     Result error(Object error),
     @required Result orElse(),

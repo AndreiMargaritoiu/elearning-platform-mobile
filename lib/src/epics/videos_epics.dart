@@ -23,6 +23,7 @@ class VideosEpics {
         TypedEpic<AppState, GetVideosByPlaylistId$>(_getVideosByPlaylistId),
         TypedEpic<AppState, UpdateVideo$>(_updateVideo),
         TypedEpic<AppState, DeleteVideo$>(_deleteVideo),
+        TypedEpic<AppState, SearchVideos$>(_searchVideos),
       ],
     );
   }
@@ -185,6 +186,27 @@ class VideosEpics {
           .onErrorReturnWith(
             (dynamic error) => ListenForVideos.error(error),
           ),
+    );
+  }
+
+  Stream<AppAction> _searchVideos(
+      Stream<SearchVideos$> actions, EpicStore<AppState> store) {
+    return actions //
+        .debounceTime(
+      const Duration(milliseconds: 500),
+    )
+        .flatMap(
+          (SearchVideos$ action) => Stream<SearchVideos$>.value(action)
+          .asyncMap(
+            (SearchVideos$ action) =>
+            _api.searchVideos(action.query, store.state.auth.user.uid),
+      )
+          .map(
+            (List<Video> videos) => SearchVideos.successful(videos),
+      )
+          .onErrorReturnWith(
+            (dynamic error) => SearchVideos.error(error),
+      ),
     );
   }
 }
