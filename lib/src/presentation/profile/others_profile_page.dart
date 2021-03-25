@@ -35,10 +35,11 @@ class _OthersProfilePageState extends State<OthersProfilePage> {
   Widget build(BuildContext context) {
     return UserContainer(
       builder: (BuildContext context, AppUser user) {
-        final AppUser user = widget.searchedUser;
+        final AppUser searchedUser = widget.searchedUser;
+        final bool isFollowed = user.following.contains(searchedUser.uid);
         return Scaffold(
           appBar: AppBar(
-            title: Text(user.username),
+            title: Text(searchedUser.username),
           ),
           body: Column(
             children: <Widget>[
@@ -46,11 +47,11 @@ class _OthersProfilePageState extends State<OthersProfilePage> {
                 padding: const EdgeInsets.all(16.0),
                 child: Row(
                   children: <Widget>[
-                    if (user.photoUrl != null)
+                    if (searchedUser.photoUrl != null)
                       ClipRRect(
                         borderRadius: BorderRadius.circular(80.0),
                         child: Image.network(
-                          user.photoUrl,
+                          searchedUser.photoUrl,
                           height: 80,
                           width: 80,
                           fit: BoxFit.cover,
@@ -61,14 +62,28 @@ class _OthersProfilePageState extends State<OthersProfilePage> {
                         backgroundColor: Colors.grey.shade900,
                         radius: 30,
                         child: Text(
-                          user.username[0].toUpperCase(),
+                          searchedUser.username[0].toUpperCase(),
                         ),
                       ),
                     Padding(
                       padding: const EdgeInsets.only(left: 16),
                       child: Column(
                         children: <Widget>[
-                          Text(user.email),
+                          Text(searchedUser.email),
+                          MaterialButton(
+                            child: Text(isFollowed ? 'Unfollow' : 'Follow'),
+                            onPressed: () {
+                              AppAction action;
+                              if (isFollowed) {
+                                action =
+                                    UpdateFollowing(remove: searchedUser.uid);
+                              } else {
+                                action = UpdateFollowing(add: searchedUser.uid);
+                              }
+                              StoreProvider.of<AppState>(context)
+                                  .dispatch(action);
+                            },
+                          )
                         ],
                       ),
                     )

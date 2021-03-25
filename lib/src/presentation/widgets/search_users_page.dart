@@ -24,7 +24,7 @@ class SearchUsersPage extends StatelessWidget {
                   ),
                   onChanged: (String value) {
                     StoreProvider.of<AppState>(context).dispatch(
-                      SearchUsers(value),
+                      SearchUsers(value, currentUser.uid),
                     );
                   },
                 ),

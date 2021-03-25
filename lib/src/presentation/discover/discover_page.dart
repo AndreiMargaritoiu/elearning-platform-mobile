@@ -11,7 +11,7 @@ class DiscoverPage extends StatefulWidget {
 }
 
 class _DiscoverPageState extends State<DiscoverPage> {
-  bool isSearchActive = false;
+  bool isSearchActive = true;
 
   @override
   void initState() {

@@ -129,19 +129,21 @@ class AuthApi {
     return _auth.sendPasswordResetEmail(email: email);
   }
 
-  Future<List<AppUser>> searchUsers(String query) async {
+  Future<List<AppUser>> searchUsers(String query, String uid) async {
     final QuerySnapshot snapshot = await _firestore
-        .collection('users') //
+        .collection('users')
         .where('searchIndex', arrayContains: query)
         .get();
 
-    return snapshot.docs //
+    final List<AppUser> foundUsers = snapshot.docs //
         .map(
           (QueryDocumentSnapshot snapshot) => AppUser.fromJson(
             snapshot.data(),
           ),
         )
         .toList();
+
+    return foundUsers.where((AppUser user) => user.uid != uid).toList();
   }
 
   Future<void> updateFollowing(

@@ -149,7 +149,8 @@ class AuthEpics {
         .flatMap(
           (SearchUsers$ action) => Stream<SearchUsers$>.value(action)
               .asyncMap(
-                (SearchUsers$ action) => _api.searchUsers(action.query),
+                (SearchUsers$ action) =>
+                    _api.searchUsers(action.query, store.state.auth.user.uid),
               )
               .map(
                 (List<AppUser> users) => SearchUsers.successful(users),
