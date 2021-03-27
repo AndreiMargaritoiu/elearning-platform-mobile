@@ -23,4 +23,19 @@ class HttpClientWrapper {
       headers: <String, String>{'Content-Type': 'application/json'},
     );
   }
+
+  Future<Response> delete(String route) async {
+    return await client.delete(
+      Uri.http(URL, '/api/' + route),
+      headers: <String, String>{'Content-Type': 'application/json'},
+    );
+  }
+
+  Future<Response> patch(String route, dynamic body) async {
+    return await client.patch(
+      Uri.http(URL, '/api/' + route),
+      body: body,
+      headers: <String, String>{'Content-Type': 'application/json'},
+    );
+  }
 }

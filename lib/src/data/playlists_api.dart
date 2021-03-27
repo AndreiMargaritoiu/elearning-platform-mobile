@@ -142,7 +142,7 @@ class PlaylistsApi {
   }
 
   Future<List<Playlist>> getPlaylistsByUid(String uid) async {
-    final dynamic queryParams = {
+    final dynamic queryParams = <String, dynamic>{
       'uid': uid,
     };
     final Response response =
