@@ -90,10 +90,14 @@ class MentoringApi {
   }
 
   Future<Mentorship> updateMentorship(MentorshipInfo info, String id) async {
-    final dynamic body = jsonEncode(<String, dynamic>{
-      'description': info.description,
-      'price': info.price
-    });
+    final Map<String, dynamic> updates = <String, dynamic>{};
+    if (info.description != null && info.description.isNotEmpty) {
+      updates['description'] = info.description;
+    }
+    if (info.price != null && info.price.toString().isNotEmpty) {
+      updates['price'] = info.price;
+    }
+    final dynamic body = jsonEncode(updates);
     final Response response = await _clientWrapper.patch('mentoring/$id', body);
     final Map<String, dynamic> data = jsonDecode(response.body);
 

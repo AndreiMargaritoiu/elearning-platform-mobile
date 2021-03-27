@@ -68,14 +68,27 @@ class VideosApi {
 
   Future<Video> getVideoById(String id) async {
     final Response response = await _clientWrapper.get('videos/$id');
-
     final Map<String, dynamic> data = jsonDecode(response.body);
+
     return Video.fromJson(data);
   }
 
   Future<Video> updateVideo(VideoInfo info, String id) async {
-    final DocumentReference ref = _firestore.collection('videos').doc(id);
+    final Map<String, dynamic> updates = <String, dynamic>{};
+    if (info.description != null && info.description.isNotEmpty) {
+      updates['description'] = info.description;
+    }
+    if (info.title != null && info.title.isNotEmpty) {
+      updates['title'] = info.title;
+      updates['searchIndex'] = <String>[info.title].searchIndex;
+    }
+    final dynamic body = jsonEncode(updates);
+    final Response response = await _clientWrapper.patch('videos/$id', body);
+    final Map<String, dynamic> data = jsonDecode(response.body);
 
+    return Video.fromJson(data);
+
+    final DocumentReference ref = _firestore.collection('videos').doc(id);
     if (info.description != null) {
       await ref.update(
         <String, dynamic>{
@@ -83,7 +96,6 @@ class VideosApi {
         },
       );
     }
-
     if (info.title != null) {
       await ref.update(
         <String, dynamic>{
@@ -91,13 +103,14 @@ class VideosApi {
         },
       );
     }
-
     return await getVideoById(id);
   }
 
   Future<void> deleteVideo(String id) async {
-    final DocumentReference ref = _firestore.collection('videos').doc(id);
-    await ref.delete();
+    await _clientWrapper.delete('videos/$id');
+
+//    final DocumentReference ref = _firestore.collection('videos').doc(id);
+//    await ref.delete();
   }
 
   Future<List<Video>> getVideosByUid(String uid) async {
@@ -105,8 +118,8 @@ class VideosApi {
       'uid': uid,
     };
     final Response response = await _clientWrapper.get('videos', queryParams);
-
     final List<dynamic> data = jsonDecode(response.body);
+
     return data
         .map(
           (dynamic json) => Video.fromJson(json),
@@ -117,11 +130,9 @@ class VideosApi {
 //        .collection('videos') //
 //        .where('uid', isEqualTo: uid)
 //        .get();
-//
 //    final List<Video> result = snapshot.docs //
 //        .map((QueryDocumentSnapshot doc) => Video.fromJson(doc.data(),),)
 //        .toList();
-//
 //    return result;
   }
 
@@ -130,8 +141,8 @@ class VideosApi {
       'playlistId': playlistId,
     };
     final Response response = await _clientWrapper.get('videos', queryParams);
-
     final List<dynamic> data = jsonDecode(response.body);
+
     return data
         .map(
           (dynamic json) => Video.fromJson(json),
@@ -141,8 +152,8 @@ class VideosApi {
 
   Future<List<Video>> listenForVideos(List<String> following) async {
     final Response response = await _clientWrapper.get('videos');
-
     final List<dynamic> data = jsonDecode(response.body);
+
     return data
         .map(
           (dynamic json) => Video.fromJson(json),
@@ -156,14 +167,11 @@ class VideosApi {
 //          .collection('videos') //
 //          .where('uid', whereIn: following)
 //          .get();
-//
 //      final List<Video> result = snapshot.docs //
 //          .map((QueryDocumentSnapshot doc) => Video.fromJson(doc.data(),),)
 //          .toList();
-//
 //      newResult.addAll(result);
 //    }
-//
 //    return newResult;
   }
 
