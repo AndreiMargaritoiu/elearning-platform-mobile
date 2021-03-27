@@ -59,178 +59,337 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return UserContainer(
       builder: (BuildContext context, AppUser user) {
-        return Scaffold(
-          appBar: AppBar(
-            title: Text(user.username),
-            actions: <Widget>[
-              IconButton(
-                icon: const Icon(Icons.add_circle_outline),
-                onPressed: () {
-                  _addContentModal(context);
-                },
-              ),
-              PopupMenuButton<String>(
-                onSelected: _handleDotsMenuClick,
-                itemBuilder: (BuildContext context) {
-                  return <String>{'Logout', 'Settings'}.map((String choice) {
-                    return PopupMenuItem<String>(
-                      value: choice,
-                      child: Text(choice),
-                    );
-                  }).toList();
-                },
-              ),
-            ],
-          ),
-          body: Column(
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Row(
-                  children: <Widget>[
-                    if (user.photoUrl != null)
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(80.0),
-                        child: Image.network(
-                          user.photoUrl,
-                          height: 80,
-                          width: 80,
-                          fit: BoxFit.cover,
-                        ),
-                      )
-                    else
-                      FloatingActionButton(
-                          child: const Icon(Icons.image),
-                          onPressed: () async {
-                            final PickedFile file = await ImagePicker()
-                                .getImage(source: ImageSource.gallery);
-                            if (file != null) {
-                              StoreProvider.of<AppState>(context).dispatch(
-                                UpdateUser(file.path, user.uid),
+        return PlaylistsContainer(
+          builder: (BuildContext context, List<Playlist> playlists) {
+            return VideosContainer(
+              builder: (BuildContext context, List<Video> videos) {
+                return Scaffold(
+                  appBar: AppBar(
+                    title: Text(user.username),
+                    actions: <Widget>[
+                      IconButton(
+                        icon: const Icon(Icons.add_circle_outline),
+                        onPressed: () {
+                          _addContentModal(context);
+                        },
+                      ),
+                      PopupMenuButton<String>(
+                        onSelected: _handleDotsMenuClick,
+                        itemBuilder: (BuildContext context) {
+                          return <String>{'Logout', 'Settings'}.map(
+                            (String choice) {
+                              return PopupMenuItem<String>(
+                                value: choice,
+                                child: Text(choice),
                               );
-                            }
-                          }),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 16),
-                      child: Column(
+                            },
+                          ).toList();
+                        },
+                      ),
+                    ],
+                  ),
+                  body: Column(
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: <Widget>[
+                            if (user.photoUrl != null)
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(80.0),
+                                child: Image.network(
+                                  user.photoUrl,
+                                  height: 80,
+                                  width: 80,
+                                  fit: BoxFit.cover,
+                                ),
+                              )
+                            else
+                              FloatingActionButton(
+                                child: const Icon(Icons.image),
+                                onPressed: () async {
+                                  final PickedFile file = await ImagePicker()
+                                      .getImage(source: ImageSource.gallery);
+                                  if (file != null) {
+                                    StoreProvider.of<AppState>(context)
+                                        .dispatch(
+                                      UpdateUser(file.path, user.uid),
+                                    );
+                                  }
+                                },
+                              ),
+                            Expanded(
+                              child: Padding(
+                                padding: const EdgeInsets.only(left: 16),
+                                child: Column(
+                                  children: <Widget>[
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceAround,
+                                      children: <Widget>[
+                                        Column(
+                                          children: <Widget>[
+                                            Text(
+                                              user.following.length.toString(),
+                                              style: const TextStyle(
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.w600,
+                                              ),
+                                            ),
+                                            const Text(
+                                              'Following',
+                                              style: TextStyle(
+                                                fontSize: 16,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        Column(
+                                          children: <Widget>[
+                                            Text(
+                                              playlists.length.toString(),
+                                              style: const TextStyle(
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.w600,
+                                              ),
+                                            ),
+                                            const Text(
+                                              'Playlists',
+                                              style: TextStyle(
+                                                fontSize: 16,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        Column(
+                                          children: <Widget>[
+                                            Text(
+                                              videos.length.toString(),
+                                              style: const TextStyle(
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.w600,
+                                              ),
+                                            ),
+                                            const Text(
+                                              'Videos',
+                                              style: TextStyle(
+                                                fontSize: 16,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: <Widget>[
-                          Text(user.email),
+                          Column(
+                            children: <Widget>[
+                              MaterialButton(
+                                child: const Icon(Icons.playlist_play),
+                                onPressed: () {
+                                  setState(
+                                    () {
+                                      isPlaylistPage = true;
+                                    },
+                                  );
+                                },
+                              ),
+                              Container(
+                                height: isPlaylistPage ? 2 : 0,
+                                width: MediaQuery.of(context).size.width * .4,
+                                color: Colors.grey,
+                              ),
+                            ],
+                          ),
+                          Column(
+                            children: <Widget>[
+                              MaterialButton(
+                                child: const Icon(Icons.video_collection),
+                                onPressed: () {
+                                  setState(
+                                    () {
+                                      isPlaylistPage = false;
+                                    },
+                                  );
+                                },
+                              ),
+                              Container(
+                                height: isPlaylistPage ? 0 : 2,
+                                width: MediaQuery.of(context).size.width * .4,
+                                color: Colors.grey,
+                              ),
+                            ],
+                          ),
                         ],
                       ),
-                    )
-                  ],
-                ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: <Widget>[
-                  Column(
-                    children: <Widget>[
-                      MaterialButton(
-                        child: const Icon(Icons.playlist_play),
-                        onPressed: () {
-                          setState(
-                            () {
-                              isPlaylistPage = true;
-                            },
-                          );
-                        },
-                      ),
-                      Container(
-                        height: isPlaylistPage ? 2 : 0,
-                        width: MediaQuery.of(context).size.width * .4,
-                        color: Colors.grey,
-                      ),
+                      if (isPlaylistPage)
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 16, right: 16),
+                            child: ListView.builder(
+                              itemCount: playlists.length,
+                              scrollDirection: Axis.vertical,
+                              shrinkWrap: true,
+                              itemBuilder: (BuildContext context, int index) {
+                                final Playlist playlist = playlists[index];
+
+                                return Container(
+                                  alignment: Alignment.centerLeft,
+                                  child: GestureDetector(
+                                    child: Card(
+                                      child: Row(
+                                        children: <Widget>[
+                                          if (playlist.thumbnailUrl != null &&
+                                              playlist.thumbnailUrl.isNotEmpty)
+                                            Image.network(
+                                              playlist.thumbnailUrl,
+                                              height: 90,
+                                              width: 160,
+                                              fit: BoxFit.cover,
+                                            )
+                                          else
+                                            Container(
+                                              height: 90,
+                                              width: 160,
+                                              decoration: const BoxDecoration(
+                                                color: Colors.green,
+                                              ),
+                                            ),
+                                          Container(
+                                            padding: const EdgeInsets.only(
+                                                left: 8, top: 8, bottom: 8),
+                                            width: 192,
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: <Widget>[
+                                                Text(
+                                                  playlist.title,
+                                                  style: const TextStyle(
+                                                    fontWeight: FontWeight.w600,
+                                                    fontSize: 17,
+                                                  ),
+                                                ),
+                                                Text(
+                                                  'Videos: ${playlist.videoRefs.length}',
+                                                  style: const TextStyle(
+                                                    fontWeight: FontWeight.w500,
+                                                    fontSize: 16,
+                                                  ),
+                                                ),
+                                                Text(
+                                                  playlist.description,
+                                                  style: const TextStyle(
+                                                    fontSize: 16,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                    onTap: () {
+                                      Navigator.pushNamed(
+                                          context, AppRoutes.editPlaylistPage,
+                                          arguments: playlist);
+                                    },
+                                  ),
+                                );
+                              },
+                            ),
+                          ),
+                        )
+                      else
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 16, right: 16),
+                            child: ListView.builder(
+                              itemCount: videos.length,
+                              scrollDirection: Axis.vertical,
+                              shrinkWrap: true,
+                              physics: const AlwaysScrollableScrollPhysics(),
+                              itemBuilder: (BuildContext context, int index) {
+                                final Video video = videos[index];
+
+                                return Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    GestureDetector(
+                                      child: Card(
+                                        child: Row(
+                                          children: <Widget>[
+                                            if (video.thumbnailUrl != null &&
+                                                video.thumbnailUrl.isNotEmpty)
+                                              Image.network(
+                                                video.thumbnailUrl,
+                                                height: 90,
+                                                width: 160,
+                                                fit: BoxFit.cover,
+                                              )
+                                            else
+                                              Container(
+                                                height: 90,
+                                                width: 160,
+                                                decoration: const BoxDecoration(
+                                                  color: Colors.green,
+                                                ),
+                                              ),
+                                            Container(
+                                              padding: const EdgeInsets.only(
+                                                  left: 8, top: 8, bottom: 8),
+                                              width: 192,
+                                              child: Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: <Widget>[
+                                                  Text(
+                                                    video.title,
+                                                    style: const TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      fontSize: 17,
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    video.description,
+                                                    style: const TextStyle(
+                                                      fontSize: 16,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                      onTap: () {
+                                        Navigator.pushNamed(
+                                            context, AppRoutes.editVideoPage,
+                                            arguments: video);
+                                      },
+                                    )
+                                  ],
+                                );
+                              },
+                            ),
+                          ),
+                        ),
                     ],
                   ),
-                  Column(
-                    children: <Widget>[
-                      MaterialButton(
-                        child: const Icon(Icons.video_collection),
-                        onPressed: () {
-                          setState(
-                            () {
-                              isPlaylistPage = false;
-                            },
-                          );
-                        },
-                      ),
-                      Container(
-                        height: isPlaylistPage ? 0 : 2,
-                        width: MediaQuery.of(context).size.width * .4,
-                        color: Colors.grey,
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-              if (isPlaylistPage)
-                PlaylistsContainer(
-                  builder: (BuildContext context, List<Playlist> playlists) {
-                    return Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 8, right: 8),
-                        child: ListView.builder(
-                          itemCount: playlists.length,
-                          scrollDirection: Axis.vertical,
-                          shrinkWrap: true,
-                          itemBuilder: (BuildContext context, int index) {
-                            final Playlist playlist = playlists[index];
-
-                            return Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                MaterialButton(
-                                  child: Text(playlist.title),
-                                  onPressed: () {
-                                    Navigator.pushNamed(
-                                        context, AppRoutes.editPlaylistPage,
-                                        arguments: playlist);
-                                  },
-                                )
-                              ],
-                            );
-                          },
-                        ),
-                      ),
-                    );
-                  },
-                )
-              else
-                VideosContainer(
-                  builder: (BuildContext context, List<Video> videos) {
-                    return Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 8, right: 8),
-                        child: ListView.builder(
-                          itemCount: videos.length,
-                          scrollDirection: Axis.vertical,
-                          shrinkWrap: true,
-                          physics: const AlwaysScrollableScrollPhysics(),
-                          itemBuilder: (BuildContext context, int index) {
-                            final Video video = videos[index];
-
-                            return Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                MaterialButton(
-                                  child: Text(video.title),
-                                  onPressed: () {
-                                    Navigator.pushNamed(
-                                        context, AppRoutes.editVideoPage,
-                                        arguments: video);
-                                  },
-                                )
-                              ],
-                            );
-                          },
-                        ),
-                      ),
-                    );
-                  },
-                ),
-            ],
-          ),
+                );
+              },
+            );
+          },
         );
       },
     );
@@ -256,7 +415,13 @@ class _ProfilePageState extends State<ProfilePage> {
                   child: Column(
                     children: <Widget>[
                       Container(
-                        child: const Text('Add content'),
+                        child: const Text(
+                          'Add content',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
                       ),
                       Row(
                         children: <Widget>[
@@ -267,7 +432,12 @@ class _ProfilePageState extends State<ProfilePage> {
                             },
                           ),
                           MaterialButton(
-                            child: const Text('Video'),
+                            child: const Text(
+                              'Video',
+                              style: TextStyle(
+                                fontSize: 16,
+                              ),
+                            ),
                             onPressed: () {
                               _addVideo();
                             },
@@ -284,7 +454,12 @@ class _ProfilePageState extends State<ProfilePage> {
                             },
                           ),
                           MaterialButton(
-                            child: const Text('Playlist'),
+                            child: const Text(
+                              'Playlist',
+                              style: TextStyle(
+                                fontSize: 16,
+                              ),
+                            ),
                             onPressed: () {
                               Navigator.pushNamed(
                                   context, AppRoutes.createPlaylistPage);

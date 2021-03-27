@@ -31,8 +31,16 @@ class _ElearningPlatform extends State<ElearningPlatform>
           return StoreProvider<AppState>(
             store: store,
             child: MaterialApp(
-              title: 'Elearning Platform',
-              theme: ThemeData.dark(),
+              title: 'E-learning Platform',
+              theme: ThemeData(
+                  pageTransitionsTheme: const PageTransitionsTheme(
+                      builders: {
+                        TargetPlatform.android: CupertinoPageTransitionsBuilder(),
+                        TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+                      }
+                  ),
+                brightness: Brightness.dark,
+              ),
               routes: AppRoutes.routes,
             ),
           );

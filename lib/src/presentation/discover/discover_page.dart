@@ -11,7 +11,6 @@ class DiscoverPage extends StatefulWidget {
 }
 
 class _DiscoverPageState extends State<DiscoverPage> {
-  bool isSearchActive = true;
 
   @override
   void initState() {
@@ -34,14 +33,18 @@ class _DiscoverPageState extends State<DiscoverPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: MaterialButton(
+        title: GestureDetector(
           child: const TextField(
             decoration: InputDecoration(
-              hintText: 'search',
+              hintText: 'Search',
+              hintStyle: TextStyle(fontSize: 20),
+              prefixIcon: Icon(
+                Icons.search,
+              ),
             ),
             enabled: false,
           ),
-          onPressed: () {
+          onTap: () {
              Navigator.pushNamed(context, AppRoutes.searchPage);
           },
         ),

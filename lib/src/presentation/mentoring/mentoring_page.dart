@@ -18,8 +18,9 @@ class _MentoringPageState extends State<MentoringPage> {
   void initState() {
     super.initState();
 
-    StoreProvider.of<AppState>(context, listen: false)
-        .dispatch(const GetAllMentorships(),);
+    StoreProvider.of<AppState>(context, listen: false).dispatch(
+      const GetAllMentorships(),
+    );
   }
 
   @override
@@ -28,88 +29,110 @@ class _MentoringPageState extends State<MentoringPage> {
       appBar: AppBar(
         title: const Text('Find your mentor'),
       ),
-      body: Column(
-        children: <Widget>[
-          Expanded(
-            child: UsersContainer(
-              builder: (BuildContext context, Map<String, AppUser> users) {
-                return MentorshipsContainer(
-                  builder:
-                      (BuildContext context, List<Mentorship> mentorships) {
-                    return ListView.builder(
-                      itemCount: mentorships.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        final Mentorship mentorship = mentorships[index];
-                        final AppUser user = users[mentorship.mentorId];
+      body: UsersContainer(
+        builder: (BuildContext context, Map<String, AppUser> users) {
+          return MentorshipsContainer(
+            builder: (BuildContext context, List<Mentorship> mentorships) {
+              return Stack(
+                children: <Widget>[
+                  ListView.builder(
+                    itemCount: mentorships.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      final Mentorship mentorship = mentorships[index];
+                      final AppUser user = users[mentorship.mentorId];
 
-                        return Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            MaterialButton(
-                              child: ListTile(
+                      return Container(
+                        width: 150,
+                        child: Card(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              ListTile(
                                 leading: user.photoUrl != null
                                     ? CircleAvatar(
-                                  backgroundImage: NetworkImage(user.photoUrl),
-                                )
+                                        backgroundImage:
+                                            NetworkImage(user.photoUrl),
+                                      )
                                     : CircleAvatar(
-                                  backgroundColor: Colors.grey.shade900,
-                                  child: Text(
-                                    user.username[0].toUpperCase(),
+                                        backgroundColor: Colors.grey.shade900,
+                                        child: Text(
+                                          user.username[0].toUpperCase(),
+                                        ),
+                                      ),
+                                title: Text(
+                                  user.username,
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 18,
                                   ),
                                 ),
-                                title: Text(user.username),
+                                onTap: () {
+                                  Navigator.pushNamed(
+                                      context, AppRoutes.othersProfilePage,
+                                      arguments: user);
+                                },
                               ),
-                              onPressed: () {
-                                Navigator.pushNamed(
-                                    context, AppRoutes.othersProfilePage,
-                                    arguments: user);
-                              },
-                            ),
-                            MaterialButton(
-                              child: Card(
-                                child: Row(
-                                  children: <Widget>[
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: <Widget>[
-                                        Text(mentorship.description),
-                                        Text(
-                                            'Contact: ${mentorship.mentorEmail}'),
-                                        Text('Price: ${mentorship.price}'),
-                                      ],
-                                    ),
-                                  ],
+                              GestureDetector(
+                                child: Container(
+                                  padding: const EdgeInsets.only(
+                                      left: 16, right: 16, bottom: 8),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: <Widget>[
+                                      Text(
+                                        mentorship.description,
+                                        style: const TextStyle(
+                                          fontSize: 16,
+                                        ),
+                                      ),
+                                      Text(
+                                        'Contact: ${mentorship.mentorEmail}',
+                                        style: const TextStyle(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 16,
+                                        ),
+                                      ),
+                                      Text(
+                                        'Price: ${mentorship.price} €',
+                                        style: const TextStyle(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 16,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
+                                onTap: () {
+                                  Navigator.pushNamed(
+                                      context, AppRoutes.editMentorshipPage,
+                                      arguments: mentorship);
+                                },
                               ),
-                              onPressed: () {
-                                Navigator.pushNamed(
-                                    context, AppRoutes.editMentorshipPage,
-                                    arguments: mentorship);
-                              },
-                            )
-                          ],
-                        );
-                      },
-                    );
-                  },
-                );
-              },
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(right: 16, bottom: 16),
-            child: Align(
-              alignment: Alignment.centerRight,
-              child: FloatingActionButton(
-                child: const Icon(Icons.add),
-                onPressed: () {
-                  Navigator.pushNamed(context, AppRoutes.addMentorshipPage);
-                },
-              ),
-            ),
-          ),
-        ],
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 16, bottom: 16),
+                    child: Align(
+                      alignment: Alignment.bottomRight,
+                      child: FloatingActionButton(
+                        child: const Icon(Icons.add),
+                        onPressed: () {
+                          Navigator.pushNamed(
+                              context, AppRoutes.addMentorshipPage);
+                        },
+                      ),
+                    ),
+                  ),
+                ],
+              );
+            },
+          );
+        },
       ),
     );
   }

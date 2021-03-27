@@ -33,6 +33,10 @@ class _SearchPageState extends State<SearchPage> {
         title: TextField(
           decoration: const InputDecoration(
             hintText: 'search',
+            hintStyle: TextStyle(fontSize: 18),
+            prefixIcon: Icon(
+              Icons.search,
+            ),
           ),
           onChanged: (String value) {
             isSearchUsers
@@ -58,7 +62,13 @@ class _SearchPageState extends State<SearchPage> {
                 ModalRoute.withName(AppRoutes.home),
               );
             },
-            child: const Text('Cancel'),
+            child: const Text(
+              'Cancel',
+              style: TextStyle(
+                fontWeight: FontWeight.w500,
+                fontSize: 18,
+              ),
+            ),
           ),
         ],
       ),
@@ -70,10 +80,15 @@ class _SearchPageState extends State<SearchPage> {
               Column(
                 children: <Widget>[
                   MaterialButton(
-                    child: const Text('People'),
+                    child: const Text(
+                      'People',
+                      style: TextStyle(
+                        fontSize: 16,
+                      ),
+                    ),
                     onPressed: () {
                       setState(
-                            () {
+                        () {
                           isSearchUsers = true;
                           isSearchPlaylists = false;
                           isSearchVideos = false;
@@ -91,10 +106,15 @@ class _SearchPageState extends State<SearchPage> {
               Column(
                 children: <Widget>[
                   MaterialButton(
-                    child: const Text('Playlists'),
+                    child: const Text(
+                      'Playlists',
+                      style: TextStyle(
+                        fontSize: 16,
+                      ),
+                    ),
                     onPressed: () {
                       setState(
-                            () {
+                        () {
                           isSearchPlaylists = true;
                           isSearchUsers = false;
                           isSearchVideos = false;
@@ -112,10 +132,15 @@ class _SearchPageState extends State<SearchPage> {
               Column(
                 children: <Widget>[
                   MaterialButton(
-                    child: const Text('Videos'),
+                    child: const Text(
+                      'Videos',
+                      style: TextStyle(
+                        fontSize: 16,
+                      ),
+                    ),
                     onPressed: () {
                       setState(
-                            () {
+                        () {
                           isSearchVideos = true;
                           isSearchUsers = false;
                           isSearchPlaylists = false;

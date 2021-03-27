@@ -6,7 +6,6 @@ import 'package:elearning_platform_mobile/src/containers/index.dart';
 import 'package:elearning_platform_mobile/src/models/index.dart';
 import 'package:elearning_platform_mobile/src/presentation/routes.dart';
 
-
 class EditVideoPage extends StatefulWidget {
   const EditVideoPage({this.currentVideo, Key key}) : super(key: key);
 
@@ -17,7 +16,6 @@ class EditVideoPage extends StatefulWidget {
 }
 
 class _EditVideoPageState extends State<EditVideoPage> {
-
   @override
   Widget build(BuildContext context) {
     return VideoInfoContainer(
@@ -31,14 +29,18 @@ class _EditVideoPageState extends State<EditVideoPage> {
             child: Column(
               children: <Widget>[
                 TextFormField(
+                  style: const TextStyle(fontSize: 16),
                   decoration: const InputDecoration(
-                    hintText: 'title',
+                    hintText: 'Write a title...',
+                    border: OutlineInputBorder(),
+                    labelText: 'Title',
                   ),
                   initialValue: widget.currentVideo.title,
                   keyboardType: TextInputType.name,
                   onChanged: (String value) {
-                    StoreProvider.of<AppState>(context)
-                        .dispatch(UpdateVideoInfo(title: value),);
+                    StoreProvider.of<AppState>(context).dispatch(
+                      UpdateVideoInfo(title: value),
+                    );
                   },
                   validator: (String value) {
                     if (value.length < 3) {
@@ -47,39 +49,72 @@ class _EditVideoPageState extends State<EditVideoPage> {
                     return null;
                   },
                 ),
-                TextFormField(
-                  decoration: const InputDecoration(
-                    hintText: 'description',
+                Padding(
+                  padding: const EdgeInsets.only(top: 16),
+                  child: TextFormField(
+                    style: const TextStyle(fontSize: 16),
+                    decoration: const InputDecoration(
+                      hintText: 'Write a description...',
+                      border: OutlineInputBorder(),
+                      labelText: 'Description',
+                    ),
+                    initialValue: widget.currentVideo.description,
+                    keyboardType: TextInputType.name,
+                    onChanged: (String value) {
+                      StoreProvider.of<AppState>(context).dispatch(
+                        UpdateVideoInfo(description: value),
+                      );
+                    },
+                    validator: (String value) {
+                      if (value.length < 3) {
+                        return 'Please choose a bigger description';
+                      }
+                      return null;
+                    },
                   ),
-                  initialValue: widget.currentVideo.description,
-                  keyboardType: TextInputType.name,
-                  onChanged: (String value) {
-                    StoreProvider.of<AppState>(context)
-                        .dispatch(UpdateVideoInfo(description: value),);
-                  },
-                  validator: (String value) {
-                    if (value.length < 3) {
-                      return 'Please choose a bigger description';
-                    }
-                    return null;
-                  },
                 ),
+                const Spacer(),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: <Widget>[
                     MaterialButton(
-                      child: const Text('Update'),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      child: const Text(
+                        'Update',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                          fontSize: 18,
+                        ),
+                      ),
+                      color: Colors.teal,
                       onPressed: () {
-                        StoreProvider.of<AppState>(context)
-                            .dispatch(UpdateVideo(widget.currentVideo.id),);
+                        StoreProvider.of<AppState>(context).dispatch(
+                          UpdateVideo(widget.currentVideo.id),
+                        );
                         Navigator.popUntil(
-                            context, ModalRoute.withName(AppRoutes.home),);
+                          context,
+                          ModalRoute.withName(AppRoutes.home),
+                        );
                       },
                     ),
                     MaterialButton(
-                      child: const Text('Delete'),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      child: const Text(
+                        'Delete',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                          fontSize: 18,
+                        ),
+                      ),
+                      color: Colors.red,
                       onPressed: () {
-                        StoreProvider.of<AppState>(context)
-                            .dispatch(DeleteVideo(widget.currentVideo.id),);
+                        StoreProvider.of<AppState>(context).dispatch(
+                          DeleteVideo(widget.currentVideo.id),
+                        );
                         Navigator.popUntil(
                           context,
                           ModalRoute.withName(AppRoutes.home),

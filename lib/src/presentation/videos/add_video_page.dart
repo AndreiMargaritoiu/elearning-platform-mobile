@@ -21,13 +21,22 @@ class AddVideoPage extends StatelessWidget {
             title: const Text('New video'),
             actions: <Widget>[
               FlatButton(
-                child: const Text('Share'),
+                child: const Text(
+                  'Share',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 18,
+                  ),
+                ),
                 onPressed: () {
                   if (info.title != null && info.title.isNotEmpty) {
-                    StoreProvider.of<AppState>(context)
-                        .dispatch(const AddVideo(),);
+                    StoreProvider.of<AppState>(context).dispatch(
+                      const AddVideo(),
+                    );
                     Navigator.popUntil(
-                        context, ModalRoute.withName(AppRoutes.home),);
+                      context,
+                      ModalRoute.withName(AppRoutes.home),
+                    );
                   } else {
                     // show error
                   }
@@ -40,48 +49,71 @@ class AddVideoPage extends StatelessWidget {
             child: Column(
               children: <Widget>[
                 TextField(
-                  decoration:
-                      const InputDecoration(hintText: 'Write a title...'),
+                  style: const TextStyle(fontSize: 16),
+                  decoration: const InputDecoration(
+                    hintText: 'Write a title...',
+                    border: OutlineInputBorder(),
+                    labelText: 'Title',
+                  ),
                   onChanged: (String value) {
-                    StoreProvider.of<AppState>(context)
-                        .dispatch(UpdateVideoInfo(title: value),);
+                    StoreProvider.of<AppState>(context).dispatch(
+                      UpdateVideoInfo(title: value),
+                    );
                   },
                 ),
-                TextField(
-                  decoration:
-                      const InputDecoration(hintText: 'Write a description...'),
-                  onChanged: (String value) {
-                    StoreProvider.of<AppState>(context)
-                        .dispatch(UpdateVideoInfo(description: value),);
-                  },
+                Padding(
+                  padding: const EdgeInsets.only(top: 16),
+                  child: TextField(
+                    style: const TextStyle(fontSize: 16),
+                    decoration: const InputDecoration(
+                      hintText: 'Write a description...',
+                      border: OutlineInputBorder(),
+                      labelText: 'Description',
+                    ),
+                    onChanged: (String value) {
+                      StoreProvider.of<AppState>(context).dispatch(
+                        UpdateVideoInfo(description: value),
+                      );
+                    },
+                  ),
                 ),
                 if (info.thumbnailPath != null)
                   Expanded(
-                    child: GridTile(
-                      child: Image.file(File(info.thumbnailPath),),
-                      header: GridTileBar(
-                        trailing: IconButton(
-                          icon: const Icon(Icons.delete),
-                          onPressed: () {
-                            StoreProvider.of<AppState>(context).dispatch(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 16),
+                      child: GridTile(
+                        child: Image.file(
+                          File(info.thumbnailPath),
+                        ),
+                        header: GridTileBar(
+                          trailing: IconButton(
+                            icon: const Icon(Icons.delete),
+                            onPressed: () {
+                              StoreProvider.of<AppState>(context).dispatch(
                                 UpdateVideoInfo(
-                                    removeThumbnail: info.thumbnailPath),);
-                          },
+                                    removeThumbnail: info.thumbnailPath),
+                              );
+                            },
+                          ),
                         ),
                       ),
                     ),
                   )
                 else
-                  IconButton(
-                    icon: const Icon(Icons.add),
-                    onPressed: () async {
-                      final PickedFile file = await ImagePicker()
-                          .getImage(source: ImageSource.gallery);
-                      if (file != null) {
-                        StoreProvider.of<AppState>(context)
-                            .dispatch(UpdateVideoInfo(addThumbnail: file.path),);
-                      }
-                    },
+                  Padding(
+                    padding: const EdgeInsets.only(top: 16),
+                    child: IconButton(
+                      icon: const Icon(Icons.add),
+                      onPressed: () async {
+                        final PickedFile file = await ImagePicker()
+                            .getImage(source: ImageSource.gallery);
+                        if (file != null) {
+                          StoreProvider.of<AppState>(context).dispatch(
+                            UpdateVideoInfo(addThumbnail: file.path),
+                          );
+                        }
+                      },
+                    ),
                   ),
               ],
             ),

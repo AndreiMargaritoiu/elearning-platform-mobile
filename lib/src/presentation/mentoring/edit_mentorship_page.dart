@@ -19,7 +19,6 @@ class EditMentorshipPage extends StatefulWidget {
 }
 
 class _EditMentorshipPageState extends State<EditMentorshipPage> {
-
   @override
   Widget build(BuildContext context) {
     return MentorshipInfoContainer(
@@ -33,14 +32,18 @@ class _EditMentorshipPageState extends State<EditMentorshipPage> {
             child: Column(
               children: <Widget>[
                 TextFormField(
+                  style: const TextStyle(fontSize: 16),
                   decoration: const InputDecoration(
-                    hintText: 'description',
+                    hintText: 'Write a description...',
+                    border: OutlineInputBorder(),
+                    labelText: 'Description',
                   ),
                   initialValue: widget.currentMentorship.description,
                   keyboardType: TextInputType.name,
                   onChanged: (String value) {
-                    StoreProvider.of<AppState>(context)
-                        .dispatch(UpdateMentorshipInfo(description: value),);
+                    StoreProvider.of<AppState>(context).dispatch(
+                      UpdateMentorshipInfo(description: value),
+                    );
                   },
                   validator: (String value) {
                     if (value.length < 3) {
@@ -49,35 +52,74 @@ class _EditMentorshipPageState extends State<EditMentorshipPage> {
                     return null;
                   },
                 ),
-                TextFormField(
-                  decoration: const InputDecoration(
-                    hintText: 'description',
+                Padding(
+                  padding: const EdgeInsets.only(top: 16),
+                  child: TextFormField(
+                    style: const TextStyle(fontSize: 16),
+                    decoration: const InputDecoration(
+                      hintText: 'Write a price...',
+                      border: OutlineInputBorder(),
+                      labelText: 'Price',
+                      suffixText: '€',
+                      suffixStyle: TextStyle(fontSize: 20),
+                    ),
+                    initialValue: widget.currentMentorship.price.toString(),
+                    keyboardType: TextInputType.number,
+                    onChanged: (String value) {
+                      StoreProvider.of<AppState>(context).dispatch(
+                        UpdateMentorshipInfo(
+                          price: int.parse(value),
+                        ),
+                      );
+                    },
                   ),
-                  initialValue: widget.currentMentorship.price.toString(),
-                  keyboardType: TextInputType.number,
-                  onChanged: (String value) {
-                    StoreProvider.of<AppState>(context).dispatch(
-                        UpdateMentorshipInfo(price: int.parse(value),));
-                  },
                 ),
+                const Spacer(),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: <Widget>[
                     MaterialButton(
-                      child: const Text('Update'),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      child: const Text(
+                        'Update',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                          fontSize: 18,
+                        ),
+                      ),
+                      color: Colors.teal,
                       onPressed: () {
                         StoreProvider.of<AppState>(context).dispatch(
-                            UpdateMentorship(widget.currentMentorship.id),);
+                          UpdateMentorship(widget.currentMentorship.id),
+                        );
                         Navigator.popUntil(
-                            context, ModalRoute.withName(AppRoutes.home),);
+                          context,
+                          ModalRoute.withName(AppRoutes.home),
+                        );
                       },
                     ),
                     MaterialButton(
-                      child: const Text('Delete'),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      child: const Text(
+                        'Delete',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                          fontSize: 18,
+                        ),
+                      ),
+                      color: Colors.red,
                       onPressed: () {
                         StoreProvider.of<AppState>(context).dispatch(
-                            DeleteMentorship(widget.currentMentorship.id),);
+                          DeleteMentorship(widget.currentMentorship.id),
+                        );
                         Navigator.popUntil(
-                            context, ModalRoute.withName(AppRoutes.home),);
+                          context,
+                          ModalRoute.withName(AppRoutes.home),
+                        );
                       },
                     ),
                   ],

@@ -42,8 +42,11 @@ class _EditPlaylistPageState extends State<EditPlaylistPage> {
             child: Column(
               children: <Widget>[
                 TextFormField(
+                  style: const TextStyle(fontSize: 16),
                   decoration: const InputDecoration(
-                    hintText: 'title',
+                    hintText: 'Write a title...',
+                    border: OutlineInputBorder(),
+                    labelText: 'Title',
                   ),
                   initialValue: widget.currentPlaylist.title,
                   keyboardType: TextInputType.name,
@@ -59,34 +62,59 @@ class _EditPlaylistPageState extends State<EditPlaylistPage> {
                     return null;
                   },
                 ),
-                TextFormField(
-                  decoration: const InputDecoration(
-                    hintText: 'description',
+                Padding(
+                  padding: const EdgeInsets.only(top: 16),
+                  child: TextFormField(
+                    style: const TextStyle(fontSize: 16),
+                    decoration: const InputDecoration(
+                      hintText: 'Write a description...',
+                      border: OutlineInputBorder(),
+                      labelText: 'Description',
+                    ),
+                    initialValue: widget.currentPlaylist.description,
+                    keyboardType: TextInputType.name,
+                    onChanged: (String value) {
+                      StoreProvider.of<AppState>(context).dispatch(
+                        UpdatePlaylistInfo(description: value),
+                      );
+                    },
+                    validator: (String value) {
+                      if (value.length < 3) {
+                        return 'Please choose a bigger description';
+                      }
+                      return null;
+                    },
                   ),
-                  initialValue: widget.currentPlaylist.description,
-                  keyboardType: TextInputType.name,
-                  onChanged: (String value) {
-                    StoreProvider.of<AppState>(context).dispatch(
-                      UpdatePlaylistInfo(description: value),
-                    );
-                  },
-                  validator: (String value) {
-                    if (value.length < 3) {
-                      return 'Please choose a bigger description';
-                    }
-                    return null;
-                  },
                 ),
-                MaterialButton(
-                  child: const Text('Select videos'),
+                FlatButton.icon(
+                  icon: const Icon(Icons.select_all_sharp),
+                  label: const Text(
+                    'Select videos',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 16,
+                    ),
+                  ),
                   onPressed: () {
                     _selectVideosModal(context);
                   },
                 ),
+                const Spacer(),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: <Widget>[
                     MaterialButton(
-                      child: const Text('Update'),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      child: const Text(
+                        'Update',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                          fontSize: 18,
+                        ),
+                      ),
+                      color: Colors.teal,
                       onPressed: () {
                         StoreProvider.of<AppState>(context).dispatch(
                           UpdatePlaylist(widget.currentPlaylist.id,
@@ -99,7 +127,17 @@ class _EditPlaylistPageState extends State<EditPlaylistPage> {
                       },
                     ),
                     MaterialButton(
-                      child: const Text('Delete'),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      child: const Text(
+                        'Delete',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                          fontSize: 18,
+                        ),
+                      ),
+                      color: Colors.red,
                       onPressed: () {
                         StoreProvider.of<AppState>(context).dispatch(
                           DeletePlaylist(widget.currentPlaylist.id),
@@ -145,8 +183,8 @@ class _EditPlaylistPageState extends State<EditPlaylistPage> {
               StatefulBuilder(
                 builder: (BuildContext context, StateSetter alertState) {
                   return Container(
-                    width: 350.0,
-                    height: 150.0,
+                    width: MediaQuery.of(context).size.width * 0.6,
+                    height: MediaQuery.of(context).size.height * 0.6,
                     child: VideosContainer(
                       builder: (BuildContext context, List<Video> videos) {
                         return ListView.builder(
@@ -154,7 +192,12 @@ class _EditPlaylistPageState extends State<EditPlaylistPage> {
                           itemBuilder: (BuildContext context, int index) {
                             final Video video = videos[index];
                             return CheckboxListTile(
-                              title: Text(video.title),
+                              title: Text(
+                                video.title,
+                                style: const TextStyle(
+                                  fontSize: 16,
+                                ),
+                              ),
                               value: selectedVideos.contains(video.id),
                               onChanged: (bool value) {
                                 if (selectedVideos.contains(video.id)) {

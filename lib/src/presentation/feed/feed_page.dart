@@ -15,12 +15,6 @@ class FeedPage extends StatefulWidget {
 }
 
 class _FeedPageState extends State<FeedPage> {
-  bool isSearchActive = false;
-
-  @override
-  void initState() {
-    super.initState();
-  }
 
   void _addVideo() async {
     final FilePickerResult file = await FilePicker.platform.pickFiles();
@@ -37,7 +31,8 @@ class _FeedPageState extends State<FeedPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const FlutterLogo(),
+        title: const Text('E-learning Platform'),
+        leading: const FlutterLogo(),
         centerTitle: false,
         actions: <Widget>[
           IconButton(

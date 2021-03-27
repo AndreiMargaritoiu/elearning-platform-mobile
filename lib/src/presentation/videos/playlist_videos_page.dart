@@ -16,12 +16,14 @@ class PlaylistVideosPage extends StatefulWidget {
 }
 
 class _PlaylistVideosPageState extends State<PlaylistVideosPage> {
+
   @override
   void initState() {
     super.initState();
 
-    StoreProvider.of<AppState>(context, listen: false)
-        .dispatch(GetVideosByPlaylistId(widget.playlist.id),);
+    StoreProvider.of<AppState>(context, listen: false).dispatch(
+      GetVideosByPlaylistId(widget.playlist.id),
+    );
   }
 
   @override
@@ -37,49 +39,57 @@ class _PlaylistVideosPageState extends State<PlaylistVideosPage> {
             itemBuilder: (BuildContext context, int index) {
               final Video video = videos[index];
 
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  MaterialButton(
-                    child: Card(
-                      child: Row(
-                        children: <Widget>[
-                          if (video.thumbnailUrl != null &&
-                              video.thumbnailUrl.isNotEmpty)
-                            Image.network(
-                              video.thumbnailUrl,
-                              height: 120,
-                              width: 80,
-                              fit: BoxFit.cover,
-                            )
-                          else
-                            Container(
-                              height: 120,
-                              width: 80,
-                              decoration: const BoxDecoration(
-                                color: Colors.green,
-                              ),
-                            ),
-                          Padding(
-                            padding: const EdgeInsets.only(
-                                left: 8, top: 8, bottom: 8),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                Text(video.title),
-                                Text(video.description),
-                              ],
-                            ),
+              return Card(
+                child: MaterialButton(
+                  child: Card(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        if (video.thumbnailUrl != null &&
+                            video.thumbnailUrl.isNotEmpty)
+                          Image.network(
+                            video.thumbnailUrl,
+                            height: MediaQuery.of(context).size.width * 0.877 / 16 * 9,
+                            width: MediaQuery.of(context).size.width * 0.877,
+                            fit: BoxFit.cover,
                           )
-                        ],
-                      ),
+                        else
+                          Container(
+                            height: MediaQuery.of(context).size.width * 0.877 / 16 * 9,
+                            width: MediaQuery.of(context).size.width * 0.877,
+                            decoration: const BoxDecoration(
+                              color: Colors.green,
+                            ),
+                          ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 8),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Text(
+                                video.title,
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 18,
+                                ),
+                              ),
+                              Text(
+                                video.description,
+                                style: const TextStyle(
+                                  fontSize: 16,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
                     ),
-                    onPressed: () {
-                      Navigator.pushNamed(context, AppRoutes.videoPlayer,
-                          arguments: video);
-                    },
-                  )
-                ],
+                  ),
+                  onPressed: () {
+                    Navigator.pushNamed(context, AppRoutes.videoPlayer,
+                        arguments: video);
+                  },
+                ),
               );
             },
           );

@@ -14,7 +14,6 @@ class AddMentorshipPage extends StatefulWidget {
 }
 
 class _AddMentorshipPageState extends State<AddMentorshipPage> {
-
   @override
   Widget build(BuildContext context) {
     return MentorshipInfoContainer(
@@ -23,8 +22,8 @@ class _AddMentorshipPageState extends State<AddMentorshipPage> {
           appBar: AppBar(
             title: const Text('Add mentorship'),
             actions: <Widget>[
-              FlatButton(
-                child: const Text('Add'),
+              IconButton(
+                icon: const Icon(Icons.check_circle_outline),
                 onPressed: () {
                   if (info.description != null) {
                     StoreProvider.of<AppState>(context).dispatch(
@@ -46,25 +45,43 @@ class _AddMentorshipPageState extends State<AddMentorshipPage> {
             child: Column(
               children: <Widget>[
                 TextField(
-                  decoration:
-                      const InputDecoration(hintText: 'Write a description...'),
+                  style: const TextStyle(fontSize: 16),
+                  decoration: const InputDecoration(
+                    hintText: 'Write a description...',
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.teal),
+                    ),
+                    labelText: 'Description',
+                  ),
                   onChanged: (String value) {
                     StoreProvider.of<AppState>(context).dispatch(
                       UpdateMentorshipInfo(description: value),
                     );
                   },
                 ),
-                TextField(
-                  decoration:
-                      const InputDecoration(hintText: 'Write a price...'),
-                  keyboardType: TextInputType.number,
-                  onChanged: (String value) {
-                    StoreProvider.of<AppState>(context)
-                        .dispatch(UpdateMentorshipInfo(
-                      price: int.parse(value),
-                    ));
-                  },
-                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 16),
+                  child: TextField(
+                    style: const TextStyle(fontSize: 16),
+                    decoration: const InputDecoration(
+                      hintText: 'Write a price...',
+                      border: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.teal),
+                      ),
+                      labelText: 'Price',
+                      suffixText: '€',
+                      suffixStyle: TextStyle(fontSize: 20),
+                    ),
+                    keyboardType: TextInputType.number,
+                    onChanged: (String value) {
+                      StoreProvider.of<AppState>(context).dispatch(
+                        UpdateMentorshipInfo(
+                          price: int.parse(value),
+                        ),
+                      );
+                    },
+                  ),
+                )
               ],
             ),
           ),
