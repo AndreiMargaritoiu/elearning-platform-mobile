@@ -7,7 +7,9 @@ import 'package:elearning_platform_mobile/src/presentation/mixin/init_mixin.dart
 import 'package:elearning_platform_mobile/src/presentation/routes.dart';
 
 void main() {
-  runApp(const ElearningPlatform(),);
+  runApp(
+    const ElearningPlatform(),
+  );
 }
 
 class ElearningPlatform extends StatefulWidget {
@@ -19,7 +21,6 @@ class ElearningPlatform extends StatefulWidget {
 
 class _ElearningPlatform extends State<ElearningPlatform>
     with InitMixin<ElearningPlatform> {
-
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<Store<AppState>>(
@@ -33,12 +34,10 @@ class _ElearningPlatform extends State<ElearningPlatform>
             child: MaterialApp(
               title: 'E-learning Platform',
               theme: ThemeData(
-                  pageTransitionsTheme: const PageTransitionsTheme(
-                      builders: {
-                        TargetPlatform.android: CupertinoPageTransitionsBuilder(),
-                        TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
-                      }
-                  ),
+                pageTransitionsTheme: const PageTransitionsTheme(builders: {
+                  TargetPlatform.android: CupertinoPageTransitionsBuilder(),
+                  TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+                }),
                 brightness: Brightness.dark,
               ),
               routes: AppRoutes.routes,
