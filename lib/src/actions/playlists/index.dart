@@ -16,3 +16,4 @@ part 'update_playlist.dart';
 part 'delete_playlist.dart';
 part 'set.dart';
 part 'search_playlists.dart';
+part 'get_category_playlist.dart';

@@ -1,4 +1,5 @@
 import 'package:elearning_platform_mobile/src/presentation/discover/search_page.dart';
+import 'package:elearning_platform_mobile/src/presentation/playlists/playlists_feed_page.dart';
 import 'package:elearning_platform_mobile/src/presentation/profile/others_profile_page.dart';
 import 'package:elearning_platform_mobile/src/presentation/trending/trending_page.dart';
 import 'package:flutter/cupertino.dart';
@@ -45,6 +46,7 @@ class AppRoutes {
   static const String playlistVideosPage = '/playlistVideosPage';
   static const String othersProfilePage = '/othersProfilePage';
   static const String trendingPage = '/trendingPage';
+  static const String playlistsFeed = '/playlistsFeed';
 
   static Map<String, WidgetBuilder> routes = <String, WidgetBuilder>{
     home: (BuildContext context) {
@@ -116,6 +118,10 @@ class AppRoutes {
     trendingPage: (BuildContext context) {
       return TrendingPage(
           trendingVideos: ModalRoute.of(context).settings.arguments);
+    },
+    playlistsFeed: (BuildContext context) {
+      return PlaylistsFeedPage(
+          category: ModalRoute.of(context).settings.arguments);
     },
   };
 }

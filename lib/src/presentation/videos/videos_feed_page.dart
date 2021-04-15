@@ -36,84 +36,85 @@ class _VideosFeedPageState extends State<VideosFeedPage> {
                 final AppUser user = users[video.uid];
 
                 return Column(
-                    children: <Widget>[
-                      ListTile(
-                        leading: user.photoUrl != null
-                            ? CircleAvatar(
-                                backgroundImage: NetworkImage(user.photoUrl),
-                              )
-                            : CircleAvatar(
-                                backgroundColor: Colors.grey.shade900,
-                                child: Text(
-                                  user.username[0].toUpperCase(),
-                                ),
+                  children: <Widget>[
+                    ListTile(
+                      leading: user.photoUrl != null
+                          ? CircleAvatar(
+                              backgroundImage: NetworkImage(user.photoUrl),
+                            )
+                          : CircleAvatar(
+                              backgroundColor: Colors.grey.shade900,
+                              child: Text(
+                                user.username[0].toUpperCase(),
                               ),
-                        title: Text(
-                          user.username,
-                          style: const TextStyle(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 18,
-                          ),
+                            ),
+                      title: Text(
+                        user.username,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.w500,
+                          fontSize: 18,
                         ),
-                        onTap: () {
-                          Navigator.pushNamed(
-                              context, AppRoutes.othersProfilePage,
-                              arguments: user);
-                        },
                       ),
-                      GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(
+                            context, AppRoutes.othersProfilePage,
+                            arguments: user);
+                      },
+                    ),
+                    GestureDetector(
+                      child: Card(
                         child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              if (video.thumbnailUrl != null &&
-                                  video.thumbnailUrl.isNotEmpty)
-                                Image.network(
-                                  video.thumbnailUrl,
-                                  height: MediaQuery.of(context).size.width * 0.877 / 16 * 9,
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.877,
-                                  fit: BoxFit.cover,
-                                )
-                              else
-                                Container(
-                                  height: MediaQuery.of(context).size.width * 0.877 / 16 * 9,
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.877,
-                                  decoration: const BoxDecoration(
-                                    color: Colors.green,
-                                  ),
-                                ),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.only(top: 8, bottom: 8),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    Text(
-                                      video.title,
-                                      style: const TextStyle(
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 18,
-                                      ),
-                                    ),
-                                    Text(
-                                      video.description,
-                                      style: const TextStyle(
-                                        fontSize: 16,
-                                      ),
-                                    ),
-                                  ],
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            if (video.thumbnailUrl != null &&
+                                video.thumbnailUrl.isNotEmpty)
+                              Image.network(
+                                video.thumbnailUrl,
+                                height:
+                                    MediaQuery.of(context).size.width / 16 * 9,
+                                width: MediaQuery.of(context).size.width,
+                                fit: BoxFit.cover,
+                              )
+                            else
+                              Container(
+                                height:
+                                    MediaQuery.of(context).size.width / 16 * 9,
+                                width: MediaQuery.of(context).size.width,
+                                decoration: const BoxDecoration(
+                                  color: Colors.green,
                                 ),
                               ),
-                            ],
-                          ),
-                        onTap: () {
-                          Navigator.pushNamed(context, AppRoutes.videoPlayer,
-                              arguments: video);
-                        },
-                      )
-                    ],
-
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  top: 8, bottom: 8, left: 16, right: 16),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Text(
+                                    video.title,
+                                    style: const TextStyle(
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 18,
+                                    ),
+                                  ),
+                                  Text(
+                                    video.description,
+                                    style: const TextStyle(
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      onTap: () {
+                        Navigator.pushNamed(context, AppRoutes.videoPlayer,
+                            arguments: video);
+                      },
+                    )
+                  ],
                 );
               },
             );

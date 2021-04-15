@@ -64,14 +64,22 @@ class PlaylistsApi {
     return url;
   }
 
-  Future<List<Playlist>> getAllPlaylists() async {
-    final Response response = await _clientWrapper.get('playlists');
+  Future<List<Playlist>> getAllPlaylists({String field}) async {
+    final dynamic queryParams = (field != null && field.isNotEmpty)
+        ? {
+            '$field': field,
+          }
+        : null;
+    final Response response = (queryParams != null)
+        ? await _clientWrapper.get('playlists', queryParams)
+        : await _clientWrapper.get('playlists');
+
     final List<dynamic> data = jsonDecode(response.body);
 
     return data
         .map(
           (dynamic json) => Playlist.fromJson(json),
-    )
+        )
         .toList();
 
 //    final QuerySnapshot snapshot = await _firestore
@@ -88,13 +96,13 @@ class PlaylistsApi {
       'uid': uid,
     };
     final Response response =
-    await _clientWrapper.get('playlists', queryParams);
+        await _clientWrapper.get('playlists', queryParams);
     final List<dynamic> data = jsonDecode(response.body);
 
     return data
         .map(
           (dynamic json) => Playlist.fromJson(json),
-    )
+        )
         .toList();
 
 //    final QuerySnapshot snapshot = await _firestore
@@ -109,25 +117,25 @@ class PlaylistsApi {
 
   Future<List<Playlist>> getOtherPlaylists() async {
     final Response response =
-    await _clientWrapper.get('playlists?category=Other');
+        await _clientWrapper.get('playlists?category=Other');
     final List<dynamic> data = jsonDecode(response.body);
 
     return data
         .map(
           (dynamic json) => Playlist.fromJson(json),
-    )
+        )
         .toList();
   }
 
   Future<List<Playlist>> getSchoolPlaylists() async {
     final Response response =
-    await _clientWrapper.get('playlists?category=School');
+        await _clientWrapper.get('playlists?category=School');
     final List<dynamic> data = jsonDecode(response.body);
 
     return data
         .map(
           (dynamic json) => Playlist.fromJson(json),
-    )
+        )
         .toList();
   }
 

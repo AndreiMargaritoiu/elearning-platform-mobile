@@ -37,6 +37,20 @@ class VideosApi {
             ? await _uploadFile(ref.id, info.thumbnailPath)
             : null;
 
+    // final dynamic body = jsonEncode(<String, dynamic>{
+    //   'id': ref.id,
+    //   'uid': uid,
+    //   'title': info.title,
+    //   'searchIndex': <String>[info.title].searchIndex,
+    //   'description': info.description,
+    //   'thumbnailUrl': thumbnailUrl,
+    //   'videoUrl': videoUrl,
+    // });
+    // final Response response = await _clientWrapper.post('videos', body);
+    // final Map<String, dynamic> data = jsonDecode(response.body);
+    //
+    // return Video.fromJson(data);
+
     final Video newVideo = Video(
       (VideoBuilder b) {
         b
@@ -55,9 +69,10 @@ class VideosApi {
     return newVideo;
   }
 
-  Future<String> _uploadFile(String id, String path) async {
-    final DocumentReference ref = _firestore.collection('NOT_USED').doc();
-    final Reference storageRef = _storage.ref('videos/$id/${ref.id}');
+  Future<String> _uploadFile(String uid, String path) async {
+    // final DocumentReference ref = _firestore.collection('NOT_USED').doc();
+    // final Reference storageRef = _storage.ref('videos/$id/${ref.id}');
+    final Reference storageRef = _storage.ref('videos/$uid');
     await storageRef.putFile(
       File(path),
     );

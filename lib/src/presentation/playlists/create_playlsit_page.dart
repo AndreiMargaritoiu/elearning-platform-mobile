@@ -126,7 +126,7 @@ class _CreatePlaylistPageState extends State<CreatePlaylistPage> {
                       ),
                       DropdownButton<String>(
                         value: dropdownValue,
-                        items: <String>['School', 'Other']
+                        items: <String>['School', 'Faculty', 'Other']
                             .map<DropdownMenuItem<String>>((String value) {
                           return DropdownMenuItem<String>(
                             value: value,

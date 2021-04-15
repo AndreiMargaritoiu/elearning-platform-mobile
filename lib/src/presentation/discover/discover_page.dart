@@ -1,3 +1,4 @@
+import 'package:elearning_platform_mobile/src/presentation/trending/trending_wrapper_page.dart';
 import 'package:flutter/material.dart';
 
 import 'package:elearning_platform_mobile/src/presentation/routes.dart';
@@ -49,7 +50,7 @@ class _DiscoverPageState extends State<DiscoverPage> {
           },
         ),
       ),
-      body: const PlaylistsFeedPage(),
+      body: const TrendingWrapperPage(),
     );
   }
 }

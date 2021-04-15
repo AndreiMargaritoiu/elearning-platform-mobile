@@ -4177,3 +4177,461 @@ abstract class SearchPlaylistsError implements SearchPlaylists, ErrorAction {
   Object get error;
   $SearchPlaylistsErrorCopyWith<SearchPlaylistsError> get copyWith;
 }
+
+/// @nodoc
+class _$GetCategoryPlaylistsTearOff {
+  const _$GetCategoryPlaylistsTearOff();
+
+// ignore: unused_element
+  GetCategoryPlaylists$ call(String category) {
+    return GetCategoryPlaylists$(
+      category,
+    );
+  }
+
+// ignore: unused_element
+  GetCategoryPlaylistsSuccessful successful(List<Playlist> playlists) {
+    return GetCategoryPlaylistsSuccessful(
+      playlists,
+    );
+  }
+
+// ignore: unused_element
+  GetCategoryPlaylistsError error(Object error) {
+    return GetCategoryPlaylistsError(
+      error,
+    );
+  }
+}
+
+/// @nodoc
+// ignore: unused_element
+const $GetCategoryPlaylists = _$GetCategoryPlaylistsTearOff();
+
+/// @nodoc
+mixin _$GetCategoryPlaylists {
+  @optionalTypeArgs
+  Result when<Result extends Object>(
+    Result $default(String category), {
+    @required Result successful(List<Playlist> playlists),
+    @required Result error(Object error),
+  });
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>(
+    Result $default(String category), {
+    Result successful(List<Playlist> playlists),
+    Result error(Object error),
+    @required Result orElse(),
+  });
+  @optionalTypeArgs
+  Result map<Result extends Object>(
+    Result $default(GetCategoryPlaylists$ value), {
+    @required Result successful(GetCategoryPlaylistsSuccessful value),
+    @required Result error(GetCategoryPlaylistsError value),
+  });
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>(
+    Result $default(GetCategoryPlaylists$ value), {
+    Result successful(GetCategoryPlaylistsSuccessful value),
+    Result error(GetCategoryPlaylistsError value),
+    @required Result orElse(),
+  });
+}
+
+/// @nodoc
+abstract class $GetCategoryPlaylistsCopyWith<$Res> {
+  factory $GetCategoryPlaylistsCopyWith(GetCategoryPlaylists value,
+          $Res Function(GetCategoryPlaylists) then) =
+      _$GetCategoryPlaylistsCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$GetCategoryPlaylistsCopyWithImpl<$Res>
+    implements $GetCategoryPlaylistsCopyWith<$Res> {
+  _$GetCategoryPlaylistsCopyWithImpl(this._value, this._then);
+
+  final GetCategoryPlaylists _value;
+  // ignore: unused_field
+  final $Res Function(GetCategoryPlaylists) _then;
+}
+
+/// @nodoc
+abstract class $GetCategoryPlaylists$CopyWith<$Res> {
+  factory $GetCategoryPlaylists$CopyWith(GetCategoryPlaylists$ value,
+          $Res Function(GetCategoryPlaylists$) then) =
+      _$GetCategoryPlaylists$CopyWithImpl<$Res>;
+  $Res call({String category});
+}
+
+/// @nodoc
+class _$GetCategoryPlaylists$CopyWithImpl<$Res>
+    extends _$GetCategoryPlaylistsCopyWithImpl<$Res>
+    implements $GetCategoryPlaylists$CopyWith<$Res> {
+  _$GetCategoryPlaylists$CopyWithImpl(
+      GetCategoryPlaylists$ _value, $Res Function(GetCategoryPlaylists$) _then)
+      : super(_value, (v) => _then(v as GetCategoryPlaylists$));
+
+  @override
+  GetCategoryPlaylists$ get _value => super._value as GetCategoryPlaylists$;
+
+  @override
+  $Res call({
+    Object category = freezed,
+  }) {
+    return _then(GetCategoryPlaylists$(
+      category == freezed ? _value.category : category as String,
+    ));
+  }
+}
+
+/// @nodoc
+class _$GetCategoryPlaylists$ implements GetCategoryPlaylists$ {
+  const _$GetCategoryPlaylists$(this.category) : assert(category != null);
+
+  @override
+  final String category;
+
+  @override
+  String toString() {
+    return 'GetCategoryPlaylists(category: $category)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is GetCategoryPlaylists$ &&
+            (identical(other.category, category) ||
+                const DeepCollectionEquality()
+                    .equals(other.category, category)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(category);
+
+  @override
+  $GetCategoryPlaylists$CopyWith<GetCategoryPlaylists$> get copyWith =>
+      _$GetCategoryPlaylists$CopyWithImpl<GetCategoryPlaylists$>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>(
+    Result $default(String category), {
+    @required Result successful(List<Playlist> playlists),
+    @required Result error(Object error),
+  }) {
+    assert($default != null);
+    assert(successful != null);
+    assert(error != null);
+    return $default(category);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>(
+    Result $default(String category), {
+    Result successful(List<Playlist> playlists),
+    Result error(Object error),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if ($default != null) {
+      return $default(category);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>(
+    Result $default(GetCategoryPlaylists$ value), {
+    @required Result successful(GetCategoryPlaylistsSuccessful value),
+    @required Result error(GetCategoryPlaylistsError value),
+  }) {
+    assert($default != null);
+    assert(successful != null);
+    assert(error != null);
+    return $default(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>(
+    Result $default(GetCategoryPlaylists$ value), {
+    Result successful(GetCategoryPlaylistsSuccessful value),
+    Result error(GetCategoryPlaylistsError value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if ($default != null) {
+      return $default(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetCategoryPlaylists$ implements GetCategoryPlaylists {
+  const factory GetCategoryPlaylists$(String category) =
+      _$GetCategoryPlaylists$;
+
+  String get category;
+  $GetCategoryPlaylists$CopyWith<GetCategoryPlaylists$> get copyWith;
+}
+
+/// @nodoc
+abstract class $GetCategoryPlaylistsSuccessfulCopyWith<$Res> {
+  factory $GetCategoryPlaylistsSuccessfulCopyWith(
+          GetCategoryPlaylistsSuccessful value,
+          $Res Function(GetCategoryPlaylistsSuccessful) then) =
+      _$GetCategoryPlaylistsSuccessfulCopyWithImpl<$Res>;
+  $Res call({List<Playlist> playlists});
+}
+
+/// @nodoc
+class _$GetCategoryPlaylistsSuccessfulCopyWithImpl<$Res>
+    extends _$GetCategoryPlaylistsCopyWithImpl<$Res>
+    implements $GetCategoryPlaylistsSuccessfulCopyWith<$Res> {
+  _$GetCategoryPlaylistsSuccessfulCopyWithImpl(
+      GetCategoryPlaylistsSuccessful _value,
+      $Res Function(GetCategoryPlaylistsSuccessful) _then)
+      : super(_value, (v) => _then(v as GetCategoryPlaylistsSuccessful));
+
+  @override
+  GetCategoryPlaylistsSuccessful get _value =>
+      super._value as GetCategoryPlaylistsSuccessful;
+
+  @override
+  $Res call({
+    Object playlists = freezed,
+  }) {
+    return _then(GetCategoryPlaylistsSuccessful(
+      playlists == freezed ? _value.playlists : playlists as List<Playlist>,
+    ));
+  }
+}
+
+/// @nodoc
+class _$GetCategoryPlaylistsSuccessful
+    implements GetCategoryPlaylistsSuccessful {
+  const _$GetCategoryPlaylistsSuccessful(this.playlists)
+      : assert(playlists != null);
+
+  @override
+  final List<Playlist> playlists;
+
+  @override
+  String toString() {
+    return 'GetCategoryPlaylists.successful(playlists: $playlists)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is GetCategoryPlaylistsSuccessful &&
+            (identical(other.playlists, playlists) ||
+                const DeepCollectionEquality()
+                    .equals(other.playlists, playlists)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(playlists);
+
+  @override
+  $GetCategoryPlaylistsSuccessfulCopyWith<GetCategoryPlaylistsSuccessful>
+      get copyWith => _$GetCategoryPlaylistsSuccessfulCopyWithImpl<
+          GetCategoryPlaylistsSuccessful>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>(
+    Result $default(String category), {
+    @required Result successful(List<Playlist> playlists),
+    @required Result error(Object error),
+  }) {
+    assert($default != null);
+    assert(successful != null);
+    assert(error != null);
+    return successful(playlists);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>(
+    Result $default(String category), {
+    Result successful(List<Playlist> playlists),
+    Result error(Object error),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (successful != null) {
+      return successful(playlists);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>(
+    Result $default(GetCategoryPlaylists$ value), {
+    @required Result successful(GetCategoryPlaylistsSuccessful value),
+    @required Result error(GetCategoryPlaylistsError value),
+  }) {
+    assert($default != null);
+    assert(successful != null);
+    assert(error != null);
+    return successful(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>(
+    Result $default(GetCategoryPlaylists$ value), {
+    Result successful(GetCategoryPlaylistsSuccessful value),
+    Result error(GetCategoryPlaylistsError value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (successful != null) {
+      return successful(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetCategoryPlaylistsSuccessful implements GetCategoryPlaylists {
+  const factory GetCategoryPlaylistsSuccessful(List<Playlist> playlists) =
+      _$GetCategoryPlaylistsSuccessful;
+
+  List<Playlist> get playlists;
+  $GetCategoryPlaylistsSuccessfulCopyWith<GetCategoryPlaylistsSuccessful>
+      get copyWith;
+}
+
+/// @nodoc
+abstract class $GetCategoryPlaylistsErrorCopyWith<$Res> {
+  factory $GetCategoryPlaylistsErrorCopyWith(GetCategoryPlaylistsError value,
+          $Res Function(GetCategoryPlaylistsError) then) =
+      _$GetCategoryPlaylistsErrorCopyWithImpl<$Res>;
+  $Res call({Object error});
+}
+
+/// @nodoc
+class _$GetCategoryPlaylistsErrorCopyWithImpl<$Res>
+    extends _$GetCategoryPlaylistsCopyWithImpl<$Res>
+    implements $GetCategoryPlaylistsErrorCopyWith<$Res> {
+  _$GetCategoryPlaylistsErrorCopyWithImpl(GetCategoryPlaylistsError _value,
+      $Res Function(GetCategoryPlaylistsError) _then)
+      : super(_value, (v) => _then(v as GetCategoryPlaylistsError));
+
+  @override
+  GetCategoryPlaylistsError get _value =>
+      super._value as GetCategoryPlaylistsError;
+
+  @override
+  $Res call({
+    Object error = freezed,
+  }) {
+    return _then(GetCategoryPlaylistsError(
+      error == freezed ? _value.error : error,
+    ));
+  }
+}
+
+@Implements(ErrorAction)
+
+/// @nodoc
+class _$GetCategoryPlaylistsError implements GetCategoryPlaylistsError {
+  const _$GetCategoryPlaylistsError(this.error) : assert(error != null);
+
+  @override
+  final Object error;
+
+  @override
+  String toString() {
+    return 'GetCategoryPlaylists.error(error: $error)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is GetCategoryPlaylistsError &&
+            (identical(other.error, error) ||
+                const DeepCollectionEquality().equals(other.error, error)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
+
+  @override
+  $GetCategoryPlaylistsErrorCopyWith<GetCategoryPlaylistsError> get copyWith =>
+      _$GetCategoryPlaylistsErrorCopyWithImpl<GetCategoryPlaylistsError>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>(
+    Result $default(String category), {
+    @required Result successful(List<Playlist> playlists),
+    @required Result error(Object error),
+  }) {
+    assert($default != null);
+    assert(successful != null);
+    assert(error != null);
+    return error(this.error);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>(
+    Result $default(String category), {
+    Result successful(List<Playlist> playlists),
+    Result error(Object error),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (error != null) {
+      return error(this.error);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>(
+    Result $default(GetCategoryPlaylists$ value), {
+    @required Result successful(GetCategoryPlaylistsSuccessful value),
+    @required Result error(GetCategoryPlaylistsError value),
+  }) {
+    assert($default != null);
+    assert(successful != null);
+    assert(error != null);
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>(
+    Result $default(GetCategoryPlaylists$ value), {
+    Result successful(GetCategoryPlaylistsSuccessful value),
+    Result error(GetCategoryPlaylistsError value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetCategoryPlaylistsError
+    implements GetCategoryPlaylists, ErrorAction {
+  const factory GetCategoryPlaylistsError(Object error) =
+      _$GetCategoryPlaylistsError;
+
+  Object get error;
+  $GetCategoryPlaylistsErrorCopyWith<GetCategoryPlaylistsError> get copyWith;
+}

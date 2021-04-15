@@ -7,7 +7,9 @@ import 'package:elearning_platform_mobile/src/models/index.dart';
 import 'package:elearning_platform_mobile/src/presentation/routes.dart';
 
 class PlaylistsFeedPage extends StatefulWidget {
-  const PlaylistsFeedPage({Key key}) : super(key: key);
+  const PlaylistsFeedPage({Key key, this.category}) : super(key: key);
+
+  final String category;
 
   @override
   _PlaylistsFeedPageState createState() => _PlaylistsFeedPageState();
@@ -25,105 +27,143 @@ class _PlaylistsFeedPageState extends State<PlaylistsFeedPage> {
 
   @override
   Widget build(BuildContext context) {
-    return UsersContainer(
-      builder: (BuildContext context, Map<String, AppUser> users) {
-        return PlaylistsContainer(
-          builder: (BuildContext context, List<Playlist> playlists) {
-            return ListView.builder(
-              itemCount: playlists.length,
-              itemBuilder: (BuildContext context, int index) {
-                final Playlist playlist = playlists[index];
-                final AppUser user = users[playlist.uid];
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.category),
+      ),
+      body: UsersContainer(
+        builder: (BuildContext context, Map<String, AppUser> users) {
+          return PlaylistsContainer(
+            builder: (BuildContext context, List<Playlist> playlists) {
+              final List<Playlist> filteredPlaylists = playlists
+                  .where((Playlist element) =>
+                      element.category == '${widget.category}')
+                  .toList();
+              return ListView.builder(
+                itemCount: filteredPlaylists.length,
+                itemBuilder: (BuildContext context, int index) {
+                  final Playlist playlist = filteredPlaylists[index];
+                  final AppUser user = users[playlist.uid];
 
-                return Column(
-                  children: <Widget>[
-                    ListTile(
-                      leading: user.photoUrl != null
-                          ? CircleAvatar(
-                              backgroundImage: NetworkImage(user.photoUrl),
-                            )
-                          : CircleAvatar(
-                              backgroundColor: Colors.grey.shade900,
-                              child: Text(
-                                user.username[0].toUpperCase(),
+                  return Column(
+                    children: <Widget>[
+                      ListTile(
+                        leading: user.photoUrl != null
+                            ? CircleAvatar(
+                                backgroundImage: NetworkImage(user.photoUrl),
+                              )
+                            : CircleAvatar(
+                                backgroundColor: Colors.grey.shade900,
+                                child: Text(
+                                  user.username[0].toUpperCase(),
+                                ),
                               ),
-                            ),
-                      title: Text(
-                        user.username,
-                        style: const TextStyle(
-                          fontWeight: FontWeight.w500,
-                          fontSize: 18,
-                        ),
-                      ),
-                      onTap: () {
-                        Navigator.pushNamed(
-                            context, AppRoutes.othersProfilePage,
-                            arguments: user);
-                      },
-                    ),
-                    GestureDetector(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          if (playlist.thumbnailUrl != null &&
-                              playlist.thumbnailUrl.isNotEmpty)
-                            Image.network(
-                              playlist.thumbnailUrl,
-                              height: MediaQuery.of(context).size.width * 0.877 / 16 * 9,
-                              width: MediaQuery.of(context).size.width * 0.877,
-                              fit: BoxFit.cover,
-                            )
-                          else
-                            Container(
-                              height: MediaQuery.of(context).size.width * 0.877 / 16 * 9,
-                              width: MediaQuery.of(context).size.width * 0.877,
-                              decoration: const BoxDecoration(
-                                color: Colors.green,
-                              ),
-                            ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 8, bottom: 8),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                Text(
-                                  playlist.title,
-                                  style: const TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 18,
-                                  ),
-                                ),
-                                Text(
-                                  'Videos: ${playlist.videoRefs.length}',
-                                  style: const TextStyle(
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 16,
-                                  ),
-                                ),
-                                Text(
-                                  playlist.description,
-                                  style: const TextStyle(
-                                    fontSize: 16,
-                                  ),
-                                ),
-                              ],
-                            ),
+                        title: Text(
+                          user.username,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 18,
                           ),
-                        ],
+                        ),
+                        onTap: () {
+                          Navigator.pushNamed(
+                              context, AppRoutes.othersProfilePage,
+                              arguments: user);
+                        },
                       ),
-                      onTap: () {
-                        Navigator.pushNamed(
-                            context, AppRoutes.playlistVideosPage,
-                            arguments: playlist);
-                      },
-                    )
-                  ],
-                );
-              },
-            );
-          },
-        );
-      },
+                      GestureDetector(
+                        child: Card(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Container(
+                                margin: const EdgeInsets.all(10.0),
+                                height:
+                                    MediaQuery.of(context).size.width / 16 * 9,
+                                width: MediaQuery.of(context).size.width,
+                                child: Stack(
+                                  children: <Widget>[
+                                    Hero(
+                                      tag: playlist.thumbnailUrl,
+                                      child: Image.network(
+                                        playlist.thumbnailUrl,
+                                        height:
+                                            MediaQuery.of(context).size.width /
+                                                16 *
+                                                9,
+                                        width:
+                                            MediaQuery.of(context).size.width,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                    Positioned(
+                                      right: 10.0,
+                                      bottom: 10.0,
+                                      child: Container(
+                                        height: 40.0,
+                                        width: 100.0,
+                                        alignment: Alignment.center,
+                                        decoration: BoxDecoration(
+                                          color: Colors.black,
+                                          borderRadius:
+                                              BorderRadius.circular(10.0),
+                                        ),
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(10.0),
+                                          child: Text(
+                                            '${playlist.videoRefs.length} videos',
+                                            style: const TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 16.0,
+                                              fontWeight: FontWeight.w600,
+                                              letterSpacing: 1.2,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                    bottom: 8, left: 16, right: 16),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    Text(
+                                      playlist.title,
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 18,
+                                      ),
+                                    ),
+                                    Text(
+                                      playlist.description,
+                                      style: const TextStyle(
+                                        fontSize: 16,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        onTap: () {
+                          Navigator.pushNamed(
+                              context, AppRoutes.playlistVideosPage,
+                              arguments: playlist);
+                        },
+                      )
+                    ],
+                  );
+                },
+              );
+            },
+          );
+        },
+      ),
     );
   }
 }

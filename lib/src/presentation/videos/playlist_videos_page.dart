@@ -16,7 +16,6 @@ class PlaylistVideosPage extends StatefulWidget {
 }
 
 class _PlaylistVideosPageState extends State<PlaylistVideosPage> {
-
   @override
   void initState() {
     super.initState();
@@ -39,57 +38,56 @@ class _PlaylistVideosPageState extends State<PlaylistVideosPage> {
             itemBuilder: (BuildContext context, int index) {
               final Video video = videos[index];
 
-              return Card(
-                child: MaterialButton(
-                  child: Card(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        if (video.thumbnailUrl != null &&
-                            video.thumbnailUrl.isNotEmpty)
-                          Image.network(
-                            video.thumbnailUrl,
-                            height: MediaQuery.of(context).size.width * 0.877 / 16 * 9,
-                            width: MediaQuery.of(context).size.width * 0.877,
-                            fit: BoxFit.cover,
-                          )
-                        else
-                          Container(
-                            height: MediaQuery.of(context).size.width * 0.877 / 16 * 9,
-                            width: MediaQuery.of(context).size.width * 0.877,
-                            decoration: const BoxDecoration(
-                              color: Colors.green,
-                            ),
-                          ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 8),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Text(
-                                video.title,
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 18,
-                                ),
-                              ),
-                              Text(
-                                video.description,
-                                style: const TextStyle(
-                                  fontSize: 16,
-                                ),
-                              ),
-                            ],
+              return GestureDetector(
+                child: Card(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      if (video.thumbnailUrl != null &&
+                          video.thumbnailUrl.isNotEmpty)
+                        Image.network(
+                          video.thumbnailUrl,
+                          height: MediaQuery.of(context).size.width / 16 * 9,
+                          width: MediaQuery.of(context).size.width,
+                          fit: BoxFit.cover,
+                        )
+                      else
+                        Container(
+                          height: MediaQuery.of(context).size.width / 16 * 9,
+                          width: MediaQuery.of(context).size.width,
+                          decoration: const BoxDecoration(
+                            color: Colors.green,
                           ),
                         ),
-                      ],
-                    ),
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            top: 8, bottom: 8, left: 16, right: 16),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Text(
+                              video.title,
+                              style: const TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 18,
+                              ),
+                            ),
+                            Text(
+                              video.description,
+                              style: const TextStyle(
+                                fontSize: 16,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
-                  onPressed: () {
-                    Navigator.pushNamed(context, AppRoutes.videoPlayer,
-                        arguments: video);
-                  },
                 ),
+                onTap: () {
+                  Navigator.pushNamed(context, AppRoutes.videoPlayer,
+                      arguments: video);
+                },
               );
             },
           );

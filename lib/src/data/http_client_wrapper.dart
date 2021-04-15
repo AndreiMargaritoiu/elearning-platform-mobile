@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+ import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart';
 
 class HttpClientWrapper {
@@ -7,12 +7,11 @@ class HttpClientWrapper {
   final Client client;
 
   // localhost testing
-  static const String URL = '192.168.56.1:8080';
+  static const String URL = '192.168.0.185:8080';
 
   Future<Response> get(String route, [dynamic queryParams]) async {
     return await client.get(
       Uri.http(URL, '/api/' + route, queryParams),
-      headers: <String, String>{'Content-Type': 'application/json'},
     );
   }
 
@@ -20,14 +19,12 @@ class HttpClientWrapper {
     return await client.post(
       Uri.http(URL, '/api/' + route),
       body: body,
-      headers: <String, String>{'Content-Type': 'application/json'},
     );
   }
 
   Future<Response> delete(String route) async {
     return await client.delete(
       Uri.http(URL, '/api/' + route),
-      headers: <String, String>{'Content-Type': 'application/json'},
     );
   }
 
@@ -35,7 +32,6 @@ class HttpClientWrapper {
     return await client.patch(
       Uri.http(URL, '/api/' + route),
       body: body,
-      headers: <String, String>{'Content-Type': 'application/json'},
     );
   }
 }

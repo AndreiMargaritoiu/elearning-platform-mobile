@@ -19,6 +19,7 @@ class PlaylistsEpics {
         TypedEpic<AppState, CreatePlaylist$>(_addPlaylist),
         TypedEpic<AppState, GetAllPlaylists$>(_getAllPlaylists),
         TypedEpic<AppState, GetPlaylistsByUid$>(_getPlaylistsByUid),
+        TypedEpic<AppState, GetCategoryPlaylists$>(_getCategoryPlaylists),
         TypedEpic<AppState, UpdatePlaylist$>(_updatePlaylist),
         TypedEpic<AppState, DeletePlaylist$>(_deletePlaylist),
         TypedEpic<AppState, SearchPlaylists$>(_searchPlaylists),
@@ -153,29 +154,32 @@ class PlaylistsEpics {
     );
   }
 
-  Stream<AppAction> _getSchoolPlaylists(
-      Stream<GetSchoolPlaylists$> actions, EpicStore<AppState> store) {
+  Stream<AppAction> _getCategoryPlaylists(
+      Stream<GetCategoryPlaylists$> actions, EpicStore<AppState> store) {
     return actions //
         .flatMap(
-      (GetSchoolPlaylists$ action) => Stream<GetSchoolPlaylists$>.value(action)
-          .asyncMap(
-            (GetSchoolPlaylists$ action) => _api.getSchoolPlaylists(),
-          )
-          .expand(
-            (List<Playlist> playlists) => <AppAction>[
-              GetSchoolPlaylists.successful(playlists),
-              ...playlists
-                  .map((Playlist playlist) => playlist.uid)
-                  .toSet()
-                  .where((String uid) => store.state.auth.users[uid] == null)
-                  .map(
-                    (String uid) => GetUser(uid),
-                  ),
-            ],
-          )
-          .onErrorReturnWith(
-            (dynamic error) => GetSchoolPlaylists.error(error),
-          ),
+      (GetCategoryPlaylists$ action) =>
+          Stream<GetCategoryPlaylists$>.value(action)
+              .asyncMap(
+                (GetCategoryPlaylists$ action) =>
+                    _api.getAllPlaylists(field: action.category),
+              )
+              .expand(
+                (List<Playlist> playlists) => <AppAction>[
+                  GetCategoryPlaylists.successful(playlists),
+                  ...playlists
+                      .map((Playlist playlist) => playlist.uid)
+                      .toSet()
+                      .where(
+                          (String uid) => store.state.auth.users[uid] == null)
+                      .map(
+                        (String uid) => GetUser(uid),
+                      ),
+                ],
+              )
+              .onErrorReturnWith(
+                (dynamic error) => GetSchoolPlaylists.error(error),
+              ),
     );
   }
 
@@ -209,20 +213,21 @@ class PlaylistsEpics {
       Stream<SearchPlaylists$> actions, EpicStore<AppState> store) {
     return actions //
         .debounceTime(
-      const Duration(milliseconds: 500),
-    )
+          const Duration(milliseconds: 500),
+        )
         .flatMap(
           (SearchPlaylists$ action) => Stream<SearchPlaylists$>.value(action)
-          .asyncMap(
-            (SearchPlaylists$ action) =>
-            _api.searchPlaylists(action.query, store.state.auth.user.uid),
-      )
-          .map(
-            (List<Playlist> playlists) => SearchPlaylists.successful(playlists),
-      )
-          .onErrorReturnWith(
-            (dynamic error) => SearchPlaylists.error(error),
-      ),
-    );
+              .asyncMap(
+                (SearchPlaylists$ action) => _api.searchPlaylists(
+                    action.query, store.state.auth.user.uid),
+              )
+              .map(
+                (List<Playlist> playlists) =>
+                    SearchPlaylists.successful(playlists),
+              )
+              .onErrorReturnWith(
+                (dynamic error) => SearchPlaylists.error(error),
+              ),
+        );
   }
 }
