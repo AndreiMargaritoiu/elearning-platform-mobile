@@ -27,12 +27,12 @@ class _ContentPageState extends State<ContentPage> {
     return Scaffold(
       body: SafeArea(
         child: ListView(
-          padding: const EdgeInsets.symmetric(vertical: 30.0),
+          padding: const EdgeInsets.symmetric(vertical: 20.0),
           children: const <Widget>[
             Padding(
               padding: EdgeInsets.only(left: 20.0, right: 120.0),
               child: Text(
-                'Inspire others, get inspired',
+                'Learn more, discover more',
                 style: TextStyle(
                   fontSize: 30.0,
                   fontWeight: FontWeight.bold,

@@ -19,6 +19,9 @@ abstract class Mentorship implements Built<Mentorship, MentorshipBuilder> {
   String get description;
 
   @nullable
+  String get category;
+
+  @nullable
   int get price;
 
   @nullable

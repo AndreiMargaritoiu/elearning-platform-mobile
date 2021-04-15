@@ -14,6 +14,8 @@ class AddMentorshipPage extends StatefulWidget {
 }
 
 class _AddMentorshipPageState extends State<AddMentorshipPage> {
+  String dropdownValue = 'School';
+
   @override
   Widget build(BuildContext context) {
     return MentorshipInfoContainer(
@@ -81,7 +83,27 @@ class _AddMentorshipPageState extends State<AddMentorshipPage> {
                       );
                     },
                   ),
-                )
+                ),
+                DropdownButton<String>(
+                  value: dropdownValue,
+                  items: <String>['School', 'Faculty', 'Other']
+                      .map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                  onChanged: (String newValue) {
+                    setState(
+                          () {
+                        dropdownValue = newValue;
+                        StoreProvider.of<AppState>(context).dispatch(
+                          UpdatePlaylistInfo(category: newValue),
+                        );
+                      },
+                    );
+                  },
+                ),
               ],
             ),
           ),

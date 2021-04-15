@@ -22,6 +22,8 @@ MentorshipsState _updateMentorshipInfo(
         b.info.description = action.description;
       } else if (action.price != null) {
         b.info.price = action.price;
+      } else if (action.category != null) {
+        b.info.category = action.category;
       } else {
         b.info = MentorshipInfo().toBuilder();
       }

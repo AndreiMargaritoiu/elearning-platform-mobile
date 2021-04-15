@@ -2174,13 +2174,477 @@ abstract class DeleteMentorshipError implements DeleteMentorship, ErrorAction {
 }
 
 /// @nodoc
+class _$GetCategoryMentorshipsTearOff {
+  const _$GetCategoryMentorshipsTearOff();
+
+// ignore: unused_element
+  GetCategoryMentorships$ call({String category}) {
+    return GetCategoryMentorships$(
+      category: category,
+    );
+  }
+
+// ignore: unused_element
+  GetCategoryMentorshipsSuccessful successful(List<Mentorship> mentorships) {
+    return GetCategoryMentorshipsSuccessful(
+      mentorships,
+    );
+  }
+
+// ignore: unused_element
+  GetCategoryMentorshipsError error(Object error) {
+    return GetCategoryMentorshipsError(
+      error,
+    );
+  }
+}
+
+/// @nodoc
+// ignore: unused_element
+const $GetCategoryMentorships = _$GetCategoryMentorshipsTearOff();
+
+/// @nodoc
+mixin _$GetCategoryMentorships {
+  @optionalTypeArgs
+  Result when<Result extends Object>(
+    Result $default(String category), {
+    @required Result successful(List<Mentorship> mentorships),
+    @required Result error(Object error),
+  });
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>(
+    Result $default(String category), {
+    Result successful(List<Mentorship> mentorships),
+    Result error(Object error),
+    @required Result orElse(),
+  });
+  @optionalTypeArgs
+  Result map<Result extends Object>(
+    Result $default(GetCategoryMentorships$ value), {
+    @required Result successful(GetCategoryMentorshipsSuccessful value),
+    @required Result error(GetCategoryMentorshipsError value),
+  });
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>(
+    Result $default(GetCategoryMentorships$ value), {
+    Result successful(GetCategoryMentorshipsSuccessful value),
+    Result error(GetCategoryMentorshipsError value),
+    @required Result orElse(),
+  });
+}
+
+/// @nodoc
+abstract class $GetCategoryMentorshipsCopyWith<$Res> {
+  factory $GetCategoryMentorshipsCopyWith(GetCategoryMentorships value,
+          $Res Function(GetCategoryMentorships) then) =
+      _$GetCategoryMentorshipsCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$GetCategoryMentorshipsCopyWithImpl<$Res>
+    implements $GetCategoryMentorshipsCopyWith<$Res> {
+  _$GetCategoryMentorshipsCopyWithImpl(this._value, this._then);
+
+  final GetCategoryMentorships _value;
+  // ignore: unused_field
+  final $Res Function(GetCategoryMentorships) _then;
+}
+
+/// @nodoc
+abstract class $GetCategoryMentorships$CopyWith<$Res> {
+  factory $GetCategoryMentorships$CopyWith(GetCategoryMentorships$ value,
+          $Res Function(GetCategoryMentorships$) then) =
+      _$GetCategoryMentorships$CopyWithImpl<$Res>;
+  $Res call({String category});
+}
+
+/// @nodoc
+class _$GetCategoryMentorships$CopyWithImpl<$Res>
+    extends _$GetCategoryMentorshipsCopyWithImpl<$Res>
+    implements $GetCategoryMentorships$CopyWith<$Res> {
+  _$GetCategoryMentorships$CopyWithImpl(GetCategoryMentorships$ _value,
+      $Res Function(GetCategoryMentorships$) _then)
+      : super(_value, (v) => _then(v as GetCategoryMentorships$));
+
+  @override
+  GetCategoryMentorships$ get _value => super._value as GetCategoryMentorships$;
+
+  @override
+  $Res call({
+    Object category = freezed,
+  }) {
+    return _then(GetCategoryMentorships$(
+      category: category == freezed ? _value.category : category as String,
+    ));
+  }
+}
+
+/// @nodoc
+class _$GetCategoryMentorships$ implements GetCategoryMentorships$ {
+  const _$GetCategoryMentorships$({this.category});
+
+  @override
+  final String category;
+
+  @override
+  String toString() {
+    return 'GetCategoryMentorships(category: $category)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is GetCategoryMentorships$ &&
+            (identical(other.category, category) ||
+                const DeepCollectionEquality()
+                    .equals(other.category, category)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(category);
+
+  @override
+  $GetCategoryMentorships$CopyWith<GetCategoryMentorships$> get copyWith =>
+      _$GetCategoryMentorships$CopyWithImpl<GetCategoryMentorships$>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>(
+    Result $default(String category), {
+    @required Result successful(List<Mentorship> mentorships),
+    @required Result error(Object error),
+  }) {
+    assert($default != null);
+    assert(successful != null);
+    assert(error != null);
+    return $default(category);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>(
+    Result $default(String category), {
+    Result successful(List<Mentorship> mentorships),
+    Result error(Object error),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if ($default != null) {
+      return $default(category);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>(
+    Result $default(GetCategoryMentorships$ value), {
+    @required Result successful(GetCategoryMentorshipsSuccessful value),
+    @required Result error(GetCategoryMentorshipsError value),
+  }) {
+    assert($default != null);
+    assert(successful != null);
+    assert(error != null);
+    return $default(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>(
+    Result $default(GetCategoryMentorships$ value), {
+    Result successful(GetCategoryMentorshipsSuccessful value),
+    Result error(GetCategoryMentorshipsError value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if ($default != null) {
+      return $default(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetCategoryMentorships$ implements GetCategoryMentorships {
+  const factory GetCategoryMentorships$({String category}) =
+      _$GetCategoryMentorships$;
+
+  String get category;
+  $GetCategoryMentorships$CopyWith<GetCategoryMentorships$> get copyWith;
+}
+
+/// @nodoc
+abstract class $GetCategoryMentorshipsSuccessfulCopyWith<$Res> {
+  factory $GetCategoryMentorshipsSuccessfulCopyWith(
+          GetCategoryMentorshipsSuccessful value,
+          $Res Function(GetCategoryMentorshipsSuccessful) then) =
+      _$GetCategoryMentorshipsSuccessfulCopyWithImpl<$Res>;
+  $Res call({List<Mentorship> mentorships});
+}
+
+/// @nodoc
+class _$GetCategoryMentorshipsSuccessfulCopyWithImpl<$Res>
+    extends _$GetCategoryMentorshipsCopyWithImpl<$Res>
+    implements $GetCategoryMentorshipsSuccessfulCopyWith<$Res> {
+  _$GetCategoryMentorshipsSuccessfulCopyWithImpl(
+      GetCategoryMentorshipsSuccessful _value,
+      $Res Function(GetCategoryMentorshipsSuccessful) _then)
+      : super(_value, (v) => _then(v as GetCategoryMentorshipsSuccessful));
+
+  @override
+  GetCategoryMentorshipsSuccessful get _value =>
+      super._value as GetCategoryMentorshipsSuccessful;
+
+  @override
+  $Res call({
+    Object mentorships = freezed,
+  }) {
+    return _then(GetCategoryMentorshipsSuccessful(
+      mentorships == freezed
+          ? _value.mentorships
+          : mentorships as List<Mentorship>,
+    ));
+  }
+}
+
+/// @nodoc
+class _$GetCategoryMentorshipsSuccessful
+    implements GetCategoryMentorshipsSuccessful {
+  const _$GetCategoryMentorshipsSuccessful(this.mentorships)
+      : assert(mentorships != null);
+
+  @override
+  final List<Mentorship> mentorships;
+
+  @override
+  String toString() {
+    return 'GetCategoryMentorships.successful(mentorships: $mentorships)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is GetCategoryMentorshipsSuccessful &&
+            (identical(other.mentorships, mentorships) ||
+                const DeepCollectionEquality()
+                    .equals(other.mentorships, mentorships)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(mentorships);
+
+  @override
+  $GetCategoryMentorshipsSuccessfulCopyWith<GetCategoryMentorshipsSuccessful>
+      get copyWith => _$GetCategoryMentorshipsSuccessfulCopyWithImpl<
+          GetCategoryMentorshipsSuccessful>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>(
+    Result $default(String category), {
+    @required Result successful(List<Mentorship> mentorships),
+    @required Result error(Object error),
+  }) {
+    assert($default != null);
+    assert(successful != null);
+    assert(error != null);
+    return successful(mentorships);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>(
+    Result $default(String category), {
+    Result successful(List<Mentorship> mentorships),
+    Result error(Object error),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (successful != null) {
+      return successful(mentorships);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>(
+    Result $default(GetCategoryMentorships$ value), {
+    @required Result successful(GetCategoryMentorshipsSuccessful value),
+    @required Result error(GetCategoryMentorshipsError value),
+  }) {
+    assert($default != null);
+    assert(successful != null);
+    assert(error != null);
+    return successful(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>(
+    Result $default(GetCategoryMentorships$ value), {
+    Result successful(GetCategoryMentorshipsSuccessful value),
+    Result error(GetCategoryMentorshipsError value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (successful != null) {
+      return successful(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetCategoryMentorshipsSuccessful
+    implements GetCategoryMentorships {
+  const factory GetCategoryMentorshipsSuccessful(List<Mentorship> mentorships) =
+      _$GetCategoryMentorshipsSuccessful;
+
+  List<Mentorship> get mentorships;
+  $GetCategoryMentorshipsSuccessfulCopyWith<GetCategoryMentorshipsSuccessful>
+      get copyWith;
+}
+
+/// @nodoc
+abstract class $GetCategoryMentorshipsErrorCopyWith<$Res> {
+  factory $GetCategoryMentorshipsErrorCopyWith(
+          GetCategoryMentorshipsError value,
+          $Res Function(GetCategoryMentorshipsError) then) =
+      _$GetCategoryMentorshipsErrorCopyWithImpl<$Res>;
+  $Res call({Object error});
+}
+
+/// @nodoc
+class _$GetCategoryMentorshipsErrorCopyWithImpl<$Res>
+    extends _$GetCategoryMentorshipsCopyWithImpl<$Res>
+    implements $GetCategoryMentorshipsErrorCopyWith<$Res> {
+  _$GetCategoryMentorshipsErrorCopyWithImpl(GetCategoryMentorshipsError _value,
+      $Res Function(GetCategoryMentorshipsError) _then)
+      : super(_value, (v) => _then(v as GetCategoryMentorshipsError));
+
+  @override
+  GetCategoryMentorshipsError get _value =>
+      super._value as GetCategoryMentorshipsError;
+
+  @override
+  $Res call({
+    Object error = freezed,
+  }) {
+    return _then(GetCategoryMentorshipsError(
+      error == freezed ? _value.error : error,
+    ));
+  }
+}
+
+@Implements(ErrorAction)
+
+/// @nodoc
+class _$GetCategoryMentorshipsError implements GetCategoryMentorshipsError {
+  const _$GetCategoryMentorshipsError(this.error) : assert(error != null);
+
+  @override
+  final Object error;
+
+  @override
+  String toString() {
+    return 'GetCategoryMentorships.error(error: $error)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is GetCategoryMentorshipsError &&
+            (identical(other.error, error) ||
+                const DeepCollectionEquality().equals(other.error, error)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
+
+  @override
+  $GetCategoryMentorshipsErrorCopyWith<GetCategoryMentorshipsError>
+      get copyWith => _$GetCategoryMentorshipsErrorCopyWithImpl<
+          GetCategoryMentorshipsError>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>(
+    Result $default(String category), {
+    @required Result successful(List<Mentorship> mentorships),
+    @required Result error(Object error),
+  }) {
+    assert($default != null);
+    assert(successful != null);
+    assert(error != null);
+    return error(this.error);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>(
+    Result $default(String category), {
+    Result successful(List<Mentorship> mentorships),
+    Result error(Object error),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (error != null) {
+      return error(this.error);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>(
+    Result $default(GetCategoryMentorships$ value), {
+    @required Result successful(GetCategoryMentorshipsSuccessful value),
+    @required Result error(GetCategoryMentorshipsError value),
+  }) {
+    assert($default != null);
+    assert(successful != null);
+    assert(error != null);
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>(
+    Result $default(GetCategoryMentorships$ value), {
+    Result successful(GetCategoryMentorshipsSuccessful value),
+    Result error(GetCategoryMentorshipsError value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetCategoryMentorshipsError
+    implements GetCategoryMentorships, ErrorAction {
+  const factory GetCategoryMentorshipsError(Object error) =
+      _$GetCategoryMentorshipsError;
+
+  Object get error;
+  $GetCategoryMentorshipsErrorCopyWith<GetCategoryMentorshipsError>
+      get copyWith;
+}
+
+/// @nodoc
 class _$UpdateMentorshipInfoTearOff {
   const _$UpdateMentorshipInfoTearOff();
 
 // ignore: unused_element
-  UpdateMentorshipInfo$ call({String description, int price}) {
+  UpdateMentorshipInfo$ call({String description, String category, int price}) {
     return UpdateMentorshipInfo$(
       description: description,
+      category: category,
       price: price,
     );
   }
@@ -2193,6 +2657,7 @@ const $UpdateMentorshipInfo = _$UpdateMentorshipInfoTearOff();
 /// @nodoc
 mixin _$UpdateMentorshipInfo {
   String get description;
+  String get category;
   int get price;
 
   $UpdateMentorshipInfoCopyWith<UpdateMentorshipInfo> get copyWith;
@@ -2203,7 +2668,7 @@ abstract class $UpdateMentorshipInfoCopyWith<$Res> {
   factory $UpdateMentorshipInfoCopyWith(UpdateMentorshipInfo value,
           $Res Function(UpdateMentorshipInfo) then) =
       _$UpdateMentorshipInfoCopyWithImpl<$Res>;
-  $Res call({String description, int price});
+  $Res call({String description, String category, int price});
 }
 
 /// @nodoc
@@ -2218,11 +2683,13 @@ class _$UpdateMentorshipInfoCopyWithImpl<$Res>
   @override
   $Res call({
     Object description = freezed,
+    Object category = freezed,
     Object price = freezed,
   }) {
     return _then(_value.copyWith(
       description:
           description == freezed ? _value.description : description as String,
+      category: category == freezed ? _value.category : category as String,
       price: price == freezed ? _value.price : price as int,
     ));
   }
@@ -2235,7 +2702,7 @@ abstract class $UpdateMentorshipInfo$CopyWith<$Res>
           $Res Function(UpdateMentorshipInfo$) then) =
       _$UpdateMentorshipInfo$CopyWithImpl<$Res>;
   @override
-  $Res call({String description, int price});
+  $Res call({String description, String category, int price});
 }
 
 /// @nodoc
@@ -2252,11 +2719,13 @@ class _$UpdateMentorshipInfo$CopyWithImpl<$Res>
   @override
   $Res call({
     Object description = freezed,
+    Object category = freezed,
     Object price = freezed,
   }) {
     return _then(UpdateMentorshipInfo$(
       description:
           description == freezed ? _value.description : description as String,
+      category: category == freezed ? _value.category : category as String,
       price: price == freezed ? _value.price : price as int,
     ));
   }
@@ -2264,16 +2733,18 @@ class _$UpdateMentorshipInfo$CopyWithImpl<$Res>
 
 /// @nodoc
 class _$UpdateMentorshipInfo$ implements UpdateMentorshipInfo$ {
-  const _$UpdateMentorshipInfo$({this.description, this.price});
+  const _$UpdateMentorshipInfo$({this.description, this.category, this.price});
 
   @override
   final String description;
+  @override
+  final String category;
   @override
   final int price;
 
   @override
   String toString() {
-    return 'UpdateMentorshipInfo(description: $description, price: $price)';
+    return 'UpdateMentorshipInfo(description: $description, category: $category, price: $price)';
   }
 
   @override
@@ -2283,6 +2754,9 @@ class _$UpdateMentorshipInfo$ implements UpdateMentorshipInfo$ {
             (identical(other.description, description) ||
                 const DeepCollectionEquality()
                     .equals(other.description, description)) &&
+            (identical(other.category, category) ||
+                const DeepCollectionEquality()
+                    .equals(other.category, category)) &&
             (identical(other.price, price) ||
                 const DeepCollectionEquality().equals(other.price, price)));
   }
@@ -2291,6 +2765,7 @@ class _$UpdateMentorshipInfo$ implements UpdateMentorshipInfo$ {
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(description) ^
+      const DeepCollectionEquality().hash(category) ^
       const DeepCollectionEquality().hash(price);
 
   @override
@@ -2300,11 +2775,15 @@ class _$UpdateMentorshipInfo$ implements UpdateMentorshipInfo$ {
 }
 
 abstract class UpdateMentorshipInfo$ implements UpdateMentorshipInfo {
-  const factory UpdateMentorshipInfo$({String description, int price}) =
-      _$UpdateMentorshipInfo$;
+  const factory UpdateMentorshipInfo$(
+      {String description,
+      String category,
+      int price}) = _$UpdateMentorshipInfo$;
 
   @override
   String get description;
+  @override
+  String get category;
   @override
   int get price;
   @override

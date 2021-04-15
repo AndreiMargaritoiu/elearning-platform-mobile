@@ -40,6 +40,12 @@ class _$MentorshipSerializer implements StructuredSerializer<Mentorship> {
         ..add(serializers.serialize(object.description,
             specifiedType: const FullType(String)));
     }
+    if (object.category != null) {
+      result
+        ..add('category')
+        ..add(serializers.serialize(object.category,
+            specifiedType: const FullType(String)));
+    }
     if (object.price != null) {
       result
         ..add('price')
@@ -82,6 +88,10 @@ class _$MentorshipSerializer implements StructuredSerializer<Mentorship> {
           result.description = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
+        case 'category':
+          result.category = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
         case 'price':
           result.price = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int;
@@ -114,6 +124,12 @@ class _$MentorshipInfoSerializer
         ..add(serializers.serialize(object.description,
             specifiedType: const FullType(String)));
     }
+    if (object.category != null) {
+      result
+        ..add('category')
+        ..add(serializers.serialize(object.category,
+            specifiedType: const FullType(String)));
+    }
     if (object.price != null) {
       result
         ..add('price')
@@ -137,6 +153,10 @@ class _$MentorshipInfoSerializer
       switch (key) {
         case 'description':
           result.description = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'category':
+          result.category = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
         case 'price':
@@ -212,6 +232,8 @@ class _$Mentorship extends Mentorship {
   @override
   final String description;
   @override
+  final String category;
+  @override
   final int price;
   @override
   final int createdAt;
@@ -224,6 +246,7 @@ class _$Mentorship extends Mentorship {
       this.mentorId,
       this.mentorEmail,
       this.description,
+      this.category,
       this.price,
       this.createdAt})
       : super._() {
@@ -250,6 +273,7 @@ class _$Mentorship extends Mentorship {
         mentorId == other.mentorId &&
         mentorEmail == other.mentorEmail &&
         description == other.description &&
+        category == other.category &&
         price == other.price &&
         createdAt == other.createdAt;
   }
@@ -259,9 +283,11 @@ class _$Mentorship extends Mentorship {
     return $jf($jc(
         $jc(
             $jc(
-                $jc($jc($jc(0, id.hashCode), mentorId.hashCode),
-                    mentorEmail.hashCode),
-                description.hashCode),
+                $jc(
+                    $jc($jc($jc(0, id.hashCode), mentorId.hashCode),
+                        mentorEmail.hashCode),
+                    description.hashCode),
+                category.hashCode),
             price.hashCode),
         createdAt.hashCode));
   }
@@ -273,6 +299,7 @@ class _$Mentorship extends Mentorship {
           ..add('mentorId', mentorId)
           ..add('mentorEmail', mentorEmail)
           ..add('description', description)
+          ..add('category', category)
           ..add('price', price)
           ..add('createdAt', createdAt))
         .toString();
@@ -298,6 +325,10 @@ class MentorshipBuilder implements Builder<Mentorship, MentorshipBuilder> {
   String get description => _$this._description;
   set description(String description) => _$this._description = description;
 
+  String _category;
+  String get category => _$this._category;
+  set category(String category) => _$this._category = category;
+
   int _price;
   int get price => _$this._price;
   set price(int price) => _$this._price = price;
@@ -314,6 +345,7 @@ class MentorshipBuilder implements Builder<Mentorship, MentorshipBuilder> {
       _mentorId = _$v.mentorId;
       _mentorEmail = _$v.mentorEmail;
       _description = _$v.description;
+      _category = _$v.category;
       _price = _$v.price;
       _createdAt = _$v.createdAt;
       _$v = null;
@@ -342,6 +374,7 @@ class MentorshipBuilder implements Builder<Mentorship, MentorshipBuilder> {
             mentorId: mentorId,
             mentorEmail: mentorEmail,
             description: description,
+            category: category,
             price: price,
             createdAt: createdAt);
     replace(_$result);
@@ -353,12 +386,14 @@ class _$MentorshipInfo extends MentorshipInfo {
   @override
   final String description;
   @override
+  final String category;
+  @override
   final int price;
 
   factory _$MentorshipInfo([void Function(MentorshipInfoBuilder) updates]) =>
       (new MentorshipInfoBuilder()..update(updates)).build();
 
-  _$MentorshipInfo._({this.description, this.price}) : super._();
+  _$MentorshipInfo._({this.description, this.category, this.price}) : super._();
 
   @override
   MentorshipInfo rebuild(void Function(MentorshipInfoBuilder) updates) =>
@@ -373,18 +408,21 @@ class _$MentorshipInfo extends MentorshipInfo {
     if (identical(other, this)) return true;
     return other is MentorshipInfo &&
         description == other.description &&
+        category == other.category &&
         price == other.price;
   }
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, description.hashCode), price.hashCode));
+    return $jf($jc(
+        $jc($jc(0, description.hashCode), category.hashCode), price.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('MentorshipInfo')
           ..add('description', description)
+          ..add('category', category)
           ..add('price', price))
         .toString();
   }
@@ -398,6 +436,10 @@ class MentorshipInfoBuilder
   String get description => _$this._description;
   set description(String description) => _$this._description = description;
 
+  String _category;
+  String get category => _$this._category;
+  set category(String category) => _$this._category = category;
+
   int _price;
   int get price => _$this._price;
   set price(int price) => _$this._price = price;
@@ -407,6 +449,7 @@ class MentorshipInfoBuilder
   MentorshipInfoBuilder get _$this {
     if (_$v != null) {
       _description = _$v.description;
+      _category = _$v.category;
       _price = _$v.price;
       _$v = null;
     }
@@ -428,8 +471,9 @@ class MentorshipInfoBuilder
 
   @override
   _$MentorshipInfo build() {
-    final _$result =
-        _$v ?? new _$MentorshipInfo._(description: description, price: price);
+    final _$result = _$v ??
+        new _$MentorshipInfo._(
+            description: description, category: category, price: price);
     replace(_$result);
     return _$result;
   }

@@ -6,6 +6,7 @@ abstract class UpdateMentorshipInfo
     implements AppAction {
   const factory UpdateMentorshipInfo({
     String description,
+    String category,
     int price,
   }) = UpdateMentorshipInfo$;
 }

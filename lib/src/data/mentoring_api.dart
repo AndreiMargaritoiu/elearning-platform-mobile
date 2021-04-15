@@ -47,8 +47,15 @@ class MentoringApi {
 //    return mentorship;
   }
 
-  Future<List<Mentorship>> getAllMentorships() async {
-    final Response response = await _clientWrapper.get('mentoring');
+  Future<List<Mentorship>> getAllMentorships({String category}) async {
+    final dynamic queryParams = (category != null && category.isNotEmpty)
+        ? {
+            '$category': category,
+          }
+        : null;
+    final Response response = (queryParams != null)
+        ? await _clientWrapper.get('mentoring', queryParams)
+        : await _clientWrapper.get('mentoring');
     final List<dynamic> data = jsonDecode(response.body);
 
     return data

@@ -11,4 +11,5 @@ part 'get_all_mentorships.dart';
 part 'get_mentorship_by_id.dart';
 part 'update_mentorship.dart';
 part 'delete_mentorship.dart';
+part 'get_category_mentorships.dart';
 part 'set.dart';
