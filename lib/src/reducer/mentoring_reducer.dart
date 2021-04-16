@@ -11,6 +11,12 @@ Reducer<MentorshipsState> mentoringReducer = combineReducers(
         _addMentorshipSuccessful),
     TypedReducer<MentorshipsState, GetAllMentorshipsSuccessful>(
         _getAllMentorshipsSuccessful),
+    TypedReducer<MentorshipsState, GetCategoryMentorshipsSuccessful>(
+        _getCategoryMentorshipsSuccessful),
+    TypedReducer<MentorshipsState, GetMentorshipByUidSuccessful>(
+        _getMentorshipsByUidSuccessful),
+    TypedReducer<MentorshipsState, GetAllMentorshipsSuccessful>(
+        _getAllMentorshipsSuccessful),
   ],
 );
 
@@ -44,6 +50,24 @@ MentorshipsState _getAllMentorshipsSuccessful(
     MentorshipsState state, GetAllMentorshipsSuccessful action) {
   return state.rebuild(
     (MentorshipsStateBuilder b) {
+      b.mentorships = ListBuilder<Mentorship>(action.mentorships);
+    },
+  );
+}
+
+MentorshipsState _getCategoryMentorshipsSuccessful(
+    MentorshipsState state, GetCategoryMentorshipsSuccessful action) {
+  return state.rebuild(
+        (MentorshipsStateBuilder b) {
+      b.mentorships = ListBuilder<Mentorship>(action.mentorships);
+    },
+  );
+}
+
+MentorshipsState _getMentorshipsByUidSuccessful(
+    MentorshipsState state, GetMentorshipByUidSuccessful action) {
+  return state.rebuild(
+        (MentorshipsStateBuilder b) {
       b.mentorships = ListBuilder<Mentorship>(action.mentorships);
     },
   );

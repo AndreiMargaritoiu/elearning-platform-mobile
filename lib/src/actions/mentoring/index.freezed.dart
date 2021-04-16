@@ -2178,9 +2178,9 @@ class _$GetCategoryMentorshipsTearOff {
   const _$GetCategoryMentorshipsTearOff();
 
 // ignore: unused_element
-  GetCategoryMentorships$ call({String category}) {
+  GetCategoryMentorships$ call(List<String> category) {
     return GetCategoryMentorships$(
-      category: category,
+      category,
     );
   }
 
@@ -2207,13 +2207,13 @@ const $GetCategoryMentorships = _$GetCategoryMentorshipsTearOff();
 mixin _$GetCategoryMentorships {
   @optionalTypeArgs
   Result when<Result extends Object>(
-    Result $default(String category), {
+    Result $default(List<String> category), {
     @required Result successful(List<Mentorship> mentorships),
     @required Result error(Object error),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>(
-    Result $default(String category), {
+    Result $default(List<String> category), {
     Result successful(List<Mentorship> mentorships),
     Result error(Object error),
     @required Result orElse(),
@@ -2255,7 +2255,7 @@ abstract class $GetCategoryMentorships$CopyWith<$Res> {
   factory $GetCategoryMentorships$CopyWith(GetCategoryMentorships$ value,
           $Res Function(GetCategoryMentorships$) then) =
       _$GetCategoryMentorships$CopyWithImpl<$Res>;
-  $Res call({String category});
+  $Res call({List<String> category});
 }
 
 /// @nodoc
@@ -2274,17 +2274,17 @@ class _$GetCategoryMentorships$CopyWithImpl<$Res>
     Object category = freezed,
   }) {
     return _then(GetCategoryMentorships$(
-      category: category == freezed ? _value.category : category as String,
+      category == freezed ? _value.category : category as List<String>,
     ));
   }
 }
 
 /// @nodoc
 class _$GetCategoryMentorships$ implements GetCategoryMentorships$ {
-  const _$GetCategoryMentorships$({this.category});
+  const _$GetCategoryMentorships$(this.category) : assert(category != null);
 
   @override
-  final String category;
+  final List<String> category;
 
   @override
   String toString() {
@@ -2312,7 +2312,7 @@ class _$GetCategoryMentorships$ implements GetCategoryMentorships$ {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>(
-    Result $default(String category), {
+    Result $default(List<String> category), {
     @required Result successful(List<Mentorship> mentorships),
     @required Result error(Object error),
   }) {
@@ -2325,7 +2325,7 @@ class _$GetCategoryMentorships$ implements GetCategoryMentorships$ {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>(
-    Result $default(String category), {
+    Result $default(List<String> category), {
     Result successful(List<Mentorship> mentorships),
     Result error(Object error),
     @required Result orElse(),
@@ -2367,10 +2367,10 @@ class _$GetCategoryMentorships$ implements GetCategoryMentorships$ {
 }
 
 abstract class GetCategoryMentorships$ implements GetCategoryMentorships {
-  const factory GetCategoryMentorships$({String category}) =
+  const factory GetCategoryMentorships$(List<String> category) =
       _$GetCategoryMentorships$;
 
-  String get category;
+  List<String> get category;
   $GetCategoryMentorships$CopyWith<GetCategoryMentorships$> get copyWith;
 }
 
@@ -2443,7 +2443,7 @@ class _$GetCategoryMentorshipsSuccessful
   @override
   @optionalTypeArgs
   Result when<Result extends Object>(
-    Result $default(String category), {
+    Result $default(List<String> category), {
     @required Result successful(List<Mentorship> mentorships),
     @required Result error(Object error),
   }) {
@@ -2456,7 +2456,7 @@ class _$GetCategoryMentorshipsSuccessful
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>(
-    Result $default(String category), {
+    Result $default(List<String> category), {
     Result successful(List<Mentorship> mentorships),
     Result error(Object error),
     @required Result orElse(),
@@ -2572,7 +2572,7 @@ class _$GetCategoryMentorshipsError implements GetCategoryMentorshipsError {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>(
-    Result $default(String category), {
+    Result $default(List<String> category), {
     @required Result successful(List<Mentorship> mentorships),
     @required Result error(Object error),
   }) {
@@ -2585,7 +2585,7 @@ class _$GetCategoryMentorshipsError implements GetCategoryMentorshipsError {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>(
-    Result $default(String category), {
+    Result $default(List<String> category), {
     Result successful(List<Mentorship> mentorships),
     Result error(Object error),
     @required Result orElse(),
@@ -2634,6 +2634,461 @@ abstract class GetCategoryMentorshipsError
   Object get error;
   $GetCategoryMentorshipsErrorCopyWith<GetCategoryMentorshipsError>
       get copyWith;
+}
+
+/// @nodoc
+class _$GetMentorshipByUidTearOff {
+  const _$GetMentorshipByUidTearOff();
+
+// ignore: unused_element
+  GetMentorshipByUid$ call({String id}) {
+    return GetMentorshipByUid$(
+      id: id,
+    );
+  }
+
+// ignore: unused_element
+  GetMentorshipByUidSuccessful successful(List<Mentorship> mentorships) {
+    return GetMentorshipByUidSuccessful(
+      mentorships,
+    );
+  }
+
+// ignore: unused_element
+  GetMentorshipByUidError error(Object error) {
+    return GetMentorshipByUidError(
+      error,
+    );
+  }
+}
+
+/// @nodoc
+// ignore: unused_element
+const $GetMentorshipByUid = _$GetMentorshipByUidTearOff();
+
+/// @nodoc
+mixin _$GetMentorshipByUid {
+  @optionalTypeArgs
+  Result when<Result extends Object>(
+    Result $default(String id), {
+    @required Result successful(List<Mentorship> mentorships),
+    @required Result error(Object error),
+  });
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>(
+    Result $default(String id), {
+    Result successful(List<Mentorship> mentorships),
+    Result error(Object error),
+    @required Result orElse(),
+  });
+  @optionalTypeArgs
+  Result map<Result extends Object>(
+    Result $default(GetMentorshipByUid$ value), {
+    @required Result successful(GetMentorshipByUidSuccessful value),
+    @required Result error(GetMentorshipByUidError value),
+  });
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>(
+    Result $default(GetMentorshipByUid$ value), {
+    Result successful(GetMentorshipByUidSuccessful value),
+    Result error(GetMentorshipByUidError value),
+    @required Result orElse(),
+  });
+}
+
+/// @nodoc
+abstract class $GetMentorshipByUidCopyWith<$Res> {
+  factory $GetMentorshipByUidCopyWith(
+          GetMentorshipByUid value, $Res Function(GetMentorshipByUid) then) =
+      _$GetMentorshipByUidCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$GetMentorshipByUidCopyWithImpl<$Res>
+    implements $GetMentorshipByUidCopyWith<$Res> {
+  _$GetMentorshipByUidCopyWithImpl(this._value, this._then);
+
+  final GetMentorshipByUid _value;
+  // ignore: unused_field
+  final $Res Function(GetMentorshipByUid) _then;
+}
+
+/// @nodoc
+abstract class $GetMentorshipByUid$CopyWith<$Res> {
+  factory $GetMentorshipByUid$CopyWith(
+          GetMentorshipByUid$ value, $Res Function(GetMentorshipByUid$) then) =
+      _$GetMentorshipByUid$CopyWithImpl<$Res>;
+  $Res call({String id});
+}
+
+/// @nodoc
+class _$GetMentorshipByUid$CopyWithImpl<$Res>
+    extends _$GetMentorshipByUidCopyWithImpl<$Res>
+    implements $GetMentorshipByUid$CopyWith<$Res> {
+  _$GetMentorshipByUid$CopyWithImpl(
+      GetMentorshipByUid$ _value, $Res Function(GetMentorshipByUid$) _then)
+      : super(_value, (v) => _then(v as GetMentorshipByUid$));
+
+  @override
+  GetMentorshipByUid$ get _value => super._value as GetMentorshipByUid$;
+
+  @override
+  $Res call({
+    Object id = freezed,
+  }) {
+    return _then(GetMentorshipByUid$(
+      id: id == freezed ? _value.id : id as String,
+    ));
+  }
+}
+
+/// @nodoc
+class _$GetMentorshipByUid$ implements GetMentorshipByUid$ {
+  const _$GetMentorshipByUid$({this.id});
+
+  @override
+  final String id;
+
+  @override
+  String toString() {
+    return 'GetMentorshipByUid(id: $id)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is GetMentorshipByUid$ &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(id);
+
+  @override
+  $GetMentorshipByUid$CopyWith<GetMentorshipByUid$> get copyWith =>
+      _$GetMentorshipByUid$CopyWithImpl<GetMentorshipByUid$>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>(
+    Result $default(String id), {
+    @required Result successful(List<Mentorship> mentorships),
+    @required Result error(Object error),
+  }) {
+    assert($default != null);
+    assert(successful != null);
+    assert(error != null);
+    return $default(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>(
+    Result $default(String id), {
+    Result successful(List<Mentorship> mentorships),
+    Result error(Object error),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if ($default != null) {
+      return $default(id);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>(
+    Result $default(GetMentorshipByUid$ value), {
+    @required Result successful(GetMentorshipByUidSuccessful value),
+    @required Result error(GetMentorshipByUidError value),
+  }) {
+    assert($default != null);
+    assert(successful != null);
+    assert(error != null);
+    return $default(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>(
+    Result $default(GetMentorshipByUid$ value), {
+    Result successful(GetMentorshipByUidSuccessful value),
+    Result error(GetMentorshipByUidError value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if ($default != null) {
+      return $default(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetMentorshipByUid$ implements GetMentorshipByUid {
+  const factory GetMentorshipByUid$({String id}) = _$GetMentorshipByUid$;
+
+  String get id;
+  $GetMentorshipByUid$CopyWith<GetMentorshipByUid$> get copyWith;
+}
+
+/// @nodoc
+abstract class $GetMentorshipByUidSuccessfulCopyWith<$Res> {
+  factory $GetMentorshipByUidSuccessfulCopyWith(
+          GetMentorshipByUidSuccessful value,
+          $Res Function(GetMentorshipByUidSuccessful) then) =
+      _$GetMentorshipByUidSuccessfulCopyWithImpl<$Res>;
+  $Res call({List<Mentorship> mentorships});
+}
+
+/// @nodoc
+class _$GetMentorshipByUidSuccessfulCopyWithImpl<$Res>
+    extends _$GetMentorshipByUidCopyWithImpl<$Res>
+    implements $GetMentorshipByUidSuccessfulCopyWith<$Res> {
+  _$GetMentorshipByUidSuccessfulCopyWithImpl(
+      GetMentorshipByUidSuccessful _value,
+      $Res Function(GetMentorshipByUidSuccessful) _then)
+      : super(_value, (v) => _then(v as GetMentorshipByUidSuccessful));
+
+  @override
+  GetMentorshipByUidSuccessful get _value =>
+      super._value as GetMentorshipByUidSuccessful;
+
+  @override
+  $Res call({
+    Object mentorships = freezed,
+  }) {
+    return _then(GetMentorshipByUidSuccessful(
+      mentorships == freezed
+          ? _value.mentorships
+          : mentorships as List<Mentorship>,
+    ));
+  }
+}
+
+/// @nodoc
+class _$GetMentorshipByUidSuccessful implements GetMentorshipByUidSuccessful {
+  const _$GetMentorshipByUidSuccessful(this.mentorships)
+      : assert(mentorships != null);
+
+  @override
+  final List<Mentorship> mentorships;
+
+  @override
+  String toString() {
+    return 'GetMentorshipByUid.successful(mentorships: $mentorships)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is GetMentorshipByUidSuccessful &&
+            (identical(other.mentorships, mentorships) ||
+                const DeepCollectionEquality()
+                    .equals(other.mentorships, mentorships)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(mentorships);
+
+  @override
+  $GetMentorshipByUidSuccessfulCopyWith<GetMentorshipByUidSuccessful>
+      get copyWith => _$GetMentorshipByUidSuccessfulCopyWithImpl<
+          GetMentorshipByUidSuccessful>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>(
+    Result $default(String id), {
+    @required Result successful(List<Mentorship> mentorships),
+    @required Result error(Object error),
+  }) {
+    assert($default != null);
+    assert(successful != null);
+    assert(error != null);
+    return successful(mentorships);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>(
+    Result $default(String id), {
+    Result successful(List<Mentorship> mentorships),
+    Result error(Object error),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (successful != null) {
+      return successful(mentorships);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>(
+    Result $default(GetMentorshipByUid$ value), {
+    @required Result successful(GetMentorshipByUidSuccessful value),
+    @required Result error(GetMentorshipByUidError value),
+  }) {
+    assert($default != null);
+    assert(successful != null);
+    assert(error != null);
+    return successful(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>(
+    Result $default(GetMentorshipByUid$ value), {
+    Result successful(GetMentorshipByUidSuccessful value),
+    Result error(GetMentorshipByUidError value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (successful != null) {
+      return successful(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetMentorshipByUidSuccessful implements GetMentorshipByUid {
+  const factory GetMentorshipByUidSuccessful(List<Mentorship> mentorships) =
+      _$GetMentorshipByUidSuccessful;
+
+  List<Mentorship> get mentorships;
+  $GetMentorshipByUidSuccessfulCopyWith<GetMentorshipByUidSuccessful>
+      get copyWith;
+}
+
+/// @nodoc
+abstract class $GetMentorshipByUidErrorCopyWith<$Res> {
+  factory $GetMentorshipByUidErrorCopyWith(GetMentorshipByUidError value,
+          $Res Function(GetMentorshipByUidError) then) =
+      _$GetMentorshipByUidErrorCopyWithImpl<$Res>;
+  $Res call({Object error});
+}
+
+/// @nodoc
+class _$GetMentorshipByUidErrorCopyWithImpl<$Res>
+    extends _$GetMentorshipByUidCopyWithImpl<$Res>
+    implements $GetMentorshipByUidErrorCopyWith<$Res> {
+  _$GetMentorshipByUidErrorCopyWithImpl(GetMentorshipByUidError _value,
+      $Res Function(GetMentorshipByUidError) _then)
+      : super(_value, (v) => _then(v as GetMentorshipByUidError));
+
+  @override
+  GetMentorshipByUidError get _value => super._value as GetMentorshipByUidError;
+
+  @override
+  $Res call({
+    Object error = freezed,
+  }) {
+    return _then(GetMentorshipByUidError(
+      error == freezed ? _value.error : error,
+    ));
+  }
+}
+
+@Implements(ErrorAction)
+
+/// @nodoc
+class _$GetMentorshipByUidError implements GetMentorshipByUidError {
+  const _$GetMentorshipByUidError(this.error) : assert(error != null);
+
+  @override
+  final Object error;
+
+  @override
+  String toString() {
+    return 'GetMentorshipByUid.error(error: $error)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is GetMentorshipByUidError &&
+            (identical(other.error, error) ||
+                const DeepCollectionEquality().equals(other.error, error)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
+
+  @override
+  $GetMentorshipByUidErrorCopyWith<GetMentorshipByUidError> get copyWith =>
+      _$GetMentorshipByUidErrorCopyWithImpl<GetMentorshipByUidError>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>(
+    Result $default(String id), {
+    @required Result successful(List<Mentorship> mentorships),
+    @required Result error(Object error),
+  }) {
+    assert($default != null);
+    assert(successful != null);
+    assert(error != null);
+    return error(this.error);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>(
+    Result $default(String id), {
+    Result successful(List<Mentorship> mentorships),
+    Result error(Object error),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (error != null) {
+      return error(this.error);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>(
+    Result $default(GetMentorshipByUid$ value), {
+    @required Result successful(GetMentorshipByUidSuccessful value),
+    @required Result error(GetMentorshipByUidError value),
+  }) {
+    assert($default != null);
+    assert(successful != null);
+    assert(error != null);
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>(
+    Result $default(GetMentorshipByUid$ value), {
+    Result successful(GetMentorshipByUidSuccessful value),
+    Result error(GetMentorshipByUidError value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetMentorshipByUidError
+    implements GetMentorshipByUid, ErrorAction {
+  const factory GetMentorshipByUidError(Object error) =
+      _$GetMentorshipByUidError;
+
+  Object get error;
+  $GetMentorshipByUidErrorCopyWith<GetMentorshipByUidError> get copyWith;
 }
 
 /// @nodoc

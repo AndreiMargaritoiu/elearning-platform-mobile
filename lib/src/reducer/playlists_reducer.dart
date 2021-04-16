@@ -15,8 +15,6 @@ Reducer<PlaylistsState> playlistsReducer = combineReducers(
         _getCategoryPlaylistsSuccessful),
     TypedReducer<PlaylistsState, GetAllPlaylistsSuccessful>(
         _getAllPlaylistsSuccessful),
-    TypedReducer<PlaylistsState, GetCategoryPlaylistsSuccessful>(
-        _getCategoryPlaylistsSuccessful),
     TypedReducer<PlaylistsState, SearchPlaylistsSuccessful>(
         _searchPlaylistsSuccessful),
   ],
@@ -58,15 +56,6 @@ PlaylistsState _getAllPlaylistsSuccessful(
     PlaylistsState state, GetAllPlaylistsSuccessful action) {
   return state.rebuild(
     (PlaylistsStateBuilder b) {
-      b.playlists = ListBuilder<Playlist>(action.playlists);
-    },
-  );
-}
-
-PlaylistsState _getCategoryPlaylistSuccessful(
-    PlaylistsState state, GetCategoryPlaylistsSuccessful action) {
-  return state.rebuild(
-        (PlaylistsStateBuilder b) {
       b.playlists = ListBuilder<Playlist>(action.playlists);
     },
   );

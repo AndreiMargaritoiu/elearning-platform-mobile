@@ -67,7 +67,7 @@ class PlaylistsApi {
   Future<List<Playlist>> getAllPlaylists({String field}) async {
     final dynamic queryParams = (field != null && field.isNotEmpty)
         ? {
-            '$field': field,
+            'category': field,
           }
         : null;
     final Response response = (queryParams != null)

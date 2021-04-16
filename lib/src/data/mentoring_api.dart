@@ -47,10 +47,16 @@ class MentoringApi {
 //    return mentorship;
   }
 
-  Future<List<Mentorship>> getAllMentorships({String category}) async {
-    final dynamic queryParams = (category != null && category.isNotEmpty)
+  Future<List<Mentorship>> getAllMentorships({List<String> category}) async {
+    String queryParamParsed = '';
+    if (category != null && category.isNotEmpty) {
+      category.forEach((String element) {
+        queryParamParsed = queryParamParsed + element + ',';
+      });
+    }
+    final dynamic queryParams = queryParamParsed.isNotEmpty
         ? {
-            '$category': category,
+            'category': queryParamParsed,
           }
         : null;
     final Response response = (queryParams != null)
@@ -63,6 +69,7 @@ class MentoringApi {
           (dynamic json) => Mentorship.fromJson(json),
         )
         .toList();
+  }
 
 //    final QuerySnapshot snapshot = await _firestore
 //        .collection('mentoring') //
@@ -73,6 +80,29 @@ class MentoringApi {
 //            doc.data(),
 //          ),
 //        )
+//        .toList();
+//    return result;
+
+  Future<List<Mentorship>> getMentorshipsByUid(String uid) async {
+    final dynamic queryParams = {
+      'uid': uid,
+    };
+    final Response response =
+        await _clientWrapper.get('mentoring', queryParams);
+    final List<dynamic> data = jsonDecode(response.body);
+
+    return data
+        .map(
+          (dynamic json) => Mentorship.fromJson(json),
+        )
+        .toList();
+
+//    final QuerySnapshot snapshot = await _firestore
+//        .collection('playlists') //
+//        .where('uid', isEqualTo: uid)
+//        .get();
+//    final List<Playlist> result = snapshot.docs //
+//        .map((QueryDocumentSnapshot doc) => Playlist.fromJson(doc.data(),),)
 //        .toList();
 //    return result;
   }

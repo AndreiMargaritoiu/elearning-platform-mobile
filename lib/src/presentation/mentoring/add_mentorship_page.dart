@@ -35,6 +35,9 @@ class _AddMentorshipPageState extends State<AddMentorshipPage> {
                       context,
                       ModalRoute.withName(AppRoutes.home),
                     );
+                    StoreProvider.of<AppState>(context, listen: false).dispatch(
+                      const GetAllMentorships(),
+                    );
                   } else {
                     // show error
                   }
@@ -95,7 +98,7 @@ class _AddMentorshipPageState extends State<AddMentorshipPage> {
                   }).toList(),
                   onChanged: (String newValue) {
                     setState(
-                          () {
+                      () {
                         dropdownValue = newValue;
                         StoreProvider.of<AppState>(context).dispatch(
                           UpdatePlaylistInfo(category: newValue),

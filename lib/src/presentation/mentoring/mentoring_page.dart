@@ -14,6 +14,9 @@ class MentoringPage extends StatefulWidget {
 }
 
 class _MentoringPageState extends State<MentoringPage> {
+  final List<String> _selectedChips = <String>[];
+  bool isYoursClicked = false;
+
   @override
   void initState() {
     super.initState();
@@ -43,21 +46,69 @@ class _MentoringPageState extends State<MentoringPage> {
                   ),
                 ),
                 const SizedBox(height: 20.0),
-                Wrap(
-                  spacing: 40.0,
-                  children: <String>[
-                    'School',
-                    'Faculty',
-                    'Other',
-                  ].map((String category) {
-                    return ChoiceChip(
-                      label: Text(category),
-                      selected: false,
-                      onSelected: (bool isSelected) {
-                        if (isSelected) {
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Wrap(
+                      spacing: 20.0,
+                      children: <String>['School', 'Faculty', 'Other']
+                          .map((String category) {
+                        return ChoiceChip(
+                          label: Text(category),
+                          labelStyle: const TextStyle(
+                              color: Colors.white, fontSize: 16),
+                          selectedColor: Colors.red,
+                          backgroundColor: Colors.blueAccent,
+                          selected: _selectedChips.contains(category),
+                          onSelected: (bool isSelected) {
+                            if (isSelected) {
+                              setState(() {
+                                _selectedChips.add(category);
+                                isYoursClicked = false;
+                              });
+                              StoreProvider.of<AppState>(context, listen: false)
+                                  .dispatch(
+                                GetCategoryMentorships(_selectedChips),
+                              );
+                            } else {
+                              setState(() {
+                                _selectedChips.remove(category);
+                              });
+                              StoreProvider.of<AppState>(context, listen: false)
+                                  .dispatch(
+                                const GetAllMentorships(),
+                              );
+                            }
+                          },
+                        );
+                      }).toList(),
+                    ),
+                    MaterialButton(
+                      child: Container(
+                        padding: const EdgeInsets.only(
+                            top: 6, bottom: 6, left: 12, right: 12),
+                        decoration: BoxDecoration(
+                          color:
+                              isYoursClicked ? Colors.red : Colors.blueAccent,
+                          borderRadius: BorderRadius.circular(16.0),
+                        ),
+                        child: const Text(
+                          'Yours',
+                          style: TextStyle(
+                            fontSize: 16.0,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          _selectedChips.clear();
+                          isYoursClicked = !isYoursClicked;
+                        });
+                        if (isYoursClicked) {
                           StoreProvider.of<AppState>(context, listen: false)
                               .dispatch(
-                            GetCategoryMentorships(category: category),
+                            const GetMentorshipByUid(),
                           );
                         } else {
                           StoreProvider.of<AppState>(context, listen: false)
@@ -66,133 +117,147 @@ class _MentoringPageState extends State<MentoringPage> {
                           );
                         }
                       },
-                    );
-                  }).toList(),
+                    ),
+                  ],
                 ),
                 const SizedBox(height: 20.0),
-                UsersContainer(
-                  builder: (BuildContext context, Map<String, AppUser> users) {
-                    return MentorshipsContainer(
-                      builder:
-                          (BuildContext context, List<Mentorship> mentorships) {
-                        return ListView.builder(
-                          itemCount: mentorships.length,
-                          shrinkWrap: true,
-                          physics: const NeverScrollableScrollPhysics(),
-                          itemBuilder: (BuildContext context, int index) {
-                            final Mentorship mentorship = mentorships[index];
-                            final AppUser user = users[mentorship.mentorId];
+                UserContainer(builder: (BuildContext context, AppUser me) {
+                  return UsersContainer(
+                    builder:
+                        (BuildContext context, Map<String, AppUser> users) {
+                      return MentorshipsContainer(
+                        builder: (BuildContext context,
+                            List<Mentorship> mentorships) {
+                          return ListView.builder(
+                            itemCount: mentorships.length,
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemBuilder: (BuildContext context, int index) {
+                              final Mentorship mentorship = mentorships[index];
+                              final AppUser user = users[mentorship.mentorId];
 
-                            return Container(
-                              width: 150,
-                              child: Card(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    ListTile(
-                                      leading: user.photoUrl != null
-                                          ? CircleAvatar(
-                                              backgroundImage:
-                                                  NetworkImage(user.photoUrl),
-                                            )
-                                          : CircleAvatar(
-                                              backgroundColor:
-                                                  Colors.grey.shade900,
-                                              child: Text(
-                                                user.username[0].toUpperCase(),
-                                              ),
+                              return Container(
+                                child: Card(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: <Widget>[
+                                      if (user.uid != me.uid)
+                                        ListTile(
+                                          leading: user.photoUrl != null
+                                              ? CircleAvatar(
+                                                  backgroundImage: NetworkImage(
+                                                      user.photoUrl),
+                                                )
+                                              : CircleAvatar(
+                                                  backgroundColor:
+                                                      Colors.grey.shade900,
+                                                  child: Text(
+                                                    user.username[0]
+                                                        .toUpperCase(),
+                                                  ),
+                                                ),
+                                          title: Text(
+                                            user.username,
+                                            style: const TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              fontSize: 18,
                                             ),
-                                      title: Text(
-                                        user.username,
-                                        style: const TextStyle(
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 18,
-                                        ),
-                                      ),
-                                      onTap: () {
-                                        Navigator.pushNamed(context,
-                                            AppRoutes.othersProfilePage,
-                                            arguments: user);
-                                      },
-                                    ),
-                                    GestureDetector(
-                                      child: Container(
-                                        padding: const EdgeInsets.only(
-                                            left: 16, right: 8, bottom: 8),
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: <Widget>[
-                                            Flexible(
-                                              child: Container(
-                                                padding: const EdgeInsets.only(
-                                                    right: 16),
-                                                child: Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: <Widget>[
-                                                    Text(
-                                                      mentorship.description,
-                                                      style: const TextStyle(
-                                                        fontSize: 18,
+                                          ),
+                                          onTap: () {
+                                            Navigator.pushNamed(context,
+                                                AppRoutes.othersProfilePage,
+                                                arguments: user);
+                                          },
+                                        )
+                                      else
+                                        Container(),
+                                      GestureDetector(
+                                        child: Container(
+                                          padding: const EdgeInsets.only(
+                                              left: 16, right: 8, bottom: 8),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: <Widget>[
+                                              Flexible(
+                                                child: Container(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          right: 16),
+                                                  child: Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: <Widget>[
+                                                      Text(
+                                                        mentorship.description,
+                                                        style: const TextStyle(
+                                                          fontSize: 18,
+                                                        ),
                                                       ),
-                                                    ),
-                                                    Container(
-                                                      decoration: BoxDecoration(
-                                                        color:
-                                                            Colors.blueAccent,
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(10.0),
-                                                      ),
-                                                      child: Padding(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                .all(4.0),
-                                                        child: Text(
-                                                          'Contact: ${mentorship.mentorEmail}',
-                                                          style:
-                                                              const TextStyle(
-                                                            fontWeight:
-                                                                FontWeight.w500,
-                                                            fontSize: 16,
+                                                      Container(
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color:
+                                                              Colors.blueAccent,
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      10.0),
+                                                        ),
+                                                        child: Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .all(4.0),
+                                                          child: Text(
+                                                            'Contact: ${mentorship.mentorEmail}',
+                                                            style:
+                                                                const TextStyle(
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w500,
+                                                              fontSize: 16,
+                                                            ),
                                                           ),
                                                         ),
                                                       ),
-                                                    ),
-                                                  ],
+                                                    ],
+                                                  ),
                                                 ),
                                               ),
-                                            ),
-                                            Container(
-                                              width: 60,
-                                              child: Text(
-                                                '${mentorship.price} €/hour',
-                                                style: const TextStyle(
-                                                  fontWeight: FontWeight.w500,
-                                                  fontSize: 20,
+                                              Container(
+                                                width: 60,
+                                                child: Text(
+                                                  '${mentorship.price} €/hour',
+                                                  style: const TextStyle(
+                                                    fontWeight: FontWeight.w500,
+                                                    fontSize: 20,
+                                                  ),
                                                 ),
                                               ),
-                                            ),
-                                          ],
+                                            ],
+                                          ),
                                         ),
+                                        onTap: () {
+                                          if (me.uid == user.uid) {
+                                            Navigator.pushNamed(context,
+                                                AppRoutes.editMentorshipPage,
+                                                arguments: mentorship);
+                                          }
+                                        },
                                       ),
-                                      onTap: () {
-                                        Navigator.pushNamed(context,
-                                            AppRoutes.editMentorshipPage,
-                                            arguments: mentorship);
-                                      },
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
-                              ),
-                            );
-                          },
-                        );
-                      },
-                    );
-                  },
-                ),
+                              );
+                            },
+                          );
+                        },
+                      );
+                    },
+                  );
+                })
               ],
             ),
           ),

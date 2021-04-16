@@ -21,7 +21,7 @@ class _PlaylistsFeedPageState extends State<PlaylistsFeedPage> {
     super.initState();
 
     StoreProvider.of<AppState>(context, listen: false).dispatch(
-      const GetAllPlaylists(),
+      GetCategoryPlaylists(widget.category),
     );
   }
 
@@ -30,19 +30,28 @@ class _PlaylistsFeedPageState extends State<PlaylistsFeedPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.category),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context, true);
+            StoreProvider.of<AppState>(context, listen: false).dispatch(
+              const GetAllPlaylists(),
+            );
+          },
+        ),
       ),
       body: UsersContainer(
         builder: (BuildContext context, Map<String, AppUser> users) {
           return PlaylistsContainer(
             builder: (BuildContext context, List<Playlist> playlists) {
-              final List<Playlist> filteredPlaylists = playlists
-                  .where((Playlist element) =>
-                      element.category == '${widget.category}')
-                  .toList();
+              // final List<Playlist> filteredPlaylists = playlists
+              //     .where((Playlist element) =>
+              //         element.category == '${widget.category}')
+              //     .toList();
               return ListView.builder(
-                itemCount: filteredPlaylists.length,
+                itemCount: playlists.length,
                 itemBuilder: (BuildContext context, int index) {
-                  final Playlist playlist = filteredPlaylists[index];
+                  final Playlist playlist = playlists[index];
                   final AppUser user = users[playlist.uid];
 
                   return Column(

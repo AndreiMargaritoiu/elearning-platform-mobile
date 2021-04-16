@@ -36,6 +36,15 @@ class _EditPlaylistPageState extends State<EditPlaylistPage> {
         return Scaffold(
           appBar: AppBar(
             title: const Text('Edit playlist page'),
+            leading: IconButton(
+              icon: const Icon(Icons.arrow_back),
+              onPressed: () {
+                Navigator.pop(context, true);
+                StoreProvider.of<AppState>(context, listen: false).dispatch(
+                  const GetPlaylistsByUid(),
+                );
+              },
+            ),
           ),
           body: Padding(
             padding: const EdgeInsets.all(16),

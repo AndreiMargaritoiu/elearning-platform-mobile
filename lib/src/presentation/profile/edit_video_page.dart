@@ -23,6 +23,15 @@ class _EditVideoPageState extends State<EditVideoPage> {
         return Scaffold(
           appBar: AppBar(
             title: const Text('Edit video page'),
+            leading: IconButton(
+              icon: const Icon(Icons.arrow_back),
+              onPressed: () {
+                Navigator.pop(context, true);
+                StoreProvider.of<AppState>(context, listen: false).dispatch(
+                  const GetVideosByUid(),
+                );
+              },
+            ),
           ),
           body: Padding(
             padding: const EdgeInsets.all(16),

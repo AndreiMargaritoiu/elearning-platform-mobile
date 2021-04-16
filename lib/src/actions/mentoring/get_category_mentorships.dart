@@ -4,7 +4,7 @@ part of mentoring_action;
 abstract class GetCategoryMentorships
     with _$GetCategoryMentorships
     implements AppAction {
-  const factory GetCategoryMentorships({String category}) =
+  const factory GetCategoryMentorships(List<String> category) =
       GetCategoryMentorships$;
 
   const factory GetCategoryMentorships.successful(

@@ -19,6 +19,7 @@ class MentoringEpics {
         TypedEpic<AppState, AddMentorship$>(_addMentorship),
         TypedEpic<AppState, GetAllMentorships$>(_getAllMentorships),
         TypedEpic<AppState, GetCategoryMentorships$>(_getCategoryMentorships),
+        TypedEpic<AppState, GetMentorshipByUid$>(_getMentorshipsByUid),
         TypedEpic<AppState, GetMentorshipById$>(_getMentorshipById),
         TypedEpic<AppState, UpdateMentorship$>(_updateMentorship),
         TypedEpic<AppState, DeleteMentorship$>(_deleteMentorship),
@@ -150,6 +151,34 @@ class MentoringEpics {
               .onErrorReturnWith(
                 (dynamic error) => GetCategoryMentorships.error(error),
               ),
+    );
+  }
+
+  Stream<AppAction> _getMentorshipsByUid(
+      Stream<GetMentorshipByUid$> actions, EpicStore<AppState> store) {
+    return actions //
+        .flatMap(
+      (GetMentorshipByUid$ action) => Stream<GetMentorshipByUid$>.value(action)
+          .asyncMap(
+            (GetMentorshipByUid$ action) => _api.getMentorshipsByUid(
+              action.id ?? store.state.auth.user.uid,
+            ),
+          )
+          .expand(
+            (List<Mentorship> mentorships) => <AppAction>[
+              GetCategoryMentorships.successful(mentorships),
+              ...mentorships
+                  .map((Mentorship mentorship) => mentorship.mentorId)
+                  .toSet()
+                  .where((String uid) => store.state.auth.users[uid] == null)
+                  .map(
+                    (String uid) => GetUser(uid),
+                  ),
+            ],
+          )
+          .onErrorReturnWith(
+            (dynamic error) => GetCategoryMentorships.error(error),
+          ),
     );
   }
 }
