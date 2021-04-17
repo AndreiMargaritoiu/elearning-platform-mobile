@@ -29,7 +29,7 @@ class _PlaylistsFeedPageState extends State<PlaylistsFeedPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.category),
+        title: Text('Category: ${widget.category}'),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {

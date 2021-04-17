@@ -96,14 +96,35 @@ class _ProfilePageState extends State<ProfilePage> {
                           mainAxisSize: MainAxisSize.max,
                           children: <Widget>[
                             if (user.photoUrl != null)
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(80.0),
-                                child: Image.network(
-                                  user.photoUrl,
-                                  height: 80,
-                                  width: 80,
-                                  fit: BoxFit.cover,
-                                ),
+                              Stack(
+                                children: <Widget>[
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(80.0),
+                                    child: Image.network(
+                                      user.photoUrl,
+                                      height: 80,
+                                      width: 80,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                  Positioned(
+                                    top: 50,
+                                    left: 30,
+                                    child: MaterialButton(
+                                      child: const Icon(Icons.add),
+                                      onPressed: () async {
+                                        final PickedFile file = await ImagePicker()
+                                            .getImage(source: ImageSource.gallery);
+                                        if (file != null) {
+                                          StoreProvider.of<AppState>(context)
+                                              .dispatch(
+                                            UpdateUser(file.path, user.uid),
+                                          );
+                                        }
+                                      },
+                                    ),
+                                  ),
+                                ],
                               )
                             else
                               FloatingActionButton(
@@ -128,22 +149,29 @@ class _ProfilePageState extends State<ProfilePage> {
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceAround,
                                       children: <Widget>[
-                                        Column(
-                                          children: <Widget>[
-                                            Text(
-                                              user.following.length.toString(),
-                                              style: const TextStyle(
-                                                fontSize: 20,
-                                                fontWeight: FontWeight.w600,
+                                        GestureDetector(
+                                          child: Column(
+                                            children: <Widget>[
+                                              Text(
+                                                user.following.length.toString(),
+                                                style: const TextStyle(
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.w600,
+                                                ),
                                               ),
-                                            ),
-                                            const Text(
-                                              'Following',
-                                              style: TextStyle(
-                                                fontSize: 16,
+                                              const Text(
+                                                'Following',
+                                                style: TextStyle(
+                                                  fontSize: 16,
+                                                ),
                                               ),
-                                            ),
-                                          ],
+                                            ],
+                                          ),
+                                          onTap: () {
+                                            Navigator.pushNamed(
+                                                context, AppRoutes.followingListPage,
+                                                arguments: user);
+                                          },
                                         ),
                                         Column(
                                           children: <Widget>[

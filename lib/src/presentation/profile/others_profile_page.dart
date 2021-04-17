@@ -99,22 +99,29 @@ class _OthersProfilePageState extends State<OthersProfilePage> {
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceAround,
                                       children: <Widget>[
-                                        Column(
-                                          children: <Widget>[
-                                            Text(
-                                              user.following.length.toString(),
-                                              style: const TextStyle(
-                                                fontSize: 20,
-                                                fontWeight: FontWeight.w600,
+                                        GestureDetector(
+                                          child: Column(
+                                            children: <Widget>[
+                                              Text(
+                                                searchedUser.following.length.toString(),
+                                                style: const TextStyle(
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.w600,
+                                                ),
                                               ),
-                                            ),
-                                            const Text(
-                                              'Following',
-                                              style: TextStyle(
-                                                fontSize: 16,
+                                              const Text(
+                                                'Following',
+                                                style: TextStyle(
+                                                  fontSize: 16,
+                                                ),
                                               ),
-                                            ),
-                                          ],
+                                            ],
+                                          ),
+                                          onTap: () {
+                                            Navigator.pushNamed(
+                                                context, AppRoutes.followingListPage,
+                                                arguments: searchedUser);
+                                          },
                                         ),
                                         Column(
                                           children: <Widget>[

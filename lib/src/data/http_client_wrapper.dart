@@ -12,6 +12,7 @@ class HttpClientWrapper {
   Future<Response> get(String route, [dynamic queryParams]) async {
     return await client.get(
       Uri.http(URL, '/api/' + route, queryParams),
+      headers: <String, String>{'Content-Type': 'application/json'},
     );
   }
 
@@ -19,12 +20,14 @@ class HttpClientWrapper {
     return await client.post(
       Uri.http(URL, '/api/' + route),
       body: body,
+      headers: <String, String>{'Content-Type': 'application/json'},
     );
   }
 
   Future<Response> delete(String route) async {
     return await client.delete(
       Uri.http(URL, '/api/' + route),
+      headers: <String, String>{'Content-Type': 'application/json'},
     );
   }
 
@@ -32,6 +35,7 @@ class HttpClientWrapper {
     return await client.patch(
       Uri.http(URL, '/api/' + route),
       body: body,
+      headers: <String, String>{'Content-Type': 'application/json'},
     );
   }
 }
