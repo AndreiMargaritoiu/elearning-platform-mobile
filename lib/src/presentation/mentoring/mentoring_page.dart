@@ -196,32 +196,50 @@ class _MentoringPageState extends State<MentoringPage> {
                                                           fontSize: 18,
                                                         ),
                                                       ),
-                                                      Container(
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          color:
-                                                              Colors.blueAccent,
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      10.0),
-                                                        ),
-                                                        child: Padding(
-                                                          padding:
-                                                              const EdgeInsets
-                                                                  .all(4.0),
-                                                          child: Text(
-                                                            'Contact: ${mentorship.mentorEmail}',
-                                                            style:
-                                                                const TextStyle(
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w500,
-                                                              fontSize: 16,
+                                                      if (user.uid != me.uid)
+                                                        Container(
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            color: Colors
+                                                                .blueAccent,
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        10.0),
+                                                          ),
+                                                          child: Padding(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                        .only(
+                                                                    top: 4,
+                                                                    bottom: 4,
+                                                                    left: 8,
+                                                                    right: 8),
+                                                            child:
+                                                                GestureDetector(
+                                                              child: const Text(
+                                                                'Ask details',
+                                                                style:
+                                                                    TextStyle(
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w500,
+                                                                  fontSize: 16,
+                                                                ),
+                                                              ),
+                                                              onTap: () {
+                                                                StoreProvider.of<
+                                                                            AppState>(
+                                                                        context)
+                                                                    .dispatch(
+                                                                  SendInquiry(
+                                                                      mentorship
+                                                                          .mentorId),
+                                                                );
+                                                              },
                                                             ),
                                                           ),
                                                         ),
-                                                      ),
                                                     ],
                                                   ),
                                                 ),

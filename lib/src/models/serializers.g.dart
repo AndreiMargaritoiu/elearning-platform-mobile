@@ -10,6 +10,8 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(AppState.serializer)
       ..add(AppUser.serializer)
       ..add(AuthState.serializer)
+      ..add(InquiriesState.serializer)
+      ..add(Inquiry.serializer)
       ..add(Mentorship.serializer)
       ..add(MentorshipInfo.serializer)
       ..add(MentorshipsState.serializer)
@@ -28,6 +30,9 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(VideosState.serializer)
       ..add(Workshop.serializer)
       ..add(WorkshopsState.serializer)
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(Inquiry)]),
+          () => new ListBuilder<Inquiry>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(Mentorship)]),
           () => new ListBuilder<Mentorship>())

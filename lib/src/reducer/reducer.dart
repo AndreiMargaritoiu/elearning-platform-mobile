@@ -1,4 +1,3 @@
-import 'package:elearning_platform_mobile/src/reducer/workshops_reducer.dart';
 import 'package:redux/redux.dart';
 
 import 'package:elearning_platform_mobile/src/actions/index.dart';
@@ -9,6 +8,8 @@ import 'package:elearning_platform_mobile/src/reducer/playlists_reducer.dart';
 import 'package:elearning_platform_mobile/src/reducer/posts_reducer.dart';
 import 'package:elearning_platform_mobile/src/reducer/tracking_reducer.dart';
 import 'package:elearning_platform_mobile/src/reducer/videos_reducer.dart';
+import 'package:elearning_platform_mobile/src/reducer/inquiries_reducer.dart';
+import 'package:elearning_platform_mobile/src/reducer/workshops_reducer.dart';
 
 Reducer<AppState> reducer = combineReducers(<Reducer<AppState>>[
   _reducer,
@@ -26,6 +27,7 @@ AppState _reducer(AppState state, dynamic action) {
         ..playlists = playlistsReducer(state.playlists, action).toBuilder()
         ..trackedItems = trackingReducer(state.trackedItems, action).toBuilder()
         ..workshops = workshopsReducer(state.workshops, action).toBuilder()
+        ..inquiries = inquiriesReducer(state.inquiries, action).toBuilder()
         ..mentorships = mentoringReducer(state.mentorships, action).toBuilder();
     },
   );

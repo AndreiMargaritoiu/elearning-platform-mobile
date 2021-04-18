@@ -3,7 +3,6 @@ import 'package:redux_epics/redux_epics.dart';
 import 'package:rxdart/rxdart.dart';
 
 import 'package:elearning_platform_mobile/src/actions/index.dart';
-import 'package:elearning_platform_mobile/src/actions/tracking/index.dart';
 import 'package:elearning_platform_mobile/src/data/tracking_api.dart';
 import 'package:elearning_platform_mobile/src/models/index.dart';
 

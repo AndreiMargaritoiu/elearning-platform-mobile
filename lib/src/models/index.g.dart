@@ -39,6 +39,9 @@ class _$AppStateSerializer implements StructuredSerializer<AppState> {
       'trackedItems',
       serializers.serialize(object.trackedItems,
           specifiedType: const FullType(TrackingsState)),
+      'inquiries',
+      serializers.serialize(object.inquiries,
+          specifiedType: const FullType(InquiriesState)),
     ];
 
     return result;
@@ -84,6 +87,10 @@ class _$AppStateSerializer implements StructuredSerializer<AppState> {
           result.trackedItems.replace(serializers.deserialize(value,
               specifiedType: const FullType(TrackingsState)) as TrackingsState);
           break;
+        case 'inquiries':
+          result.inquiries.replace(serializers.deserialize(value,
+              specifiedType: const FullType(InquiriesState)) as InquiriesState);
+          break;
       }
     }
 
@@ -106,6 +113,8 @@ class _$AppState extends AppState {
   final WorkshopsState workshops;
   @override
   final TrackingsState trackedItems;
+  @override
+  final InquiriesState inquiries;
 
   factory _$AppState([void Function(AppStateBuilder) updates]) =>
       (new AppStateBuilder()..update(updates)).build();
@@ -117,7 +126,8 @@ class _$AppState extends AppState {
       this.playlists,
       this.mentorships,
       this.workshops,
-      this.trackedItems})
+      this.trackedItems,
+      this.inquiries})
       : super._() {
     if (auth == null) {
       throw new BuiltValueNullFieldError('AppState', 'auth');
@@ -140,6 +150,9 @@ class _$AppState extends AppState {
     if (trackedItems == null) {
       throw new BuiltValueNullFieldError('AppState', 'trackedItems');
     }
+    if (inquiries == null) {
+      throw new BuiltValueNullFieldError('AppState', 'inquiries');
+    }
   }
 
   @override
@@ -159,7 +172,8 @@ class _$AppState extends AppState {
         playlists == other.playlists &&
         mentorships == other.mentorships &&
         workshops == other.workshops &&
-        trackedItems == other.trackedItems;
+        trackedItems == other.trackedItems &&
+        inquiries == other.inquiries;
   }
 
   @override
@@ -168,12 +182,14 @@ class _$AppState extends AppState {
         $jc(
             $jc(
                 $jc(
-                    $jc($jc($jc(0, auth.hashCode), posts.hashCode),
-                        videos.hashCode),
-                    playlists.hashCode),
-                mentorships.hashCode),
-            workshops.hashCode),
-        trackedItems.hashCode));
+                    $jc(
+                        $jc($jc($jc(0, auth.hashCode), posts.hashCode),
+                            videos.hashCode),
+                        playlists.hashCode),
+                    mentorships.hashCode),
+                workshops.hashCode),
+            trackedItems.hashCode),
+        inquiries.hashCode));
   }
 
   @override
@@ -185,7 +201,8 @@ class _$AppState extends AppState {
           ..add('playlists', playlists)
           ..add('mentorships', mentorships)
           ..add('workshops', workshops)
-          ..add('trackedItems', trackedItems))
+          ..add('trackedItems', trackedItems)
+          ..add('inquiries', inquiries))
         .toString();
   }
 }
@@ -229,6 +246,12 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
   set trackedItems(TrackingsStateBuilder trackedItems) =>
       _$this._trackedItems = trackedItems;
 
+  InquiriesStateBuilder _inquiries;
+  InquiriesStateBuilder get inquiries =>
+      _$this._inquiries ??= new InquiriesStateBuilder();
+  set inquiries(InquiriesStateBuilder inquiries) =>
+      _$this._inquiries = inquiries;
+
   AppStateBuilder();
 
   AppStateBuilder get _$this {
@@ -240,6 +263,7 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
       _mentorships = _$v.mentorships?.toBuilder();
       _workshops = _$v.workshops?.toBuilder();
       _trackedItems = _$v.trackedItems?.toBuilder();
+      _inquiries = _$v.inquiries?.toBuilder();
       _$v = null;
     }
     return this;
@@ -270,7 +294,8 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
               playlists: playlists.build(),
               mentorships: mentorships.build(),
               workshops: workshops.build(),
-              trackedItems: trackedItems.build());
+              trackedItems: trackedItems.build(),
+              inquiries: inquiries.build());
     } catch (_) {
       String _$failedField;
       try {
@@ -288,6 +313,8 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
         workshops.build();
         _$failedField = 'trackedItems';
         trackedItems.build();
+        _$failedField = 'inquiries';
+        inquiries.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             'AppState', _$failedField, e.toString());

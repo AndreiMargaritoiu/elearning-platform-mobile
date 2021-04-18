@@ -42,7 +42,7 @@ class _FeedPageState extends State<FeedPage> {
             },
           ),
           IconButton(
-            icon: const Icon(Icons.favorite_outline),
+            icon: const Icon(Icons.notifications_outlined),
             onPressed: () {
               _addContentModal(context);
             },

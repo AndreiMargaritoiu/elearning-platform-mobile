@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:elearning_platform_mobile/src/data/inquiries_api.dart';
 import 'package:elearning_platform_mobile/src/data/workshops_api.dart';
 import 'package:redux/redux.dart';
 import 'package:redux_epics/redux_epics.dart';
@@ -55,6 +56,9 @@ Future<Store<AppState>> init() async {
   final WorkshopsApi workshopsApi = WorkshopsApi(
       firestore: firestore, clientWrapper: clientWrapper);
 
+  final InquiriesApi inquiriesApi = InquiriesApi(
+      firestore: firestore, clientWrapper: clientWrapper);
+
   final AppEpics epic = AppEpics(
     authApi: authApi,
     postsApi: postsApi,
@@ -63,6 +67,7 @@ Future<Store<AppState>> init() async {
     mentoringApi: mentoringApi,
     trackingApi: trackingApi,
     workshopsApi: workshopsApi,
+    inquiriesApi: inquiriesApi,
   );
 
   return Store<AppState>(
