@@ -26,6 +26,8 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(Video.serializer)
       ..add(VideoInfo.serializer)
       ..add(VideosState.serializer)
+      ..add(Workshop.serializer)
+      ..add(WorkshopsState.serializer)
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(Mentorship)]),
           () => new ListBuilder<Mentorship>())
@@ -38,6 +40,9 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(Post)]),
           () => new ListBuilder<Post>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
           () => new ListBuilder<String>())
@@ -83,6 +88,12 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(Video)]),
           () => new ListBuilder<Video>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(Workshop)]),
+          () => new ListBuilder<Workshop>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(Workshop)]),
+          () => new ListBuilder<Workshop>())
       ..addBuilderFactory(
           const FullType(BuiltMap,
               const [const FullType(String), const FullType(AppUser)]),

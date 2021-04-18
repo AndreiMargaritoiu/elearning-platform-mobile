@@ -1,3 +1,4 @@
+import 'package:elearning_platform_mobile/src/reducer/workshops_reducer.dart';
 import 'package:redux/redux.dart';
 
 import 'package:elearning_platform_mobile/src/actions/index.dart';
@@ -24,6 +25,7 @@ AppState _reducer(AppState state, dynamic action) {
         ..videos = videosReducer(state.videos, action).toBuilder()
         ..playlists = playlistsReducer(state.playlists, action).toBuilder()
         ..trackedItems = trackingReducer(state.trackedItems, action).toBuilder()
+        ..workshops = workshopsReducer(state.workshops, action).toBuilder()
         ..mentorships = mentoringReducer(state.mentorships, action).toBuilder();
     },
   );

@@ -3,6 +3,7 @@ export 'mentoring/index.dart';
 export 'playlists/index.dart';
 export 'posts/index.dart';
 export 'videos/index.dart';
+export 'workshops/index.dart';
 
 abstract class AppAction {
   const AppAction();

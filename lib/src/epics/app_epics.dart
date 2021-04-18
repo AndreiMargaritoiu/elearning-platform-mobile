@@ -1,3 +1,5 @@
+import 'package:elearning_platform_mobile/src/data/workshops_api.dart';
+import 'package:elearning_platform_mobile/src/epics/workshops_epics.dart';
 import 'package:meta/meta.dart';
 import 'package:redux_epics/redux_epics.dart';
 
@@ -22,18 +24,21 @@ class AppEpics {
       @required VideosApi videosApi,
       @required MentoringApi mentoringApi,
       @required TrackingApi trackingApi,
+      @required WorkshopsApi workshopsApi,
       @required PlaylistsApi playlistsApi})
       : assert(authApi != null),
         assert(postsApi != null),
         assert(videosApi != null),
         assert(playlistsApi != null),
         assert(mentoringApi != null),
+        assert(workshopsApi != null),
         assert(trackingApi != null),
         _authApi = authApi,
         _postsApi = postsApi,
         _videosApi = videosApi,
         _mentoringApi = mentoringApi,
         _trackingApi = trackingApi,
+        _workshopsApi = workshopsApi,
         _playlistApi = playlistsApi;
 
   final AuthApi _authApi;
@@ -42,6 +47,7 @@ class AppEpics {
   final PlaylistsApi _playlistApi;
   final MentoringApi _mentoringApi;
   final TrackingApi _trackingApi;
+  final WorkshopsApi _workshopsApi;
 
   Epic<AppState> get epics {
     return combineEpics<AppState>(
@@ -52,6 +58,7 @@ class AppEpics {
         PlaylistsEpics(api: _playlistApi).epics,
         MentoringEpics(api: _mentoringApi).epics,
         TrackingEpics(api: _trackingApi).epics,
+        WorkshopsEpics(api: _workshopsApi).epics,
       ],
     );
   }

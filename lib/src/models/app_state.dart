@@ -9,6 +9,7 @@ abstract class AppState implements Built<AppState, AppStateBuilder> {
         ..videos = VideosState.initialState().toBuilder()
         ..mentorships = MentorshipsState.initialState().toBuilder()
         ..trackedItems = TrackingsState.initialState().toBuilder()
+        ..workshops = WorkshopsState.initialState().toBuilder()
         ..playlists = PlaylistsState.initialState().toBuilder();
     });
   }
@@ -27,6 +28,8 @@ abstract class AppState implements Built<AppState, AppStateBuilder> {
   PlaylistsState get playlists;
 
   MentorshipsState get mentorships;
+
+  WorkshopsState get workshops;
 
   TrackingsState get trackedItems;
 

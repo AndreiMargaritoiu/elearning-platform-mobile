@@ -1,13 +1,10 @@
 import 'package:elearning_platform_mobile/src/presentation/content/content_page.dart';
-import 'package:elearning_platform_mobile/src/presentation/playlists/playlists_feed_page.dart';
-import 'package:elearning_platform_mobile/src/presentation/trending/trending_page.dart';
 import 'package:flutter/material.dart';
 
 import 'package:elearning_platform_mobile/src/presentation/discover/discover_page.dart';
 import 'package:elearning_platform_mobile/src/presentation/feed/feed_page.dart';
 import 'package:elearning_platform_mobile/src/presentation/mentoring/mentoring_page.dart';
 import 'package:elearning_platform_mobile/src/presentation/profile/profile_page.dart';
-import 'package:elearning_platform_mobile/src/presentation/trending/trending_wrapper_page.dart';
 
 class MenuPage extends StatefulWidget {
   const MenuPage({Key key}) : super(key: key);
