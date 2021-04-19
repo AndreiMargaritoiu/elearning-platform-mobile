@@ -7,4 +7,5 @@ import 'package:elearning_platform_mobile/src/models/index.dart';
 
 part 'send_inquiry.dart';
 part 'get_user_inquiries.dart';
+part 'read_inquiries.dart';
 part 'index.freezed.dart';

@@ -14,7 +14,7 @@ abstract class Inquiry implements Built<Inquiry, InquiryBuilder> {
 
   String get mentorId;
 
-  bool get isRead;
+  bool get read;
 
   int get createdAt;
 

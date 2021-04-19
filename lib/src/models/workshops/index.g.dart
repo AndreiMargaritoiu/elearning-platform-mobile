@@ -27,8 +27,8 @@ class _$WorkshopSerializer implements StructuredSerializer<Workshop> {
           specifiedType: const FullType(String)),
       'tag',
       serializers.serialize(object.tag, specifiedType: const FullType(String)),
-      'isOnline',
-      serializers.serialize(object.isOnline,
+      'onlineEvent',
+      serializers.serialize(object.onlineEvent,
           specifiedType: const FullType(bool)),
       'date',
       serializers.serialize(object.date, specifiedType: const FullType(int)),
@@ -78,8 +78,8 @@ class _$WorkshopSerializer implements StructuredSerializer<Workshop> {
           result.tag = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
-        case 'isOnline':
-          result.isOnline = serializers.deserialize(value,
+        case 'onlineEvent':
+          result.onlineEvent = serializers.deserialize(value,
               specifiedType: const FullType(bool)) as bool;
           break;
         case 'date':
@@ -170,7 +170,7 @@ class _$Workshop extends Workshop {
   @override
   final String tag;
   @override
-  final bool isOnline;
+  final bool onlineEvent;
   @override
   final int date;
   @override
@@ -187,7 +187,7 @@ class _$Workshop extends Workshop {
       {this.id,
       this.description,
       this.tag,
-      this.isOnline,
+      this.onlineEvent,
       this.date,
       this.location,
       this.thumbnailUrl,
@@ -202,8 +202,8 @@ class _$Workshop extends Workshop {
     if (tag == null) {
       throw new BuiltValueNullFieldError('Workshop', 'tag');
     }
-    if (isOnline == null) {
-      throw new BuiltValueNullFieldError('Workshop', 'isOnline');
+    if (onlineEvent == null) {
+      throw new BuiltValueNullFieldError('Workshop', 'onlineEvent');
     }
     if (date == null) {
       throw new BuiltValueNullFieldError('Workshop', 'date');
@@ -224,7 +224,7 @@ class _$Workshop extends Workshop {
         id == other.id &&
         description == other.description &&
         tag == other.tag &&
-        isOnline == other.isOnline &&
+        onlineEvent == other.onlineEvent &&
         date == other.date &&
         location == other.location &&
         thumbnailUrl == other.thumbnailUrl &&
@@ -240,7 +240,7 @@ class _$Workshop extends Workshop {
                     $jc(
                         $jc($jc($jc(0, id.hashCode), description.hashCode),
                             tag.hashCode),
-                        isOnline.hashCode),
+                        onlineEvent.hashCode),
                     date.hashCode),
                 location.hashCode),
             thumbnailUrl.hashCode),
@@ -253,7 +253,7 @@ class _$Workshop extends Workshop {
           ..add('id', id)
           ..add('description', description)
           ..add('tag', tag)
-          ..add('isOnline', isOnline)
+          ..add('onlineEvent', onlineEvent)
           ..add('date', date)
           ..add('location', location)
           ..add('thumbnailUrl', thumbnailUrl)
@@ -277,9 +277,9 @@ class WorkshopBuilder implements Builder<Workshop, WorkshopBuilder> {
   String get tag => _$this._tag;
   set tag(String tag) => _$this._tag = tag;
 
-  bool _isOnline;
-  bool get isOnline => _$this._isOnline;
-  set isOnline(bool isOnline) => _$this._isOnline = isOnline;
+  bool _onlineEvent;
+  bool get onlineEvent => _$this._onlineEvent;
+  set onlineEvent(bool onlineEvent) => _$this._onlineEvent = onlineEvent;
 
   int _date;
   int get date => _$this._date;
@@ -306,7 +306,7 @@ class WorkshopBuilder implements Builder<Workshop, WorkshopBuilder> {
       _id = _$v.id;
       _description = _$v.description;
       _tag = _$v.tag;
-      _isOnline = _$v.isOnline;
+      _onlineEvent = _$v.onlineEvent;
       _date = _$v.date;
       _location = _$v.location;
       _thumbnailUrl = _$v.thumbnailUrl;
@@ -338,7 +338,7 @@ class WorkshopBuilder implements Builder<Workshop, WorkshopBuilder> {
               id: id,
               description: description,
               tag: tag,
-              isOnline: isOnline,
+              onlineEvent: onlineEvent,
               date: date,
               location: location,
               thumbnailUrl: thumbnailUrl,

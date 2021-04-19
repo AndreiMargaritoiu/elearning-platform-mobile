@@ -1,3 +1,4 @@
+import 'package:elearning_platform_mobile/src/containers/inquiries/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:file_picker/file_picker.dart';
@@ -15,120 +16,99 @@ class FeedPage extends StatefulWidget {
 }
 
 class _FeedPageState extends State<FeedPage> {
+  @override
+  void initState() {
+    super.initState();
+
+    StoreProvider.of<AppState>(context, listen: false).dispatch(
+      const GetUserInquiries(),
+    );
+  }
 
   void _addVideo() async {
     final FilePickerResult file = await FilePicker.platform.pickFiles();
     final String path = file.files.single.path;
     print(path);
     if (path != null) {
-      StoreProvider.of<AppState>(context)
-          .dispatch(UpdateVideoInfo(addVideo: path),);
+      StoreProvider.of<AppState>(context).dispatch(
+        UpdateVideoInfo(addVideo: path),
+      );
       Navigator.pushNamed(context, AppRoutes.addVideoPage);
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('E-learning Platform'),
-        leading: const FlutterLogo(),
-        centerTitle: false,
-        actions: <Widget>[
-          IconButton(
-            icon: const Icon(Icons.add_circle_outline),
-            onPressed: () {
-              _addContentModal(context);
-            },
-          ),
-          IconButton(
-            icon: const Icon(Icons.notifications_outlined),
-            onPressed: () {
-              _addContentModal(context);
-            },
-          ),
-        ],
-      ),
-      body: const VideosFeedPage(),
+    return InquiriesContainer(
+      builder: (BuildContext context, List<Inquiry> inquiries) {
+        final List<Inquiry> unreadNotifications = inquiries
+            .where((Inquiry element) => element.read == false)
+            .toList();
+        final List<String> unreadNotificationsIds = <String>[];
+        inquiries.forEach((Inquiry element) {
+          unreadNotificationsIds.add(element.id);
+        });
 
-//          return PostsContainer(
-//            builder: (BuildContext context, List<Post> posts) {
-//              return ListView.builder(
-//                itemCount: posts.length,
-//                itemBuilder: (BuildContext context, int index) {
-//                  final Post post = posts[index];
-//                  final AppUser user = users[post.uid];
-//
-//                  return Column(
-//                    crossAxisAlignment: CrossAxisAlignment.start,
-//                    children: <Widget>[
-//                      ListTile(
-//                        leading: user.photoUrl != null
-//                            ? CircleAvatar(
-//                                backgroundImage: NetworkImage(user.photoUrl),
-//                              )
-//                            : CircleAvatar(
-//                                backgroundColor: Colors.grey.shade900,
-//                                child: Text(
-//                                  user.username[0].toUpperCase(),
-//                                ),
-//                              ),
-//                        title: Text(user.username),
-//                      ),
-//                      Image.network(
-//                        post.images.first,
-//                        height: MediaQuery.of(context).size.width,
-//                        fit: BoxFit.cover,
-//                      ),
-//                      Row(
-//                        children: <Widget>[
-//                          IconButton(
-//                            icon: const Icon(Icons.favorite_outline),
-//                            onPressed: () {},
-//                          ),
-//                          IconButton(
-//                            icon: const Icon(Icons.chat_bubble_outline),
-//                            onPressed: () {},
-//                          ),
-//                          IconButton(
-//                            icon: const Icon(Icons.send_outlined),
-//                            onPressed: () {},
-//                          ),
-//                          const Spacer(),
-//                          IconButton(
-//                            icon: const Icon(Icons.bookmark_border_outlined),
-//                            onPressed: () {},
-//                          ),
-//                        ],
-//                      ),
-//                      Padding(
-//                        padding: const EdgeInsets.symmetric(horizontal: 16.0),
-//                        child: Text.rich(
-//                          TextSpan(
-//                            text: user.username,
-//                            style: const TextStyle(
-//                              fontWeight: FontWeight.bold,
-//                            ),
-//                            children: <TextSpan>[
-//                              TextSpan(
-//                                text: ' ${post.description}',
-//                                style: const TextStyle(
-//                                  fontWeight: FontWeight.normal,
-//                                ),
-//                              ),
-//                            ],
-//                          ),
-//                        ),
-//                      ),
-//                      const Divider(),
-//                    ],
-//                  );
-//                },
-//              );
-//            },
-//          );
-//        },
-//      ),
+        return Scaffold(
+          appBar: AppBar(
+            title: const Text('E-learning Platform'),
+            leading: const FlutterLogo(),
+            centerTitle: false,
+            actions: <Widget>[
+              IconButton(
+                icon: const Icon(Icons.add_circle_outline),
+                onPressed: () {
+                  _addContentModal(context);
+                },
+              ),
+              Stack(
+                children: <Widget>[
+                  Align(
+                    alignment: Alignment.center,
+                    child: IconButton(
+                      icon: const Icon(Icons.notifications_outlined),
+                      onPressed: () {
+                        Navigator.pushNamed(
+                            context, AppRoutes.notificationsPage,
+                            arguments: inquiries);
+                        if (unreadNotificationsIds.isNotEmpty) {
+                          StoreProvider.of<AppState>(context, listen: false)
+                              .dispatch(ReadInquiries(unreadNotificationsIds));
+                        }
+                      },
+                    ),
+                  ),
+                  if (unreadNotifications.isNotEmpty)
+                    Positioned(
+                      right: 8,
+                      top: 8,
+                      child: Container(
+                        padding: const EdgeInsets.all(1),
+                        decoration: BoxDecoration(
+                          color: Colors.red,
+                          borderRadius: BorderRadius.circular(6),
+                        ),
+                        constraints: const BoxConstraints(
+                          minWidth: 12,
+                          minHeight: 12,
+                        ),
+                        child: Text(
+                          unreadNotifications.length.toString(),
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 12,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ),
+                ],
+              )
+            ],
+          ),
+          body: const VideosFeedPage(),
+        );
+      },
     );
   }
 

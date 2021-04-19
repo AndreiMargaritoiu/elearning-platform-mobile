@@ -33,6 +33,7 @@ class _ElearningPlatform extends State<ElearningPlatform>
             store: store,
             child: MaterialApp(
               title: 'E-learning Platform',
+              debugShowCheckedModeBanner: false,
               theme: ThemeData(
                 pageTransitionsTheme: const PageTransitionsTheme(builders: {
                   TargetPlatform.android: CupertinoPageTransitionsBuilder(),

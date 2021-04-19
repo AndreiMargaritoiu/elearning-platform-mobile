@@ -1,4 +1,5 @@
 import 'package:elearning_platform_mobile/src/presentation/discover/search_page.dart';
+import 'package:elearning_platform_mobile/src/presentation/feed/inquiries.dart';
 import 'package:elearning_platform_mobile/src/presentation/playlists/playlists_feed_page.dart';
 import 'package:elearning_platform_mobile/src/presentation/profile/following_list_page.dart';
 import 'package:elearning_platform_mobile/src/presentation/profile/others_profile_page.dart';
@@ -49,6 +50,7 @@ class AppRoutes {
   static const String trendingPage = '/trendingPage';
   static const String playlistsFeed = '/playlistsFeed';
   static const String followingListPage = '/followingListPage';
+  static const String notificationsPage = '/notificationsPage';
 
   static Map<String, WidgetBuilder> routes = <String, WidgetBuilder>{
     home: (BuildContext context) {
@@ -128,6 +130,10 @@ class AppRoutes {
     followingListPage: (BuildContext context) {
       return FollowingListPage(
           currentUser: ModalRoute.of(context).settings.arguments);
+    },
+    notificationsPage: (BuildContext context) {
+      return NotificationsPage(
+          inquiries: ModalRoute.of(context).settings.arguments);
     },
   };
 }

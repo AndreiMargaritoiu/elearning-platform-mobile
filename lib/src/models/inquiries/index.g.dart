@@ -28,8 +28,8 @@ class _$InquirySerializer implements StructuredSerializer<Inquiry> {
       'mentorId',
       serializers.serialize(object.mentorId,
           specifiedType: const FullType(String)),
-      'isRead',
-      serializers.serialize(object.isRead, specifiedType: const FullType(bool)),
+      'read',
+      serializers.serialize(object.read, specifiedType: const FullType(bool)),
       'createdAt',
       serializers.serialize(object.createdAt,
           specifiedType: const FullType(int)),
@@ -61,8 +61,8 @@ class _$InquirySerializer implements StructuredSerializer<Inquiry> {
           result.mentorId = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
-        case 'isRead':
-          result.isRead = serializers.deserialize(value,
+        case 'read':
+          result.read = serializers.deserialize(value,
               specifiedType: const FullType(bool)) as bool;
           break;
         case 'createdAt':
@@ -129,7 +129,7 @@ class _$Inquiry extends Inquiry {
   @override
   final String mentorId;
   @override
-  final bool isRead;
+  final bool read;
   @override
   final int createdAt;
 
@@ -137,7 +137,7 @@ class _$Inquiry extends Inquiry {
       (new InquiryBuilder()..update(updates)).build();
 
   _$Inquiry._(
-      {this.id, this.inquirerEmail, this.mentorId, this.isRead, this.createdAt})
+      {this.id, this.inquirerEmail, this.mentorId, this.read, this.createdAt})
       : super._() {
     if (id == null) {
       throw new BuiltValueNullFieldError('Inquiry', 'id');
@@ -148,8 +148,8 @@ class _$Inquiry extends Inquiry {
     if (mentorId == null) {
       throw new BuiltValueNullFieldError('Inquiry', 'mentorId');
     }
-    if (isRead == null) {
-      throw new BuiltValueNullFieldError('Inquiry', 'isRead');
+    if (read == null) {
+      throw new BuiltValueNullFieldError('Inquiry', 'read');
     }
     if (createdAt == null) {
       throw new BuiltValueNullFieldError('Inquiry', 'createdAt');
@@ -170,7 +170,7 @@ class _$Inquiry extends Inquiry {
         id == other.id &&
         inquirerEmail == other.inquirerEmail &&
         mentorId == other.mentorId &&
-        isRead == other.isRead &&
+        read == other.read &&
         createdAt == other.createdAt;
   }
 
@@ -180,7 +180,7 @@ class _$Inquiry extends Inquiry {
         $jc(
             $jc($jc($jc(0, id.hashCode), inquirerEmail.hashCode),
                 mentorId.hashCode),
-            isRead.hashCode),
+            read.hashCode),
         createdAt.hashCode));
   }
 
@@ -190,7 +190,7 @@ class _$Inquiry extends Inquiry {
           ..add('id', id)
           ..add('inquirerEmail', inquirerEmail)
           ..add('mentorId', mentorId)
-          ..add('isRead', isRead)
+          ..add('read', read)
           ..add('createdAt', createdAt))
         .toString();
   }
@@ -212,9 +212,9 @@ class InquiryBuilder implements Builder<Inquiry, InquiryBuilder> {
   String get mentorId => _$this._mentorId;
   set mentorId(String mentorId) => _$this._mentorId = mentorId;
 
-  bool _isRead;
-  bool get isRead => _$this._isRead;
-  set isRead(bool isRead) => _$this._isRead = isRead;
+  bool _read;
+  bool get read => _$this._read;
+  set read(bool read) => _$this._read = read;
 
   int _createdAt;
   int get createdAt => _$this._createdAt;
@@ -227,7 +227,7 @@ class InquiryBuilder implements Builder<Inquiry, InquiryBuilder> {
       _id = _$v.id;
       _inquirerEmail = _$v.inquirerEmail;
       _mentorId = _$v.mentorId;
-      _isRead = _$v.isRead;
+      _read = _$v.read;
       _createdAt = _$v.createdAt;
       _$v = null;
     }
@@ -254,7 +254,7 @@ class InquiryBuilder implements Builder<Inquiry, InquiryBuilder> {
             id: id,
             inquirerEmail: inquirerEmail,
             mentorId: mentorId,
-            isRead: isRead,
+            read: read,
             createdAt: createdAt);
     replace(_$result);
     return _$result;

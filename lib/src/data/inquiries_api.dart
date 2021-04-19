@@ -31,4 +31,8 @@ class InquiriesApi {
 
     return data.map((dynamic json) => Inquiry.fromJson(json)).toList();
   }
+
+  Future<void> readInquiries(List<String> inquiries) async {
+    await _clientWrapper.patch('inquiries', json.encode(inquiries));
+  }
 }

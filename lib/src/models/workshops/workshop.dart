@@ -14,7 +14,7 @@ abstract class Workshop implements Built<Workshop, WorkshopBuilder> {
 
   String get tag;
 
-  bool get isOnline;
+  bool get onlineEvent;
 
   int get date;
 

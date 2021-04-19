@@ -846,3 +846,420 @@ abstract class GetUserInquiriesError implements GetUserInquiries, ErrorAction {
   Object get error;
   $GetUserInquiriesErrorCopyWith<GetUserInquiriesError> get copyWith;
 }
+
+/// @nodoc
+class _$ReadInquiriesTearOff {
+  const _$ReadInquiriesTearOff();
+
+// ignore: unused_element
+  ReadInquiries$ call(List<String> inquiries) {
+    return ReadInquiries$(
+      inquiries,
+    );
+  }
+
+// ignore: unused_element
+  ReadInquiriesSuccessful successful() {
+    return const ReadInquiriesSuccessful();
+  }
+
+// ignore: unused_element
+  ReadInquiriesError error(Object error) {
+    return ReadInquiriesError(
+      error,
+    );
+  }
+}
+
+/// @nodoc
+// ignore: unused_element
+const $ReadInquiries = _$ReadInquiriesTearOff();
+
+/// @nodoc
+mixin _$ReadInquiries {
+  @optionalTypeArgs
+  Result when<Result extends Object>(
+    Result $default(List<String> inquiries), {
+    @required Result successful(),
+    @required Result error(Object error),
+  });
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>(
+    Result $default(List<String> inquiries), {
+    Result successful(),
+    Result error(Object error),
+    @required Result orElse(),
+  });
+  @optionalTypeArgs
+  Result map<Result extends Object>(
+    Result $default(ReadInquiries$ value), {
+    @required Result successful(ReadInquiriesSuccessful value),
+    @required Result error(ReadInquiriesError value),
+  });
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>(
+    Result $default(ReadInquiries$ value), {
+    Result successful(ReadInquiriesSuccessful value),
+    Result error(ReadInquiriesError value),
+    @required Result orElse(),
+  });
+}
+
+/// @nodoc
+abstract class $ReadInquiriesCopyWith<$Res> {
+  factory $ReadInquiriesCopyWith(
+          ReadInquiries value, $Res Function(ReadInquiries) then) =
+      _$ReadInquiriesCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$ReadInquiriesCopyWithImpl<$Res>
+    implements $ReadInquiriesCopyWith<$Res> {
+  _$ReadInquiriesCopyWithImpl(this._value, this._then);
+
+  final ReadInquiries _value;
+  // ignore: unused_field
+  final $Res Function(ReadInquiries) _then;
+}
+
+/// @nodoc
+abstract class $ReadInquiries$CopyWith<$Res> {
+  factory $ReadInquiries$CopyWith(
+          ReadInquiries$ value, $Res Function(ReadInquiries$) then) =
+      _$ReadInquiries$CopyWithImpl<$Res>;
+  $Res call({List<String> inquiries});
+}
+
+/// @nodoc
+class _$ReadInquiries$CopyWithImpl<$Res>
+    extends _$ReadInquiriesCopyWithImpl<$Res>
+    implements $ReadInquiries$CopyWith<$Res> {
+  _$ReadInquiries$CopyWithImpl(
+      ReadInquiries$ _value, $Res Function(ReadInquiries$) _then)
+      : super(_value, (v) => _then(v as ReadInquiries$));
+
+  @override
+  ReadInquiries$ get _value => super._value as ReadInquiries$;
+
+  @override
+  $Res call({
+    Object inquiries = freezed,
+  }) {
+    return _then(ReadInquiries$(
+      inquiries == freezed ? _value.inquiries : inquiries as List<String>,
+    ));
+  }
+}
+
+/// @nodoc
+class _$ReadInquiries$ implements ReadInquiries$ {
+  const _$ReadInquiries$(this.inquiries) : assert(inquiries != null);
+
+  @override
+  final List<String> inquiries;
+
+  @override
+  String toString() {
+    return 'ReadInquiries(inquiries: $inquiries)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is ReadInquiries$ &&
+            (identical(other.inquiries, inquiries) ||
+                const DeepCollectionEquality()
+                    .equals(other.inquiries, inquiries)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(inquiries);
+
+  @override
+  $ReadInquiries$CopyWith<ReadInquiries$> get copyWith =>
+      _$ReadInquiries$CopyWithImpl<ReadInquiries$>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>(
+    Result $default(List<String> inquiries), {
+    @required Result successful(),
+    @required Result error(Object error),
+  }) {
+    assert($default != null);
+    assert(successful != null);
+    assert(error != null);
+    return $default(inquiries);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>(
+    Result $default(List<String> inquiries), {
+    Result successful(),
+    Result error(Object error),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if ($default != null) {
+      return $default(inquiries);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>(
+    Result $default(ReadInquiries$ value), {
+    @required Result successful(ReadInquiriesSuccessful value),
+    @required Result error(ReadInquiriesError value),
+  }) {
+    assert($default != null);
+    assert(successful != null);
+    assert(error != null);
+    return $default(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>(
+    Result $default(ReadInquiries$ value), {
+    Result successful(ReadInquiriesSuccessful value),
+    Result error(ReadInquiriesError value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if ($default != null) {
+      return $default(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ReadInquiries$ implements ReadInquiries {
+  const factory ReadInquiries$(List<String> inquiries) = _$ReadInquiries$;
+
+  List<String> get inquiries;
+  $ReadInquiries$CopyWith<ReadInquiries$> get copyWith;
+}
+
+/// @nodoc
+abstract class $ReadInquiriesSuccessfulCopyWith<$Res> {
+  factory $ReadInquiriesSuccessfulCopyWith(ReadInquiriesSuccessful value,
+          $Res Function(ReadInquiriesSuccessful) then) =
+      _$ReadInquiriesSuccessfulCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$ReadInquiriesSuccessfulCopyWithImpl<$Res>
+    extends _$ReadInquiriesCopyWithImpl<$Res>
+    implements $ReadInquiriesSuccessfulCopyWith<$Res> {
+  _$ReadInquiriesSuccessfulCopyWithImpl(ReadInquiriesSuccessful _value,
+      $Res Function(ReadInquiriesSuccessful) _then)
+      : super(_value, (v) => _then(v as ReadInquiriesSuccessful));
+
+  @override
+  ReadInquiriesSuccessful get _value => super._value as ReadInquiriesSuccessful;
+}
+
+/// @nodoc
+class _$ReadInquiriesSuccessful implements ReadInquiriesSuccessful {
+  const _$ReadInquiriesSuccessful();
+
+  @override
+  String toString() {
+    return 'ReadInquiries.successful()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is ReadInquiriesSuccessful);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>(
+    Result $default(List<String> inquiries), {
+    @required Result successful(),
+    @required Result error(Object error),
+  }) {
+    assert($default != null);
+    assert(successful != null);
+    assert(error != null);
+    return successful();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>(
+    Result $default(List<String> inquiries), {
+    Result successful(),
+    Result error(Object error),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (successful != null) {
+      return successful();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>(
+    Result $default(ReadInquiries$ value), {
+    @required Result successful(ReadInquiriesSuccessful value),
+    @required Result error(ReadInquiriesError value),
+  }) {
+    assert($default != null);
+    assert(successful != null);
+    assert(error != null);
+    return successful(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>(
+    Result $default(ReadInquiries$ value), {
+    Result successful(ReadInquiriesSuccessful value),
+    Result error(ReadInquiriesError value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (successful != null) {
+      return successful(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ReadInquiriesSuccessful implements ReadInquiries {
+  const factory ReadInquiriesSuccessful() = _$ReadInquiriesSuccessful;
+}
+
+/// @nodoc
+abstract class $ReadInquiriesErrorCopyWith<$Res> {
+  factory $ReadInquiriesErrorCopyWith(
+          ReadInquiriesError value, $Res Function(ReadInquiriesError) then) =
+      _$ReadInquiriesErrorCopyWithImpl<$Res>;
+  $Res call({Object error});
+}
+
+/// @nodoc
+class _$ReadInquiriesErrorCopyWithImpl<$Res>
+    extends _$ReadInquiriesCopyWithImpl<$Res>
+    implements $ReadInquiriesErrorCopyWith<$Res> {
+  _$ReadInquiriesErrorCopyWithImpl(
+      ReadInquiriesError _value, $Res Function(ReadInquiriesError) _then)
+      : super(_value, (v) => _then(v as ReadInquiriesError));
+
+  @override
+  ReadInquiriesError get _value => super._value as ReadInquiriesError;
+
+  @override
+  $Res call({
+    Object error = freezed,
+  }) {
+    return _then(ReadInquiriesError(
+      error == freezed ? _value.error : error,
+    ));
+  }
+}
+
+@Implements(ErrorAction)
+
+/// @nodoc
+class _$ReadInquiriesError implements ReadInquiriesError {
+  const _$ReadInquiriesError(this.error) : assert(error != null);
+
+  @override
+  final Object error;
+
+  @override
+  String toString() {
+    return 'ReadInquiries.error(error: $error)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is ReadInquiriesError &&
+            (identical(other.error, error) ||
+                const DeepCollectionEquality().equals(other.error, error)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
+
+  @override
+  $ReadInquiriesErrorCopyWith<ReadInquiriesError> get copyWith =>
+      _$ReadInquiriesErrorCopyWithImpl<ReadInquiriesError>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>(
+    Result $default(List<String> inquiries), {
+    @required Result successful(),
+    @required Result error(Object error),
+  }) {
+    assert($default != null);
+    assert(successful != null);
+    assert(error != null);
+    return error(this.error);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>(
+    Result $default(List<String> inquiries), {
+    Result successful(),
+    Result error(Object error),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (error != null) {
+      return error(this.error);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>(
+    Result $default(ReadInquiries$ value), {
+    @required Result successful(ReadInquiriesSuccessful value),
+    @required Result error(ReadInquiriesError value),
+  }) {
+    assert($default != null);
+    assert(successful != null);
+    assert(error != null);
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>(
+    Result $default(ReadInquiries$ value), {
+    Result successful(ReadInquiriesSuccessful value),
+    Result error(ReadInquiriesError value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ReadInquiriesError implements ReadInquiries, ErrorAction {
+  const factory ReadInquiriesError(Object error) = _$ReadInquiriesError;
+
+  Object get error;
+  $ReadInquiriesErrorCopyWith<ReadInquiriesError> get copyWith;
+}

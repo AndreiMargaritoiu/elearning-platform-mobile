@@ -18,6 +18,7 @@ class InquiriesEpics {
       <Epic<AppState>>[
         TypedEpic<AppState, SendInquiry$>(_sendInquiry),
         TypedEpic<AppState, GetUserInquiries$>(_getUserInquiries),
+        TypedEpic<AppState, ReadInquiries$>(_readInquiries),
       ],
     );
   }
@@ -36,6 +37,23 @@ class InquiriesEpics {
           )
           .onErrorReturnWith(
             (dynamic error) => SendInquiry.error(error),
+          ),
+    );
+  }
+
+  Stream<AppAction> _readInquiries(
+      Stream<ReadInquiries$> actions, EpicStore<AppState> store) {
+    return actions //
+        .flatMap(
+      (ReadInquiries$ action) => Stream<ReadInquiries$>.value(action)
+          .asyncMap(
+            (ReadInquiries$ action) => _api.readInquiries(action.inquiries),
+          )
+          .mapTo(
+            const ReadInquiries.successful(),
+          )
+          .onErrorReturnWith(
+            (dynamic error) => ReadInquiries.error(error),
           ),
     );
   }
