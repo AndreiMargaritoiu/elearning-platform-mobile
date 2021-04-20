@@ -76,7 +76,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       PopupMenuButton<String>(
                         onSelected: _handleDotsMenuClick,
                         itemBuilder: (BuildContext context) {
-                          return <String>{'Logout', 'Settings'}.map(
+                          return <String>{'Settings', 'Logout'}.map(
                             (String choice) {
                               return PopupMenuItem<String>(
                                 value: choice,

@@ -71,7 +71,7 @@ class _FeedPageState extends State<FeedPage> {
                         Navigator.pushNamed(
                             context, AppRoutes.notificationsPage,
                             arguments: inquiries);
-                        if (unreadNotificationsIds.isNotEmpty) {
+                        if (unreadNotifications.isNotEmpty) {
                           StoreProvider.of<AppState>(context, listen: false)
                               .dispatch(ReadInquiries(unreadNotificationsIds));
                         }

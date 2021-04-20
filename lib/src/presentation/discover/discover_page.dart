@@ -51,12 +51,102 @@ class _DiscoverPageState extends State<DiscoverPage> {
                           Navigator.pushNamed(context, AppRoutes.searchPage);
                         },
                       ),
-                      MaterialButton(
-                        child: const Text('Go to trending'),
-                        onPressed: () {
-                          Navigator.pushNamed(context, AppRoutes.trendingPage,
-                              arguments: videos);
-                        },
+                      Padding(
+                        padding: const EdgeInsets.all(16),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: <Widget>[
+                            const Text(
+                              'Trending videos',
+                              style: TextStyle(
+                                fontSize: 24,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                            Container(height: 16),
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: <Widget>[
+                                Column(
+                                  children: <Widget>[
+                                    Material(
+                                      //Wrap with Material
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(22.0)),
+                                      elevation: 18.0,
+                                      color: const Color(0xFF162A49),
+                                      clipBehavior: Clip.antiAlias,
+                                      // Add This
+                                      child: MaterialButton(
+                                        child: const Text(
+                                          'Watch trending',
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                          ),
+                                        ),
+                                        onPressed: () {
+                                          Navigator.pushNamed(
+                                              context, AppRoutes.trendingPage,
+                                              arguments: videos);
+                                        },
+                                      ),
+                                    ),
+                                    Container(height: 16),
+                                    const Icon(
+                                      Icons.trending_up_outlined,
+                                      size: 50,
+                                    ),
+                                  ],
+                                ),
+                                Container(width: 16),
+                                Container(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.5,
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.2,
+                                  color: Colors.grey.shade400,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8),
+                                    child: ListView.builder(
+                                      itemCount: videos.length,
+                                      itemBuilder:
+                                          (BuildContext context, int index) {
+                                        final Video video = videos[index];
+
+                                        return Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: <Widget>[
+                                            Text(
+                                              '${index + 1}. ${video.title}',
+                                              style: const TextStyle(
+                                                fontSize: 16,
+                                                color: Color(0xFF162A49),
+                                                fontWeight: FontWeight.w500,
+                                              ),
+                                            ),
+                                            Container(height: 2),
+                                          ],
+                                        );
+                                      },
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                            Container(height: 32),
+                            const Text(
+                              'Take quizzes',
+                              style: TextStyle(
+                                fontSize: 24,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),

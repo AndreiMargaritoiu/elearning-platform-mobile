@@ -1,5 +1,6 @@
 import 'dart:math';
 import 'dart:ui';
+import 'package:intl/intl.dart';
 
 import 'package:elearning_platform_mobile/src/actions/index.dart';
 import 'package:elearning_platform_mobile/src/containers/index.dart';
@@ -47,7 +48,7 @@ class _WorkshopsBottomListState extends State<WorkshopsBottomList> {
                   double percentage = initialPercentage;
                   if (scrollController.hasClients) {
                     percentage = (scrollController.position.viewportDimension) /
-                        (MediaQuery.of(context).size.height);
+                        (MediaQuery.of(context).size.height * 0.925);
                   }
                   final double scaledPercentage =
                       (percentage - initialPercentage) /
@@ -62,7 +63,7 @@ class _WorkshopsBottomListState extends State<WorkshopsBottomList> {
                     child: Stack(
                       children: <Widget>[
                         Opacity(
-                          opacity: percentage == 1 ? 1 : 0,
+                          opacity: percentage > 0.99 ? 1 : 0,
                           child: ListView.builder(
                             padding: const EdgeInsets.only(right: 32, top: 128),
                             controller: scrollController,
@@ -93,7 +94,7 @@ class _WorkshopsBottomListState extends State<WorkshopsBottomList> {
                             child: IgnorePointer(
                               ignoring: true,
                               child: Opacity(
-                                opacity: percentage == 1 ? 0 : 1,
+                                opacity: percentage > 0.99 ? 0 : 1,
                                 child: MyEventItem(
                                   workshop: workshop,
                                   percentageCompleted: percentage,
@@ -103,7 +104,7 @@ class _WorkshopsBottomListState extends State<WorkshopsBottomList> {
                           );
                         }),
                         SheetHeader(
-                          fontSize: 14 + percentage * 8,
+                          fontSize: 16 + percentage * 8,
                           topMargin: 16 +
                               percentage * MediaQuery.of(context).padding.top,
                         ),
@@ -174,30 +175,35 @@ class MyEventItem extends StatelessWidget {
   Widget _buildContent() {
     return Column(
       children: <Widget>[
-        Text(workshop.description, style: const TextStyle(fontSize: 16)),
+        Text(
+          workshop.description,
+          style: const TextStyle(fontSize: 16, color: Colors.black),
+        ),
         const SizedBox(height: 8),
-        Row(
-          children: <Widget>[
-            Text(
-              '1 ticket',
-              style: TextStyle(
-                fontWeight: FontWeight.w500,
-                fontSize: 12,
-                color: Colors.grey.shade600,
-              ),
-            ),
-            const SizedBox(width: 8),
-            Text(
-              workshop.date.toString(),
-              style: const TextStyle(
-                fontWeight: FontWeight.w300,
-                fontSize: 12,
-                color: Colors.grey,
-              ),
-            ),
-          ],
+        Text(
+          '#${workshop.tag}',
+          style: TextStyle(
+            fontWeight: FontWeight.w500,
+            fontSize: 16,
+            color: Colors.grey.shade600,
+          ),
         ),
         const Spacer(),
+        Row(
+          children: <Widget>[
+            Icon(Icons.access_time_rounded, color: Colors.grey.shade400, size: 16),
+            Text(
+              DateFormat.yMMMMd()
+                  .format(DateTime.fromMillisecondsSinceEpoch(workshop.date)),
+              style: const TextStyle(
+                fontWeight: FontWeight.w400,
+                fontSize: 14,
+                color: Colors.grey,
+              ),
+            )
+          ],
+        ),
+        Container(height: 4),
         Row(
           children: <Widget>[
             Icon(Icons.place, color: Colors.grey.shade400, size: 16),
