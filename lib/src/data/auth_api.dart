@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:built_collection/built_collection.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:elearning_platform_mobile/src/data/http_client_wrapper.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -16,19 +17,23 @@ class AuthApi {
     @required FirebaseFirestore firestore,
     @required FirebaseStorage storage,
     @required GoogleSignIn google,
+    @required HttpClientWrapper clientWrapper,
   })  : assert(auth != null),
         assert(firestore != null),
         assert(storage != null),
         assert(google != null),
+        assert(clientWrapper != null),
         _auth = auth,
         _firestore = firestore,
         _storage = storage,
-        _google = google;
+        _google = google,
+        _clientWrapper = clientWrapper;
 
   final FirebaseAuth _auth;
   final FirebaseFirestore _firestore;
   final FirebaseStorage _storage;
   final GoogleSignIn _google;
+  final HttpClientWrapper _clientWrapper;
 
   Future<AppUser> getCurrentUser() async {
     final User user = _auth.currentUser;
@@ -49,6 +54,9 @@ class AuthApi {
         email: email, password: password);
     final User user = response.user;
 
+    final String authToken = await user.getIdToken();
+    _clientWrapper.setAuthToken(authToken);
+
     final DocumentSnapshot snapshot =
         await _firestore.doc('users/${user.uid}').get();
     return AppUser.fromJson(
@@ -63,6 +71,9 @@ class AuthApi {
     final UserCredential response = await _auth.createUserWithEmailAndPassword(
         email: email, password: password);
     final User user = response.user;
+
+    final String authToken = await user.getIdToken();
+    _clientWrapper.setAuthToken(authToken);
 
     final AppUser appUser = AppUser(
       (AppUserBuilder b) {
