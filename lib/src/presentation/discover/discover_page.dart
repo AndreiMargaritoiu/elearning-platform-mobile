@@ -85,6 +85,7 @@ class _DiscoverPageState extends State<DiscoverPage> {
                                           'Watch trending',
                                           style: TextStyle(
                                             fontSize: 16,
+                                            letterSpacing: 0.8,
                                           ),
                                         ),
                                         onPressed: () {
@@ -104,7 +105,7 @@ class _DiscoverPageState extends State<DiscoverPage> {
                                 Container(width: 16),
                                 Container(
                                   width:
-                                      MediaQuery.of(context).size.width * 0.5,
+                                      MediaQuery.of(context).size.width * 0.49,
                                   height:
                                       MediaQuery.of(context).size.height * 0.2,
                                   color: Colors.grey.shade400,

@@ -31,6 +31,11 @@ Future<Store<AppState>> init() async {
 
   final HttpClientWrapper clientWrapper = HttpClientWrapper(client: client);
 
+  if (auth.currentUser != null) {
+    final String authToken = await auth.currentUser.getIdToken();
+    clientWrapper.setAuthToken(authToken);
+  }
+
   final AuthApi authApi = AuthApi(
     auth: auth,
     firestore: firestore,

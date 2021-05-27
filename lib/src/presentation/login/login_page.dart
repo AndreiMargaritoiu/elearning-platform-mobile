@@ -74,6 +74,10 @@ class _LoginPageState extends State<LoginPage> with DialogMixin {
                           Icons.person,
                           color: Colors.black,
                         ),
+                        errorStyle: TextStyle(
+                          fontSize: 15.0,
+                          letterSpacing: 0.5,
+                        ),
                       ),
                       keyboardType: TextInputType.emailAddress,
                       onChanged: (String value) {},
@@ -102,6 +106,10 @@ class _LoginPageState extends State<LoginPage> with DialogMixin {
                         prefixIcon: Icon(
                           Icons.lock,
                           color: Colors.black,
+                        ),
+                        errorStyle: TextStyle(
+                          fontSize: 15.0,
+                          letterSpacing: 0.5,
                         ),
                       ),
                       obscureText: true,

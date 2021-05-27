@@ -36,10 +36,10 @@ class _SignupPageState extends State<SignupPage> with DialogMixin {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: RegistrationInfoContainer(
-            builder: (BuildContext context, RegistrationInfo info) {
-              return Form(
-                child: Column(
+          child: Form(
+            child: RegistrationInfoContainer(
+              builder: (BuildContext context, RegistrationInfo info) {
+                return Column(
                   children: <Widget>[
                     Stepper(
                       type: stepperType,
@@ -86,6 +86,10 @@ class _SignupPageState extends State<SignupPage> with DialogMixin {
                                 decoration: const InputDecoration(
                                   hintText: 'email',
                                   hintStyle: TextStyle(fontSize: 18.0),
+                                  errorStyle: TextStyle(
+                                    fontSize: 15.0,
+                                    letterSpacing: 0.5,
+                                  ),
                                 ),
                                 keyboardType: TextInputType.emailAddress,
                                 onChanged: (String value) {
@@ -94,8 +98,7 @@ class _SignupPageState extends State<SignupPage> with DialogMixin {
                                   );
                                 },
                                 validator: (String value) {
-                                  if (!value.contains('@') ||
-                                      !value.contains('.')) {
+                                  if (!validateEmail(value)) {
                                     return 'Please enter a valid email address';
                                   }
                                   return null;
@@ -122,6 +125,10 @@ class _SignupPageState extends State<SignupPage> with DialogMixin {
                                 decoration: const InputDecoration(
                                   hintText: 'username',
                                   hintStyle: TextStyle(fontSize: 18.0),
+                                  errorStyle: TextStyle(
+                                    fontSize: 15.0,
+                                    letterSpacing: 0.5,
+                                  ),
                                 ),
                                 keyboardType: TextInputType.name,
                                 initialValue: info.email != null
@@ -133,8 +140,10 @@ class _SignupPageState extends State<SignupPage> with DialogMixin {
                                   );
                                 },
                                 validator: (String value) {
-                                  if (value.length < 3 || value.contains(' ')) {
-                                    return 'Please choose a bigger username, without spaces';
+                                  if (value.length < 3) {
+                                    return 'Please choose a bigger username';
+                                  } else if (value.contains(' ')) {
+                                    return 'The username should be one word';
                                   }
                                   return null;
                                 },
@@ -161,6 +170,11 @@ class _SignupPageState extends State<SignupPage> with DialogMixin {
                                 decoration: const InputDecoration(
                                   hintText: 'password',
                                   hintStyle: TextStyle(fontSize: 18.0),
+                                  errorStyle: TextStyle(
+                                    fontSize: 15.0,
+                                    letterSpacing: 0.5,
+                                  ),
+                                  errorMaxLines: 3,
                                 ),
                                 keyboardType: TextInputType.visiblePassword,
                                 onChanged: (String value) {
@@ -169,8 +183,8 @@ class _SignupPageState extends State<SignupPage> with DialogMixin {
                                   );
                                 },
                                 validator: (String value) {
-                                  if (value.length > 6) {
-                                    return 'Please choose a bigger password';
+                                  if (!validatePassword(value)) {
+                                    return 'The password must contain both upper and lower case letters, a number and a special character';
                                   }
                                   return null;
                                 },
@@ -210,8 +224,14 @@ class _SignupPageState extends State<SignupPage> with DialogMixin {
                               },
                             ),
                           );
+                        } else if (!validateEmail(info.email)) {
+                          _currentStep = 0;
+                        } else if (info.username == null ||
+                            (info.username.length < 3 ||
+                                info.username.contains(' '))) {
+                          _currentStep = 1;
                         } else {
-                          // show an error
+                          _currentStep = 2;
                         }
                       },
                     ),
@@ -219,12 +239,26 @@ class _SignupPageState extends State<SignupPage> with DialogMixin {
                       height: 24,
                     ),
                   ],
-                ),
-              );
-            },
+                );
+              },
+            ),
           ),
         ),
       ),
     );
   }
+}
+
+bool validatePassword(String value) {
+  const String pattern =
+      r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{6,}$';
+  final RegExp regExp = RegExp(pattern);
+  return regExp.hasMatch(value);
+}
+
+bool validateEmail(String em) {
+  const String pattern =
+      r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+  final RegExp regExp = RegExp(pattern);
+  return regExp.hasMatch(em);
 }

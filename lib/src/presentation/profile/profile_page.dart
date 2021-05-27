@@ -320,6 +320,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                                       style: const TextStyle(
                                                         color: Colors.white,
                                                         fontSize: 14.0,
+                                                        letterSpacing: 0.8,
                                                       ),
                                                     ),
                                                   ),
