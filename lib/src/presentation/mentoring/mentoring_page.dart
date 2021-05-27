@@ -56,9 +56,13 @@ class _MentoringPageState extends State<MentoringPage> {
                         return ChoiceChip(
                           label: Text(category),
                           labelStyle: const TextStyle(
-                              color: Colors.white, fontSize: 16),
-                          selectedColor: Colors.red,
-                          backgroundColor: Colors.blueAccent,
+                            color: Colors.black,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          selectedColor:
+                              Theme.of(context).colorScheme.secondary,
+                          backgroundColor: Colors.amber,
                           selected: _selectedChips.contains(category),
                           onSelected: (bool isSelected) {
                             if (isSelected) {
@@ -88,15 +92,17 @@ class _MentoringPageState extends State<MentoringPage> {
                         padding: const EdgeInsets.only(
                             top: 6, bottom: 6, left: 12, right: 12),
                         decoration: BoxDecoration(
-                          color:
-                              isYoursClicked ? Colors.red : Colors.blueAccent,
+                          color: isYoursClicked
+                              ? Theme.of(context).colorScheme.secondary
+                              : Colors.amber,
                           borderRadius: BorderRadius.circular(16.0),
                         ),
                         child: const Text(
                           'Yours',
                           style: TextStyle(
                             fontSize: 16.0,
-                            color: Colors.white,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
                       ),
@@ -196,12 +202,15 @@ class _MentoringPageState extends State<MentoringPage> {
                                                           fontSize: 18,
                                                         ),
                                                       ),
+                                                      const SizedBox(height: 8),
                                                       if (user.uid != me.uid)
                                                         Container(
                                                           decoration:
                                                               BoxDecoration(
-                                                            color: Colors
-                                                                .blueAccent,
+                                                            color: Theme.of(
+                                                                    context)
+                                                                .colorScheme
+                                                                .primary,
                                                             borderRadius:
                                                                 BorderRadius
                                                                     .circular(

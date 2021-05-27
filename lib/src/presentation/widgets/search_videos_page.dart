@@ -18,14 +18,21 @@ class SearchVideosPage extends StatelessWidget {
                 itemBuilder: (BuildContext context, int index) {
                   final Video video = videos[index];
 
-                  print('helllo');
-
-                  return MaterialButton(
-                    onPressed: () {
+                  return GestureDetector(
+                    onTap: () {
                       Navigator.pushNamed(context, AppRoutes.videoPlayer,
                           arguments: video);
                     },
-                    child: Text(video.title),
+                      child: ListTile(
+                        title: Text(
+                          video.title,
+                          style: const TextStyle(fontSize: 16),
+                        ),
+                        subtitle: Text(
+                          video.description,
+                          style: const TextStyle(fontSize: 14),
+                        ),
+                      )
                   );
                 },
             );

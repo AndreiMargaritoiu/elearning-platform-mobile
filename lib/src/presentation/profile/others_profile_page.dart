@@ -103,7 +103,8 @@ class _OthersProfilePageState extends State<OthersProfilePage> {
                                           child: Column(
                                             children: <Widget>[
                                               Text(
-                                                searchedUser.following.length.toString(),
+                                                searchedUser.following.length
+                                                    .toString(),
                                                 style: const TextStyle(
                                                   fontSize: 20,
                                                   fontWeight: FontWeight.w600,
@@ -118,8 +119,8 @@ class _OthersProfilePageState extends State<OthersProfilePage> {
                                             ],
                                           ),
                                           onTap: () {
-                                            Navigator.pushNamed(
-                                                context, AppRoutes.followingListPage,
+                                            Navigator.pushNamed(context,
+                                                AppRoutes.followingListPage,
                                                 arguments: searchedUser);
                                           },
                                         ),
@@ -227,56 +228,83 @@ class _OthersProfilePageState extends State<OthersProfilePage> {
                                       child: Card(
                                         child: Row(
                                           children: <Widget>[
-                                            if (playlist.thumbnailUrl != null &&
-                                                playlist
-                                                    .thumbnailUrl.isNotEmpty)
-                                              Image.network(
-                                                playlist.thumbnailUrl,
-                                                height: 90,
-                                                width: 160,
-                                                fit: BoxFit.cover,
-                                              )
-                                            else
-                                              Container(
-                                                height: 90,
-                                                width: 160,
-                                                decoration: const BoxDecoration(
-                                                  color: Colors.green,
+                                            Stack(
+                                              children: <Widget>[
+                                                if (playlist.thumbnailUrl !=
+                                                        null &&
+                                                    playlist.thumbnailUrl
+                                                        .isNotEmpty)
+                                                  Image.network(
+                                                    playlist.thumbnailUrl,
+                                                    height: 90,
+                                                    width: 160,
+                                                    fit: BoxFit.cover,
+                                                  )
+                                                else
+                                                  Container(
+                                                    height: 90,
+                                                    width: 160,
+                                                    decoration:
+                                                        const BoxDecoration(
+                                                      color: Colors.green,
+                                                    ),
+                                                  ),
+                                                Positioned(
+                                                  right: 4.0,
+                                                  bottom: 4.0,
+                                                  child: Container(
+                                                    height: 40.0,
+                                                    width: 80.0,
+                                                    alignment: Alignment.center,
+                                                    decoration: BoxDecoration(
+                                                      color: Colors.black,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10.0),
+                                                    ),
+                                                    child: Padding(
+                                                      padding:
+                                                          const EdgeInsets.all(
+                                                              10.0),
+                                                      child: Text(
+                                                        '${playlist.videoRefs.length} videos',
+                                                        style: const TextStyle(
+                                                          color: Colors.white,
+                                                          fontSize: 14.0,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                            Flexible(
+                                              child: Container(
+                                                padding:
+                                                    const EdgeInsets.all(8),
+                                                width: 192,
+                                                child: Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: <Widget>[
+                                                    Text(
+                                                      playlist.title,
+                                                      style: const TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        fontSize: 17,
+                                                      ),
+                                                    ),
+                                                    Text(
+                                                      playlist.description,
+                                                      style: const TextStyle(
+                                                        fontSize: 16,
+                                                      ),
+                                                    ),
+                                                  ],
                                                 ),
                                               ),
-                                            Container(
-                                              padding: const EdgeInsets.only(
-                                                  left: 8, top: 8, bottom: 8),
-                                              width: 192,
-                                              child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: <Widget>[
-                                                  Text(
-                                                    playlist.title,
-                                                    style: const TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.w600,
-                                                      fontSize: 17,
-                                                    ),
-                                                  ),
-                                                  Text(
-                                                    'Videos: ${playlist.videoRefs.length}',
-                                                    style: const TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                      fontSize: 16,
-                                                    ),
-                                                  ),
-                                                  Text(
-                                                    playlist.description,
-                                                    style: const TextStyle(
-                                                      fontSize: 16,
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            )
+                                            ),
                                           ],
                                         ),
                                       ),

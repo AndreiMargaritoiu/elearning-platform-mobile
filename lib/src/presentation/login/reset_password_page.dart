@@ -40,10 +40,27 @@ class _ResetPasswordPageState extends State<ResetPasswordPage>
               builder: (BuildContext context) {
                 return Column(
                   children: <Widget>[
+                    const SizedBox(
+                      height: 80,
+                    ),
                     TextFormField(
                       controller: _email,
+                      style: const TextStyle(fontSize: 18, color: Colors.black),
                       decoration: const InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(20.0),
+                          ),
+                        ),
+                        filled: true,
+                        hintStyle:
+                        TextStyle(fontSize: 18.0, color: Colors.black),
                         hintText: 'email',
+                        fillColor: Colors.white,
+                        prefixIcon: Icon(
+                          Icons.person,
+                          color: Colors.black,
+                        ),
                       ),
                       keyboardType: TextInputType.emailAddress,
                       onChanged: (String value) {},
@@ -51,13 +68,25 @@ class _ResetPasswordPageState extends State<ResetPasswordPage>
                         if (!value.contains('@') || !value.contains('.')) {
                           return 'Please enter a valid email address';
                         }
-
                         return null;
                       },
                     ),
-                    const Spacer(),
+                    const SizedBox(
+                      height: 40,
+                    ),
                     FlatButton(
-                      child: const Text('Send email'),
+                      minWidth: MediaQuery.of(context).size.width / 2,
+                      color: Colors.amber,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      child: const Text(
+                        'Send email',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 20,
+                        ),
+                      ),
                       onPressed: () {
                         if (Form.of(context).validate()) {
                           StoreProvider.of<AppState>(context).dispatch(
@@ -66,7 +95,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage>
                         }
                       },
                     ),
-                    const Divider(),
+                    const Spacer(),
                     Text.rich(
                       TextSpan(
                         text: 'You don\'t have an account? ',
@@ -74,8 +103,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage>
                           TextSpan(
                             text: 'Sign Up!',
                             style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                            ),
+                                fontWeight: FontWeight.bold, fontSize: 16),
                             recognizer: TapGestureRecognizer()
                               ..onTap = () {
                                 Navigator.pushNamed(context, AppRoutes.signUp);
@@ -83,6 +111,9 @@ class _ResetPasswordPageState extends State<ResetPasswordPage>
                           ),
                         ],
                       ),
+                    ),
+                    const SizedBox(
+                      height: 24,
                     ),
                   ],
                 );

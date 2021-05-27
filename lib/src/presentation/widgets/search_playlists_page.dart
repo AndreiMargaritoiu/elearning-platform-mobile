@@ -18,12 +18,21 @@ class SearchPlaylistsPage extends StatelessWidget {
               itemBuilder: (BuildContext context, int index) {
                 final Playlist playlist = playlists[index];
 
-                return MaterialButton(
-                  onPressed: () {
+                return GestureDetector(
+                  onTap: () {
                     Navigator.pushNamed(context, AppRoutes.playlistVideosPage,
                         arguments: playlist);
                   },
-                  child: Text(playlist.title),
+                  child: ListTile(
+                    title: Text(
+                      playlist.title,
+                      style: const TextStyle(fontSize: 16),
+                    ),
+                    subtitle: Text(
+                      playlist.description,
+                      style: const TextStyle(fontSize: 14),
+                    ),
+                  )
                 );
               },
             );

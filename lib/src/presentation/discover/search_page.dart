@@ -20,6 +20,7 @@ class _SearchPageState extends State<SearchPage> {
   bool isSearchUsers = true;
   bool isSearchPlaylists = false;
   bool isSearchVideos = false;
+  String searchedValue = '';
 
   @override
   void initState() {
@@ -39,6 +40,7 @@ class _SearchPageState extends State<SearchPage> {
             ),
           ),
           onChanged: (String value) {
+            searchedValue = value;
             isSearchUsers
                 ? StoreProvider.of<AppState>(context).dispatch(
                     SearchUsers(value),
@@ -92,6 +94,9 @@ class _SearchPageState extends State<SearchPage> {
                           isSearchUsers = true;
                           isSearchPlaylists = false;
                           isSearchVideos = false;
+                          StoreProvider.of<AppState>(context).dispatch(
+                             SearchUsers(searchedValue),
+                          );
                         },
                       );
                     },
@@ -118,6 +123,9 @@ class _SearchPageState extends State<SearchPage> {
                           isSearchPlaylists = true;
                           isSearchUsers = false;
                           isSearchVideos = false;
+                          StoreProvider.of<AppState>(context).dispatch(
+                             SearchPlaylists(searchedValue),
+                          );
                         },
                       );
                     },
@@ -144,6 +152,9 @@ class _SearchPageState extends State<SearchPage> {
                           isSearchVideos = true;
                           isSearchUsers = false;
                           isSearchPlaylists = false;
+                          StoreProvider.of<AppState>(context).dispatch(
+                             SearchVideos(searchedValue),
+                          );
                         },
                       );
                     },
@@ -156,6 +167,9 @@ class _SearchPageState extends State<SearchPage> {
                 ],
               ),
             ],
+          ),
+          const SizedBox(
+            height: 8,
           ),
           Expanded(
             child: isSearchUsers

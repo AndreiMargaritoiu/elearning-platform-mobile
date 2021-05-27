@@ -17,7 +17,6 @@ class FollowingListPage extends StatefulWidget {
 }
 
 class _FollowingListPageState extends State<FollowingListPage> {
-
   @override
   Widget build(BuildContext context) {
     return UserContainer(
@@ -31,20 +30,31 @@ class _FollowingListPageState extends State<FollowingListPage> {
               return ListView.builder(
                 itemCount: widget.currentUser.following.length,
                 itemBuilder: (BuildContext context, int index) {
-                  final AppUser user = users[widget.currentUser.following[index]];
+                  final AppUser user =
+                      users[widget.currentUser.following[index]];
                   final bool isFollowed =
                       widget.currentUser.following.contains(user.uid);
 
                   return MaterialButton(
                       child: ListTile(
                         leading: user.photoUrl != null
-                            ? Image.network(user.photoUrl)
-                            : null,
+                            ? CircleAvatar(
+                                backgroundImage: NetworkImage(user.photoUrl),
+                              )
+                            : CircleAvatar(
+                                backgroundColor: Colors.grey.shade900,
+                                child: Text(
+                                  user.username[0].toUpperCase(),
+                                ),
+                              ),
                         title: Text('@${user.username}'),
                         subtitle: Text(user.email),
                         trailing: appUser.uid != user.uid
                             ? FlatButton(
-                                child: Text(isFollowed ? 'Unfollow' : 'Follow'),
+                                child: Text(
+                                  isFollowed ? 'Unfollow' : 'Follow',
+                                  style: const TextStyle(fontSize: 16),
+                                ),
                                 onPressed: () {
                                   AppAction action;
                                   if (isFollowed) {

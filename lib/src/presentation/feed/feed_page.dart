@@ -132,7 +132,13 @@ class _FeedPageState extends State<FeedPage> {
                   child: Column(
                     children: <Widget>[
                       Container(
-                        child: const Text('Add content'),
+                        child: const Text(
+                          'Add content',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                          ),
+                        ),
                       ),
                       Row(
                         children: <Widget>[
@@ -143,7 +149,12 @@ class _FeedPageState extends State<FeedPage> {
                             },
                           ),
                           MaterialButton(
-                            child: const Text('Video'),
+                            child: const Text(
+                              'Video',
+                              style: TextStyle(
+                                fontSize: 16,
+                              ),
+                            ),
                             onPressed: () {
                               _addVideo();
                             },
@@ -160,7 +171,12 @@ class _FeedPageState extends State<FeedPage> {
                             },
                           ),
                           MaterialButton(
-                            child: const Text('Playlist'),
+                            child: const Text(
+                              'Playlist',
+                              style: TextStyle(
+                                fontSize: 16,
+                              ),
+                            ),
                             onPressed: () {
                               Navigator.pushNamed(
                                   context, AppRoutes.createPlaylistPage);

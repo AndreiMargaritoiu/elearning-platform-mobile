@@ -18,43 +18,51 @@ class SearchUsersPage extends StatelessWidget {
         return SearchUsersContainer(
           builder: (BuildContext context, List<AppUser> users) {
             return ListView.builder(
-                itemCount: users.length,
-                itemBuilder: (BuildContext context, int index) {
-                  final AppUser user = users[index];
-                  final bool isFollowed =
-                      currentUser.following.contains(user.uid);
+              itemCount: users.length,
+              itemBuilder: (BuildContext context, int index) {
+                final AppUser user = users[index];
+                final bool isFollowed =
+                    currentUser.following.contains(user.uid);
 
-                  return MaterialButton(
-                      child: ListTile(
-                        leading: user.photoUrl != null
-                            ? Image.network(user.photoUrl)
-                            : null,
-                        title: Text('@${user.username}'),
-                        subtitle: Text(user.email),
-                        trailing: showFollow
-                            ? FlatButton(
-                          child: Text(isFollowed ? 'Unfollow' : 'Follow'),
-                          onPressed: () {
-                            AppAction action;
-                            if (isFollowed) {
-                              action = UpdateFollowing(remove: user.uid);
-                            } else {
-                              action = UpdateFollowing(add: user.uid);
-                            }
-                            StoreProvider.of<AppState>(context)
-                                .dispatch(action);
-                          },
-                        )
-                            : null,
-                      ),
-                      onPressed: () {
-                        Navigator.pushNamed(
-                            context, AppRoutes.othersProfilePage,
-                            arguments: user);
-                      }
-                  );
-                },
-              );
+                return MaterialButton(
+                    child: ListTile(
+                      leading: user.photoUrl != null
+                          ? CircleAvatar(
+                              backgroundImage: NetworkImage(user.photoUrl),
+                            )
+                          : CircleAvatar(
+                              backgroundColor: Colors.grey.shade900,
+                              child: Text(
+                                user.username[0].toUpperCase(),
+                              ),
+                            ),
+                      title: Text('@${user.username}'),
+                      subtitle: Text(user.email),
+                      trailing: showFollow
+                          ? FlatButton(
+                              child: Text(
+                                isFollowed ? 'Unfollow' : 'Follow',
+                                style: const TextStyle(fontSize: 16),
+                              ),
+                              onPressed: () {
+                                AppAction action;
+                                if (isFollowed) {
+                                  action = UpdateFollowing(remove: user.uid);
+                                } else {
+                                  action = UpdateFollowing(add: user.uid);
+                                }
+                                StoreProvider.of<AppState>(context)
+                                    .dispatch(action);
+                              },
+                            )
+                          : null,
+                    ),
+                    onPressed: () {
+                      Navigator.pushNamed(context, AppRoutes.othersProfilePage,
+                          arguments: user);
+                    });
+              },
+            );
           },
         );
       },
