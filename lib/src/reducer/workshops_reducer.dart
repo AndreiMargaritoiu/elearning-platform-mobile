@@ -8,11 +8,13 @@ Reducer<WorkshopsState> workshopsReducer = combineReducers(
   <Reducer<WorkshopsState>>[
     TypedReducer<WorkshopsState, GetAllWorkshopsSuccessful>(
         _getAllWorkshopsSuccessful),
+    TypedReducer<WorkshopsState, RegisterToWorkshopSuccessful>(
+        _registerToWorkshopSuccessful),
   ],
 );
 
-WorkshopsState _getAllWorkshopsSuccessful(
-    WorkshopsState state, GetAllWorkshopsSuccessful action) {
+WorkshopsState _getAllWorkshopsSuccessful(WorkshopsState state,
+    GetAllWorkshopsSuccessful action) {
   return state.rebuild(
         (WorkshopsStateBuilder b) {
       b.workshops = ListBuilder<Workshop>(action.workshops);
@@ -20,3 +22,14 @@ WorkshopsState _getAllWorkshopsSuccessful(
   );
 }
 
+WorkshopsState _registerToWorkshopSuccessful(WorkshopsState state,
+    RegisterToWorkshopSuccessful action) {
+  return state.rebuild(
+        (WorkshopsStateBuilder b) {
+      b.workshops.removeWhere((Workshop workshop) =>
+      workshop.id == action.workshop.id);
+      b.workshops.add(action.workshop);
+      // [action.workshop.id] = action.workshop;
+    },
+  );
+}

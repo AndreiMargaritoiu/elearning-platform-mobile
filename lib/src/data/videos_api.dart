@@ -122,7 +122,7 @@ class VideosApi {
   }
 
   Future<void> deleteVideo(String id) async {
-    await _clientWrapper.delete('videos/$id');
+    await _clientWrapper.delete('videos/$id'); 
 
 //    final DocumentReference ref = _firestore.collection('videos').doc(id);
 //    await ref.delete();

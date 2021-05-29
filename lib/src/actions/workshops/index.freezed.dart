@@ -429,3 +429,457 @@ abstract class GetAllWorkshopsError implements GetAllWorkshops, ErrorAction {
   Object get error;
   $GetAllWorkshopsErrorCopyWith<GetAllWorkshopsError> get copyWith;
 }
+
+/// @nodoc
+class _$RegisterToWorkshopTearOff {
+  const _$RegisterToWorkshopTearOff();
+
+// ignore: unused_element
+  RegisterToWorkshop$ call(String workshopId) {
+    return RegisterToWorkshop$(
+      workshopId,
+    );
+  }
+
+// ignore: unused_element
+  RegisterToWorkshopSuccessful successful(Workshop workshop) {
+    return RegisterToWorkshopSuccessful(
+      workshop,
+    );
+  }
+
+// ignore: unused_element
+  RegisterToWorkshopError error(Object error) {
+    return RegisterToWorkshopError(
+      error,
+    );
+  }
+}
+
+/// @nodoc
+// ignore: unused_element
+const $RegisterToWorkshop = _$RegisterToWorkshopTearOff();
+
+/// @nodoc
+mixin _$RegisterToWorkshop {
+  @optionalTypeArgs
+  Result when<Result extends Object>(
+    Result $default(String workshopId), {
+    @required Result successful(Workshop workshop),
+    @required Result error(Object error),
+  });
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>(
+    Result $default(String workshopId), {
+    Result successful(Workshop workshop),
+    Result error(Object error),
+    @required Result orElse(),
+  });
+  @optionalTypeArgs
+  Result map<Result extends Object>(
+    Result $default(RegisterToWorkshop$ value), {
+    @required Result successful(RegisterToWorkshopSuccessful value),
+    @required Result error(RegisterToWorkshopError value),
+  });
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>(
+    Result $default(RegisterToWorkshop$ value), {
+    Result successful(RegisterToWorkshopSuccessful value),
+    Result error(RegisterToWorkshopError value),
+    @required Result orElse(),
+  });
+}
+
+/// @nodoc
+abstract class $RegisterToWorkshopCopyWith<$Res> {
+  factory $RegisterToWorkshopCopyWith(
+          RegisterToWorkshop value, $Res Function(RegisterToWorkshop) then) =
+      _$RegisterToWorkshopCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$RegisterToWorkshopCopyWithImpl<$Res>
+    implements $RegisterToWorkshopCopyWith<$Res> {
+  _$RegisterToWorkshopCopyWithImpl(this._value, this._then);
+
+  final RegisterToWorkshop _value;
+  // ignore: unused_field
+  final $Res Function(RegisterToWorkshop) _then;
+}
+
+/// @nodoc
+abstract class $RegisterToWorkshop$CopyWith<$Res> {
+  factory $RegisterToWorkshop$CopyWith(
+          RegisterToWorkshop$ value, $Res Function(RegisterToWorkshop$) then) =
+      _$RegisterToWorkshop$CopyWithImpl<$Res>;
+  $Res call({String workshopId});
+}
+
+/// @nodoc
+class _$RegisterToWorkshop$CopyWithImpl<$Res>
+    extends _$RegisterToWorkshopCopyWithImpl<$Res>
+    implements $RegisterToWorkshop$CopyWith<$Res> {
+  _$RegisterToWorkshop$CopyWithImpl(
+      RegisterToWorkshop$ _value, $Res Function(RegisterToWorkshop$) _then)
+      : super(_value, (v) => _then(v as RegisterToWorkshop$));
+
+  @override
+  RegisterToWorkshop$ get _value => super._value as RegisterToWorkshop$;
+
+  @override
+  $Res call({
+    Object workshopId = freezed,
+  }) {
+    return _then(RegisterToWorkshop$(
+      workshopId == freezed ? _value.workshopId : workshopId as String,
+    ));
+  }
+}
+
+/// @nodoc
+class _$RegisterToWorkshop$ implements RegisterToWorkshop$ {
+  const _$RegisterToWorkshop$(this.workshopId) : assert(workshopId != null);
+
+  @override
+  final String workshopId;
+
+  @override
+  String toString() {
+    return 'RegisterToWorkshop(workshopId: $workshopId)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is RegisterToWorkshop$ &&
+            (identical(other.workshopId, workshopId) ||
+                const DeepCollectionEquality()
+                    .equals(other.workshopId, workshopId)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(workshopId);
+
+  @override
+  $RegisterToWorkshop$CopyWith<RegisterToWorkshop$> get copyWith =>
+      _$RegisterToWorkshop$CopyWithImpl<RegisterToWorkshop$>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>(
+    Result $default(String workshopId), {
+    @required Result successful(Workshop workshop),
+    @required Result error(Object error),
+  }) {
+    assert($default != null);
+    assert(successful != null);
+    assert(error != null);
+    return $default(workshopId);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>(
+    Result $default(String workshopId), {
+    Result successful(Workshop workshop),
+    Result error(Object error),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if ($default != null) {
+      return $default(workshopId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>(
+    Result $default(RegisterToWorkshop$ value), {
+    @required Result successful(RegisterToWorkshopSuccessful value),
+    @required Result error(RegisterToWorkshopError value),
+  }) {
+    assert($default != null);
+    assert(successful != null);
+    assert(error != null);
+    return $default(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>(
+    Result $default(RegisterToWorkshop$ value), {
+    Result successful(RegisterToWorkshopSuccessful value),
+    Result error(RegisterToWorkshopError value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if ($default != null) {
+      return $default(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class RegisterToWorkshop$ implements RegisterToWorkshop {
+  const factory RegisterToWorkshop$(String workshopId) = _$RegisterToWorkshop$;
+
+  String get workshopId;
+  $RegisterToWorkshop$CopyWith<RegisterToWorkshop$> get copyWith;
+}
+
+/// @nodoc
+abstract class $RegisterToWorkshopSuccessfulCopyWith<$Res> {
+  factory $RegisterToWorkshopSuccessfulCopyWith(
+          RegisterToWorkshopSuccessful value,
+          $Res Function(RegisterToWorkshopSuccessful) then) =
+      _$RegisterToWorkshopSuccessfulCopyWithImpl<$Res>;
+  $Res call({Workshop workshop});
+}
+
+/// @nodoc
+class _$RegisterToWorkshopSuccessfulCopyWithImpl<$Res>
+    extends _$RegisterToWorkshopCopyWithImpl<$Res>
+    implements $RegisterToWorkshopSuccessfulCopyWith<$Res> {
+  _$RegisterToWorkshopSuccessfulCopyWithImpl(
+      RegisterToWorkshopSuccessful _value,
+      $Res Function(RegisterToWorkshopSuccessful) _then)
+      : super(_value, (v) => _then(v as RegisterToWorkshopSuccessful));
+
+  @override
+  RegisterToWorkshopSuccessful get _value =>
+      super._value as RegisterToWorkshopSuccessful;
+
+  @override
+  $Res call({
+    Object workshop = freezed,
+  }) {
+    return _then(RegisterToWorkshopSuccessful(
+      workshop == freezed ? _value.workshop : workshop as Workshop,
+    ));
+  }
+}
+
+/// @nodoc
+class _$RegisterToWorkshopSuccessful implements RegisterToWorkshopSuccessful {
+  const _$RegisterToWorkshopSuccessful(this.workshop)
+      : assert(workshop != null);
+
+  @override
+  final Workshop workshop;
+
+  @override
+  String toString() {
+    return 'RegisterToWorkshop.successful(workshop: $workshop)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is RegisterToWorkshopSuccessful &&
+            (identical(other.workshop, workshop) ||
+                const DeepCollectionEquality()
+                    .equals(other.workshop, workshop)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(workshop);
+
+  @override
+  $RegisterToWorkshopSuccessfulCopyWith<RegisterToWorkshopSuccessful>
+      get copyWith => _$RegisterToWorkshopSuccessfulCopyWithImpl<
+          RegisterToWorkshopSuccessful>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>(
+    Result $default(String workshopId), {
+    @required Result successful(Workshop workshop),
+    @required Result error(Object error),
+  }) {
+    assert($default != null);
+    assert(successful != null);
+    assert(error != null);
+    return successful(workshop);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>(
+    Result $default(String workshopId), {
+    Result successful(Workshop workshop),
+    Result error(Object error),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (successful != null) {
+      return successful(workshop);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>(
+    Result $default(RegisterToWorkshop$ value), {
+    @required Result successful(RegisterToWorkshopSuccessful value),
+    @required Result error(RegisterToWorkshopError value),
+  }) {
+    assert($default != null);
+    assert(successful != null);
+    assert(error != null);
+    return successful(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>(
+    Result $default(RegisterToWorkshop$ value), {
+    Result successful(RegisterToWorkshopSuccessful value),
+    Result error(RegisterToWorkshopError value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (successful != null) {
+      return successful(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class RegisterToWorkshopSuccessful implements RegisterToWorkshop {
+  const factory RegisterToWorkshopSuccessful(Workshop workshop) =
+      _$RegisterToWorkshopSuccessful;
+
+  Workshop get workshop;
+  $RegisterToWorkshopSuccessfulCopyWith<RegisterToWorkshopSuccessful>
+      get copyWith;
+}
+
+/// @nodoc
+abstract class $RegisterToWorkshopErrorCopyWith<$Res> {
+  factory $RegisterToWorkshopErrorCopyWith(RegisterToWorkshopError value,
+          $Res Function(RegisterToWorkshopError) then) =
+      _$RegisterToWorkshopErrorCopyWithImpl<$Res>;
+  $Res call({Object error});
+}
+
+/// @nodoc
+class _$RegisterToWorkshopErrorCopyWithImpl<$Res>
+    extends _$RegisterToWorkshopCopyWithImpl<$Res>
+    implements $RegisterToWorkshopErrorCopyWith<$Res> {
+  _$RegisterToWorkshopErrorCopyWithImpl(RegisterToWorkshopError _value,
+      $Res Function(RegisterToWorkshopError) _then)
+      : super(_value, (v) => _then(v as RegisterToWorkshopError));
+
+  @override
+  RegisterToWorkshopError get _value => super._value as RegisterToWorkshopError;
+
+  @override
+  $Res call({
+    Object error = freezed,
+  }) {
+    return _then(RegisterToWorkshopError(
+      error == freezed ? _value.error : error,
+    ));
+  }
+}
+
+@Implements(ErrorAction)
+
+/// @nodoc
+class _$RegisterToWorkshopError implements RegisterToWorkshopError {
+  const _$RegisterToWorkshopError(this.error) : assert(error != null);
+
+  @override
+  final Object error;
+
+  @override
+  String toString() {
+    return 'RegisterToWorkshop.error(error: $error)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is RegisterToWorkshopError &&
+            (identical(other.error, error) ||
+                const DeepCollectionEquality().equals(other.error, error)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
+
+  @override
+  $RegisterToWorkshopErrorCopyWith<RegisterToWorkshopError> get copyWith =>
+      _$RegisterToWorkshopErrorCopyWithImpl<RegisterToWorkshopError>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>(
+    Result $default(String workshopId), {
+    @required Result successful(Workshop workshop),
+    @required Result error(Object error),
+  }) {
+    assert($default != null);
+    assert(successful != null);
+    assert(error != null);
+    return error(this.error);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>(
+    Result $default(String workshopId), {
+    Result successful(Workshop workshop),
+    Result error(Object error),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (error != null) {
+      return error(this.error);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>(
+    Result $default(RegisterToWorkshop$ value), {
+    @required Result successful(RegisterToWorkshopSuccessful value),
+    @required Result error(RegisterToWorkshopError value),
+  }) {
+    assert($default != null);
+    assert(successful != null);
+    assert(error != null);
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>(
+    Result $default(RegisterToWorkshop$ value), {
+    Result successful(RegisterToWorkshopSuccessful value),
+    Result error(RegisterToWorkshopError value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class RegisterToWorkshopError
+    implements RegisterToWorkshop, ErrorAction {
+  const factory RegisterToWorkshopError(Object error) =
+      _$RegisterToWorkshopError;
+
+  Object get error;
+  $RegisterToWorkshopErrorCopyWith<RegisterToWorkshopError> get copyWith;
+}

@@ -26,6 +26,14 @@ class WorkshopsApi {
     return data.map((dynamic json) => Workshop.fromJson(json)).toList();
   }
 
+  Future<Workshop> registerToWorkshop(String workshopId) async {
+    final Response response =
+        await _clientWrapper.patch('workshops/$workshopId', null);
+    final Map<String, dynamic> data = jsonDecode(response.body);
+
+    return Workshop.fromJson(data);
+  }
+
 // Future<Workshop> updateWorkshop(WorkshopInfo info, String id) async {
 //   final Map<String, dynamic> updates = <String, dynamic>{};
 //   if (info.description != null && info.description.isNotEmpty) {

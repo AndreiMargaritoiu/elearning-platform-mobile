@@ -35,98 +35,114 @@ class _WorkshopsBottomListState extends State<WorkshopsBottomList> {
 
   @override
   Widget build(BuildContext context) {
-    return WorkshopsContainer(
-      builder: (BuildContext context, List<Workshop> workshops) {
-        return Positioned.fill(
-          child: DraggableScrollableSheet(
-            minChildSize: initialPercentage,
-            initialChildSize: initialPercentage,
-            builder: (BuildContext context, ScrollController scrollController) {
-              return AnimatedBuilder(
-                animation: scrollController,
-                builder: (BuildContext context, Widget child) {
-                  double percentage = initialPercentage;
-                  if (scrollController.hasClients) {
-                    percentage = (scrollController.position.viewportDimension) /
-                        (MediaQuery.of(context).size.height * 0.925);
-                  }
-                  final double scaledPercentage =
-                      (percentage - initialPercentage) /
-                          (1 - initialPercentage);
-                  return Container(
-                    padding: const EdgeInsets.only(left: 32),
-                    decoration: const BoxDecoration(
-                      color: Color(0xFF162A49),
-                      borderRadius:
-                          BorderRadius.vertical(top: Radius.circular(32)),
-                    ),
-                    child: Stack(
-                      children: <Widget>[
-                        Opacity(
-                          opacity: percentage > 0.99 ? 1 : 0,
-                          child: ListView.builder(
-                            padding: const EdgeInsets.only(right: 32, top: 128),
-                            controller: scrollController,
-                            itemCount: workshops.length,
-                            itemBuilder: (BuildContext context, int index) {
-                              final Workshop workshop = workshops[index];
-                              return MyEventItem(
-                                workshop: workshop,
-                                percentageCompleted: percentage,
-                              );
-                            },
-                          ),
-                        ),
-                        ...workshops.map((Workshop workshop) {
-                          final int index = workshops.indexOf(workshop);
-                          const int heightPerElement = 120 + 8 + 8;
-                          final double widthPerElement =
-                              40 + percentage * 80 + 8 * (1 - percentage);
-                          final double leftOffset = widthPerElement *
-                              (index > 4 ? index + 2 : index) *
-                              (1 - scaledPercentage);
-                          return Positioned(
-                            top: 44.0 +
-                                scaledPercentage * (128 - 44) +
-                                index * heightPerElement * scaledPercentage,
-                            left: leftOffset,
-                            right: 32 - leftOffset,
-                            child: IgnorePointer(
-                              ignoring: true,
-                              child: Opacity(
-                                opacity: percentage > 0.99 ? 0 : 1,
-                                child: MyEventItem(
+    return UserContainer(builder: (BuildContext context, AppUser appUser) {
+      return WorkshopsContainer(
+        builder: (BuildContext context, List<Workshop> workshops) {
+          return Positioned.fill(
+            child: DraggableScrollableSheet(
+              minChildSize: initialPercentage,
+              initialChildSize: initialPercentage,
+              builder:
+                  (BuildContext context, ScrollController scrollController) {
+                return AnimatedBuilder(
+                  animation: scrollController,
+                  builder: (BuildContext context, Widget child) {
+                    double percentage = initialPercentage;
+                    if (scrollController.hasClients) {
+                      percentage =
+                          (scrollController.position.viewportDimension) /
+                              (MediaQuery.of(context).size.height * 0.925);
+                    }
+                    final double scaledPercentage =
+                        (percentage - initialPercentage) /
+                            (1 - initialPercentage);
+                    return Container(
+                      padding: const EdgeInsets.only(left: 32),
+                      decoration: const BoxDecoration(
+                        color: Color(0xFF162A49),
+                        borderRadius:
+                            BorderRadius.vertical(top: Radius.circular(32)),
+                      ),
+                      child: Stack(
+                        children: <Widget>[
+                          Opacity(
+                            opacity: percentage > 0.99 ? 1 : 0,
+                            child: ListView.builder(
+                              padding:
+                                  const EdgeInsets.only(right: 32, top: 128),
+                              controller: scrollController,
+                              itemCount: workshops.length,
+                              itemBuilder: (BuildContext context, int index) {
+                                final Workshop workshop = workshops[index];
+                                return MyEventItem(
                                   workshop: workshop,
+                                  appUser: appUser,
                                   percentageCompleted: percentage,
+                                  globalContext: context,
+                                );
+                              },
+                            ),
+                          ),
+                          ...workshops.map((Workshop workshop) {
+                            final int index = workshops.indexOf(workshop);
+                            const int heightPerElement = 120 + 8 + 8;
+                            final double widthPerElement =
+                                40 + percentage * 80 + 8 * (1 - percentage);
+                            final double leftOffset = widthPerElement *
+                                (index > 4 ? index + 2 : index) *
+                                (1 - scaledPercentage);
+                            return Positioned(
+                              top: 44.0 +
+                                  scaledPercentage * (128 - 44) +
+                                  index * heightPerElement * scaledPercentage,
+                              left: leftOffset,
+                              right: 32 - leftOffset,
+                              child: IgnorePointer(
+                                ignoring: true,
+                                child: Opacity(
+                                  opacity: percentage > 0.99 ? 0 : 1,
+                                  child: MyEventItem(
+                                    workshop: workshop,
+                                    appUser: appUser,
+                                    percentageCompleted: percentage,
+                                    globalContext: context,
+                                  ),
                                 ),
                               ),
-                            ),
-                          );
-                        }),
-                        SheetHeader(
-                          fontSize: 16 + percentage * 8,
-                          topMargin: 16 +
-                              percentage * MediaQuery.of(context).padding.top,
-                        ),
-                      ],
-                    ),
-                  );
-                },
-              );
-            },
-          ),
-        );
-      },
-    );
+                            );
+                          }),
+                          SheetHeader(
+                            fontSize: 16 + percentage * 8,
+                            topMargin: 16 +
+                                percentage * MediaQuery.of(context).padding.top,
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                );
+              },
+            ),
+          );
+        },
+      );
+    });
   }
 }
 
 class MyEventItem extends StatelessWidget {
-  const MyEventItem({Key key, this.workshop, this.percentageCompleted})
+  const MyEventItem(
+      {Key key,
+      this.workshop,
+      this.percentageCompleted,
+      this.appUser,
+      this.globalContext})
       : super(key: key);
 
   final Workshop workshop;
   final double percentageCompleted;
+  final AppUser appUser;
+  final BuildContext globalContext;
 
   @override
   Widget build(BuildContext context) {
@@ -136,7 +152,7 @@ class MyEventItem extends StatelessWidget {
         alignment: Alignment.topLeft,
         scale: 1 / 3 + 2 / 3 * percentageCompleted,
         child: SizedBox(
-          height: 120,
+          height: 150,
           child: Row(
             children: <Widget>[
               ClipRRect(
@@ -147,7 +163,7 @@ class MyEventItem extends StatelessWidget {
                 child: Image.network(
                   workshop.thumbnailUrl,
                   width: 120,
-                  height: 120,
+                  height: 150,
                   fit: BoxFit.cover,
                 ),
               ),
@@ -173,13 +189,15 @@ class MyEventItem extends StatelessWidget {
   }
 
   Widget _buildContent() {
+    final bool isRegistered = workshop.participants.contains(appUser.email);
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
           workshop.description,
           style: const TextStyle(fontSize: 16, color: Colors.black),
         ),
-        const SizedBox(height: 8),
+        const SizedBox(height: 4),
         Text(
           '#${workshop.tag}',
           style: TextStyle(
@@ -188,10 +206,11 @@ class MyEventItem extends StatelessWidget {
             color: Colors.grey.shade600,
           ),
         ),
-        const Spacer(),
+        Container(height: 4),
         Row(
           children: <Widget>[
-            Icon(Icons.access_time_rounded, color: Colors.grey.shade400, size: 16),
+            Icon(Icons.access_time_rounded,
+                color: Colors.grey.shade400, size: 16),
             Text(
               DateFormat.yMMMMd()
                   .format(DateTime.fromMillisecondsSinceEpoch(workshop.date)),
@@ -209,9 +228,26 @@ class MyEventItem extends StatelessWidget {
             Icon(Icons.place, color: Colors.grey.shade400, size: 16),
             Text(
               workshop.location.isNotEmpty ? workshop.location : 'Google Meet',
-              style: TextStyle(color: Colors.grey.shade400, fontSize: 13),
+              style: TextStyle(color: Colors.grey.shade400, fontSize: 14),
             )
           ],
+        ),
+        const Spacer(),
+        Container(
+          width: 200,
+          height: 24,
+          color: isRegistered ? Colors.black : Colors.red,
+          child: FlatButton(
+            child: Text(
+              isRegistered ? 'UNREGISTER' : 'REGISTER',
+              style: const TextStyle(color: Colors.white),
+            ),
+            onPressed: () {
+              StoreProvider.of<AppState>(globalContext).dispatch(
+                RegisterToWorkshop(workshop.id),
+              );
+            },
+          ),
         )
       ],
     );

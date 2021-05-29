@@ -17,6 +17,7 @@ class WorkshopsEpics {
     return combineEpics<AppState>(
       <Epic<AppState>>[
         TypedEpic<AppState, GetAllWorkshops$>(_getAllWorkshops),
+        TypedEpic<AppState, RegisterToWorkshop$>(_registerToWorkshop),
       ],
     );
   }
@@ -37,6 +38,24 @@ class WorkshopsEpics {
           .onErrorReturnWith(
             (dynamic error) => GetAllWorkshops.error(error),
           ),
+    );
+  }
+
+  Stream<AppAction> _registerToWorkshop(
+      Stream<RegisterToWorkshop$> actions, EpicStore<AppState> store) {
+    return actions //
+        .flatMap(
+          (RegisterToWorkshop$ action) => Stream<RegisterToWorkshop$>.value(action)
+          .asyncMap(
+            (RegisterToWorkshop$ action) =>
+            _api.registerToWorkshop(action.workshopId),
+      )
+          .map(
+            (Workshop workshop) => RegisterToWorkshop.successful(workshop),
+      )
+          .onErrorReturnWith(
+            (dynamic error) => RegisterToWorkshop.error(error),
+      ),
     );
   }
 }
