@@ -190,6 +190,11 @@ class MyEventItem extends StatelessWidget {
 
   Widget _buildContent() {
     final bool isRegistered = workshop.participants.contains(appUser.email);
+    final bool isRegistrationAvailable =
+        workshop.capacity != null && workshop.capacity != 0
+            ? workshop.participants.length < workshop.capacity ||
+                workshop.participants.contains(appUser.email)
+            : true;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
@@ -233,22 +238,26 @@ class MyEventItem extends StatelessWidget {
           ],
         ),
         const Spacer(),
-        Container(
+        if (isRegistrationAvailable) Container(
           width: 200,
           height: 24,
           color: isRegistered ? Colors.black : Colors.red,
-          child: FlatButton(
-            child: Text(
-              isRegistered ? 'UNREGISTER' : 'REGISTER',
-              style: const TextStyle(color: Colors.white),
-            ),
-            onPressed: () {
-              StoreProvider.of<AppState>(globalContext).dispatch(
-                RegisterToWorkshop(workshop.id),
-              );
-            },
-          ),
-        )
+          child:  FlatButton(
+                  child: Text(
+                    isRegistered ? 'UNREGISTER' : 'REGISTER',
+                    style: const TextStyle(color: Colors.white),
+                  ),
+                  onPressed: () {
+                    StoreProvider.of<AppState>(globalContext).dispatch(
+                      RegisterToWorkshop(workshop.id),
+                    );
+                  },
+                )
+
+        ) else const Text(
+          'The event is full',
+          style: TextStyle(color: Colors.red, fontSize: 16),
+        ),
       ],
     );
   }

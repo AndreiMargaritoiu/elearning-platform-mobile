@@ -36,12 +36,6 @@ class _$TrackingSerializer implements StructuredSerializer<Tracking> {
         ..add(serializers.serialize(object.vid,
             specifiedType: const FullType(String)));
     }
-    if (object.pid != null) {
-      result
-        ..add('pid')
-        ..add(serializers.serialize(object.pid,
-            specifiedType: const FullType(String)));
-    }
     return result;
   }
 
@@ -66,10 +60,6 @@ class _$TrackingSerializer implements StructuredSerializer<Tracking> {
           break;
         case 'vid':
           result.vid = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          break;
-        case 'pid':
-          result.pid = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
         case 'createdAt':
@@ -184,15 +174,12 @@ class _$Tracking extends Tracking {
   @override
   final String vid;
   @override
-  final String pid;
-  @override
   final int createdAt;
 
   factory _$Tracking([void Function(TrackingBuilder) updates]) =>
       (new TrackingBuilder()..update(updates)).build();
 
-  _$Tracking._({this.id, this.uid, this.vid, this.pid, this.createdAt})
-      : super._() {
+  _$Tracking._({this.id, this.uid, this.vid, this.createdAt}) : super._() {
     if (id == null) {
       throw new BuiltValueNullFieldError('Tracking', 'id');
     }
@@ -218,15 +205,12 @@ class _$Tracking extends Tracking {
         id == other.id &&
         uid == other.uid &&
         vid == other.vid &&
-        pid == other.pid &&
         createdAt == other.createdAt;
   }
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc($jc($jc($jc(0, id.hashCode), uid.hashCode), vid.hashCode),
-            pid.hashCode),
+    return $jf($jc($jc($jc($jc(0, id.hashCode), uid.hashCode), vid.hashCode),
         createdAt.hashCode));
   }
 
@@ -236,7 +220,6 @@ class _$Tracking extends Tracking {
           ..add('id', id)
           ..add('uid', uid)
           ..add('vid', vid)
-          ..add('pid', pid)
           ..add('createdAt', createdAt))
         .toString();
   }
@@ -257,10 +240,6 @@ class TrackingBuilder implements Builder<Tracking, TrackingBuilder> {
   String get vid => _$this._vid;
   set vid(String vid) => _$this._vid = vid;
 
-  String _pid;
-  String get pid => _$this._pid;
-  set pid(String pid) => _$this._pid = pid;
-
   int _createdAt;
   int get createdAt => _$this._createdAt;
   set createdAt(int createdAt) => _$this._createdAt = createdAt;
@@ -272,7 +251,6 @@ class TrackingBuilder implements Builder<Tracking, TrackingBuilder> {
       _id = _$v.id;
       _uid = _$v.uid;
       _vid = _$v.vid;
-      _pid = _$v.pid;
       _createdAt = _$v.createdAt;
       _$v = null;
     }
@@ -295,8 +273,7 @@ class TrackingBuilder implements Builder<Tracking, TrackingBuilder> {
   @override
   _$Tracking build() {
     final _$result = _$v ??
-        new _$Tracking._(
-            id: id, uid: uid, vid: vid, pid: pid, createdAt: createdAt);
+        new _$Tracking._(id: id, uid: uid, vid: vid, createdAt: createdAt);
     replace(_$result);
     return _$result;
   }

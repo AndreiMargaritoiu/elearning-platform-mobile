@@ -33,8 +33,8 @@ class MentoringEpics {
         .flatMap(
       (AddMentorship$ action) => Stream<AddMentorship$>.value(action)
           .asyncMap(
-            (AddMentorship$ action) => _api.addMentorship(
-                store.state.mentorships.info, store.state.auth.user),
+            (AddMentorship$ action) =>
+                _api.addMentorship(store.state.mentorships.info),
           )
           .map(
             (Mentorship mentorship) => AddMentorship.successful(mentorship),

@@ -29,8 +29,7 @@ class InquiriesEpics {
         .flatMap(
       (SendInquiry$ action) => Stream<SendInquiry$>.value(action)
           .asyncMap(
-            (SendInquiry$ action) =>
-                _api.sendInquiry(action.mentorId, store.state.auth.user.email),
+            (SendInquiry$ action) => _api.sendInquiry(action.mentorId),
           )
           .mapTo(
             const SendInquiry.successful(),
@@ -64,9 +63,7 @@ class InquiriesEpics {
         .flatMap(
       (GetUserInquiries$ action) => Stream<GetUserInquiries$>.value(action)
           .asyncMap(
-            (GetUserInquiries$ action) => _api.getUserInquiries(
-              store.state.auth.user.uid,
-            ),
+            (GetUserInquiries$ action) => _api.getUserInquiries(),
           )
           .expand(
             (List<Inquiry> inquiries) => <AppAction>[

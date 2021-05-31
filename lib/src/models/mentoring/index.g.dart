@@ -28,12 +28,6 @@ class _$MentorshipSerializer implements StructuredSerializer<Mentorship> {
       serializers.serialize(object.mentorId,
           specifiedType: const FullType(String)),
     ];
-    if (object.mentorEmail != null) {
-      result
-        ..add('mentorEmail')
-        ..add(serializers.serialize(object.mentorEmail,
-            specifiedType: const FullType(String)));
-    }
     if (object.description != null) {
       result
         ..add('description')
@@ -78,10 +72,6 @@ class _$MentorshipSerializer implements StructuredSerializer<Mentorship> {
           break;
         case 'mentorId':
           result.mentorId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          break;
-        case 'mentorEmail':
-          result.mentorEmail = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
         case 'description':
@@ -228,8 +218,6 @@ class _$Mentorship extends Mentorship {
   @override
   final String mentorId;
   @override
-  final String mentorEmail;
-  @override
   final String description;
   @override
   final String category;
@@ -244,7 +232,6 @@ class _$Mentorship extends Mentorship {
   _$Mentorship._(
       {this.id,
       this.mentorId,
-      this.mentorEmail,
       this.description,
       this.category,
       this.price,
@@ -271,7 +258,6 @@ class _$Mentorship extends Mentorship {
     return other is Mentorship &&
         id == other.id &&
         mentorId == other.mentorId &&
-        mentorEmail == other.mentorEmail &&
         description == other.description &&
         category == other.category &&
         price == other.price &&
@@ -283,9 +269,7 @@ class _$Mentorship extends Mentorship {
     return $jf($jc(
         $jc(
             $jc(
-                $jc(
-                    $jc($jc($jc(0, id.hashCode), mentorId.hashCode),
-                        mentorEmail.hashCode),
+                $jc($jc($jc(0, id.hashCode), mentorId.hashCode),
                     description.hashCode),
                 category.hashCode),
             price.hashCode),
@@ -297,7 +281,6 @@ class _$Mentorship extends Mentorship {
     return (newBuiltValueToStringHelper('Mentorship')
           ..add('id', id)
           ..add('mentorId', mentorId)
-          ..add('mentorEmail', mentorEmail)
           ..add('description', description)
           ..add('category', category)
           ..add('price', price)
@@ -316,10 +299,6 @@ class MentorshipBuilder implements Builder<Mentorship, MentorshipBuilder> {
   String _mentorId;
   String get mentorId => _$this._mentorId;
   set mentorId(String mentorId) => _$this._mentorId = mentorId;
-
-  String _mentorEmail;
-  String get mentorEmail => _$this._mentorEmail;
-  set mentorEmail(String mentorEmail) => _$this._mentorEmail = mentorEmail;
 
   String _description;
   String get description => _$this._description;
@@ -343,7 +322,6 @@ class MentorshipBuilder implements Builder<Mentorship, MentorshipBuilder> {
     if (_$v != null) {
       _id = _$v.id;
       _mentorId = _$v.mentorId;
-      _mentorEmail = _$v.mentorEmail;
       _description = _$v.description;
       _category = _$v.category;
       _price = _$v.price;
@@ -372,7 +350,6 @@ class MentorshipBuilder implements Builder<Mentorship, MentorshipBuilder> {
         new _$Mentorship._(
             id: id,
             mentorId: mentorId,
-            mentorEmail: mentorEmail,
             description: description,
             category: category,
             price: price,

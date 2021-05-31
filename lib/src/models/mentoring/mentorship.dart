@@ -13,9 +13,6 @@ abstract class Mentorship implements Built<Mentorship, MentorshipBuilder> {
   String get mentorId;
 
   @nullable
-  String get mentorEmail;
-
-  @nullable
   String get description;
 
   @nullable

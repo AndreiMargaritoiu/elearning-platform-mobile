@@ -19,12 +19,11 @@ class MentoringApi {
   final FirebaseFirestore _firestore;
   final HttpClientWrapper _clientWrapper;
 
-  Future<Mentorship> addMentorship(MentorshipInfo info, AppUser user) async {
+  Future<Mentorship> addMentorship(MentorshipInfo info) async {
     final dynamic body = jsonEncode(<String, dynamic>{
-      'mentorId': user.uid,
-      'mentorEmail': user.email,
       'description': info.description,
-      'price': info.price
+      'price': info.price,
+      'category': info.category,
     });
     final Response response = await _clientWrapper.post('mentoring', body);
     final Map<String, dynamic> data = jsonDecode(response.body);

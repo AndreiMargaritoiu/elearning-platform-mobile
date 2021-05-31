@@ -27,6 +27,9 @@ abstract class Workshop implements Built<Workshop, WorkshopBuilder> {
   @nullable
   BuiltList<String> get participants;
 
+  @nullable
+  int get capacity;
+
   Map<String, dynamic> get json =>
       serializers.serializeWith(serializer, this) as Map<String, dynamic>;
 

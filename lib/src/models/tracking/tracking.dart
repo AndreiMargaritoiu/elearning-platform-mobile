@@ -15,9 +15,6 @@ abstract class Tracking implements Built<Tracking, TrackingBuilder> {
   @nullable
   String get vid;
 
-  @nullable
-  String get pid;
-
   int get createdAt;
 
   Map<String, dynamic> get json =>

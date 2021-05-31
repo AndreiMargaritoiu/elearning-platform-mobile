@@ -19,14 +19,14 @@ class InquiriesApi {
   final FirebaseFirestore _firestore;
   final HttpClientWrapper _clientWrapper;
 
-  Future<void> sendInquiry(String mentorId, String userEmail) async {
+  Future<void> sendInquiry(String mentorId) async {
     final dynamic body = jsonEncode(
-        <String, dynamic>{'mentorId': mentorId, 'inquirerEmail': userEmail});
+        <String, dynamic>{'mentorId': mentorId});
     await _clientWrapper.post('inquiries', body);
   }
 
-  Future<List<Inquiry>> getUserInquiries(String userId) async {
-    final Response response = await _clientWrapper.get('inquiries/$userId');
+  Future<List<Inquiry>> getUserInquiries() async {
+    final Response response = await _clientWrapper.get('inquiries');
     final List<dynamic> data = jsonDecode(response.body);
 
     return data.map((dynamic json) => Inquiry.fromJson(json)).toList();

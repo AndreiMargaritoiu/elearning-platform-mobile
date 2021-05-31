@@ -52,6 +52,12 @@ class _$WorkshopSerializer implements StructuredSerializer<Workshop> {
             specifiedType:
                 const FullType(BuiltList, const [const FullType(String)])));
     }
+    if (object.capacity != null) {
+      result
+        ..add('capacity')
+        ..add(serializers.serialize(object.capacity,
+            specifiedType: const FullType(int)));
+    }
     return result;
   }
 
@@ -99,6 +105,10 @@ class _$WorkshopSerializer implements StructuredSerializer<Workshop> {
                   specifiedType:
                       const FullType(BuiltList, const [const FullType(String)]))
               as BuiltList<Object>);
+          break;
+        case 'capacity':
+          result.capacity = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int;
           break;
       }
     }
@@ -179,6 +189,8 @@ class _$Workshop extends Workshop {
   final String thumbnailUrl;
   @override
   final BuiltList<String> participants;
+  @override
+  final int capacity;
 
   factory _$Workshop([void Function(WorkshopBuilder) updates]) =>
       (new WorkshopBuilder()..update(updates)).build();
@@ -191,7 +203,8 @@ class _$Workshop extends Workshop {
       this.date,
       this.location,
       this.thumbnailUrl,
-      this.participants})
+      this.participants,
+      this.capacity})
       : super._() {
     if (id == null) {
       throw new BuiltValueNullFieldError('Workshop', 'id');
@@ -228,7 +241,8 @@ class _$Workshop extends Workshop {
         date == other.date &&
         location == other.location &&
         thumbnailUrl == other.thumbnailUrl &&
-        participants == other.participants;
+        participants == other.participants &&
+        capacity == other.capacity;
   }
 
   @override
@@ -238,13 +252,15 @@ class _$Workshop extends Workshop {
             $jc(
                 $jc(
                     $jc(
-                        $jc($jc($jc(0, id.hashCode), description.hashCode),
-                            tag.hashCode),
-                        onlineEvent.hashCode),
-                    date.hashCode),
-                location.hashCode),
-            thumbnailUrl.hashCode),
-        participants.hashCode));
+                        $jc(
+                            $jc($jc($jc(0, id.hashCode), description.hashCode),
+                                tag.hashCode),
+                            onlineEvent.hashCode),
+                        date.hashCode),
+                    location.hashCode),
+                thumbnailUrl.hashCode),
+            participants.hashCode),
+        capacity.hashCode));
   }
 
   @override
@@ -257,7 +273,8 @@ class _$Workshop extends Workshop {
           ..add('date', date)
           ..add('location', location)
           ..add('thumbnailUrl', thumbnailUrl)
-          ..add('participants', participants))
+          ..add('participants', participants)
+          ..add('capacity', capacity))
         .toString();
   }
 }
@@ -299,6 +316,10 @@ class WorkshopBuilder implements Builder<Workshop, WorkshopBuilder> {
   set participants(ListBuilder<String> participants) =>
       _$this._participants = participants;
 
+  int _capacity;
+  int get capacity => _$this._capacity;
+  set capacity(int capacity) => _$this._capacity = capacity;
+
   WorkshopBuilder();
 
   WorkshopBuilder get _$this {
@@ -311,6 +332,7 @@ class WorkshopBuilder implements Builder<Workshop, WorkshopBuilder> {
       _location = _$v.location;
       _thumbnailUrl = _$v.thumbnailUrl;
       _participants = _$v.participants?.toBuilder();
+      _capacity = _$v.capacity;
       _$v = null;
     }
     return this;
@@ -342,7 +364,8 @@ class WorkshopBuilder implements Builder<Workshop, WorkshopBuilder> {
               date: date,
               location: location,
               thumbnailUrl: thumbnailUrl,
-              participants: _participants?.build());
+              participants: _participants?.build(),
+              capacity: capacity);
     } catch (_) {
       String _$failedField;
       try {
