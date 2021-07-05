@@ -23,6 +23,5 @@ abstract class VideoInfo implements Built<VideoInfo, VideoInfoBuilder> {
   Map<String, dynamic> get json =>
       serializers.serializeWith(serializer, this) as Map<String, dynamic>;
 
-  static Serializer<VideoInfo> get serializer =>
-      _$videoInfoSerializer;
+  static Serializer<VideoInfo> get serializer => _$videoInfoSerializer;
 }

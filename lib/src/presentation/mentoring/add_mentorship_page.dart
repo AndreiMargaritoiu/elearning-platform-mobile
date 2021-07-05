@@ -101,7 +101,7 @@ class _AddMentorshipPageState extends State<AddMentorshipPage> {
                       () {
                         dropdownValue = newValue;
                         StoreProvider.of<AppState>(context).dispatch(
-                          UpdatePlaylistInfo(category: newValue),
+                          UpdateMentorshipInfo(category: newValue),
                         );
                       },
                     );

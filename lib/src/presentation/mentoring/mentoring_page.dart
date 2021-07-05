@@ -127,164 +127,175 @@ class _MentoringPageState extends State<MentoringPage> {
                   ],
                 ),
                 const SizedBox(height: 20.0),
-                UserContainer(builder: (BuildContext context, AppUser me) {
-                  return UsersContainer(
-                    builder:
-                        (BuildContext context, Map<String, AppUser> users) {
-                      return MentorshipsContainer(
-                        builder: (BuildContext context,
-                            List<Mentorship> mentorships) {
-                          return ListView.builder(
-                            itemCount: mentorships.length,
-                            shrinkWrap: true,
-                            physics: const NeverScrollableScrollPhysics(),
-                            itemBuilder: (BuildContext context, int index) {
-                              final Mentorship mentorship = mentorships[index];
-                              final AppUser user = users[mentorship.mentorId];
+                UserContainer(
+                  builder: (BuildContext context, AppUser me) {
+                    return UsersContainer(
+                      builder:
+                          (BuildContext context, Map<String, AppUser> users) {
+                        return MentorshipsContainer(
+                          builder: (BuildContext context,
+                              List<Mentorship> mentorships) {
+                            return ListView.builder(
+                              itemCount: mentorships.length,
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
+                              itemBuilder: (BuildContext context, int index) {
+                                final Mentorship mentorship =
+                                    mentorships[index];
+                                final AppUser user = users[mentorship.mentorId];
 
-                              return Container(
-                                child: Card(
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: <Widget>[
-                                      if (user.uid != me.uid)
-                                        ListTile(
-                                          leading: user.photoUrl != null
-                                              ? CircleAvatar(
-                                                  backgroundImage: NetworkImage(
-                                                      user.photoUrl),
-                                                )
-                                              : CircleAvatar(
-                                                  backgroundColor:
-                                                      Colors.grey.shade900,
-                                                  child: Text(
-                                                    user.username[0]
-                                                        .toUpperCase(),
+                                return Container(
+                                  child: Card(
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: <Widget>[
+                                        if (user.uid != me.uid)
+                                          ListTile(
+                                            leading: user.photoUrl != null
+                                                ? CircleAvatar(
+                                                    backgroundImage:
+                                                        NetworkImage(
+                                                            user.photoUrl),
+                                                  )
+                                                : CircleAvatar(
+                                                    backgroundColor:
+                                                        Colors.grey.shade900,
+                                                    child: Text(
+                                                      user.username[0]
+                                                          .toUpperCase(),
+                                                    ),
+                                                  ),
+                                            title: Text(
+                                              user.username,
+                                              style: const TextStyle(
+                                                fontWeight: FontWeight.w500,
+                                                fontSize: 18,
+                                              ),
+                                            ),
+                                            onTap: () {
+                                              Navigator.pushNamed(context,
+                                                  AppRoutes.othersProfilePage,
+                                                  arguments: user);
+                                            },
+                                          )
+                                        else
+                                          Container(),
+                                        GestureDetector(
+                                          child: Container(
+                                            padding: const EdgeInsets.only(
+                                                left: 16, right: 8, bottom: 8),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: <Widget>[
+                                                Flexible(
+                                                  child: Container(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            right: 16),
+                                                    child: Column(
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: <Widget>[
+                                                        Text(
+                                                          mentorship
+                                                              .description,
+                                                          style:
+                                                              const TextStyle(
+                                                            fontSize: 18,
+                                                          ),
+                                                        ),
+                                                        const SizedBox(
+                                                            height: 8),
+                                                        if (user.uid != me.uid)
+                                                          Container(
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              color: Theme.of(
+                                                                      context)
+                                                                  .colorScheme
+                                                                  .primary,
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          10.0),
+                                                            ),
+                                                            child: Padding(
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                          .only(
+                                                                      top: 4,
+                                                                      bottom: 4,
+                                                                      left: 8,
+                                                                      right: 8),
+                                                              child:
+                                                                  GestureDetector(
+                                                                child:
+                                                                    const Text(
+                                                                  'Ask details',
+                                                                  style:
+                                                                      TextStyle(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w500,
+                                                                    fontSize:
+                                                                        16,
+                                                                  ),
+                                                                ),
+                                                                onTap: () {
+                                                                  StoreProvider.of<
+                                                                              AppState>(
+                                                                          context)
+                                                                      .dispatch(
+                                                                    SendInquiry(
+                                                                        mentorship
+                                                                            .mentorId),
+                                                                  );
+                                                                },
+                                                              ),
+                                                            ),
+                                                          ),
+                                                      ],
+                                                    ),
                                                   ),
                                                 ),
-                                          title: Text(
-                                            user.username,
-                                            style: const TextStyle(
-                                              fontWeight: FontWeight.w500,
-                                              fontSize: 18,
+                                                Container(
+                                                  width: 60,
+                                                  child: Text(
+                                                    '${mentorship.price} €/hour',
+                                                    style: const TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      fontSize: 20,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
                                             ),
                                           ),
                                           onTap: () {
-                                            Navigator.pushNamed(context,
-                                                AppRoutes.othersProfilePage,
-                                                arguments: user);
+                                            if (me.uid == user.uid) {
+                                              Navigator.pushNamed(context,
+                                                  AppRoutes.editMentorshipPage,
+                                                  arguments: mentorship);
+                                            }
                                           },
-                                        )
-                                      else
-                                        Container(),
-                                      GestureDetector(
-                                        child: Container(
-                                          padding: const EdgeInsets.only(
-                                              left: 16, right: 8, bottom: 8),
-                                          child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: <Widget>[
-                                              Flexible(
-                                                child: Container(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                          right: 16),
-                                                  child: Column(
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: <Widget>[
-                                                      Text(
-                                                        mentorship.description,
-                                                        style: const TextStyle(
-                                                          fontSize: 18,
-                                                        ),
-                                                      ),
-                                                      const SizedBox(height: 8),
-                                                      if (user.uid != me.uid)
-                                                        Container(
-                                                          decoration:
-                                                              BoxDecoration(
-                                                            color: Theme.of(
-                                                                    context)
-                                                                .colorScheme
-                                                                .primary,
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        10.0),
-                                                          ),
-                                                          child: Padding(
-                                                            padding:
-                                                                const EdgeInsets
-                                                                        .only(
-                                                                    top: 4,
-                                                                    bottom: 4,
-                                                                    left: 8,
-                                                                    right: 8),
-                                                            child:
-                                                                GestureDetector(
-                                                              child: const Text(
-                                                                'Ask details',
-                                                                style:
-                                                                    TextStyle(
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w500,
-                                                                  fontSize: 16,
-                                                                ),
-                                                              ),
-                                                              onTap: () {
-                                                                StoreProvider.of<
-                                                                            AppState>(
-                                                                        context)
-                                                                    .dispatch(
-                                                                  SendInquiry(
-                                                                      mentorship
-                                                                          .mentorId),
-                                                                );
-                                                              },
-                                                            ),
-                                                          ),
-                                                        ),
-                                                    ],
-                                                  ),
-                                                ),
-                                              ),
-                                              Container(
-                                                width: 60,
-                                                child: Text(
-                                                  '${mentorship.price} €/hour',
-                                                  style: const TextStyle(
-                                                    fontWeight: FontWeight.w500,
-                                                    fontSize: 20,
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
                                         ),
-                                        onTap: () {
-                                          if (me.uid == user.uid) {
-                                            Navigator.pushNamed(context,
-                                                AppRoutes.editMentorshipPage,
-                                                arguments: mentorship);
-                                          }
-                                        },
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
-                                ),
-                              );
-                            },
-                          );
-                        },
-                      );
-                    },
-                  );
-                })
+                                );
+                              },
+                            );
+                          },
+                        );
+                      },
+                    );
+                  },
+                )
               ],
             ),
           ),

@@ -13,22 +13,22 @@ Reducer<WorkshopsState> workshopsReducer = combineReducers(
   ],
 );
 
-WorkshopsState _getAllWorkshopsSuccessful(WorkshopsState state,
-    GetAllWorkshopsSuccessful action) {
+WorkshopsState _getAllWorkshopsSuccessful(
+    WorkshopsState state, GetAllWorkshopsSuccessful action) {
   return state.rebuild(
-        (WorkshopsStateBuilder b) {
+    (WorkshopsStateBuilder b) {
       b.workshops = ListBuilder<Workshop>(action.workshops);
     },
   );
 }
 
-WorkshopsState _registerToWorkshopSuccessful(WorkshopsState state,
-    RegisterToWorkshopSuccessful action) {
+WorkshopsState _registerToWorkshopSuccessful(
+    WorkshopsState state, RegisterToWorkshopSuccessful action) {
   return state.rebuild(
-        (WorkshopsStateBuilder b) {
-      b.workshops.removeWhere((Workshop workshop) =>
-      workshop.id == action.workshop.id);
-      b.workshops.add(action.workshop);
+    (WorkshopsStateBuilder b) {
+      b.workshops.removeWhere(
+          (Workshop workshop) => workshop.id == action.workshop.id);
+      b.workshops.insert(0, action.workshop);
       // [action.workshop.id] = action.workshop;
     },
   );

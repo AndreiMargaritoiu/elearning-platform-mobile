@@ -6,7 +6,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:http/http.dart';
 import 'package:meta/meta.dart';
-import 'package:quiver/iterables.dart';
 
 import 'package:elearning_platform_mobile/src/data/index.dart';
 import 'package:elearning_platform_mobile/src/data/http_client_wrapper.dart';
@@ -37,20 +36,6 @@ class VideosApi {
             ? await _uploadFile(ref.id, info.thumbnailPath)
             : null;
 
-    // final dynamic body = jsonEncode(<String, dynamic>{
-    //   'id': ref.id,
-    //   'uid': uid,
-    //   'title': info.title,
-    //   'searchIndex': <String>[info.title].searchIndex,
-    //   'description': info.description,
-    //   'thumbnailUrl': thumbnailUrl,
-    //   'videoUrl': videoUrl,
-    // });
-    // final Response response = await _clientWrapper.post('videos', body);
-    // final Map<String, dynamic> data = jsonDecode(response.body);
-    //
-    // return Video.fromJson(data);
-
     final Video newVideo = Video(
       (VideoBuilder b) {
         b
@@ -69,10 +54,9 @@ class VideosApi {
     return newVideo;
   }
 
-  Future<String> _uploadFile(String uid, String path) async {
-    // final DocumentReference ref = _firestore.collection('NOT_USED').doc();
-    // final Reference storageRef = _storage.ref('videos/$id/${ref.id}');
-    final Reference storageRef = _storage.ref('videos/$uid');
+  Future<String> _uploadFile(String id, String path) async {
+    final DocumentReference ref = _firestore.collection('NOT_USED').doc();
+    final Reference storageRef = _storage.ref('videos/$id/${ref.id}');
     await storageRef.putFile(
       File(path),
     );
@@ -102,30 +86,10 @@ class VideosApi {
     final Map<String, dynamic> data = jsonDecode(response.body);
 
     return Video.fromJson(data);
-
-    final DocumentReference ref = _firestore.collection('videos').doc(id);
-    if (info.description != null) {
-      await ref.update(
-        <String, dynamic>{
-          'description': info.description,
-        },
-      );
-    }
-    if (info.title != null) {
-      await ref.update(
-        <String, dynamic>{
-          'title': info.title,
-        },
-      );
-    }
-    return await getVideoById(id);
   }
 
   Future<void> deleteVideo(String id) async {
-    await _clientWrapper.delete('videos/$id'); 
-
-//    final DocumentReference ref = _firestore.collection('videos').doc(id);
-//    await ref.delete();
+    await _clientWrapper.delete('videos/$id');
   }
 
   Future<List<Video>> getVideosByUid(String uid) async {
@@ -140,15 +104,6 @@ class VideosApi {
           (dynamic json) => Video.fromJson(json),
         )
         .toList();
-
-//    final QuerySnapshot snapshot = await _firestore
-//        .collection('videos') //
-//        .where('uid', isEqualTo: uid)
-//        .get();
-//    final List<Video> result = snapshot.docs //
-//        .map((QueryDocumentSnapshot doc) => Video.fromJson(doc.data(),),)
-//        .toList();
-//    return result;
   }
 
   Future<List<Video>> getVideosByPlaylistId(String playlistId) async {
@@ -174,20 +129,6 @@ class VideosApi {
           (dynamic json) => Video.fromJson(json),
         )
         .toList();
-
-//    final List<Video> newResult = <Video>[];
-//    final List<List<String>> parts = partition(following, 10).toList();
-//    for (final List<String> following in parts) {
-//      final QuerySnapshot snapshot = await _firestore
-//          .collection('videos') //
-//          .where('uid', whereIn: following)
-//          .get();
-//      final List<Video> result = snapshot.docs //
-//          .map((QueryDocumentSnapshot doc) => Video.fromJson(doc.data(),),)
-//          .toList();
-//      newResult.addAll(result);
-//    }
-//    return newResult;
   }
 
   Future<List<Video>> searchVideos(String query, String uid) async {

@@ -1,7 +1,9 @@
 part of tracking_models;
 
-abstract class TrackingInfo implements Built<TrackingInfo, TrackingInfoBuilder> {
-  factory TrackingInfo([void Function(TrackingInfoBuilder b) updates]) = _$TrackingInfo;
+abstract class TrackingInfo
+    implements Built<TrackingInfo, TrackingInfoBuilder> {
+  factory TrackingInfo([void Function(TrackingInfoBuilder b) updates]) =
+      _$TrackingInfo;
 
   factory TrackingInfo.fromJson(dynamic json) =>
       serializers.deserializeWith(serializer, json);
@@ -14,6 +16,5 @@ abstract class TrackingInfo implements Built<TrackingInfo, TrackingInfoBuilder> 
   Map<String, dynamic> get json =>
       serializers.serializeWith(serializer, this) as Map<String, dynamic>;
 
-  static Serializer<TrackingInfo> get serializer =>
-      _$trackingInfoSerializer;
+  static Serializer<TrackingInfo> get serializer => _$trackingInfoSerializer;
 }

@@ -1,8 +1,9 @@
 part of tracking_models;
 
-abstract class TrackingsState implements Built<TrackingsState, TrackingsStateBuilder> {
+abstract class TrackingsState
+    implements Built<TrackingsState, TrackingsStateBuilder> {
   factory TrackingsState([void Function(TrackingsStateBuilder b) updates]) =
-  _$TrackingsState;
+      _$TrackingsState;
 
   factory TrackingsState.initialState() {
     return _$TrackingsState();
@@ -20,5 +21,6 @@ abstract class TrackingsState implements Built<TrackingsState, TrackingsStateBui
   Map<String, dynamic> get json =>
       serializers.serializeWith(serializer, this) as Map<String, dynamic>;
 
-  static Serializer<TrackingsState> get serializer => _$trackingsStateSerializer;
+  static Serializer<TrackingsState> get serializer =>
+      _$trackingsStateSerializer;
 }

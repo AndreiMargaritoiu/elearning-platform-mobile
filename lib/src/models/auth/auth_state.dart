@@ -5,7 +5,8 @@ abstract class AuthState implements Built<AuthState, AuthStateBuilder> {
     return _$AuthState();
   }
 
-  factory AuthState.fromJson(dynamic json) => serializers.deserializeWith(serializer, json);
+  factory AuthState.fromJson(dynamic json) =>
+      serializers.deserializeWith(serializer, json);
 
   AuthState._();
 
@@ -18,7 +19,8 @@ abstract class AuthState implements Built<AuthState, AuthStateBuilder> {
 
   BuiltList<AppUser> get searchResult;
 
-  Map<String, dynamic> get json => serializers.serializeWith(serializer, this) as Map<String, dynamic>;
+  Map<String, dynamic> get json =>
+      serializers.serializeWith(serializer, this) as Map<String, dynamic>;
 
   static Serializer<AuthState> get serializer => _$authStateSerializer;
 }

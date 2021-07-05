@@ -1,7 +1,9 @@
 part of playlists_action;
 
 @freezed
-abstract class UpdatePlaylistInfo with _$UpdatePlaylistInfo implements AppAction {
+abstract class UpdatePlaylistInfo
+    with _$UpdatePlaylistInfo
+    implements AppAction {
   const factory UpdatePlaylistInfo({
     String addVideoRef,
     String removeVideoRef,

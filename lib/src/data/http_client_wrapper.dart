@@ -2,8 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart';
 
 class HttpClientWrapper {
-  const HttpClientWrapper({@required this.client})
-      : assert(client != null);
+  const HttpClientWrapper({@required this.client}) : assert(client != null);
 
   final Client client;
 

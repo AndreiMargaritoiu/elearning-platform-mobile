@@ -5,7 +5,7 @@ abstract class SearchVideos with _$SearchVideos implements AppAction {
   const factory SearchVideos(String query) = SearchVideos$;
 
   const factory SearchVideos.successful(List<Video> videos) =
-  SearchVideosSuccessful;
+      SearchVideosSuccessful;
 
   @Implements(ErrorAction)
   const factory SearchVideos.error(Object error) = SearchVideosError;

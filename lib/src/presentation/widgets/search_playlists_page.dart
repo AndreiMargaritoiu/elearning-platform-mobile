@@ -19,21 +19,20 @@ class SearchPlaylistsPage extends StatelessWidget {
                 final Playlist playlist = playlists[index];
 
                 return GestureDetector(
-                  onTap: () {
-                    Navigator.pushNamed(context, AppRoutes.playlistVideosPage,
-                        arguments: playlist);
-                  },
-                  child: ListTile(
-                    title: Text(
-                      playlist.title,
-                      style: const TextStyle(fontSize: 16),
-                    ),
-                    subtitle: Text(
-                      playlist.description,
-                      style: const TextStyle(fontSize: 14),
-                    ),
-                  )
-                );
+                    onTap: () {
+                      Navigator.pushNamed(context, AppRoutes.playlistVideosPage,
+                          arguments: playlist);
+                    },
+                    child: ListTile(
+                      title: Text(
+                        playlist.title,
+                        style: const TextStyle(fontSize: 16),
+                      ),
+                      subtitle: Text(
+                        playlist.description,
+                        style: const TextStyle(fontSize: 14),
+                      ),
+                    ));
               },
             );
           },

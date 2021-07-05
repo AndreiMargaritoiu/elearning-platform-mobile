@@ -4,8 +4,7 @@ part of mentoring_action;
 abstract class DeleteMentorship with _$DeleteMentorship implements AppAction {
   const factory DeleteMentorship(String id) = DeleteMentorship$;
 
-  const factory DeleteMentorship.successful() =
-  DeleteMentorshipSuccessful;
+  const factory DeleteMentorship.successful() = DeleteMentorshipSuccessful;
 
   @Implements(ErrorAction)
   const factory DeleteMentorship.error(Object error) = DeleteMentorshipError;

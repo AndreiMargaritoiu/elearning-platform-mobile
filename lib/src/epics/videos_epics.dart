@@ -193,20 +193,20 @@ class VideosEpics {
       Stream<SearchVideos$> actions, EpicStore<AppState> store) {
     return actions //
         .debounceTime(
-      const Duration(milliseconds: 500),
-    )
+          const Duration(milliseconds: 500),
+        )
         .flatMap(
           (SearchVideos$ action) => Stream<SearchVideos$>.value(action)
-          .asyncMap(
-            (SearchVideos$ action) =>
-            _api.searchVideos(action.query, store.state.auth.user.uid),
-      )
-          .map(
-            (List<Video> videos) => SearchVideos.successful(videos),
-      )
-          .onErrorReturnWith(
-            (dynamic error) => SearchVideos.error(error),
-      ),
-    );
+              .asyncMap(
+                (SearchVideos$ action) =>
+                    _api.searchVideos(action.query, store.state.auth.user.uid),
+              )
+              .map(
+                (List<Video> videos) => SearchVideos.successful(videos),
+              )
+              .onErrorReturnWith(
+                (dynamic error) => SearchVideos.error(error),
+              ),
+        );
   }
 }

@@ -1,7 +1,8 @@
 part of playlists_conatiners;
 
 class PlaylistInfoContainer extends StatelessWidget {
-  const PlaylistInfoContainer({Key key, @required this.builder}) : super(key: key);
+  const PlaylistInfoContainer({Key key, @required this.builder})
+      : super(key: key);
 
   final ViewModelBuilder<PlaylistInfo> builder;
 

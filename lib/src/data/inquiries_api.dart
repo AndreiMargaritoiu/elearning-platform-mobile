@@ -1,27 +1,19 @@
 import 'dart:convert';
 
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:http/http.dart';
-import 'package:meta/meta.dart';
 
 import 'package:elearning_platform_mobile/src/data/http_client_wrapper.dart';
 import 'package:elearning_platform_mobile/src/models/index.dart';
 
 class InquiriesApi {
-  const InquiriesApi(
-      {@required FirebaseFirestore firestore,
-      @required HttpClientWrapper clientWrapper})
-      : assert(firestore != null),
-        assert(clientWrapper != null),
-        _firestore = firestore,
+  const InquiriesApi(HttpClientWrapper clientWrapper)
+      : assert(clientWrapper != null),
         _clientWrapper = clientWrapper;
 
-  final FirebaseFirestore _firestore;
   final HttpClientWrapper _clientWrapper;
 
   Future<void> sendInquiry(String mentorId) async {
-    final dynamic body = jsonEncode(
-        <String, dynamic>{'mentorId': mentorId});
+    final dynamic body = jsonEncode(<String, dynamic>{'mentorId': mentorId});
     await _clientWrapper.post('inquiries', body);
   }
 

@@ -5,7 +5,7 @@ abstract class GetVideosByUid with _$GetVideosByUid implements AppAction {
   const factory GetVideosByUid({String id}) = GetVideosByUid$;
 
   const factory GetVideosByUid.successful(List<Video> videos) =
-  GetVideosByUidSuccessful;
+      GetVideosByUidSuccessful;
 
   @Implements(ErrorAction)
   const factory GetVideosByUid.error(Object error) = GetVideosByUidError;

@@ -7,6 +7,9 @@ import 'package:redux/redux.dart';
 import 'package:elearning_platform_mobile/src/models/index.dart';
 
 part 'registration_info_container.dart';
+
 part 'search_users_container.dart';
+
 part 'user_container.dart';
+
 part 'users_container.dart';

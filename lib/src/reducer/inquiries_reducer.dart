@@ -7,7 +7,8 @@ import 'package:elearning_platform_mobile/src/models/inquiries/index.dart';
 Reducer<InquiriesState> inquiriesReducer = combineReducers(
   <Reducer<InquiriesState>>[
     // TypedReducer<InquiriesState, SendInquirySuccessful>(_sendInquirySuccessful),
-    TypedReducer<InquiriesState, GetUserInquiriesSuccessful>(_getUserInquiriesSuccessful),
+    TypedReducer<InquiriesState, GetUserInquiriesSuccessful>(
+        _getUserInquiriesSuccessful),
   ],
 );
 
@@ -22,7 +23,7 @@ Reducer<InquiriesState> inquiriesReducer = combineReducers(
 InquiriesState _getUserInquiriesSuccessful(
     InquiriesState state, GetUserInquiriesSuccessful action) {
   return state.rebuild(
-        (InquiriesStateBuilder b) {
+    (InquiriesStateBuilder b) {
       b.inquiries = ListBuilder<Inquiry>(action.inquiries);
     },
   );

@@ -381,7 +381,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                 final Video video = videos[index];
 
                                 return Column(
-                                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                                  crossAxisAlignment:
+                                      CrossAxisAlignment.stretch,
                                   children: <Widget>[
                                     GestureDetector(
                                       child: Card(

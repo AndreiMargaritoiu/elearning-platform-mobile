@@ -15,9 +15,9 @@ class TrendingPage extends StatefulWidget {
 class _TrendingPageState extends State<TrendingPage> {
   int index = 0;
   double _position = 0;
-
 //  double _buffer = 0;
   bool _lock = true;
+
   final Map<String, VideoPlayerController> _controllers =
       <String, VideoPlayerController>{};
   final Map<int, VoidCallback> _listeners = <int, VoidCallback>{};

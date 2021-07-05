@@ -58,7 +58,7 @@ MentorshipsState _getAllMentorshipsSuccessful(
 MentorshipsState _getCategoryMentorshipsSuccessful(
     MentorshipsState state, GetCategoryMentorshipsSuccessful action) {
   return state.rebuild(
-        (MentorshipsStateBuilder b) {
+    (MentorshipsStateBuilder b) {
       b.mentorships = ListBuilder<Mentorship>(action.mentorships);
     },
   );
@@ -67,7 +67,7 @@ MentorshipsState _getCategoryMentorshipsSuccessful(
 MentorshipsState _getMentorshipsByUidSuccessful(
     MentorshipsState state, GetMentorshipByUidSuccessful action) {
   return state.rebuild(
-        (MentorshipsStateBuilder b) {
+    (MentorshipsStateBuilder b) {
       b.mentorships = ListBuilder<Mentorship>(action.mentorships);
     },
   );

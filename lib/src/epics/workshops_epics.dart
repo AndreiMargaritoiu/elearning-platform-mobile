@@ -45,17 +45,17 @@ class WorkshopsEpics {
       Stream<RegisterToWorkshop$> actions, EpicStore<AppState> store) {
     return actions //
         .flatMap(
-          (RegisterToWorkshop$ action) => Stream<RegisterToWorkshop$>.value(action)
+      (RegisterToWorkshop$ action) => Stream<RegisterToWorkshop$>.value(action)
           .asyncMap(
             (RegisterToWorkshop$ action) =>
-            _api.registerToWorkshop(action.workshopId),
-      )
+                _api.registerToWorkshop(action.workshopId),
+          )
           .map(
             (Workshop workshop) => RegisterToWorkshop.successful(workshop),
-      )
+          )
           .onErrorReturnWith(
             (dynamic error) => RegisterToWorkshop.error(error),
-      ),
+          ),
     );
   }
 }

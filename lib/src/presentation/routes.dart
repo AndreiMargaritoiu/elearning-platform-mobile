@@ -1,11 +1,11 @@
+import 'package:flutter/cupertino.dart';
+
 import 'package:elearning_platform_mobile/src/presentation/discover/search_page.dart';
 import 'package:elearning_platform_mobile/src/presentation/feed/inquiries.dart';
 import 'package:elearning_platform_mobile/src/presentation/playlists/playlists_feed_page.dart';
 import 'package:elearning_platform_mobile/src/presentation/profile/following_list_page.dart';
 import 'package:elearning_platform_mobile/src/presentation/profile/others_profile_page.dart';
 import 'package:elearning_platform_mobile/src/presentation/trending/trending_page.dart';
-import 'package:flutter/cupertino.dart';
-
 import 'package:elearning_platform_mobile/src/presentation/mentoring/add_mentorship_page.dart';
 import 'package:elearning_platform_mobile/src/presentation/mentoring/mentoring_page.dart';
 import 'package:elearning_platform_mobile/src/presentation/playlists/create_playlsit_page.dart';
@@ -16,10 +16,6 @@ import 'package:elearning_platform_mobile/src/presentation/videos/add_video_page
 import 'package:elearning_platform_mobile/src/presentation/widgets/video_player_page.dart';
 import 'package:elearning_platform_mobile/src/presentation/home.dart';
 import 'package:elearning_platform_mobile/src/presentation/login/reset_password_page.dart';
-import 'package:elearning_platform_mobile/src/presentation/posts/create_post.dart';
-import 'package:elearning_platform_mobile/src/presentation/posts/post_details.dart';
-import 'package:elearning_platform_mobile/src/presentation/signup/password_page.dart';
-import 'package:elearning_platform_mobile/src/presentation/signup/username_page.dart';
 import 'package:elearning_platform_mobile/src/presentation/widgets/search_users_page.dart';
 import 'package:elearning_platform_mobile/src/presentation/login/signup_page.dart';
 import 'package:elearning_platform_mobile/src/presentation/mentoring/edit_mentorship_page.dart';
@@ -29,8 +25,6 @@ import 'package:elearning_platform_mobile/src/presentation/videos/playlist_video
 class AppRoutes {
   static const String home = '/';
   static const String signUp = '/signUp';
-  static const String username = '/username';
-  static const String password = '/password';
   static const String resetPassword = '/resetPassword';
   static const String createPost = '/createPost';
   static const String postDetails = '/postDetails';
@@ -59,20 +53,8 @@ class AppRoutes {
     signUp: (BuildContext context) {
       return const SignupPage();
     },
-    username: (BuildContext context) {
-      return const UsernamePage();
-    },
-    password: (BuildContext context) {
-      return const PasswordPage();
-    },
     resetPassword: (BuildContext context) {
       return const ResetPasswordPage();
-    },
-    createPost: (BuildContext context) {
-      return const CreatePost();
-    },
-    postDetails: (BuildContext context) {
-      return const PostDetails();
     },
     addVideoPage: (BuildContext context) {
       return const AddVideoPage();

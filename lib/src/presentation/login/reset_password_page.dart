@@ -54,7 +54,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage>
                         ),
                         filled: true,
                         hintStyle:
-                        TextStyle(fontSize: 18.0, color: Colors.black),
+                            TextStyle(fontSize: 18.0, color: Colors.black),
                         hintText: 'email',
                         fillColor: Colors.white,
                         prefixIcon: Icon(

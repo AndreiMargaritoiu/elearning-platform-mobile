@@ -5,7 +5,7 @@ abstract class GetAllMentorships with _$GetAllMentorships implements AppAction {
   const factory GetAllMentorships() = GetAllMentorships$;
 
   const factory GetAllMentorships.successful(List<Mentorship> mentorships) =
-  GetAllMentorshipsSuccessful;
+      GetAllMentorshipsSuccessful;
 
   @Implements(ErrorAction)
   const factory GetAllMentorships.error(Object error) = GetAllMentorshipsError;

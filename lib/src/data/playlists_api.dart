@@ -81,14 +81,6 @@ class PlaylistsApi {
           (dynamic json) => Playlist.fromJson(json),
         )
         .toList();
-
-//    final QuerySnapshot snapshot = await _firestore
-//        .collection('playlists') //
-//        .get();
-//    final List<Playlist> result = snapshot.docs //
-//        .map((QueryDocumentSnapshot doc) => Playlist.fromJson(doc.data(),),)
-//        .toList();
-//    return result;
   }
 
   Future<List<Playlist>> getPlaylistsByUid(String uid) async {
@@ -104,15 +96,6 @@ class PlaylistsApi {
           (dynamic json) => Playlist.fromJson(json),
         )
         .toList();
-
-//    final QuerySnapshot snapshot = await _firestore
-//        .collection('playlists') //
-//        .where('uid', isEqualTo: uid)
-//        .get();
-//    final List<Playlist> result = snapshot.docs //
-//        .map((QueryDocumentSnapshot doc) => Playlist.fromJson(doc.data(),),)
-//        .toList();
-//    return result;
   }
 
   Future<List<Playlist>> getOtherPlaylists() async {
@@ -144,21 +127,10 @@ class PlaylistsApi {
     final Map<String, dynamic> data = jsonDecode(response.body);
 
     return Playlist.fromJson(data);
-
-//    final QuerySnapshot snapshot = await _firestore
-//        .collection('playlists') //
-//        .get();
-//    final List<Playlist> result = snapshot.docs //
-//        .map((QueryDocumentSnapshot doc) => Playlist.fromJson(doc.data(),),)
-//        .toList();
-//    return result;
   }
 
   Future<void> deletePlaylist(String id) async {
     await _clientWrapper.delete('playlists/$id');
-
-//    final DocumentReference ref = _firestore.collection('playlists').doc(id);
-//    await ref.delete();
   }
 
   Future<Playlist> updatePlaylist(PlaylistInfo info, String id,
@@ -179,30 +151,6 @@ class PlaylistsApi {
     final Map<String, dynamic> data = jsonDecode(response.body);
 
     return Playlist.fromJson(data);
-
-//    final DocumentReference ref = _firestore.collection('playlists').doc(id);
-//    if (info.description != null) {
-//      await ref.update(
-//        <String, dynamic>{
-//          'description': info.description,
-//        },
-//      );
-//    }
-//    if (info.title != null && info.title.isNotEmpty) {
-//      await ref.update(
-//        <String, dynamic>{
-//          'title': info.title,
-//        },
-//      );
-//    }
-//    if (newVideos != null && newVideos.isNotEmpty) {
-//      await ref.update(
-//        <String, dynamic>{
-//          'videoRefs': newVideos,
-//        },
-//      );
-//    }
-//    return await getPlaylistById(id: id);
   }
 
   Future<List<Playlist>> searchPlaylists(String query, String uid) async {

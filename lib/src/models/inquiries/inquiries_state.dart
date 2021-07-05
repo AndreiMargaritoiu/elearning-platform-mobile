@@ -1,8 +1,9 @@
 part of inquiries_models;
 
-abstract class InquiriesState implements Built<InquiriesState, InquiriesStateBuilder> {
+abstract class InquiriesState
+    implements Built<InquiriesState, InquiriesStateBuilder> {
   factory InquiriesState([void Function(InquiriesStateBuilder b) updates]) =
-  _$InquiriesState;
+      _$InquiriesState;
 
   factory InquiriesState.initialState() {
     return _$InquiriesState();
@@ -18,5 +19,6 @@ abstract class InquiriesState implements Built<InquiriesState, InquiriesStateBui
   Map<String, dynamic> get json =>
       serializers.serializeWith(serializer, this) as Map<String, dynamic>;
 
-  static Serializer<InquiriesState> get serializer => _$inquiriesStateSerializer;
+  static Serializer<InquiriesState> get serializer =>
+      _$inquiriesStateSerializer;
 }

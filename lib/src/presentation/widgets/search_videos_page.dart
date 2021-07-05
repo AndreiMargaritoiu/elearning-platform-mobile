@@ -14,27 +14,26 @@ class SearchVideosPage extends StatelessWidget {
         return SearchVideosContainer(
           builder: (BuildContext context, List<Video> videos) {
             return ListView.builder(
-                itemCount: videos.length,
-                itemBuilder: (BuildContext context, int index) {
-                  final Video video = videos[index];
+              itemCount: videos.length,
+              itemBuilder: (BuildContext context, int index) {
+                final Video video = videos[index];
 
-                  return GestureDetector(
+                return GestureDetector(
                     onTap: () {
                       Navigator.pushNamed(context, AppRoutes.videoPlayer,
                           arguments: video);
                     },
-                      child: ListTile(
-                        title: Text(
-                          video.title,
-                          style: const TextStyle(fontSize: 16),
-                        ),
-                        subtitle: Text(
-                          video.description,
-                          style: const TextStyle(fontSize: 14),
-                        ),
-                      )
-                  );
-                },
+                    child: ListTile(
+                      title: Text(
+                        video.title,
+                        style: const TextStyle(fontSize: 16),
+                      ),
+                      subtitle: Text(
+                        video.description,
+                        style: const TextStyle(fontSize: 14),
+                      ),
+                    ));
+              },
             );
           },
         );

@@ -21,9 +21,6 @@ class _$AppStateSerializer implements StructuredSerializer<AppState> {
       'auth',
       serializers.serialize(object.auth,
           specifiedType: const FullType(AuthState)),
-      'posts',
-      serializers.serialize(object.posts,
-          specifiedType: const FullType(PostsState)),
       'videos',
       serializers.serialize(object.videos,
           specifiedType: const FullType(VideosState)),
@@ -62,10 +59,6 @@ class _$AppStateSerializer implements StructuredSerializer<AppState> {
           result.auth.replace(serializers.deserialize(value,
               specifiedType: const FullType(AuthState)) as AuthState);
           break;
-        case 'posts':
-          result.posts.replace(serializers.deserialize(value,
-              specifiedType: const FullType(PostsState)) as PostsState);
-          break;
         case 'videos':
           result.videos.replace(serializers.deserialize(value,
               specifiedType: const FullType(VideosState)) as VideosState);
@@ -102,8 +95,6 @@ class _$AppState extends AppState {
   @override
   final AuthState auth;
   @override
-  final PostsState posts;
-  @override
   final VideosState videos;
   @override
   final PlaylistsState playlists;
@@ -121,7 +112,6 @@ class _$AppState extends AppState {
 
   _$AppState._(
       {this.auth,
-      this.posts,
       this.videos,
       this.playlists,
       this.mentorships,
@@ -131,9 +121,6 @@ class _$AppState extends AppState {
       : super._() {
     if (auth == null) {
       throw new BuiltValueNullFieldError('AppState', 'auth');
-    }
-    if (posts == null) {
-      throw new BuiltValueNullFieldError('AppState', 'posts');
     }
     if (videos == null) {
       throw new BuiltValueNullFieldError('AppState', 'videos');
@@ -167,7 +154,6 @@ class _$AppState extends AppState {
     if (identical(other, this)) return true;
     return other is AppState &&
         auth == other.auth &&
-        posts == other.posts &&
         videos == other.videos &&
         playlists == other.playlists &&
         mentorships == other.mentorships &&
@@ -182,9 +168,7 @@ class _$AppState extends AppState {
         $jc(
             $jc(
                 $jc(
-                    $jc(
-                        $jc($jc($jc(0, auth.hashCode), posts.hashCode),
-                            videos.hashCode),
+                    $jc($jc($jc(0, auth.hashCode), videos.hashCode),
                         playlists.hashCode),
                     mentorships.hashCode),
                 workshops.hashCode),
@@ -196,7 +180,6 @@ class _$AppState extends AppState {
   String toString() {
     return (newBuiltValueToStringHelper('AppState')
           ..add('auth', auth)
-          ..add('posts', posts)
           ..add('videos', videos)
           ..add('playlists', playlists)
           ..add('mentorships', mentorships)
@@ -213,10 +196,6 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
   AuthStateBuilder _auth;
   AuthStateBuilder get auth => _$this._auth ??= new AuthStateBuilder();
   set auth(AuthStateBuilder auth) => _$this._auth = auth;
-
-  PostsStateBuilder _posts;
-  PostsStateBuilder get posts => _$this._posts ??= new PostsStateBuilder();
-  set posts(PostsStateBuilder posts) => _$this._posts = posts;
 
   VideosStateBuilder _videos;
   VideosStateBuilder get videos => _$this._videos ??= new VideosStateBuilder();
@@ -257,7 +236,6 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
   AppStateBuilder get _$this {
     if (_$v != null) {
       _auth = _$v.auth?.toBuilder();
-      _posts = _$v.posts?.toBuilder();
       _videos = _$v.videos?.toBuilder();
       _playlists = _$v.playlists?.toBuilder();
       _mentorships = _$v.mentorships?.toBuilder();
@@ -289,7 +267,6 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
       _$result = _$v ??
           new _$AppState._(
               auth: auth.build(),
-              posts: posts.build(),
               videos: videos.build(),
               playlists: playlists.build(),
               mentorships: mentorships.build(),
@@ -301,8 +278,6 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
       try {
         _$failedField = 'auth';
         auth.build();
-        _$failedField = 'posts';
-        posts.build();
         _$failedField = 'videos';
         videos.build();
         _$failedField = 'playlists';

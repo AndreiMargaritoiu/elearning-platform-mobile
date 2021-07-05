@@ -15,6 +15,8 @@ Reducer<VideosState> videosReducer = combineReducers(
     TypedReducer<VideosState, ListenForVideosSuccessful>(
         _listenForVideosSuccessful),
     TypedReducer<VideosState, SearchVideosSuccessful>(_searchVideosSuccessful),
+    TypedReducer<VideosState, UpdateVideoSuccessful>(
+        _updateVideoSuccessful),
   ],
 );
 
@@ -80,6 +82,17 @@ VideosState _searchVideosSuccessful(
   return state.rebuild(
     (VideosStateBuilder b) {
       b.searchResult = ListBuilder<Video>(action.videos);
+    },
+  );
+}
+
+VideosState _updateVideoSuccessful(
+    VideosState state, UpdateVideoSuccessful action) {
+  return state.rebuild(
+        (VideosStateBuilder b) {
+      b.videos.removeWhere(
+              (Video video) => video.id == action.video.id);
+      b.videos.insert(0, action.video);
     },
   );
 }

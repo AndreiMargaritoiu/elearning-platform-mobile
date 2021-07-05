@@ -25,6 +25,8 @@ class MentoringApi {
       'price': info.price,
       'category': info.category,
     });
+    print('>>');
+    print(body);
     final Response response = await _clientWrapper.post('mentoring', body);
     final Map<String, dynamic> data = jsonDecode(response.body);
 

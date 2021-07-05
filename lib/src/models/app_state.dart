@@ -5,7 +5,6 @@ abstract class AppState implements Built<AppState, AppStateBuilder> {
     return _$AppState((AppStateBuilder b) {
       b
         ..auth = AuthState.initialState().toBuilder()
-        ..posts = PostsState.initialState().toBuilder()
         ..videos = VideosState.initialState().toBuilder()
         ..mentorships = MentorshipsState.initialState().toBuilder()
         ..trackedItems = TrackingsState.initialState().toBuilder()
@@ -21,8 +20,6 @@ abstract class AppState implements Built<AppState, AppStateBuilder> {
   AppState._();
 
   AuthState get auth;
-
-  PostsState get posts;
 
   VideosState get videos;
 

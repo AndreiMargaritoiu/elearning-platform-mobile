@@ -18,9 +18,6 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(Playlist.serializer)
       ..add(PlaylistInfo.serializer)
       ..add(PlaylistsState.serializer)
-      ..add(Post.serializer)
-      ..add(PostInfo.serializer)
-      ..add(PostsState.serializer)
       ..add(RegistrationInfo.serializer)
       ..add(Tracking.serializer)
       ..add(TrackingInfo.serializer)
@@ -43,9 +40,6 @@ Serializers _$serializers = (new Serializers().toBuilder()
           const FullType(BuiltList, const [const FullType(Playlist)]),
           () => new ListBuilder<Playlist>())
       ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(Post)]),
-          () => new ListBuilder<Post>())
-      ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
           () => new ListBuilder<String>())
       ..addBuilderFactory(
@@ -57,24 +51,6 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
           () => new ListBuilder<String>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(AppUser)]),
-          () => new ListBuilder<AppUser>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
           () => new ListBuilder<String>())

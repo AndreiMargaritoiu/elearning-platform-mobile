@@ -1,8 +1,8 @@
-import 'package:elearning_platform_mobile/src/actions/index.dart';
 import 'package:flutter/material.dart';
 
 import 'package:elearning_platform_mobile/src/models/index.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:elearning_platform_mobile/src/actions/index.dart';
 
 class NotificationsPage extends StatefulWidget {
   const NotificationsPage({Key key, this.inquiries}) : super(key: key);

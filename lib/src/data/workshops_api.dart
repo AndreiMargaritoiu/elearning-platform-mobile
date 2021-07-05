@@ -8,9 +8,8 @@ import 'package:elearning_platform_mobile/src/data/http_client_wrapper.dart';
 import 'package:elearning_platform_mobile/src/models/index.dart';
 
 class WorkshopsApi {
-  const WorkshopsApi(
-      {@required FirebaseFirestore firestore,
-      @required HttpClientWrapper clientWrapper})
+  const WorkshopsApi({@required FirebaseFirestore firestore,
+    @required HttpClientWrapper clientWrapper})
       : assert(firestore != null),
         assert(clientWrapper != null),
         _firestore = firestore,
@@ -28,24 +27,9 @@ class WorkshopsApi {
 
   Future<Workshop> registerToWorkshop(String workshopId) async {
     final Response response =
-        await _clientWrapper.patch('workshops/$workshopId', null);
+    await _clientWrapper.patch('workshops/$workshopId', null);
     final Map<String, dynamic> data = jsonDecode(response.body);
 
     return Workshop.fromJson(data);
   }
-
-// Future<Workshop> updateWorkshop(WorkshopInfo info, String id) async {
-//   final Map<String, dynamic> updates = <String, dynamic>{};
-//   if (info.description != null && info.description.isNotEmpty) {
-//     updates['description'] = info.description;
-//   }
-//   if (info.price != null && info.price.toString().isNotEmpty) {
-//     updates['price'] = info.price;
-//   }
-//   final dynamic body = jsonEncode(updates);
-//   final Response response = await _clientWrapper.patch('Workshops/$id', body);
-//   final Map<String, dynamic> data = jsonDecode(response.body);
-//
-//   return Workshop.fromJson(data);
-// }
 }

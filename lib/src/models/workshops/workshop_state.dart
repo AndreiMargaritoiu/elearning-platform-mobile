@@ -1,8 +1,9 @@
 part of workshops_models;
 
-abstract class WorkshopsState implements Built<WorkshopsState, WorkshopsStateBuilder> {
+abstract class WorkshopsState
+    implements Built<WorkshopsState, WorkshopsStateBuilder> {
   factory WorkshopsState([void Function(WorkshopsStateBuilder b) updates]) =
-  _$WorkshopsState;
+      _$WorkshopsState;
 
   factory WorkshopsState.initialState() {
     return _$WorkshopsState();
@@ -20,5 +21,6 @@ abstract class WorkshopsState implements Built<WorkshopsState, WorkshopsStateBui
   Map<String, dynamic> get json =>
       serializers.serializeWith(serializer, this) as Map<String, dynamic>;
 
-  static Serializer<WorkshopsState> get serializer => _$workshopsStateSerializer;
+  static Serializer<WorkshopsState> get serializer =>
+      _$workshopsStateSerializer;
 }

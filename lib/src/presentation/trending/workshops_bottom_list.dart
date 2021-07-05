@@ -1,5 +1,6 @@
 import 'dart:math';
 import 'dart:ui';
+
 import 'package:intl/intl.dart';
 
 import 'package:elearning_platform_mobile/src/actions/index.dart';
@@ -238,26 +239,28 @@ class MyEventItem extends StatelessWidget {
           ],
         ),
         const Spacer(),
-        if (isRegistrationAvailable) Container(
-          width: 200,
-          height: 24,
-          color: isRegistered ? Colors.black : Colors.red,
-          child:  FlatButton(
-                  child: Text(
-                    isRegistered ? 'UNREGISTER' : 'REGISTER',
-                    style: const TextStyle(color: Colors.white),
-                  ),
-                  onPressed: () {
-                    StoreProvider.of<AppState>(globalContext).dispatch(
-                      RegisterToWorkshop(workshop.id),
-                    );
-                  },
-                )
-
-        ) else const Text(
-          'The event is full',
-          style: TextStyle(color: Colors.red, fontSize: 16),
-        ),
+        if (isRegistrationAvailable)
+          Container(
+            width: 200,
+            height: 24,
+            color: isRegistered ? Colors.black : Colors.red,
+            child: FlatButton(
+              child: Text(
+                isRegistered ? 'UNREGISTER' : 'REGISTER',
+                style: const TextStyle(color: Colors.white),
+              ),
+              onPressed: () {
+                StoreProvider.of<AppState>(globalContext).dispatch(
+                  RegisterToWorkshop(workshop.id),
+                );
+              },
+            ),
+          )
+        else
+          const Text(
+            'The event is full',
+            style: TextStyle(color: Colors.red, fontSize: 16),
+          ),
       ],
     );
   }

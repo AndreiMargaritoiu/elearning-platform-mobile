@@ -9,4 +9,3 @@ abstract class AddVideo with _$AddVideo implements AppAction {
   @Implements(ErrorAction)
   const factory AddVideo.error(Object error) = AddVideoError;
 }
- 

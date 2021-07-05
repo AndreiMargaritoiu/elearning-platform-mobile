@@ -1,8 +1,9 @@
 part of playlists_models;
 
-abstract class PlaylistsState implements Built<PlaylistsState, PlaylistsStateBuilder> {
+abstract class PlaylistsState
+    implements Built<PlaylistsState, PlaylistsStateBuilder> {
   factory PlaylistsState([void Function(PlaylistsStateBuilder b) updates]) =
-  _$PlaylistsState;
+      _$PlaylistsState;
 
   factory PlaylistsState.initialState() {
     return _$PlaylistsState();
@@ -22,5 +23,6 @@ abstract class PlaylistsState implements Built<PlaylistsState, PlaylistsStateBui
   Map<String, dynamic> get json =>
       serializers.serializeWith(serializer, this) as Map<String, dynamic>;
 
-  static Serializer<PlaylistsState> get serializer => _$playlistsStateSerializer;
+  static Serializer<PlaylistsState> get serializer =>
+      _$playlistsStateSerializer;
 }

@@ -1,7 +1,8 @@
 part of mentoring_models;
 
 abstract class Mentorship implements Built<Mentorship, MentorshipBuilder> {
-  factory Mentorship([void Function(MentorshipBuilder b) updates]) = _$Mentorship;
+  factory Mentorship([void Function(MentorshipBuilder b) updates]) =
+      _$Mentorship;
 
   factory Mentorship.fromJson(dynamic json) =>
       serializers.deserializeWith(serializer, json);

@@ -1,6 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:elearning_platform_mobile/src/data/inquiries_api.dart';
-import 'package:elearning_platform_mobile/src/data/workshops_api.dart';
 import 'package:redux/redux.dart';
 import 'package:redux_epics/redux_epics.dart';
 import 'package:http/http.dart';
@@ -11,7 +9,6 @@ import 'package:google_sign_in/google_sign_in.dart';
 
 import 'package:elearning_platform_mobile/src/actions/index.dart';
 import 'package:elearning_platform_mobile/src/data/auth_api.dart';
-import 'package:elearning_platform_mobile/src/data/posts_api.dart';
 import 'package:elearning_platform_mobile/src/epics/app_epics.dart';
 import 'package:elearning_platform_mobile/src/models/index.dart';
 import 'package:elearning_platform_mobile/src/reducer/reducer.dart';
@@ -20,6 +17,8 @@ import 'package:elearning_platform_mobile/src/data/mentoring_api.dart';
 import 'package:elearning_platform_mobile/src/data/playlists_api.dart';
 import 'package:elearning_platform_mobile/src/data/tracking_api.dart';
 import 'package:elearning_platform_mobile/src/data/videos_api.dart';
+import 'package:elearning_platform_mobile/src/data/inquiries_api.dart';
+import 'package:elearning_platform_mobile/src/data/workshops_api.dart';
 
 Future<Store<AppState>> init() async {
   await Firebase.initializeApp();
@@ -44,8 +43,6 @@ Future<Store<AppState>> init() async {
     clientWrapper: clientWrapper,
   );
 
-  final PostsApi postsApi = PostsApi(firestore: firestore, storage: storage);
-
   final VideosApi videosApi = VideosApi(
       firestore: firestore, storage: storage, clientWrapper: clientWrapper);
 
@@ -61,12 +58,10 @@ Future<Store<AppState>> init() async {
   final WorkshopsApi workshopsApi =
       WorkshopsApi(firestore: firestore, clientWrapper: clientWrapper);
 
-  final InquiriesApi inquiriesApi =
-      InquiriesApi(firestore: firestore, clientWrapper: clientWrapper);
+  final InquiriesApi inquiriesApi = InquiriesApi(clientWrapper);
 
   final AppEpics epic = AppEpics(
     authApi: authApi,
-    postsApi: postsApi,
     videosApi: videosApi,
     playlistsApi: playlistsApi,
     mentoringApi: mentoringApi,
