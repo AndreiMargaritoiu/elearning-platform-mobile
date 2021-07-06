@@ -19,7 +19,7 @@ class _VideosFeedPageState extends State<VideosFeedPage> {
     super.initState();
 
     StoreProvider.of<AppState>(context, listen: false).dispatch(
-      const ListenForVideos(),
+      const GetVideos(followers: true),
     );
   }
 

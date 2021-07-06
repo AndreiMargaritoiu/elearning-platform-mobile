@@ -31,7 +31,7 @@ class _EditMentorshipPageState extends State<EditMentorshipPage> {
               onPressed: () {
                 Navigator.pop(context, true);
                 StoreProvider.of<AppState>(context, listen: false).dispatch(
-                  const GetAllMentorships(),
+                  const GetMentorships(),
                 );
               },
             ),

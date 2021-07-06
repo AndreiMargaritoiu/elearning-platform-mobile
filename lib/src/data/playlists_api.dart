@@ -64,71 +64,6 @@ class PlaylistsApi {
     return url;
   }
 
-  Future<List<Playlist>> getAllPlaylists({String field}) async {
-    final dynamic queryParams = (field != null && field.isNotEmpty)
-        ? {
-            'category': field,
-          }
-        : null;
-    final Response response = (queryParams != null)
-        ? await _clientWrapper.get('playlists', queryParams)
-        : await _clientWrapper.get('playlists');
-
-    final List<dynamic> data = jsonDecode(response.body);
-
-    return data
-        .map(
-          (dynamic json) => Playlist.fromJson(json),
-        )
-        .toList();
-  }
-
-  Future<List<Playlist>> getPlaylistsByUid(String uid) async {
-    final dynamic queryParams = {
-      'uid': uid,
-    };
-    final Response response =
-        await _clientWrapper.get('playlists', queryParams);
-    final List<dynamic> data = jsonDecode(response.body);
-
-    return data
-        .map(
-          (dynamic json) => Playlist.fromJson(json),
-        )
-        .toList();
-  }
-
-  Future<List<Playlist>> getOtherPlaylists() async {
-    final Response response =
-        await _clientWrapper.get('playlists?category=Other');
-    final List<dynamic> data = jsonDecode(response.body);
-
-    return data
-        .map(
-          (dynamic json) => Playlist.fromJson(json),
-        )
-        .toList();
-  }
-
-  Future<List<Playlist>> getSchoolPlaylists() async {
-    final Response response =
-        await _clientWrapper.get('playlists?category=School');
-    final List<dynamic> data = jsonDecode(response.body);
-
-    return data
-        .map(
-          (dynamic json) => Playlist.fromJson(json),
-        )
-        .toList();
-  }
-
-  Future<Playlist> getPlaylistById({@required String id}) async {
-    final Response response = await _clientWrapper.get('playlists/$id');
-    final Map<String, dynamic> data = jsonDecode(response.body);
-
-    return Playlist.fromJson(data);
-  }
-
   Future<void> deletePlaylist(String id) async {
     await _clientWrapper.delete('playlists/$id');
   }
@@ -151,6 +86,34 @@ class PlaylistsApi {
     final Map<String, dynamic> data = jsonDecode(response.body);
 
     return Playlist.fromJson(data);
+  }
+
+  Future<List<Playlist>> getPlaylists({
+    String userId,
+    String category,
+  }) async {
+    dynamic queryParams = <String, String>{};
+    if (userId != null && userId.isNotEmpty) {
+      queryParams = <String, String>{
+        ...queryParams,
+        'uid': userId,
+      };
+    }
+    if (category != null && category.isNotEmpty) {
+      queryParams = <String, String>{
+        ...queryParams,
+        'category': category,
+      };
+    }
+    final Response response =
+        await _clientWrapper.get('playlists', queryParams);
+    final List<dynamic> data = jsonDecode(response.body);
+
+    return data
+        .map(
+          (dynamic json) => Playlist.fromJson(json),
+        )
+        .toList();
   }
 
   Future<List<Playlist>> searchPlaylists(String query, String uid) async {

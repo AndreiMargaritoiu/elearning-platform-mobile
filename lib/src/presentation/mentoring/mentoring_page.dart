@@ -22,7 +22,7 @@ class _MentoringPageState extends State<MentoringPage> {
     super.initState();
 
     StoreProvider.of<AppState>(context, listen: false).dispatch(
-      const GetAllMentorships(),
+      const GetMentorships(),
     );
   }
 
@@ -72,7 +72,7 @@ class _MentoringPageState extends State<MentoringPage> {
                               });
                               StoreProvider.of<AppState>(context, listen: false)
                                   .dispatch(
-                                GetCategoryMentorships(_selectedChips),
+                                GetMentorships(category: _selectedChips),
                               );
                             } else {
                               setState(() {
@@ -80,7 +80,7 @@ class _MentoringPageState extends State<MentoringPage> {
                               });
                               StoreProvider.of<AppState>(context, listen: false)
                                   .dispatch(
-                                const GetAllMentorships(),
+                                const GetMentorships(),
                               );
                             }
                           },
@@ -114,12 +114,12 @@ class _MentoringPageState extends State<MentoringPage> {
                         if (isYoursClicked) {
                           StoreProvider.of<AppState>(context, listen: false)
                               .dispatch(
-                            const GetMentorshipByUid(),
+                            const GetMentorships(userId: 'me'),
                           );
                         } else {
                           StoreProvider.of<AppState>(context, listen: false)
                               .dispatch(
-                            const GetAllMentorships(),
+                            const GetMentorships(),
                           );
                         }
                       },

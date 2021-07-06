@@ -25,7 +25,7 @@ class _EditPlaylistPageState extends State<EditPlaylistPage> {
     selectedVideos = widget.currentPlaylist.videoRefs.toList();
 
     StoreProvider.of<AppState>(context, listen: false).dispatch(
-      const GetVideosByUid(),
+      const GetVideos(userId: 'me'),
     );
   }
 
@@ -41,7 +41,7 @@ class _EditPlaylistPageState extends State<EditPlaylistPage> {
               onPressed: () {
                 Navigator.pop(context, true);
                 StoreProvider.of<AppState>(context, listen: false).dispatch(
-                  const GetPlaylistsByUid(),
+                  const GetPlaylists(userId: 'me'),
                 );
               },
             ),

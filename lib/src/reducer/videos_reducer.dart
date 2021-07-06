@@ -8,15 +8,9 @@ Reducer<VideosState> videosReducer = combineReducers(
   <Reducer<VideosState>>[
     TypedReducer<VideosState, UpdateVideoInfo>(_updateVideoInfo),
     TypedReducer<VideosState, AddVideoSuccessful>(_addVideoSuccessful),
-    TypedReducer<VideosState, GetVideosByUidSuccessful>(
-        _getVideosByUidSuccessful),
-    TypedReducer<VideosState, GetVideosByPlaylistIdSuccessful>(
-        _getVideosByPlaylistIdSuccessful),
-    TypedReducer<VideosState, ListenForVideosSuccessful>(
-        _listenForVideosSuccessful),
+    TypedReducer<VideosState, GetVideosSuccessful>(_getVideosSuccessful),
     TypedReducer<VideosState, SearchVideosSuccessful>(_searchVideosSuccessful),
-    TypedReducer<VideosState, UpdateVideoSuccessful>(
-        _updateVideoSuccessful),
+    TypedReducer<VideosState, UpdateVideoSuccessful>(_updateVideoSuccessful),
   ],
 );
 
@@ -50,26 +44,8 @@ VideosState _addVideoSuccessful(VideosState state, AddVideoSuccessful action) {
   );
 }
 
-VideosState _listenForVideosSuccessful(
-    VideosState state, ListenForVideosSuccessful action) {
-  return state.rebuild(
-    (VideosStateBuilder b) {
-      b.videos = ListBuilder<Video>(action.videos);
-    },
-  );
-}
-
-VideosState _getVideosByUidSuccessful(
-    VideosState state, GetVideosByUidSuccessful action) {
-  return state.rebuild(
-    (VideosStateBuilder b) {
-      b.videos = ListBuilder<Video>(action.videos);
-    },
-  );
-}
-
-VideosState _getVideosByPlaylistIdSuccessful(
-    VideosState state, GetVideosByPlaylistIdSuccessful action) {
+VideosState _getVideosSuccessful(
+    VideosState state, GetVideosSuccessful action) {
   return state.rebuild(
     (VideosStateBuilder b) {
       b.videos = ListBuilder<Video>(action.videos);
@@ -89,9 +65,8 @@ VideosState _searchVideosSuccessful(
 VideosState _updateVideoSuccessful(
     VideosState state, UpdateVideoSuccessful action) {
   return state.rebuild(
-        (VideosStateBuilder b) {
-      b.videos.removeWhere(
-              (Video video) => video.id == action.video.id);
+    (VideosStateBuilder b) {
+      b.videos.removeWhere((Video video) => video.id == action.video.id);
       b.videos.insert(0, action.video);
     },
   );

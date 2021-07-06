@@ -36,7 +36,7 @@ class _AddMentorshipPageState extends State<AddMentorshipPage> {
                       ModalRoute.withName(AppRoutes.home),
                     );
                     StoreProvider.of<AppState>(context, listen: false).dispatch(
-                      const GetAllMentorships(),
+                      const GetMentorships(),
                     );
                   } else {
                     // show error

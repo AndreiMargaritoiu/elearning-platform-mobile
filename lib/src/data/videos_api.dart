@@ -92,36 +92,37 @@ class VideosApi {
     await _clientWrapper.delete('videos/$id');
   }
 
-  Future<List<Video>> getVideosByUid(String uid) async {
-    final dynamic queryParams = {
-      'uid': uid,
-    };
+  Future<List<Video>> getVideos({
+    String userId,
+    String playlistId,
+    bool trending,
+    bool followers,
+  }) async {
+    dynamic queryParams = <String, String>{};
+    if (userId != null && userId.isNotEmpty) {
+      queryParams = <String, String>{
+        ...queryParams,
+        'uid': userId,
+      };
+    }
+    if (playlistId != null && playlistId.isNotEmpty) {
+      queryParams = <String, String>{
+        ...queryParams,
+        'playlistId': playlistId,
+      };
+    }
+    if (trending != null && trending) {
+      queryParams = <String, String>{
+        ...queryParams,
+        'trending': 'true',
+      };
+    }
+    if (followers != null && followers) {
+      queryParams = <String, String>{
+        'followers': 'true',
+      };
+    }
     final Response response = await _clientWrapper.get('videos', queryParams);
-    final List<dynamic> data = jsonDecode(response.body);
-
-    return data
-        .map(
-          (dynamic json) => Video.fromJson(json),
-        )
-        .toList();
-  }
-
-  Future<List<Video>> getVideosByPlaylistId(String playlistId) async {
-    final dynamic queryParams = {
-      'playlistId': playlistId,
-    };
-    final Response response = await _clientWrapper.get('videos', queryParams);
-    final List<dynamic> data = jsonDecode(response.body);
-
-    return data
-        .map(
-          (dynamic json) => Video.fromJson(json),
-        )
-        .toList();
-  }
-
-  Future<List<Video>> listenForVideos(List<String> following) async {
-    final Response response = await _clientWrapper.get('videos');
     final List<dynamic> data = jsonDecode(response.body);
 
     return data

@@ -17,9 +17,7 @@ class MentoringEpics {
     return combineEpics<AppState>(
       <Epic<AppState>>[
         TypedEpic<AppState, AddMentorship$>(_addMentorship),
-        TypedEpic<AppState, GetAllMentorships$>(_getAllMentorships),
-        TypedEpic<AppState, GetCategoryMentorships$>(_getCategoryMentorships),
-        TypedEpic<AppState, GetMentorshipByUid$>(_getMentorshipsByUid),
+        TypedEpic<AppState, GetMentorships$>(_getMentorships),
         TypedEpic<AppState, GetMentorshipById$>(_getMentorshipById),
         TypedEpic<AppState, UpdateMentorship$>(_updateMentorship),
         TypedEpic<AppState, DeleteMentorship$>(_deleteMentorship),
@@ -99,74 +97,22 @@ class MentoringEpics {
     );
   }
 
-  Stream<AppAction> _getAllMentorships(
-      Stream<GetAllMentorships$> actions, EpicStore<AppState> store) {
+  Stream<AppAction> _getMentorships(
+      Stream<GetMentorships$> actions, EpicStore<AppState> store) {
     return actions //
         .flatMap(
-      (GetAllMentorships$ action) => Stream<GetAllMentorships$>.value(action)
+      (GetMentorships$ action) => Stream<GetMentorships$>.value(action)
           .asyncMap(
-            (GetAllMentorships$ action) => _api.getAllMentorships(),
-          )
-          .expand(
-            (List<Mentorship> mentorships) => <AppAction>[
-              GetAllMentorships.successful(mentorships),
-              ...mentorships
-                  .map((Mentorship mentorship) => mentorship.mentorId)
-                  .toSet()
-                  .where((String uid) => store.state.auth.users[uid] == null)
-                  .map(
-                    (String uid) => GetUser(uid),
-                  ),
-            ],
-          )
-          .onErrorReturnWith(
-            (dynamic error) => GetAllMentorships.error(error),
-          ),
-    );
-  }
-
-  Stream<AppAction> _getCategoryMentorships(
-      Stream<GetCategoryMentorships$> actions, EpicStore<AppState> store) {
-    return actions //
-        .flatMap(
-      (GetCategoryMentorships$ action) =>
-          Stream<GetCategoryMentorships$>.value(action)
-              .asyncMap(
-                (GetCategoryMentorships$ action) =>
-                    _api.getAllMentorships(category: action.category),
-              )
-              .expand(
-                (List<Mentorship> mentorships) => <AppAction>[
-                  GetCategoryMentorships.successful(mentorships),
-                  ...mentorships
-                      .map((Mentorship mentorship) => mentorship.mentorId)
-                      .toSet()
-                      .where(
-                          (String uid) => store.state.auth.users[uid] == null)
-                      .map(
-                        (String uid) => GetUser(uid),
-                      ),
-                ],
-              )
-              .onErrorReturnWith(
-                (dynamic error) => GetCategoryMentorships.error(error),
-              ),
-    );
-  }
-
-  Stream<AppAction> _getMentorshipsByUid(
-      Stream<GetMentorshipByUid$> actions, EpicStore<AppState> store) {
-    return actions //
-        .flatMap(
-      (GetMentorshipByUid$ action) => Stream<GetMentorshipByUid$>.value(action)
-          .asyncMap(
-            (GetMentorshipByUid$ action) => _api.getMentorshipsByUid(
-              action.id ?? store.state.auth.user.uid,
+            (GetMentorships$ action) => _api.getMentorships(
+              category: action.category,
+              uid: action.userId == 'me'
+                  ? store.state.auth.user.uid
+                  : action.userId,
             ),
           )
           .expand(
             (List<Mentorship> mentorships) => <AppAction>[
-              GetCategoryMentorships.successful(mentorships),
+              GetMentorships.successful(mentorships),
               ...mentorships
                   .map((Mentorship mentorship) => mentorship.mentorId)
                   .toSet()
@@ -177,7 +123,7 @@ class MentoringEpics {
             ],
           )
           .onErrorReturnWith(
-            (dynamic error) => GetCategoryMentorships.error(error),
+            (dynamic error) => GetMentorships.error(error),
           ),
     );
   }

@@ -28,7 +28,7 @@ class _EditVideoPageState extends State<EditVideoPage> {
               onPressed: () {
                 Navigator.pop(context, true);
                 StoreProvider.of<AppState>(context, listen: false).dispatch(
-                  const GetVideosByUid(),
+                  const GetVideos(userId: 'me'),
                 );
               },
             ),

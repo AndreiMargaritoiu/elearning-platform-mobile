@@ -9,14 +9,6 @@ part 'create_playlist.dart';
 
 part 'index.freezed.dart';
 
-part 'get_all_playlists.dart';
-
-part 'get_playlists_by_uid.dart';
-
-part 'get_school_playlists.dart';
-
-part 'get_other_playlists.dart';
-
 part 'get_playlist_by_id.dart';
 
 part 'update_playlist.dart';
@@ -27,4 +19,4 @@ part 'set.dart';
 
 part 'search_playlists.dart';
 
-part 'get_category_playlist.dart';
+part 'get_playlists.dart';

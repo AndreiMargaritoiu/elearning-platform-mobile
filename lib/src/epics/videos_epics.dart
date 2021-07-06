@@ -17,10 +17,8 @@ class VideosEpics {
     return combineEpics<AppState>(
       <Epic<AppState>>[
         TypedEpic<AppState, AddVideo$>(_addVideo),
-        TypedEpic<AppState, ListenForVideos$>(_listenForVideo),
-        TypedEpic<AppState, GetVideosByUid$>(_getVideosByUid),
+        TypedEpic<AppState, GetVideos$>(_getVideos),
         TypedEpic<AppState, GetVideoById$>(_getVideoById),
-        TypedEpic<AppState, GetVideosByPlaylistId$>(_getVideosByPlaylistId),
         TypedEpic<AppState, UpdateVideo$>(_updateVideo),
         TypedEpic<AppState, DeleteVideo$>(_deleteVideo),
         TypedEpic<AppState, SearchVideos$>(_searchVideos),
@@ -100,19 +98,24 @@ class VideosEpics {
     );
   }
 
-  Stream<AppAction> _getVideosByUid(
-      Stream<GetVideosByUid$> actions, EpicStore<AppState> store) {
+  Stream<AppAction> _getVideos(
+      Stream<GetVideos$> actions, EpicStore<AppState> store) {
     return actions //
         .flatMap(
-      (GetVideosByUid$ action) => Stream<GetVideosByUid$>.value(action)
+      (GetVideos$ action) => Stream<GetVideos$>.value(action)
           .asyncMap(
-            (GetVideosByUid$ action) => _api.getVideosByUid(
-              action.id ?? store.state.auth.user.uid,
+            (GetVideos$ action) => _api.getVideos(
+              playlistId: action.playlistId,
+              userId: action.userId == 'me'
+                  ? store.state.auth.user.uid
+                  : action.userId,
+              followers: action.followers,
+              trending: action.trending,
             ),
           )
           .expand(
             (List<Video> videos) => <AppAction>[
-              GetVideosByUid.successful(videos),
+              GetVideos.successful(videos),
               ...videos
                   .map((Video video) => video.uid)
                   .toSet()
@@ -123,68 +126,7 @@ class VideosEpics {
             ],
           )
           .onErrorReturnWith(
-            (dynamic error) => GetVideosByUid.error(error),
-          ),
-    );
-  }
-
-  Stream<AppAction> _getVideosByPlaylistId(
-      Stream<GetVideosByPlaylistId$> actions, EpicStore<AppState> store) {
-    return actions //
-        .flatMap(
-      (GetVideosByPlaylistId$ action) =>
-          Stream<GetVideosByPlaylistId$>.value(action)
-              .asyncMap(
-                (GetVideosByPlaylistId$ action) => _api.getVideosByPlaylistId(
-                  action.playlistId,
-                ),
-              )
-              .expand(
-                (List<Video> videos) => <AppAction>[
-                  GetVideosByPlaylistId.successful(videos),
-                  ...videos
-                      .map((Video video) => video.uid)
-                      .toSet()
-                      .where(
-                          (String uid) => store.state.auth.users[uid] == null)
-                      .map(
-                        (String uid) => GetUser(uid),
-                      ),
-                ],
-              )
-              .onErrorReturnWith(
-                (dynamic error) => GetVideosByPlaylistId.error(error),
-              ),
-    );
-  }
-
-  Stream<AppAction> _listenForVideo(
-      Stream<ListenForVideos$> actions, EpicStore<AppState> store) {
-    return actions //
-        .flatMap(
-      (ListenForVideos$ action) => Stream<ListenForVideos$>.value(action)
-          .asyncMap(
-            (ListenForVideos$ action) => _api.listenForVideos(
-              <String>[
-                store.state.auth.user.uid,
-                ...store.state.auth.user.following,
-              ],
-            ),
-          )
-          .expand(
-            (List<Video> videos) => <AppAction>[
-              ListenForVideos.successful(videos),
-              ...videos
-                  .map((Video video) => video.uid)
-                  .toSet()
-                  .where((String uid) => store.state.auth.users[uid] == null)
-                  .map(
-                    (String uid) => GetUser(uid),
-                  ),
-            ],
-          )
-          .onErrorReturnWith(
-            (dynamic error) => ListenForVideos.error(error),
+            (dynamic error) => GetVideos.error(error),
           ),
     );
   }

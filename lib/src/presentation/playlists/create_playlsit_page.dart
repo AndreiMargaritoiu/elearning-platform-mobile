@@ -25,7 +25,7 @@ class _CreatePlaylistPageState extends State<CreatePlaylistPage> {
     super.initState();
 
     StoreProvider.of<AppState>(context, listen: false).dispatch(
-      const GetVideosByUid(),
+      const GetVideos(userId: 'me'),
     );
 
     for (int i = 0; i < 100; i++) {

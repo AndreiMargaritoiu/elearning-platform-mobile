@@ -9,12 +9,8 @@ Reducer<PlaylistsState> playlistsReducer = combineReducers(
     TypedReducer<PlaylistsState, UpdatePlaylistInfo>(_updatePlaylistInfo),
     TypedReducer<PlaylistsState, CreatePlaylistSuccessful>(
         _createPlaylistSuccessful),
-    TypedReducer<PlaylistsState, GetPlaylistsByUidSuccessful>(
-        _getPlaylistsByUidSuccessful),
-    TypedReducer<PlaylistsState, GetCategoryPlaylistsSuccessful>(
-        _getCategoryPlaylistsSuccessful),
-    TypedReducer<PlaylistsState, GetAllPlaylistsSuccessful>(
-        _getAllPlaylistsSuccessful),
+    TypedReducer<PlaylistsState, GetPlaylistsSuccessful>(
+        _getPlaylistsSuccessful),
     TypedReducer<PlaylistsState, SearchPlaylistsSuccessful>(
         _searchPlaylistsSuccessful),
     TypedReducer<PlaylistsState, UpdatePlaylistSuccessful>(
@@ -65,26 +61,8 @@ PlaylistsState _updatePlaylistSuccessful(
   );
 }
 
-PlaylistsState _getAllPlaylistsSuccessful(
-    PlaylistsState state, GetAllPlaylistsSuccessful action) {
-  return state.rebuild(
-    (PlaylistsStateBuilder b) {
-      b.playlists = ListBuilder<Playlist>(action.playlists);
-    },
-  );
-}
-
-PlaylistsState _getCategoryPlaylistsSuccessful(
-    PlaylistsState state, GetCategoryPlaylistsSuccessful action) {
-  return state.rebuild(
-    (PlaylistsStateBuilder b) {
-      b.playlists = ListBuilder<Playlist>(action.playlists);
-    },
-  );
-}
-
-PlaylistsState _getPlaylistsByUidSuccessful(
-    PlaylistsState state, GetPlaylistsByUidSuccessful action) {
+PlaylistsState _getPlaylistsSuccessful(
+    PlaylistsState state, GetPlaylistsSuccessful action) {
   return state.rebuild(
     (PlaylistsStateBuilder b) {
       b.playlists = ListBuilder<Playlist>(action.playlists);

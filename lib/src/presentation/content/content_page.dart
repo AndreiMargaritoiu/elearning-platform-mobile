@@ -18,7 +18,7 @@ class _ContentPageState extends State<ContentPage> {
     super.initState();
 
     StoreProvider.of<AppState>(context, listen: false).dispatch(
-      const GetAllPlaylists(),
+      const GetPlaylists(),
     );
   }
 

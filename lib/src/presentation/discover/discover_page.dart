@@ -20,7 +20,7 @@ class _DiscoverPageState extends State<DiscoverPage> {
     super.initState();
 
     StoreProvider.of<AppState>(context, listen: false).dispatch(
-      const ListenForVideos(),
+      const GetVideos(trending: true),
     );
   }
 
@@ -138,14 +138,14 @@ class _DiscoverPageState extends State<DiscoverPage> {
                                 )
                               ],
                             ),
-                            Container(height: 32),
-                            const Text(
-                              'Take quizzes',
-                              style: TextStyle(
-                                fontSize: 24,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
+                            // Container(height: 32),
+                            // const Text(
+                            //   'Take quizzes',
+                            //   style: TextStyle(
+                            //     fontSize: 24,
+                            //     fontWeight: FontWeight.w600,
+                            //   ),
+                            // ),
                           ],
                         ),
                       ),

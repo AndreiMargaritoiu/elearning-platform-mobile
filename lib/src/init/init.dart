@@ -50,7 +50,7 @@ Future<Store<AppState>> init() async {
       firestore: firestore, storage: storage, clientWrapper: clientWrapper);
 
   final MentoringApi mentoringApi =
-      MentoringApi(firestore: firestore, clientWrapper: clientWrapper);
+      MentoringApi(clientWrapper);
 
   final TrackingApi trackingApi =
       TrackingApi(firestore: firestore, clientWrapper: clientWrapper);

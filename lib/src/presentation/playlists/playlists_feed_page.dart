@@ -21,7 +21,7 @@ class _PlaylistsFeedPageState extends State<PlaylistsFeedPage> {
     super.initState();
 
     StoreProvider.of<AppState>(context, listen: false).dispatch(
-      GetCategoryPlaylists(widget.category),
+      GetPlaylists(category: widget.category),
     );
   }
 
@@ -35,7 +35,7 @@ class _PlaylistsFeedPageState extends State<PlaylistsFeedPage> {
           onPressed: () {
             Navigator.pop(context, true);
             StoreProvider.of<AppState>(context, listen: false).dispatch(
-              const GetAllPlaylists(),
+              const GetPlaylists(),
             );
           },
         ),
