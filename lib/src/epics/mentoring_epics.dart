@@ -89,7 +89,7 @@ class MentoringEpics {
             (DeleteMentorship$ action) => _api.deleteMentorship(action.id),
           )
           .mapTo(
-            const DeleteMentorship.successful(),
+            DeleteMentorship.successful(action.id),
           )
           .onErrorReturnWith(
             (dynamic error) => DeleteMentorship.error(error),

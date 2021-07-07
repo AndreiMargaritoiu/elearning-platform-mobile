@@ -1347,8 +1347,10 @@ class _$DeletePlaylistTearOff {
   }
 
 // ignore: unused_element
-  DeletePlaylistSuccessful successful() {
-    return const DeletePlaylistSuccessful();
+  DeletePlaylistSuccessful successful(String id) {
+    return DeletePlaylistSuccessful(
+      id,
+    );
   }
 
 // ignore: unused_element
@@ -1368,13 +1370,13 @@ mixin _$DeletePlaylist {
   @optionalTypeArgs
   Result when<Result extends Object>(
     Result $default(String id), {
-    @required Result successful(),
+    @required Result successful(String id),
     @required Result error(Object error),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>(
     Result $default(String id), {
-    Result successful(),
+    Result successful(String id),
     Result error(Object error),
     @required Result orElse(),
   });
@@ -1471,7 +1473,7 @@ class _$DeletePlaylist$ implements DeletePlaylist$ {
   @optionalTypeArgs
   Result when<Result extends Object>(
     Result $default(String id), {
-    @required Result successful(),
+    @required Result successful(String id),
     @required Result error(Object error),
   }) {
     assert($default != null);
@@ -1484,7 +1486,7 @@ class _$DeletePlaylist$ implements DeletePlaylist$ {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>(
     Result $default(String id), {
-    Result successful(),
+    Result successful(String id),
     Result error(Object error),
     @required Result orElse(),
   }) {
@@ -1536,6 +1538,7 @@ abstract class $DeletePlaylistSuccessfulCopyWith<$Res> {
   factory $DeletePlaylistSuccessfulCopyWith(DeletePlaylistSuccessful value,
           $Res Function(DeletePlaylistSuccessful) then) =
       _$DeletePlaylistSuccessfulCopyWithImpl<$Res>;
+  $Res call({String id});
 }
 
 /// @nodoc
@@ -1549,49 +1552,70 @@ class _$DeletePlaylistSuccessfulCopyWithImpl<$Res>
   @override
   DeletePlaylistSuccessful get _value =>
       super._value as DeletePlaylistSuccessful;
+
+  @override
+  $Res call({
+    Object id = freezed,
+  }) {
+    return _then(DeletePlaylistSuccessful(
+      id == freezed ? _value.id : id as String,
+    ));
+  }
 }
 
 /// @nodoc
 class _$DeletePlaylistSuccessful implements DeletePlaylistSuccessful {
-  const _$DeletePlaylistSuccessful();
+  const _$DeletePlaylistSuccessful(this.id) : assert(id != null);
+
+  @override
+  final String id;
 
   @override
   String toString() {
-    return 'DeletePlaylist.successful()';
+    return 'DeletePlaylist.successful(id: $id)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is DeletePlaylistSuccessful);
+    return identical(this, other) ||
+        (other is DeletePlaylistSuccessful &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(id);
+
+  @override
+  $DeletePlaylistSuccessfulCopyWith<DeletePlaylistSuccessful> get copyWith =>
+      _$DeletePlaylistSuccessfulCopyWithImpl<DeletePlaylistSuccessful>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   Result when<Result extends Object>(
     Result $default(String id), {
-    @required Result successful(),
+    @required Result successful(String id),
     @required Result error(Object error),
   }) {
     assert($default != null);
     assert(successful != null);
     assert(error != null);
-    return successful();
+    return successful(id);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>(
     Result $default(String id), {
-    Result successful(),
+    Result successful(String id),
     Result error(Object error),
     @required Result orElse(),
   }) {
     assert(orElse != null);
     if (successful != null) {
-      return successful();
+      return successful(id);
     }
     return orElse();
   }
@@ -1626,7 +1650,11 @@ class _$DeletePlaylistSuccessful implements DeletePlaylistSuccessful {
 }
 
 abstract class DeletePlaylistSuccessful implements DeletePlaylist {
-  const factory DeletePlaylistSuccessful() = _$DeletePlaylistSuccessful;
+  const factory DeletePlaylistSuccessful(String id) =
+      _$DeletePlaylistSuccessful;
+
+  String get id;
+  $DeletePlaylistSuccessfulCopyWith<DeletePlaylistSuccessful> get copyWith;
 }
 
 /// @nodoc
@@ -1692,7 +1720,7 @@ class _$DeletePlaylistError implements DeletePlaylistError {
   @optionalTypeArgs
   Result when<Result extends Object>(
     Result $default(String id), {
-    @required Result successful(),
+    @required Result successful(String id),
     @required Result error(Object error),
   }) {
     assert($default != null);
@@ -1705,7 +1733,7 @@ class _$DeletePlaylistError implements DeletePlaylistError {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>(
     Result $default(String id), {
-    Result successful(),
+    Result successful(String id),
     Result error(Object error),
     @required Result orElse(),
   }) {

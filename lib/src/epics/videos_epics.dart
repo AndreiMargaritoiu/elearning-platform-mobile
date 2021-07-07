@@ -90,7 +90,7 @@ class VideosEpics {
             (DeleteVideo$ action) => _api.deleteVideo(action.id),
           )
           .mapTo(
-            const DeleteVideo.successful(),
+            DeleteVideo.successful(action.id),
           )
           .onErrorReturnWith(
             (dynamic error) => DeleteVideo.error(error),

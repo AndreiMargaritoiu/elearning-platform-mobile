@@ -1340,8 +1340,10 @@ class _$DeleteMentorshipTearOff {
   }
 
 // ignore: unused_element
-  DeleteMentorshipSuccessful successful() {
-    return const DeleteMentorshipSuccessful();
+  DeleteMentorshipSuccessful successful(String id) {
+    return DeleteMentorshipSuccessful(
+      id,
+    );
   }
 
 // ignore: unused_element
@@ -1361,13 +1363,13 @@ mixin _$DeleteMentorship {
   @optionalTypeArgs
   Result when<Result extends Object>(
     Result $default(String id), {
-    @required Result successful(),
+    @required Result successful(String id),
     @required Result error(Object error),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>(
     Result $default(String id), {
-    Result successful(),
+    Result successful(String id),
     Result error(Object error),
     @required Result orElse(),
   });
@@ -1464,7 +1466,7 @@ class _$DeleteMentorship$ implements DeleteMentorship$ {
   @optionalTypeArgs
   Result when<Result extends Object>(
     Result $default(String id), {
-    @required Result successful(),
+    @required Result successful(String id),
     @required Result error(Object error),
   }) {
     assert($default != null);
@@ -1477,7 +1479,7 @@ class _$DeleteMentorship$ implements DeleteMentorship$ {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>(
     Result $default(String id), {
-    Result successful(),
+    Result successful(String id),
     Result error(Object error),
     @required Result orElse(),
   }) {
@@ -1529,6 +1531,7 @@ abstract class $DeleteMentorshipSuccessfulCopyWith<$Res> {
   factory $DeleteMentorshipSuccessfulCopyWith(DeleteMentorshipSuccessful value,
           $Res Function(DeleteMentorshipSuccessful) then) =
       _$DeleteMentorshipSuccessfulCopyWithImpl<$Res>;
+  $Res call({String id});
 }
 
 /// @nodoc
@@ -1542,49 +1545,71 @@ class _$DeleteMentorshipSuccessfulCopyWithImpl<$Res>
   @override
   DeleteMentorshipSuccessful get _value =>
       super._value as DeleteMentorshipSuccessful;
+
+  @override
+  $Res call({
+    Object id = freezed,
+  }) {
+    return _then(DeleteMentorshipSuccessful(
+      id == freezed ? _value.id : id as String,
+    ));
+  }
 }
 
 /// @nodoc
 class _$DeleteMentorshipSuccessful implements DeleteMentorshipSuccessful {
-  const _$DeleteMentorshipSuccessful();
+  const _$DeleteMentorshipSuccessful(this.id) : assert(id != null);
+
+  @override
+  final String id;
 
   @override
   String toString() {
-    return 'DeleteMentorship.successful()';
+    return 'DeleteMentorship.successful(id: $id)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is DeleteMentorshipSuccessful);
+    return identical(this, other) ||
+        (other is DeleteMentorshipSuccessful &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(id);
+
+  @override
+  $DeleteMentorshipSuccessfulCopyWith<DeleteMentorshipSuccessful>
+      get copyWith =>
+          _$DeleteMentorshipSuccessfulCopyWithImpl<DeleteMentorshipSuccessful>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
   Result when<Result extends Object>(
     Result $default(String id), {
-    @required Result successful(),
+    @required Result successful(String id),
     @required Result error(Object error),
   }) {
     assert($default != null);
     assert(successful != null);
     assert(error != null);
-    return successful();
+    return successful(id);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>(
     Result $default(String id), {
-    Result successful(),
+    Result successful(String id),
     Result error(Object error),
     @required Result orElse(),
   }) {
     assert(orElse != null);
     if (successful != null) {
-      return successful();
+      return successful(id);
     }
     return orElse();
   }
@@ -1619,7 +1644,11 @@ class _$DeleteMentorshipSuccessful implements DeleteMentorshipSuccessful {
 }
 
 abstract class DeleteMentorshipSuccessful implements DeleteMentorship {
-  const factory DeleteMentorshipSuccessful() = _$DeleteMentorshipSuccessful;
+  const factory DeleteMentorshipSuccessful(String id) =
+      _$DeleteMentorshipSuccessful;
+
+  String get id;
+  $DeleteMentorshipSuccessfulCopyWith<DeleteMentorshipSuccessful> get copyWith;
 }
 
 /// @nodoc
@@ -1686,7 +1715,7 @@ class _$DeleteMentorshipError implements DeleteMentorshipError {
   @optionalTypeArgs
   Result when<Result extends Object>(
     Result $default(String id), {
-    @required Result successful(),
+    @required Result successful(String id),
     @required Result error(Object error),
   }) {
     assert($default != null);
@@ -1699,7 +1728,7 @@ class _$DeleteMentorshipError implements DeleteMentorshipError {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>(
     Result $default(String id), {
-    Result successful(),
+    Result successful(String id),
     Result error(Object error),
     @required Result orElse(),
   }) {

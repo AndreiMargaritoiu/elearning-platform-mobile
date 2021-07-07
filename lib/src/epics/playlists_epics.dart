@@ -71,7 +71,7 @@ class PlaylistsEpics {
             (DeletePlaylist$ action) => _api.deletePlaylist(action.id),
           )
           .mapTo(
-            const DeletePlaylist.successful(),
+            DeletePlaylist.successful(action.id),
           )
           .onErrorReturnWith(
             (dynamic error) => DeletePlaylist.error(error),

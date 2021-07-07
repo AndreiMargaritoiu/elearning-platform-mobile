@@ -15,6 +15,8 @@ Reducer<PlaylistsState> playlistsReducer = combineReducers(
         _searchPlaylistsSuccessful),
     TypedReducer<PlaylistsState, UpdatePlaylistSuccessful>(
         _updatePlaylistSuccessful),
+    TypedReducer<PlaylistsState, DeletePlaylistSuccessful>(
+        _deletePlaylistSuccessful),
   ],
 );
 
@@ -57,6 +59,15 @@ PlaylistsState _updatePlaylistSuccessful(
       b.playlists.removeWhere(
           (Playlist playlist) => playlist.id == action.playlist.id);
       b.playlists.insert(0, action.playlist);
+    },
+  );
+}
+
+PlaylistsState _deletePlaylistSuccessful(
+    PlaylistsState state, DeletePlaylistSuccessful action) {
+  return state.rebuild(
+    (PlaylistsStateBuilder b) {
+      b.playlists.removeWhere((Playlist playlist) => playlist.id == action.id);
     },
   );
 }

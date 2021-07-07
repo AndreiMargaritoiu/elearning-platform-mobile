@@ -1313,8 +1313,10 @@ class _$DeleteVideoTearOff {
   }
 
 // ignore: unused_element
-  DeleteVideoSuccessful successful() {
-    return const DeleteVideoSuccessful();
+  DeleteVideoSuccessful successful(String id) {
+    return DeleteVideoSuccessful(
+      id,
+    );
   }
 
 // ignore: unused_element
@@ -1334,13 +1336,13 @@ mixin _$DeleteVideo {
   @optionalTypeArgs
   Result when<Result extends Object>(
     Result $default(String id), {
-    @required Result successful(),
+    @required Result successful(String id),
     @required Result error(Object error),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>(
     Result $default(String id), {
-    Result successful(),
+    Result successful(String id),
     Result error(Object error),
     @required Result orElse(),
   });
@@ -1435,7 +1437,7 @@ class _$DeleteVideo$ implements DeleteVideo$ {
   @optionalTypeArgs
   Result when<Result extends Object>(
     Result $default(String id), {
-    @required Result successful(),
+    @required Result successful(String id),
     @required Result error(Object error),
   }) {
     assert($default != null);
@@ -1448,7 +1450,7 @@ class _$DeleteVideo$ implements DeleteVideo$ {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>(
     Result $default(String id), {
-    Result successful(),
+    Result successful(String id),
     Result error(Object error),
     @required Result orElse(),
   }) {
@@ -1500,6 +1502,7 @@ abstract class $DeleteVideoSuccessfulCopyWith<$Res> {
   factory $DeleteVideoSuccessfulCopyWith(DeleteVideoSuccessful value,
           $Res Function(DeleteVideoSuccessful) then) =
       _$DeleteVideoSuccessfulCopyWithImpl<$Res>;
+  $Res call({String id});
 }
 
 /// @nodoc
@@ -1512,49 +1515,70 @@ class _$DeleteVideoSuccessfulCopyWithImpl<$Res>
 
   @override
   DeleteVideoSuccessful get _value => super._value as DeleteVideoSuccessful;
+
+  @override
+  $Res call({
+    Object id = freezed,
+  }) {
+    return _then(DeleteVideoSuccessful(
+      id == freezed ? _value.id : id as String,
+    ));
+  }
 }
 
 /// @nodoc
 class _$DeleteVideoSuccessful implements DeleteVideoSuccessful {
-  const _$DeleteVideoSuccessful();
+  const _$DeleteVideoSuccessful(this.id) : assert(id != null);
+
+  @override
+  final String id;
 
   @override
   String toString() {
-    return 'DeleteVideo.successful()';
+    return 'DeleteVideo.successful(id: $id)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is DeleteVideoSuccessful);
+    return identical(this, other) ||
+        (other is DeleteVideoSuccessful &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(id);
+
+  @override
+  $DeleteVideoSuccessfulCopyWith<DeleteVideoSuccessful> get copyWith =>
+      _$DeleteVideoSuccessfulCopyWithImpl<DeleteVideoSuccessful>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   Result when<Result extends Object>(
     Result $default(String id), {
-    @required Result successful(),
+    @required Result successful(String id),
     @required Result error(Object error),
   }) {
     assert($default != null);
     assert(successful != null);
     assert(error != null);
-    return successful();
+    return successful(id);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>(
     Result $default(String id), {
-    Result successful(),
+    Result successful(String id),
     Result error(Object error),
     @required Result orElse(),
   }) {
     assert(orElse != null);
     if (successful != null) {
-      return successful();
+      return successful(id);
     }
     return orElse();
   }
@@ -1589,7 +1613,10 @@ class _$DeleteVideoSuccessful implements DeleteVideoSuccessful {
 }
 
 abstract class DeleteVideoSuccessful implements DeleteVideo {
-  const factory DeleteVideoSuccessful() = _$DeleteVideoSuccessful;
+  const factory DeleteVideoSuccessful(String id) = _$DeleteVideoSuccessful;
+
+  String get id;
+  $DeleteVideoSuccessfulCopyWith<DeleteVideoSuccessful> get copyWith;
 }
 
 /// @nodoc
@@ -1655,7 +1682,7 @@ class _$DeleteVideoError implements DeleteVideoError {
   @optionalTypeArgs
   Result when<Result extends Object>(
     Result $default(String id), {
-    @required Result successful(),
+    @required Result successful(String id),
     @required Result error(Object error),
   }) {
     assert($default != null);
@@ -1668,7 +1695,7 @@ class _$DeleteVideoError implements DeleteVideoError {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>(
     Result $default(String id), {
-    Result successful(),
+    Result successful(String id),
     Result error(Object error),
     @required Result orElse(),
   }) {

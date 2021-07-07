@@ -11,6 +11,7 @@ Reducer<VideosState> videosReducer = combineReducers(
     TypedReducer<VideosState, GetVideosSuccessful>(_getVideosSuccessful),
     TypedReducer<VideosState, SearchVideosSuccessful>(_searchVideosSuccessful),
     TypedReducer<VideosState, UpdateVideoSuccessful>(_updateVideoSuccessful),
+    TypedReducer<VideosState, DeleteVideoSuccessful>(_deleteVideoSuccessful),
   ],
 );
 
@@ -68,6 +69,15 @@ VideosState _updateVideoSuccessful(
     (VideosStateBuilder b) {
       b.videos.removeWhere((Video video) => video.id == action.video.id);
       b.videos.insert(0, action.video);
+    },
+  );
+}
+
+VideosState _deleteVideoSuccessful(
+    VideosState state, DeleteVideoSuccessful action) {
+  return state.rebuild(
+    (VideosStateBuilder b) {
+      b.videos.removeWhere((Video video) => video.id == action.id);
     },
   );
 }
